@@ -1,7 +1,6 @@
 package com.ISOUR.FINAL.entity;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.time.*;
 

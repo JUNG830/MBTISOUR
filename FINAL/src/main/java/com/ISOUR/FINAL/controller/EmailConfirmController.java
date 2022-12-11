@@ -1,7 +1,6 @@
 package com.ISOUR.FINAL.controller;
 
 import com.ISOUR.FINAL.Service.EmailService;
-import com.ISOUR.FINAL.Service.EmailServiceImpl;
 import com.ISOUR.FINAL.Service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -10,20 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
 import java.util.Map;
 
+import static com.ISOUR.FINAL.Service.EmailServiceImpl.ePw;
+
+
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/service/*")
 public class EmailConfirmController {
     @Autowired
     EmailService service;
     private MemberService memberService;
+
     public EmailConfirmController(MemberService memberService) {
         this.memberService = memberService;
     }
+
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     @PostMapping("/mail")
@@ -40,9 +43,10 @@ public class EmailConfirmController {
         Integer result=0;
         String getEmailCode = emailCode.get("code");
         System.out.println("code : "+getEmailCode);
-        System.out.println("code match : "+ EmailServiceImpl.ePw.equals(getEmailCode));
-        if(EmailServiceImpl.ePw.equals(getEmailCode)) {
+        System.out.println("code match : "+ ePw.equals(getEmailCode));
+        if(ePw.equals(getEmailCode)) {
             result =1;
+//            ePw=createKey();
         }
         return result;
     }

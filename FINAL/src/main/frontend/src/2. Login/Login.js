@@ -10,17 +10,29 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import Cookies from 'universal-cookie';
 import kakao from '../images/kakao_login_small (1).png';
 import { REST_API_KEY, REDIRECT_URI } from '../0. API/kakaoAPI';
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
-  const navigate = useNavigate();
-    // ▼ 로그인되어 있으면 바로 HOME 으로 이동 
-    const isLogin = window.sessionStorage.getItem("isLogin");
-    if (isLogin === "TRUE") navigate('/home');
-    // ▲ 로그인되어 있으면 바로 HOME 으로 이동
-  
+  // // ▼ 로그인되어 있으면 바로 HOME 으로 이동 
+  // const isLogin = window.sessionStorage.getItem("isLogin");
+  // if (isLogin === "TRUE") window.location.replace("/home");
+  // // ▲ 로그인되어 있으면 바로 HOME 으로 이동
+
   const cookies = new Cookies();
+  const localId = cookies.get('rememberId');
+
+  const navigate = useNavigate();
+
+  if (localId !== undefined) navigate("/home");
+
+  const EnterPress = (e) => {
+    if (e.key === 'Enter') {
+      onClickLogin();
+    }
+  }
+
+
 
   const signInWithGoogle = () => {
 
@@ -65,7 +77,7 @@ function Login() {
         }
         );
         console.log(cookies.rememberId);
-        navigate('/home');
+        navigate("/home");
 
       } else {
         alert('일치하는 이메일이 없습니다. 회원가입 페이지로 이동합니다.')
@@ -80,7 +92,9 @@ function Login() {
   const kakao_Auth_Url = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const handlerLogin = () => {
-    window.location.href = kakao_Auth_Url;
+  //   window.location.href = kakao_Auth_Url;
+    navigate(kakao_Auth_Url);
+
   }
 
   const [id, setId] = useState("");
@@ -114,24 +128,23 @@ function Login() {
   /*
   Login 버튼 클릭 */
   const onClickLogin = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     console.log(checkedItems);
     console.log("입력한 ID : " + id);
     console.log("입력한 Password : " + pwd);
     console.log("LOGIN 버튼 눌렀어요.");
-    window.sessionStorage.setItem("id", id);
-    window.sessionStorage.setItem("pwd", pwd);
+    // window.sessionStorage.setItem("id", id);
+    // window.sessionStorage.setItem("pwd", pwd);
 
     try {
       const res = await TeamAPI.userLogin(id, pwd);
       // 로그인을 위한 axios 호출
       // console.log("호출 TRY : " + res.data.result);
-      
+
       window.sessionStorage.setItem("isLogin", "TRUE");
       console.log("res.data : " + res.data);
       console.log("checkedItems : " + checkedItems);
-      console.log(Math.floor(Date.now() / 1000) + (60 * 60));
       // if(res.data.result === "OK") {
       if (res.data === true) {
         if (checkedItems === true) {
@@ -143,7 +156,7 @@ function Login() {
             expires: Autologin
           }
           );
-          
+
         } else {
           console.log('그냥로그인  여기 찍힘? : ');
           cookies.set('rememberId', id, {
@@ -151,9 +164,9 @@ function Login() {
             expires: 0
           },
           );
-          
+
         }
-        window.location.replace("/home");
+        navigate("/home");
       } else {
         alert("아이디 또는 비밀번호를 확인하세요!");
       }
@@ -181,17 +194,19 @@ function Login() {
 
         {/* 아이디 */}
         <div className="Login-Id">
-          <input className="Login-input" type="text" placeholder="Enter ID" value={id} onChange={onChangeId} required />
+          <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
         </div>
 
         {/* 비밀번호 */}
         <div className="Login-PW">
-          <input className="Login-input" type="password" placeholder="Enter Password" value={pwd} onChange={onChangePwd} />
+          <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
         </div>
 
         <form>
-          <label for='checkbox'>자동로그인</label>
-          <input type="checkbox" id='checkbox' onClick={onClickAutologin}></input>
+          <div className='Auto-Login'>
+            <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin}></input>
+            <label for='checkbox'>자동로그인</label>
+          </div>
         </form>
 
         <motion.div
@@ -211,16 +226,17 @@ function Login() {
         </div>
 
         {/* 소셜로그인 */}
-        <div>
-          <a href={kakao_Auth_Url}>
-            <img src={kakao}   />
-          </a>
-        </div>
+        <div className='social-Login'>
+          <div className='Login-kakao'>
+            <a href={kakao_Auth_Url}>
+              <img className='kakao-img' src={kakao} />
+            </a>
+          </div>
 
-        <div>
-          <GoogleButton onClick={signInWithGoogle} />
+          <div className='Login-Google'>
+            <GoogleButton onClick={signInWithGoogle} />
+          </div>
         </div>
-
       </div>
     </div>
   );

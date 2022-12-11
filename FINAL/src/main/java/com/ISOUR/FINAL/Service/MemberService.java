@@ -4,12 +4,10 @@ import com.ISOUR.FINAL.dto.MemberDTO;
 import com.ISOUR.FINAL.entity.MemberInfo;
 import com.ISOUR.FINAL.entity.Terms;
 import com.ISOUR.FINAL.repository.MemberRepository;
-
 import com.ISOUR.FINAL.repository.TermsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -55,6 +53,7 @@ public class MemberService {
         memberInfo.setRegion1(region1);
         memberInfo.setRegion2(region2);
         memberInfo.setIntroduce(introduce);
+        memberInfo.setRegistrationDate(LocalDateTime.now().withNano(0));
 
         MemberInfo result = memberRepository.save(memberInfo);
         log.warn(result.toString());
@@ -63,11 +62,12 @@ public class MemberService {
     }
 
     /* 약관 동의 서비스 */
-    public boolean agreeTerms(String id, String check_term1, String check_term2) {
+    public boolean agreeTerms(String id, String check_term1, String check_term2, String check_term3) {
         log.warn("★★★★★★★★★약관 동의 서비스★★★★★★★★★");
         log.warn("id : " + id);
         log.warn("필수 동의 약관(check_term1) : " + check_term1);
         log.warn("선택 동의 약관(check_term2) : " + check_term2);
+        log.warn("선택 동의 약관(check_term2) : " + check_term3);
 
         MemberInfo memberInfo = memberRepository.findById(id);
         log.warn(memberInfo.toString());
@@ -76,12 +76,20 @@ public class MemberService {
         terms.setId_num(memberInfo.getIdNum());
         terms.setTerm1(check_term1);
         terms.setTerm2(check_term2);
+        terms.setTerm3(check_term3);
         terms.setRegistrationTime(LocalDateTime.now());
 
         Terms result = termsRepository.save(terms);
         log.warn(result.toString());
 
         return true;
+    }
+
+    // 회원번호 찾기
+    public Long findMemberId(String id) {
+        Long id_num = memberRepository.findById(id).getIdNum();
+
+        return id_num;
     }
 
     /* 로그인 서비스 */
@@ -202,6 +210,7 @@ public class MemberService {
         memberDTO.setMbti(memberInfo.getMbti());
         memberDTO.setIntroduce(memberInfo.getIntroduce());
         memberDTO.setFace(memberInfo.getFace());
+        memberDTO.setRegistrationDate(memberInfo.getRegistrationDate());
 
         return memberDTO;
     }
@@ -237,24 +246,30 @@ public class MemberService {
         log.warn("조회할 이메일(email) : " + email);
         log.warn("조회할 생년월일(birth) : " + birth);
         MemberInfo memberInfo = memberRepository.findByIdAndEmailAndBirth(id, email, birth);
-        MemberDTO memberDTO = new MemberDTO();
-        memberDTO.setIdNum(memberInfo.getIdNum());
-        memberDTO.setName(memberInfo.getName());
-        memberDTO.setId(memberInfo.getId());
-        memberDTO.setPwd(memberInfo.getPwd());
-        memberDTO.setNickname(memberInfo.getNickname());
-        memberDTO.setBirth(memberInfo.getBirth());
-        memberDTO.setEmail(memberInfo.getEmail());
-        memberDTO.setGender(memberInfo.getGender());
-        memberDTO.setRegion1(memberInfo.getRegion1());
-        memberDTO.setRegion2(memberInfo.getRegion2());
-        memberDTO.setMbti(memberInfo.getMbti());
-        memberDTO.setIntroduce(memberInfo.getIntroduce());
-        memberDTO.setFace(memberInfo.getFace());
+        if(memberInfo ==null) {
+            return null;
+        }else {
 
 
-        log.warn("memberDTO: " + memberDTO.getBirth());
-        return memberDTO;
+            MemberDTO memberDTO = new MemberDTO();
+            memberDTO.setIdNum(memberInfo.getIdNum());
+            memberDTO.setName(memberInfo.getName());
+            memberDTO.setId(memberInfo.getId());
+            memberDTO.setPwd(memberInfo.getPwd());
+            memberDTO.setNickname(memberInfo.getNickname());
+            memberDTO.setBirth(memberInfo.getBirth());
+            memberDTO.setEmail(memberInfo.getEmail());
+            memberDTO.setGender(memberInfo.getGender());
+            memberDTO.setRegion1(memberInfo.getRegion1());
+            memberDTO.setRegion2(memberInfo.getRegion2());
+            memberDTO.setMbti(memberInfo.getMbti());
+            memberDTO.setIntroduce(memberInfo.getIntroduce());
+            memberDTO.setFace(memberInfo.getFace());
+
+
+            log.warn("memberDTO: " + memberDTO.getBirth());
+            return memberDTO;
+        }
     }
 
     /* 아이디 찾기 조회 서비스 */
@@ -265,9 +280,13 @@ public class MemberService {
         log.warn("입력한 생년월일(birth) : " + birth);
 
         MemberInfo memberInfo = memberRepository.findByNameAndEmailAndBirth(name, email, birth);
+        if(memberInfo==null){
+            return null;
+        }else{
         MemberDTO memberDTO = new MemberDTO();
         memberDTO.setId(memberInfo.getId());
         return memberDTO;
+        }
     }
 
 
@@ -280,6 +299,7 @@ public class MemberService {
 
         List<MemberDTO> memberDTOS = new ArrayList<>();
         List<MemberInfo> memberInfoList = memberRepository.findAll();
+
         for(MemberInfo e : memberInfoList) {
             MemberDTO memberDTO = new MemberDTO();
             memberDTO.setName(e.getName());

@@ -3,9 +3,13 @@ package com.ISOUR.FINAL.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class MemberDTO {
+    @Column(name="id_num")
     private Long idNum;
     private String id;
     private String pwd;
@@ -19,4 +23,5 @@ public class MemberDTO {
     private String mbti;
     private String introduce;
     private String face;
+    private LocalDateTime registrationDate;
 }

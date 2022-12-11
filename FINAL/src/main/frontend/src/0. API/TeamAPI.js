@@ -27,7 +27,7 @@ const TeamAPI = {
   },
 
   /* 회원가입 */
-  memberReg: async function (kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2) {
+  memberReg: async function (kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2, check_term3) {
     const memberObj = {
       kakaoId: kakaoId,
       kakaoEmail: kakaoEmail,
@@ -42,7 +42,8 @@ const TeamAPI = {
       region2: region2,
       introduce: introduce,
       check_term1: check_term1,
-      check_term2: check_term2
+      check_term2: check_term2,
+      check_term3: check_term3
     };
     // @PostMapping("/SignUp")
     return await axios.post(TEAM_DOMAIN + "SignUp", memberObj, HEADER);
@@ -187,10 +188,10 @@ const TeamAPI = {
   },
 
   // 매칭회원 불러오기
-  MatchingMember2: async function (id, local_id_num, pageNum) {
+  MatchingMember2: async function (id, localId_num, pageNum) {
     const regCmd = {
       id: id,
-      local_id_num: local_id_num,
+      localId_num: localId_num,
       pageNum: pageNum
     }
     return await axios.post(TEAM_DOMAIN + "Matching", regCmd, HEADER);
@@ -243,6 +244,15 @@ const TeamAPI = {
       access_token: access_token
     }
     return await axios.post(TEAM_DOMAIN + "login/kakao", regCmd, HEADER);
+  },
+
+  // 채팅 친구 추가
+  chatAddMember: async function (MyId, chatMemberId) {
+    const regCmd = {
+      MyId: MyId,
+      chatMemberId: chatMemberId
+    }
+    return await axios.post(TEAM_DOMAIN + "chat/addMember", regCmd, HEADER);
   },
 
 }

@@ -1,99 +1,166 @@
-/*바디 폼*/
-.Matching_Container {
-    position: relative;
-    height: 1250px;
-    margin-right: auto;
-    margin-left: auto;
-    align-items: center;
-    flex-direction: column;
-    max-width: 1180px;
-    background-color: white;
-    font-family: "Jalnan";
+.middle-Container {
+    display: flex;
 }
 
-.warp_body_Mainfont {
-  padding-top: 20px;
-  font-size: 50px;
-  text-align: center;
-  border: 1px solid;
-  border-top: 0px;
-  border-right: 0px;
-  border-left: 0px;
-  
-  }
-  
-  .warp_body {
-    padding-top: 50px;
+.Matching-Container {
+    width: 1000px;
+    display: grid;
+    justify-items: center;
+    margin: 100px auto;
+    background-color: rgba(238, 238, 238, 0.096);
+    padding: 50px;
+    border-radius: 55px;
+    box-shadow: 0 4px 8px 0 rgba(202, 202, 202, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.User-item > input {
+    width: 100px;
+    height: 30px;
+    border: 0px;
     text-align: center;
-  }
-  
-  .warp_body1 {
+    font-size: 1.2rem;
+    padding-left: 10px ;
+    background-color: transparent;
+    color: white;
+}
+
+.Mat-item > input {
+    width: 120px;
+    height: 30px;
+    border: 0px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding-left: 10px ;
+    background-color: transparent;
+    color: white;
+}
+
+/* .Mat-item > input:first-child {
+    border-right: 1px solid;
+} */
+
+/* p {
+    margin-bottom: 5px;
+    line-height: 25px;
+    width: 200px;
+    padding-left: 10px;
+    font-weight: bolder;
+} */
+
+/* 
+    내 정보
+*/
+.User-Box {
+	height: 300px;
+	width: 300px;
+    margin-bottom: 100px;
+	border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row: 1/2;
+    background-color: rgba(59, 59, 59, 0.822);
+}
+
+.User-profile > img {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+    margin: 15px auto;
+}  
+
+.User-item {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+
+.User-item > .User-Introduce {
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* 
+    매칭 회원 
+*/
+.Mat-Box {
+	height: 300px;
+	width: 300px;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row: 2/3;
+    background-color: rgba(59, 59, 59, 0.822);
+    position: relative;
+}
+
+.Mat-profile > img {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+    margin: 15px auto;
+}
+
+.Mat-item {
+    margin: 5px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Mat-icon {
+    position: relative;
+    left: 35px;
+    bottom: 25px;
+    width: 230px;
+    justify-content: space-around;
+    display: flex;
+    background-color: orange;
+    border-radius: 25px;
+    z-index: 3;
+}
+
+.prevbtn {
+    margin-left: auto;
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.nextbtn {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    rotate: 180;
+}
+
+
+.Mat-item > .Mat-Introduce {
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* .MuiIconButton-root {
+    background-color: unset;
+    display: flex;
     float: left;
-    margin-left: 20px;
-    padding-top: 80px;
-    height: 700px;
-    border:1px solid;
-    border-radius: 20px;
-    width: 500px;
-  }
-  
-  .warp_body2{
-    float: left;
-    margin-left: 20px;
-    padding-top: 80px;
-    height: 700px;
-    width: 300px;
-    border:1px solid;
-    border-radius: 20px;
-  }
-  
-  .warp_body3 {
-    float: left;
-    margin-left: 20px;
-    padding-top: 80px;
-    height: 700px;
-    width: 300px;
-    border:1px solid;
-    border-radius: 20px;
-  }
-  /* 회원 사진 */
-  .warp_body1_img {
-    padding-top: 50px;
-    height: 300px;
-    padding-bottom: 50px;
-  }
-  .warp_body2_img {
-    padding-top: 50px;
-    height: 300px;
-    padding-bottom: 50px;
-  }
-  .warp_body3_img {
-    padding-top: 50px;
-    height: 300px;
-    padding-bottom: 50px;
-  }
-  /* 소개 글 */
-  .warp_body1_introduce {
-  
-  }
-  .warp_body2_introduce {
-  
-  }
-  .warp_body3_introduce {
-  
-  }
-  /* 좋아요,쪽지,채팅 버튼 */
-  .warp_goodbutton {
-    display: block;
-    padding-top: 120px;
-  
-  }
-  .warp_goodbutton_padding {
-    align-items:center;
-    height: 60px;
-    border-radius: 20px;
-    font-size: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
+} */

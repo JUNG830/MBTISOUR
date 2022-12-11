@@ -1,14 +1,16 @@
 package com.ISOUR.FINAL.controller;
 
-
+import com.ISOUR.FINAL.Service.KakaoLoginService;
 import com.ISOUR.FINAL.Service.MemberService;
 import com.ISOUR.FINAL.dto.MemberDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @Slf4j
 public class MemberController {
@@ -20,6 +22,8 @@ public class MemberController {
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
+    @Autowired
+    private KakaoLoginService kakaoLoginService;
 
     /* 아이디 중복확인(회원가입 여부 확인) */
     @PostMapping("/IsMemberCheck")
@@ -68,6 +72,9 @@ public class MemberController {
     public ResponseEntity<Boolean> memberSignUp(@RequestBody Map<String, String> signUpData) {
         log.warn("★★★★★★★★★회원가입 Controller★★★★★★★★★");
         log.warn("항목 : 이름, 아이디, 비밀번호, 닉네임, 이메일, 생년월일, 성별, 시도, 시구군, 자기소개");
+        boolean isTrue = false;
+        boolean isSave = false;
+        boolean isKakaoSignup = false;
 
         String getName = signUpData.get("name");
         String getId = signUpData.get("id");
@@ -81,22 +88,34 @@ public class MemberController {
         String getIntroduce = signUpData.get("introduce");
         log.warn(getName, getId, getPwd, getNickname, getEmail, getBirth, getGender, getRegion1, getRegion2, getIntroduce);
 
-        boolean isTrue = memberService.signUpMember(getName, getId, getPwd, getNickname, getEmail, getBirth, getGender, getRegion1, getRegion2, getIntroduce);
+        isTrue = memberService.signUpMember(getName, getId, getPwd, getNickname, getEmail, getBirth, getGender, getRegion1, getRegion2, getIntroduce);
         if (isTrue) log.warn("I_MEMBER 테이블 DB 저장 " + isTrue);
 
         String getCheck_term1 = signUpData.get("check_term1");
         String getCheck_term2 = signUpData.get("check_term2");
+        String getCheck_term3 = signUpData.get("check_term3");
 
-        boolean isSave = memberService.agreeTerms(getId, getCheck_term1, getCheck_term2);
+        isSave = memberService.agreeTerms(getId, getCheck_term1, getCheck_term2, getCheck_term3);
         if (isSave) log.warn("Terms 테이블 DB 저장 : " + isSave);
 
-        if (isTrue && isSave) {
+        if (signUpData.get("kakaoId") != null) {
+            // 카카오톡 정보가 있으면 저장
+            Long kakaoId = Long.valueOf(signUpData.get("kakaoId"));
+            String kakaoEmail = signUpData.get("kakaoEmail");
+            log.warn("***** 카카오톡 저장 왔니????");
+            Long id_num = memberService.findMemberId(getId);
+            isKakaoSignup = kakaoLoginService.kakaoSignup(kakaoEmail, kakaoId, id_num);
+        }
+
+        if (isTrue && isSave || isTrue && isSave && isKakaoSignup) {
             log.warn(">> " + isTrue + " : 회원가입 성공 ");
             log.warn(">> " + isSave + " : 약관 동의 저장 성공 ");
+            log.warn(">> " + isKakaoSignup + " : 카카오 저장 성공 ");
             return new ResponseEntity<>(true, HttpStatus.OK);
         } else {
             log.warn(">> " + isTrue + " : 회원가입 실패 ");
             log.warn(">> " + isSave + " : 약관 동의 저장 실패 ");
+            log.warn(">> " + isKakaoSignup + " : 카카오 저장 실패 ");
             return new ResponseEntity<>(false, HttpStatus.OK);
         }
     }
@@ -237,7 +256,11 @@ public class MemberController {
     public ResponseEntity<MemberDTO> memberInfo(@RequestParam String id, String email, String birth) {
         log.warn("★★★★★★★★★비밀번호 찾기 정보 조회Controller★★★★★★★★★");
         MemberDTO memberDTO = memberService.findPwd(id, email, birth);
-        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        if(memberDTO ==null){
+            return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+        }
     }
 
     /* 아이디 찾기 정보 조회 */

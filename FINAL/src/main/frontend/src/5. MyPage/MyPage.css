@@ -1,0 +1,304 @@
+.Mypage-Container {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    max-width: 1180px;
+    font-family: "Jalnan";
+    background-color: white;
+    justify-content:center;
+}
+
+
+.Mypage-box {
+    border: 1px solid;
+    height: 700px;
+    width: 100%;
+    padding-top: 20px;
+    padding:0px 288.5px;
+    margin: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    border-radius: 20px;
+    background-color: rgb(250, 244, 160);
+    min-width: 1150px;
+}
+
+.MyPage-img {
+    margin: 50px;
+}
+
+
+.btn-upload {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-upload:hover {
+    background: rgb(11, 255, 105);
+    color: #fff;
+  }
+
+  #file {
+    display: none;
+  }
+
+.MyPage-img-file {
+    padding-bottom: 20px;
+}
+
+.MyPage-input {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+.Form-item {
+padding: 40px;
+padding-top: 0px;
+}
+
+.Form-input1 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 35px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input2 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 52px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input3 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 68px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input4 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 37px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input5 {
+    margin-left: 50px;
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 22px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input6 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 20px;
+    margin-left: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input6-2 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 55px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input6-btn {
+margin-top: 20px;
+margin-right: 10px;
+}
+
+.input6-btn-select {
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.input6-btn-select:hover {
+    background: rgb(11, 255, 105);
+}
+
+.input6-btn-keep:hover {
+    background: rgb(11, 255, 105);
+}
+
+.input6-btn-keep {
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.MyPage-MBTI {
+    margin-left: 50px;
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input7 {
+    margin-left: 50px;
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 22px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input7-2 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 25px;
+    margin-left: 45px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input7-btn-keep {
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.input7-btn-keep:hover {
+    background: rgb(11, 255, 105);
+}
+
+.Form-input8 {
+    margin-left: 60px;
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input8-2 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 30px;
+    margin-left: 70px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input8-btn-keep {
+     width: 100px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.input8-btn-keep:hover {
+    background: rgb(11, 255, 105);
+}
+
+.Form-input9 {
+    border-radius: 20px;
+    width: 200px;
+    margin-right: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Form-input10 {
+    border-radius: 20px;
+    width: 200px;
+    margin-left:110px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input10-btn {
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.input10-btn:hover {
+    background: rgb(11, 255, 105);
+}
+
+.MyPage-img-btn {
+    margin-bottom: 40px;
+}
+
+
+
+.Form-Name {
+    float: left;
+    font-size: 20px;
+}
+
+.Mypage-examine {
+    width: 200px;
+    margin-right: 48px;
+    border-radius: 10px;
+}
+
+.MyPage-img-select {
+    margin-right: 10px;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+}
+
+.MyPage-img-select:hover {
+    background: rgb(11, 255, 105);
+}
+
+.MyPage-img-delect {
+    margin-right: 10px;
+    border-radius: 10px;
+    width: 50px;
+    height: 30px;
+}
+
+.MyPage-img-delect:hover {
+    background: rgb(11, 255, 105);
+}
+
+.MyPage-Modify-Btn {
+    width: 100px;
+    border-radius: 20px;
+}
+
+.MyPage-Modify-Btn:hover {
+    background: rgb(11, 255, 105);
+}
+
+.Mypage-leave-btn {
+    width: 200px;
+
+    border-radius: 10px;
+    margin-right: 7px;
+}
+
+.MyPage-input-file {
+    display:flex;
+    margin-left: 140px
+}
+
+.Mypage-leave-btn:hover {
+    background: rgb(11, 255, 105);
+}

@@ -1,31 +1,32 @@
 package com.ISOUR.FINAL.Service;
 
 import java.util.Random;
-
-import javax.mail.Message.RecipientType;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 @Service
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
     JavaMailSender emailSender;
+    public static String ePw = createKey();
 
-    public static final String ePw = createKey();
+
+//    public static String ePw = createKey();
 
     private MimeMessage createMessage(String to)throws Exception{
+
         System.out.println("보내는 대상 : "+ to);
         System.out.println("인증 번호 : "+ePw);
         MimeMessage  message = emailSender.createMimeMessage();
 
 
-        message.addRecipients(RecipientType.TO, to);//보내는 대상
+        message.addRecipients(MimeMessage.RecipientType.TO, to);//보내는 대상
         message.setSubject("ISOUR 회원가입 이메일 인증");//제목
 
         String msgg="";
@@ -75,7 +76,7 @@ public class EmailServiceImpl implements EmailService {
     }
     @Override
     public String sendSimpleMessage(String to)throws Exception {
-        // TODO Auto-generated method stub
+//         TODO Auto-generated method stub
         MimeMessage message = createMessage(to);
         try{//예외처리
             emailSender.send(message);

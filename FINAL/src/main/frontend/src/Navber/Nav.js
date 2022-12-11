@@ -12,7 +12,7 @@ function Navber() {
         <nav className='App-Nav'>
              <Navbar bg="light" expand="lg">
             <Container>
-              <Navbar.Brand className='home-button' href="/">MBTISOUR</Navbar.Brand>
+              <Navbar.Brand className='home-button' href="/home">MBTISOUR</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -22,7 +22,7 @@ function Navber() {
                     <NavDropdown.Item href="/MBTI">MBTI 검사하기</NavDropdown.Item>
                     <NavDropdown.Item href="/MBTITypes">MBTI 설명</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link className='Nav-link-font3'href="/Socket">(임시)채팅방</Nav.Link>
+                  <Nav.Link className='Nav-link-font3'href="/ChatHome">(임시)채팅방</Nav.Link>
 
                   <NavDropdown title="더 보기" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/mypage">내 정보</NavDropdown.Item>
