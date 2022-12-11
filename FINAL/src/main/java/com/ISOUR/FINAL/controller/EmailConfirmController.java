@@ -13,9 +13,8 @@ import java.util.Map;
 
 import static com.ISOUR.FINAL.Service.EmailServiceImpl.ePw;
 
-
+@CrossOrigin(value = "http://localhost:3000")
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @RequestMapping("/service/*")
 public class EmailConfirmController {

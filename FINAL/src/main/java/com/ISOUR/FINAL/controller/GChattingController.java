@@ -9,7 +9,7 @@ import com.ISOUR.FINAL.Service.GChatService;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:3000/")
+@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @Slf4j
 public class GChattingController {
