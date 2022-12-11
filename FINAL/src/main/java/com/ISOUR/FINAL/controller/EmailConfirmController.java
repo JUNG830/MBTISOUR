@@ -21,7 +21,7 @@ import static com.ISOUR.FINAL.Service.EmailServiceImpl.ePw;
 public class EmailConfirmController {
     @Autowired
     EmailService service;
-    private MemberService memberService;
+    private final MemberService memberService;
 
     public EmailConfirmController(MemberService memberService) {
         this.memberService = memberService;

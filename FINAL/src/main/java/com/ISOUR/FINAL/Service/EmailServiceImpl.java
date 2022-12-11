@@ -26,8 +26,8 @@ public class EmailServiceImpl implements EmailService {
         MimeMessage  message = emailSender.createMimeMessage();
 
 
-        message.addRecipients(MimeMessage.RecipientType.TO, to);//보내는 대상
-        message.setSubject("ISOUR 회원가입 이메일 인증");//제목
+        message.addRecipients(MimeMessage.RecipientType.TO, to); //보내는 대상
+        message.setSubject("ISOUR 회원가입 이메일 인증"); //제목
 
         String msgg="";
         msgg+= "<div style='margin:100px;'>";
