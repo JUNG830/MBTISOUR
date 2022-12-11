@@ -1,0 +1,44 @@
+.Main_Container {
+    display: block;
+    position: relative;
+    height: 1250px;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1180px;
+    background-color: white;
+    font-family: "Jalnan";
+    text-align: center;
+}
+
+.Main_title {
+    color:black;
+
+}
+
+.Main-box-button2 {
+    border-radius: 10px;
+    font-size: 60px;
+    background-color: white;
+}
+
+.Main_font {
+font-size: 100px;
+padding-top: 320px;
+}
+.Main_font1 {
+    font-size: large;
+    text-align: center;
+}
+.box {
+    margin: auto;
+    width: 200px;
+    height: 80px;
+    border-radius: 50px;
+    background: var(--accent);
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+  }
