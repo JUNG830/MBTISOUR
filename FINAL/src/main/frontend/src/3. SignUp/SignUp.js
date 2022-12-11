@@ -665,9 +665,10 @@ function SignUp() {
 
 
   return (
-    mode === 'agree' ?
-      <Terms />
-      :
+    
+      mode === 'agree' ?
+        <Terms />
+        :
       <div className='Container'>
         <div className="SignUp-Container">
           <div className='SignUp-Box'>
@@ -769,11 +770,9 @@ function SignUp() {
               <tr className="SignUp-item">
                 <td>
                   <input className='date' type="date" value={birth} onChange={onChangeBirth} />
-                  <th>
-                    <div className='Message'>
-                      생년월일을 선택하세요
-                    </div>
-                  </th>
+                  <div className='Message'>
+                    생년월일을 선택하세요
+                  </div>
                 </td>
                 <td>
                   <p className='Span-Age'>만 {age}세</p>

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id="FINAL:main" external.linked.project.path="$MODULE_DIR$/../../FINAL" external.root.project.path="$MODULE_DIR$/../../FINAL" external.system.id="GRADLE" external.system.module.group="com.ISOUR" external.system.module.type="sourceSet" external.system.module.version="0.0.1-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
-    <output url="file://$MODULE_DIR$/../../FINAL/build/classes/java/main" />
+    <output url="file://$MODULE_DIR$/../../FINAL/out/production/classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../FINAL/build/generated/sources/annotationProcessor/java/main">
-      <sourceFolder url="file://$MODULE_DIR$/../../FINAL/build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
-    </content>
     <content url="file://$MODULE_DIR$/../../FINAL/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../FINAL/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../FINAL/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../FINAL/src/main/generated" isTestSource="false" generated="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
