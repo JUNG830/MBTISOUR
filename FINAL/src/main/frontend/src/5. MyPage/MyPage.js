@@ -6,6 +6,8 @@ import { ChangePwdModal } from '../99. Modal/ChangePwdModal';
 import { UnregisterModal } from '../99. Modal/UnregisterModal';
 import '../5. MyPage/MyPage.css';
 import '../0. API/defultMain.css';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 // 파이어베이스 설치 ☞ yarn add firebase
 import { storage } from '../firebase'
@@ -13,26 +15,26 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 //쿠키
 import Cookies from 'universal-cookie';
 
-
 const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
 
 const MyPage = () => {
   const cookies = new Cookies();
   // ▼ 로그인 안 되어 있으면 로그인 페이지로
-  const localId = cookies.get('rememberId');
+
+  const myInfo = cookies.get('rememberMyInfo');
+  const myId = myInfo.id
+
   const session_id = window.sessionStorage.getItem("id");
-  console.log(localId);
+  console.log(myId);
   const localIdNum = window.sessionStorage.getItem("id_num");
   const localNickname = window.sessionStorage.getItem("nickname");
 
-
-  // const localId = window.localStorage.getItem("userId");
 
   const [changePwdModalOpen, setChangePwdModalOpen] = useState(false);
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
 
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
-
+  
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 나이, 성별, 주소 1, 주소 2
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -64,21 +66,21 @@ const MyPage = () => {
   const [isChangeEmail, setIsChangeEmail] = useState(false);
   const [isChangeAddress, setIsChangeAddress] = useState(false);
   const [isSetImage, setIsSetImage] = useState(false);
-
-  /*
+  
+  /* 
   최초 통신(useEffect) */
   useEffect(() => {
-    const localId = cookies.get('rememberId');
-    //  if(localId === undefined) window.location.replace("/login");
-    // ▲ 로그인 안 되어 있으면 로그인 페이지로
+    const myId = cookies.get('rememberId');
+    //  if(myId === undefined) window.location.replace("/login");
+    // ▲ 로그인 안 되어 있으면 로그인 페이지로 
 
 
     const memberData = async () => {
       console.log("\n>> 회원 정보 조회(useEffect)");
-      console.log("localId : " + session_id);
+      console.log("myId : " + session_id);
       try {
-        const response = await TeamAPI.memberInfo(localId); // 회원 정보 조회
-        if (response.status == 200) {
+        const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
+        if(response.status == 200) {
           console.log("통신 성공(200)");
           const member = response.data;
           setMemberInfo(member);
@@ -109,37 +111,36 @@ const MyPage = () => {
         console.log(e);
       }
     };
-    memberData();
+  memberData();
   }, []);
 
   // 프사 변경 및 미리보기
   const onChangeFace = (e) => {
-    const preview = URL.createObjectURL(e.target.files[0]);
-    setUrl(preview);
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-      setIsSetImage(true);
-
+    const temp_face = e.target.files[0];
+    const preview = URL.createObjectURL(temp_face);
+    console.log("==============================");
+    console.log("preview : " + preview);
+    console.log(temp_face);
+    console.log("==============================");
+    setUrl(temp_face);
+    if(temp_face) {
+      setImage(temp_face);
     }
-  };
 
-  // 프사 저장 버튼
-  const onSaveFace = async () => {
-    const imageRef = ref(storage, localId);
+    const imageRef = ref(storage, `profile/${myId}`);
 
-    uploadBytes(imageRef, image).then(() => {
-      getDownloadURL(imageRef).then(async (url) => {
+    uploadBytes(imageRef, temp_face).then(() => {
+      getDownloadURL(imageRef).then(async(url) => {
         console.log("\nURL : " + url);
         setUrl(url);
 
-        /* ----- (시작) 통신 ----- */
+      /* ----- (시작) 통신 ----- */
         try {
-          const response = await TeamAPI.changeFace(url, localId);
+          const response = await TeamAPI.changeFace(url, myId);
           console.log(response.data.result);
-          if (response.status == 200) {
+          if(response.status == 200) {
             console.log("통신 성공(200)");
             alert("프사 저장 성공");
-            setIsSetImage(false);
           } else {
             console.log("\n>> 통신 실패 : " + response.status);
             alert("통신 실패 : " + response.status);
@@ -148,7 +149,7 @@ const MyPage = () => {
           console.log(e);
           console.log("캐치 !! 이미지 url 저장 실패..");
         } // try-catch 문의 끝
-        /* ----- (끝) 통신 ----- */
+      /* ----- (끝) 통신 ----- */
 
       }).catch((error) => {
         console.log(error.message, "error getting the image url");
@@ -162,17 +163,18 @@ const MyPage = () => {
   };
 
   // 프사 삭제 버튼
-  const onDeleteFace = async () => {
-    if (url === null) alert("삭제할 프사가 없습니다.")
+  const onDeleteFace = async() => {
+    console.log("\n>> onDeleteFace 실행");
+    if(url === null) alert("삭제할 프사가 없습니다.")
     else {
       const temp_url = null;
       setUrl(temp_url);
 
       try {
-        const response = await TeamAPI.changeFace(temp_url, localId);
+        const response = await TeamAPI.changeFace(temp_url, myId);
         console.log(response.data.result);
 
-        if (response.status == 200) {
+        if(response.status == 200) {
           console.log("통신 성공(200)");
           alert("프사 삭제 성공");
           setIsSetImage(false);
@@ -190,42 +192,42 @@ const MyPage = () => {
   }
 
   /**
-▶ 변경 가능 항목(비밀번호, 닉네임, 자기소개, 이메일, 주소)
+▶ 변경 가능 항목(비밀번호, 닉네임, 자기소개, 이메일, 주소) 
   */
 
-  /* 비밀번호 저장 */
+ /* 비밀번호 저장 */
   const getPwd = (pwd) => { setPwd(pwd); }
   const openChangePwdModal = () => { setChangePwdModalOpen(true); };
   const closeChangePwdModal = () => { setChangePwdModalOpen(false); };
-  const onSavePwd = async (e) => {
+  const onSavePwd = async(e) => { 
     console.log("변경한 pwd :" + pwd);
     console.log("변경한 e :" + e);
 
-    // e.preventDefault();
+      // e.preventDefault();
 
-    try {
-      const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
+      try {
+        const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
+        console.log("id : " + id);
+        console.log("password : " + pwd);
+        console.log("nickname : " + nickname);
+        console.log("introduce : " + introduce);
+        console.log("email : " + email);
+        console.log("region1 : " + region1);
+        console.log("region2 : " + region2);
 
-      if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 비밀번호 수정 완료");
-        alert("비밀번호 수정 완료!!");
-      }
-    } catch (e) { console.log(e); }
+        if(response.status == 200) {
+          console.log("통신 성공(200)");
+          console.log("\n>> 비밀번호 수정 완료");
+          alert("비밀번호 수정 완료!!");
+        } 
+      } catch (e) { console.log(e); }
 
   }
 
   /* 닉네임 변경 */
-  const onChangeNickname = e => {
+  const onChangeNickname = e => { 
     let temp_nickname = e.target.value;
-    setNickname(temp_nickname);
+    setNickname(temp_nickname); 
   }
 
   /* 닉네임 중복확인 버튼 클릭 */
@@ -258,18 +260,18 @@ const MyPage = () => {
       }
     }
   }
-  /* 닉네임 변경 취소 */
+    /* 닉네임 변경 취소 */
   const cancelNickname = () => {
-    setIsChangeNickname(false);
-    setNickname(nicknameBefore);
+      setIsChangeNickname(false);
+      setNickname(nicknameBefore);
   }
 
 
 
   /* 닉네임 저장 */
-  const onSaveNickname = async (e) => {
+  const onSaveNickname = async(e) => {
     console.log("\n>> 닉네임 저장 버튼 눌렀어요.");
-    if (!isNicknamecheck) {
+    if(!isNicknamecheck) {
       alert("닉네임을 다시 확인하거나 중복확인이 필요합니다.")
       return;
     }
@@ -288,14 +290,14 @@ const MyPage = () => {
       console.log("region1 : " + region1);
       console.log("region2 : " + region2);
 
-      if (response.status == 200) {
+      if(response.status == 200) {
         console.log("통신 성공(200)");
         console.log("\n>> 닉네임 수정 완료");
         alert("닉네임 수정 완료!!");
-      }
+      } 
 
     } catch (e) { console.log(e); }
-  }
+  } 
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () => {
     setIsChangeIntroduce(false);
@@ -303,13 +305,13 @@ const MyPage = () => {
   }
 
   /* 자기소개 변경 */
-  const onChangeIntroduce = e => {
+  const onChangeIntroduce = e => { 
     let temp_introduce = e.target.value;
-    setIntroduce(temp_introduce);
+    setIntroduce(temp_introduce); 
   }
 
   /* 자기소개 저장 */
-  const onSaveIntroduce = async (e) => {
+  const onSaveIntroduce = async(e) => {
     e.preventDefault();
     setIntroduce(introduce);
     setIsChangeIntroduce(false);
@@ -317,36 +319,36 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
-      if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 자기소개 수정 완료");
-        alert("자기소개 수정 완료!!");
-      }
+        console.log("id : " + id);
+        console.log("password : " + pwd);
+        console.log("nickname : " + nickname);
+        console.log("introduce : " + introduce);
+        console.log("email : " + email);
+        console.log("region1 : " + region1);
+        console.log("region2 : " + region2);
+        if(response.status == 200) {
+          console.log("통신 성공(200)");
+          console.log("\n>> 자기소개 수정 완료");
+          alert("자기소개 수정 완료!!");
+      } 
 
     } catch (e) { console.log(e); }
-  }
+  } 
 
   /* 이메일 변경 */
-  const onChangeEmail = e => {
+  const onChangeEmail = e => { 
     let temp_email = e.target.value;
-    setEmail(temp_email);
+    setEmail(temp_email); 
   }
 
-  /* 이메일 변경 취소 */
-  const cancelEmail = () => {
+   /* 이메일 변경 취소 */
+   const cancelEmail = () => { 
     setIsChangeEmail(false);
     setEmail(emailBefore);
   }
 
   /* 이메일 저장 */
-  const onSaveEmail = async (e) => {
+  const onSaveEmail = async(e) => {
     e.preventDefault();
     setEmail(email);
     setIsChangeEmail(false);
@@ -354,18 +356,18 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
-      if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 이메일 수정 완료");
-        alert("이메일 수정 완료!!");
-      }
+        console.log("id : " + id);
+        console.log("password : " + pwd);
+        console.log("nickname : " + nickname);
+        console.log("introduce : " + introduce);
+        console.log("email : " + email);
+        console.log("region1 : " + region1);
+        console.log("region2 : " + region2);
+        if(response.status == 200) {
+          console.log("통신 성공(200)");
+          console.log("\n>> 이메일 수정 완료");
+          alert("이메일 수정 완료!!");
+      } 
 
     } catch (e) { console.log(e); }
   }
@@ -392,7 +394,7 @@ const MyPage = () => {
   }
 
   /* 주소 저장 */
-  const onSaveAddress = async (e) => {
+  const onSaveAddress = async(e) => {
     setRegion1(region1);
     setRegion2(region2);
     setIsChangeAddress(false);
@@ -400,18 +402,18 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
-      if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 주소 수정 완료");
-        alert("주소 수정 완료!!");
-      }
+        console.log("id : " + id);
+        console.log("password : " + pwd);
+        console.log("nickname : " + nickname);
+        console.log("introduce : " + introduce);
+        console.log("email : " + email);
+        console.log("region1 : " + region1);
+        console.log("region2 : " + region2);
+        if(response.status == 200) {
+          console.log("통신 성공(200)");
+          console.log("\n>> 주소 수정 완료");
+          alert("주소 수정 완료!!");
+      } 
 
     } catch (e) { console.log(e); }
   }
@@ -427,22 +429,22 @@ const MyPage = () => {
   const getInputPwd = (pwd) => { setInputPwd(pwd); }
   const openUnregisterModal = () => { setUnregisterModalOpen(true); };
   const closeUnregisterModal = () => { setUnregisterModalOpen(false); };
-  const onDeleteMember = async (e) => {
+  const onDeleteMember = async(e) => {
     console.log("입력한 비밀번호(inputPwd) : " + inputPwd);
 
     const recheck = "해당 아이디로 재가입이 불가능합니다."
-      + "\n탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다."
-      + "\n정말로 탈퇴하시겠습니까?"
+                  + "\n탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다."
+                  + "\n정말로 탈퇴하시겠습니까?"
     let recheckResult = window.confirm(recheck);
     console.log("\n>> 최종 탈퇴 여부 : " + recheckResult);
 
-    if (recheckResult) {
+    if(recheckResult) {
       try {
-        const response = await TeamAPI.memberDelete(localId, inputPwd);
+        const response = await TeamAPI.memberDelete(myId, inputPwd);
         console.log("response.data : " + response.data);
-
+  
         // if(res.data.result === "OK") {
-        if (response.data === true) {
+        if(response.data === true) {
           console.log("통신 성공(200)");
           console.log("\n회원 탈퇴 성공");
           window.localStorage.setItem("userId", "");
@@ -462,263 +464,241 @@ const MyPage = () => {
       console.log("\n>> 탈퇴하기를 취소합니다.");
     }
   };
-
-  return (
-    <>
-      <div className='Container'>
-        <div className='Middle-Container'>
-          <div className='Mypage-Container'>
-            <div className='Mypage-box'>
-              <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd}></ChangePwdModal>
-              <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember}></UnregisterModal>
-
-              <div className='MyPage-header'>
-                <h1>마이페이지</h1>
-                <h6>프로필 사진 미리보기 가능</h6>
+  
+  return(
+    <div className='Container'>
+      <div className='Middle-Container'>
+        <div className='Mypage-Container'>
+          <div className='Mypage-box'>
+            <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd} />
+            <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
+            <div className='MyPage-header'>
+              <h1>마이페이지</h1>
+            </div>
+            <div className="profile_container">
+              <div className="img_container">
+                <img src={url || face} alt="avatar" />
+                <div className="overlay">
+                  <label htmlFor="photo">
+                    <CameraAltIcon style={{fontSize: "2rem", cursor: "pointer"}}/>
+                  </label>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    style={{ display: "none" }} 
+                    id="photo" 
+                    onChange={onChangeFace} 
+                    />
+                  {url ? <DeleteForeverIcon style={{fontSize: "2rem", cursor: "pointer"}} onClick={onDeleteFace}/> : null}
+                </div>
               </div>
+            </div>
 
-              <div className='MyPage-img'>
-                {url != null
-                  ? <img src={url} alt="프로필 이미지" style={{ width: "150px", height: "150px", border: "1px none", borderRadius: "70%", overflow: "hidden", objectFit: "cover", }} />
-                  : <img src={face} alt="프로필 이미지" style={{ width: "150px", height: "150px", border: "1px none", borderRadius: "70%", overflow: "hidden", objectFit: "cover", }} />}
-              </div>
-
-              <table action="" className="MyPage-Table">
-                <tr className='Form-item' id='picture'>
-                  <div className='"Form-Name"'>
-                  </div>
-                  <div className='mypage-input'>
-                    <label for='file'>
-                      <div class="btn-upload">사진 첨부</div>
-                    </label>
-                    <input type="file" name="file" id="file" accept="image/*" onChange={onChangeFace} />
-                  </div>
-                  <div className='s'>
-                    {isSetImage &&
-                      <button className='MyPage-img-select' onClick={onSaveFace}>저장</button>}
-                    {isSetImage &&
-                      <button className='MyPage-img-delect' onClick={onDeleteFace}>삭제</button>}
-                  </div>
-                </tr>
+            {/* MyPage-Table 영역 */}
+            <table action="" className="MyPage-Table">
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>이름</span>
+                </div>
+                <div className='mypage-input'>
+                  <input className='inputBox' type="text" value={name} disabled />
+                </div>
+                <div className='s' />
+              </tr>
 
 
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>이름</span>
-                  </div>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={name} disabled />
-                  </div>
-                  <div className='s' />
-                </tr>
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>아이디</span>
+                </div>
+                <div className='mypage-input'>
+                  <input className='inputBox' type="text" value={id} disabled />
+                </div>
+                <div className='s'></div>
+              </tr>
 
 
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>아이디</span>
-                  </div>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={id} disabled />
-                  </div>
-                  <div className='s'></div>
-                </tr>
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>생년월일</span>
+                </div>
+                <div className='mypage-input'>
+                  <input className='inputBox' type="text" value={birth} disabled />
+                </div>
+                <div className='s'></div>
+              </tr>
 
 
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>생년월일</span>
-                  </div>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={birth} disabled />
-                  </div>
-                  <div className='s'></div>
-                </tr>
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>성별</span>
+                </div>
+                <div className='mypage-input'>
+                  <input className='inputBox' type="text" value={gender} disabled />
+                </div>
+                <div className='s' />
+              </tr>
 
 
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>성별</span>
-                  </div>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={gender} disabled />
-                  </div>
-                  <div className='s' />
-                </tr>
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>MBTI</span>
+                </div>
+                <div className='mypage-input'>
+                  {mbti ? <input className='inputBox' type="text" value={mbti} />
+                : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
+                </div>
+                <div className='s' />
+              </tr>
+
+              {/* 비밀번호 */}
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>비밀번호</span>
+                </div>
+                <div className='mypage-input'>
+                  <input className='inputBox' type="password" value={pwd} />
+                </div>
+                <button className='mypage-btn' onClick={openChangePwdModal}>수정</button>
+              </tr>
 
 
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>MBTI</span>
-                  </div>
-                  <div className='mypage-input'>
-                    {mbti ? <input className='inputBox' type="text" value={mbti} />
-                      : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
-                  </div>
-                  <div className='s' />
-                </tr>
-
-                {/* 비밀번호 */}
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>비밀번호</span>
-                  </div>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="password" value={pwd} />
-                  </div>
-                  <button className='mypage-btn' onClick={openChangePwdModal}>수정</button>
-                </tr>
-
-
-                {/* 닉네임 */}
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>닉네임</span>
-                  </div>
-                  {!isChangeNickname ?
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="text" value={nickname} />
-                      </div>
-                      <button className='mypage-btn' onClick={e => setIsChangeNickname(true)}>수정</button>
-                    </>
-                    :
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="text" onChange={onChangeNickname} />
-                      </div>
-                      <div>
-                        {isCheckedNickname &&
-                          <button className='mypage-btn' onClick={onClickNicknameCheck}>중복확인</button>}
-                        {isCheckedNickname &&
-                          <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
-                        {isNicknamecheck &&
-                          <button className='mypage-btn' onClick={onSaveNickname}>저장</button>}
-                        {isNicknamecheck &&
-                          <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
-                      </div>
-                    </>
-                  }
-                </tr>
-
-
-                {/* 자기소개 */}
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>자기소개</span>
-                  </div>
-
-                  {!isChangeIntroduce ?
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="text" value={introduce} />
-                      </div>
-                      <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
-                    </>
-                    :
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="text" onChange={onChangeIntroduce} />
-                      </div>
-                      <button className='mypage-btn' onClick={onSaveIntroduce}>저장</button>
-                      <button className='mypage-btn' onClick={cancelIntroduce}>취소</button>
-                    </>
-                  }
-                </tr>
-
-
-                {/* 이메일 */}
-                <tr className="Form-item">
-                  <div className="Form-Name">
-                    <span>이메일</span>
-                  </div>
-                  {!isChangeEmail ?
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="mail" value={email} />
-                      </div>
-                      <button className='mypage-btn' onClick={e => setIsChangeEmail(true)}>수정</button>
-                    </>
-                    :
-                    <>
-                      <div className='mypage-input'>
-                        <input className='inputBox' type="mail" onChange={onChangeEmail} />
-                      </div>
-                      <button className='mypage-btn' onClick={onSaveEmail}>저장</button>
-                      <button className='mypage-btn' onClick={cancelEmail}>취소</button>
-                    </>
-                  }
-                </tr>
-
-
-                {/* 주소 */}
+              {/* 닉네임 */}
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>닉네임</span>
+                </div>
+                {!isChangeNickname ?
                 <>
-                  {isChangeAddress ?
-                    <tr className="Form-item">
-                      <div className="Form-Name">
-                        <span>주소</span>
-                      </div>
-                      <div className='mypage-input'>
-                        <select className='mypage-input-select1' onChange={onChangeRegion1}>
-                          <option disabled selected>시도선택</option>
-                          {sido.map((e) => (
-                            <option key={e.sido} value={e.codeNm}>
-                              {e.codeNm}
-                            </option>
-                          ))}
-                        </select>
-                        <select className='mypage-input-select2' onChange={onChangeRegion2}>
-                          <option disabled selected>시/구/군선택</option>
-
-                          {sigugun
-                            // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
-                            .filter((e) => e.sido === keySido)
-                            .map((e) => (
-                              <option key={e.sigugun} value={e.codeNm}>
-                                {e.codeNm}
-                              </option>
-                            ))}
-                        </select>
-                      </div>
-                      <div>
-                        <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>
-                        <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
-                      </div>
-                    </tr>
-
-                    :
-                    <div>
-                      <tr className="Form-item">
-                        <div className="Form-Name">
-                          <span>주소</span>
-                        </div>
-                        <div className='mypage-input'>
-
-                          <input className='mypage-input-adrr1' type="text" value={region1} />
-
-                          <input className='mypage-input-adrr2' type="text" value={region2} />
-                        </div>
-
-                        <button className='mypage-btn' onClick={e => setIsChangeAddress(true)}>수정</button>
-                      </tr>
-                    </div>
-                  }
-
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" value={nickname} />
+                  </div>
+                  <button className='mypage-btn' onClick={e => setIsChangeNickname(true)}>수정</button>
                 </>
-              </table>
-              <div className="Mypage-leave">
-                <button className='Mypage-leave-btn' onClick={openUnregisterModal}>탈퇴하기</button>
+                :
+                <>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" onChange={onChangeNickname} />
+                  </div>
+                  <div>
+                    {isCheckedNickname &&
+                      <button className='mypage-btn' onClick={onClickNicknameCheck}>중복확인</button>}
+                    {isCheckedNickname &&
+                      <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
+                    {isNicknamecheck &&
+                      <button className='mypage-btn' onClick={onSaveNickname}>저장</button>}
+                    {isNicknamecheck &&
+                      <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
+                  </div>
+                </>
+                }
+              </tr>
+
+
+              {/* 자기소개 */}
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>자기소개</span>
+                </div>
+
+                {!isChangeIntroduce ?
+                <>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" value={introduce} />
+                  </div>
+                  <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
+                </>
+                :
+                <>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" onChange={onChangeIntroduce} />
+                  </div>
+                  <button className='mypage-btn' onClick={onSaveIntroduce}>저장</button>
+                  <button className='mypage-btn' onClick={cancelIntroduce}>취소</button>
+                </>
+                }
+              </tr>
+
+
+              {/* 이메일 */}
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>이메일</span>
+                </div>
+                {!isChangeEmail ?
+                <>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="mail" value={email} />
+                  </div>
+                  <button className='mypage-btn' onClick={e => setIsChangeEmail(true)}>수정</button>
+                </>
+                :
+                <>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="mail" onChange={onChangeEmail} />
+                  </div>
+                  <button className='mypage-btn' onClick={onSaveEmail}>저장</button>
+                  <button className='mypage-btn' onClick={cancelEmail}>취소</button>
+                </>
+                }
+              </tr>
+
+
+              {/* 주소 */}
+              {isChangeAddress ?
+              <tr className="Form-item">
+                <div className="Form-Name">
+                  <span>주소</span>
+                </div>
+                <div className='mypage-input'>
+                  <select className='mypage-input-select1' onChange={onChangeRegion1}>
+                    <option disabled selected>시도선택</option>
+                    {sido.map((e) => (
+                    <option key={e.sido} value={e.codeNm}>
+                      {e.codeNm}
+                    </option>
+                    ))}
+                  </select>
+                  <select className='mypage-input-select2' onChange={onChangeRegion2}>
+                    <option disabled selected>시/구/군선택</option>
+                  {sigugun
+                    .filter((e) => e.sido === keySido)
+                    .map((e) => (
+                      <option key={e.sigugun} value={e.codeNm}>
+                        {e.codeNm}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>
+                  <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
+                </div>
+              </tr>
+              : 
+              <div>
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>주소</span>
+                  </div>
+                  <div className='mypage-input'>
+                    <input className='mypage-input-adrr1' type="text" value={region1} />
+                    <input className='mypage-input-adrr2' type="text" value={region2} />
+                  </div>
+                  <button className='mypage-btn' onClick={e => setIsChangeAddress(true)}>수정</button>
+                </tr>
               </div>
+              }
+            </table>
+
+            <div className="Mypage-leave">
+              <button className='Mypage-leave-btn' onClick={openUnregisterModal}>탈퇴하기</button>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-
-
-
-
-
 }
 
 export default MyPage;
