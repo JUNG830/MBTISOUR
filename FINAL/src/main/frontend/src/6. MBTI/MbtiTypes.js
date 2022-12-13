@@ -58,8 +58,7 @@ const MbtiInfoBox2 = styled.div`
     color:whitesmoke;
   }
 
-
-  background-color: rgba(0, 0, 0, 0.04);
+  /* background-color: rgba(0, 0, 0, 0.04); */
   height: 100%;
 
   list-style: none;
@@ -95,7 +94,7 @@ const MbtiTypeBox = styled.div`
 const MbtiInfoHead = styled.div`
   
   position: absolute;
-  bottom:830px;
+  bottom: 750px;
   font-size: 35px;
   text-align: center;
 
@@ -129,8 +128,8 @@ const MbtiInfoHead = styled.div`
 function MbtiTypes() {
 
   return (
-    <div>
-      <div className="Container">
+    <div className="Container">
+      <div className="Middle-Container">
         <MbtiInfoBox2>
           <MbtiInfoHead>
             <span>m</span>

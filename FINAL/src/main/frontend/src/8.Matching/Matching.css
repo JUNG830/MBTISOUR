@@ -1,12 +1,8 @@
-.middle-Container {
-    display: flex;
-}
 
 .Matching-Container {
     width: 1000px;
     display: grid;
     justify-items: center;
-    margin: 100px auto;
     background-color: rgba(238, 238, 238, 0.096);
     padding: 50px;
     border-radius: 55px;
@@ -22,6 +18,7 @@
     padding-left: 10px ;
     background-color: transparent;
     color: white;
+    outline: none;
 }
 
 .Mat-item > input {
@@ -33,6 +30,7 @@
     padding-left: 10px ;
     background-color: transparent;
     color: white;
+    outline: none;
 }
 
 /* .Mat-item > input:first-child {

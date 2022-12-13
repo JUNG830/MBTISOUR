@@ -15,6 +15,7 @@ function Logout() {
 
     cookies.remove('rememberId');
     cookies.remove('rememberEmail');
+    cookies.remove('rememberMyInfo');
     
     window.sessionStorage.setItem("id", '');
     window.sessionStorage.setItem("kakaoId_num", '');

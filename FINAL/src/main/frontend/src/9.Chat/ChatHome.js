@@ -151,7 +151,7 @@ const ChatHome = () => {
     <div className="Container">
       <div className="Chat-middle">
         <div className="home_container">
-
+          
           <div className="users_container">
             {users.map((user) => (
               <User
@@ -174,12 +174,12 @@ const ChatHome = () => {
                 : null}
             </div>
             <div className="message-send">
-                <ChatForm
+              <ChatForm
                 handleSubmit={handleSubmit}
                 text={text}
                 setText={setText}
                 setImg={setImg}
-                />
+              />
             </div>
           </div>
           )

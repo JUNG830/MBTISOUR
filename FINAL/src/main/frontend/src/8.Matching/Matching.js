@@ -20,8 +20,9 @@ import SadIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 const Matching = () => {
   const cookies = new Cookies();
   // ▼ 로그인 안 되어 있으면 로그인 페이지로
-  const localId = cookies.get('rememberId');
-  const localId_num = cookies.get('rememberId_num');
+  const localMyInfo = cookies.get('rememberMyInfo');
+  const localId = localMyInfo.id;
+  const localId_num = localMyInfo.idNum;
   const navigate = useNavigate();
 
   const [url, setUrl] = useState(null);
@@ -189,7 +190,7 @@ const Matching = () => {
 
   return (
     <div className='Container'>
-      <div className='middle-Container'>
+      <div className='Middle-Container'>
         <div className='Matching-Container' >
           <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
           
