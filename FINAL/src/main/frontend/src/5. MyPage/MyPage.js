@@ -10,8 +10,9 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 // 파이어베이스 설치 ☞ yarn add firebase
-import { storage } from '../firebase'
+import { storage, db } from '../firebase'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { doc, updateDoc } from "firebase/firestore";
 //쿠키
 import Cookies from 'universal-cookie';
 
@@ -134,6 +135,9 @@ const MyPage = () => {
         console.log("\nURL : " + url);
         setUrl(url);
 
+        await updateDoc(doc(db, "users", myId), {
+          profile: url,
+        });
       /* ----- (시작) 통신 ----- */
         try {
           const response = await TeamAPI.changeFace(url, myId);

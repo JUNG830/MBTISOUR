@@ -6,22 +6,21 @@ import Cookies from 'universal-cookie';
 import "./Chat.css";
 
 const User = ({ user1 , user, selectUser, chat }) => {
-  // console.log("\n>> User 방문");
-  // console.log("==== Home 에서 받아오는 props ===");
-  // console.log("user1(나) : " + user1);
-  // console.log("user(상대방) : ", user); // [object Object] : users를 map 으로 돌면서 하나씩
-  // // console.log("selectUser : ", selectUser); // 함수 그 자체
-  // console.log("chat : ", chat); // 없음
-  const imgfile = `https://firebasestorage.googleapis.com/v0/b/isour-c9756.appspot.com/o/qwer1234?alt=media&token=`;
-  console.log(typeof(imgfile));
-  console.log(imgfile.split('.'));
- console.log(user.id);
-
+  console.log("\n>> User 방문");
+  console.log("==== Home 에서 받아오는 props ===");
+  console.log("user1(나) : " + user1);
+  console.log("user(상대방) : ", user); // [object Object] : users를 map 으로 돌면서 하나씩
+  // console.log("selectUser : ", selectUser); // 함수 그 자체
+  console.log("chat : ", chat); // 없음
+  
+  
   const cookies = new Cookies();
+  const myInfo = cookies.get('rememberMyInfo');
+  const myId = myInfo.id
+  
   const user2 = user?.uid;
   const [data, setData] = useState("");
   const [image, setImage] = useState(null);
-  const localId = cookies.get('rememberId');
   const [url, setUrl] = useState(null);
   
 
@@ -45,11 +44,7 @@ const User = ({ user1 , user, selectUser, chat }) => {
       >
         <div className="user_info">
           <div className="user_detail">
-            <img src={(`https://firebasestorage.googleapis.com/v0/b/isour-c9756.appspot.com/o/${user.id}?alt=media&token=` !== null ) ? 
-                       `https://firebasestorage.googleapis.com/v0/b/isour-c9756.appspot.com/o/${user.id}?alt=media&token=`  
-                        : Img
-                      } alt="avatar" className="avatar" 
-            />
+            <img src={user.profile || Img } alt="avatar" className="avatar" />
             <h4>{user.nickname}</h4>
             {data?.from !== user1 && data?.unread && (
               <small className="unread">New</small>
