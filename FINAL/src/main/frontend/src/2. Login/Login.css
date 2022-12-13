@@ -1,19 +1,29 @@
+.L-Container {
+  box-sizing: border-box;
+  width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.04);
+  height: 100%;
+}
 .Login-Container{
   display: flex;
   margin-right: auto;
+  height: 100%;
   margin-left: auto;
+  margin-top: 2rem;
   align-items: center;
   max-width: 800px;
   font-family: "Jalnan";
-  background-color: white;
   text-align: center;
-
 }
 
     .Login-box1 {
-    border: 1px solid;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
     height: 100%;
-    width: 90%;
+    width: 80%;
     padding: 25px;
     margin: 4rem;
     background-color: #f7f7f7;
@@ -34,34 +44,54 @@
   }
 
   .Login-Id {
-    margin-bottom:30px;
     text-align: center;
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;   
+    margin-bottom: 1rem;
   }
   
   .Login-PW {
     margin-bottom: 10px;
     text-align: center;
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
   }
 
 
 
   .Login-botton {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
     width: 300px;
-    height: 30px;
+    height: 20px;
     border-radius: 20px;
     margin: 0 auto;
-    margin-bottom: 50px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 5rem;
     padding-bottom: 30px;
     font-size: 1.5rem;
     font-family: "Jalnan";
     letter-spacing: 0.5rem;
+    box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
   .Login-input {
+    margin-left: 1px;
+
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
+    border-bottom: 0px;
     width: 300px;
+    border-radius: 25px;
     font-size: 1.3rem;
     padding: 0.7rem;
     font-family: "Jalnan";

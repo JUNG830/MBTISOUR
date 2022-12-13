@@ -181,6 +181,7 @@ function Login() {
 
 
   return (
+    <div className='L-Container'>
     <div className="Login-Container">
       <div className="Login-box1">
 
@@ -197,13 +198,14 @@ function Login() {
 
         {/* 아이디 */}
         <div className="Login-Id">
-        <img src={person} style={{width: "1rem", marginRight:"0.3rem" }}/>
+        <img src={person} style={{width: "1.5rem" }}/>
           <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
         </div>
 
         {/* 비밀번호 */}
+        
         <div className="Login-PW">
-        <img src={lock} style={{width: "1rem", marginRight:"0.3rem" }}/>
+        <img src={lock} style={{width: "1.5rem" }}/>
           <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
         </div>
 
@@ -216,12 +218,8 @@ function Login() {
         </div>
         </form>
 
-        <motion.div
-          className="Login-botton"
-          whileHover={{ scale: 1 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 250, damping: 30 }}
-        ><motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login</motion.button></motion.div>
+        
+        <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login</motion.button>
 
                 {/* 소셜로그인 */}
   
@@ -241,6 +239,7 @@ function Login() {
 
 
       </div>
+    </div>
     </div>
   );
 }
