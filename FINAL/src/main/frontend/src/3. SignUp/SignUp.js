@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import TeamAPI from '../0. API/TeamAPI';
 import hangjungdong from '../other/hangjungdong';
 import '../3. SignUp/SignUp.css';
 import EmailModal from './EmailModal';
+import CustomModal from '../99. Modal/CustomModal'
 import { setDoc, doc, Timestamp } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import Cookies from 'universal-cookie';
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import '../0. API/defultMain.css';
 
@@ -26,7 +25,11 @@ const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-z
 function SignUp() {
 
   const cookies = new Cookies();
-  const localId = cookies.get('rememberId');
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "회원가입 성공", errorMsg: "입력된 값을 확인하세요"
+  });
+  console.log(state);
   const [mode, setMode] = useState("agree");
   const [checkedItems, setCheckedItems] = useState([]);
   const [check_term1, setCheck_term1] = useState("");
@@ -34,7 +37,9 @@ function SignUp() {
   const [check_term3, setCheck_term3] = useState("");
   const [emailConfirm, setEmailConfirm] = useState(false);
 
-
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
 
   const Terms = () => {
     const [termsList, setTermsList] = useState([
@@ -580,7 +585,7 @@ function SignUp() {
   /*
   회원가입 버튼 클릭 */
   const onClickButton = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     console.log("\n\n회원가입 버튼 눌렀어요.");
     console.log("kakaoid : " + kakaoId);
@@ -628,6 +633,7 @@ function SignUp() {
       console.log("선택 약관 : " + check_term3);
 
       alert("회원가입 성공! 콘솔창 보세요");
+      setState({...state, open: true, success: true})
       console.log("가입 성공!! \n로그인 페이지로 이동합니다.");
       navigate("/login");
 
@@ -660,6 +666,7 @@ function SignUp() {
     } else {
       console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
       alert('입력된 값을 확인하세요.');
+      setState({...state, open: true, error: true})
     }
   };
 
@@ -668,9 +675,12 @@ function SignUp() {
     mode === 'agree' ?
       <Terms />
       :
-    <div className='Container'>
+      <div className='Container'>
+          <CustomModal state={state} changeState={onChangeState}/>
       <div className='SignUp-middle'>
         <div className="SignUp-Container">
+          {/* 이메일 인증 모달창 */}
+          <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
           <div className='SignUp-Box'>
             <div className="SignUp-header">
               <h1>Sign Up</h1>
@@ -678,8 +688,6 @@ function SignUp() {
             </div>
             <table action="" className="SignUp-Table">
 
-              {/* 이메일 인증 모달창 */}
-              <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
 
               {/* 이름 */}
               <tr className="SignUp-item">
