@@ -17,9 +17,9 @@ function Navbar() {
   }
 
   // MBTI 눌렀을 때
-  const onClickMBTI = () => {
-    setShowMbtiList(showMbtiList => !showMbtiList);
-  }
+  // const onClickMBTI = () => {
+  //   setShowMbtiList(showMbtiList => !showMbtiList);
+  // }
 
   // User 아이콘 눌렀을 때
   const onClickAccount = () => {
@@ -38,41 +38,37 @@ function Navbar() {
 
       {/* Navbar 영역 */}
         <ul className= {isMenuOpen ? "Navbar" : "Navbar open"}>
-          <li><a href="/home" className="active">About Us</a></li>
-          <li>
+          <li><a href="/aboutus" className="active">About Us</a></li>
+          {/* <li>
             <a onClick={onClickMBTI}>MBTI
-              {!showMbtiList 
-              ? <span class="material-symbols-outlined">expand_more</span>
-              : <span class="material-symbols-outlined">expand_less</span> }
+              {!showMbtiList
+              ? <div class="material-symbols-outlined">expand_more</div>
+              : <div class="material-symbols-outlined">expand_less</div> }
             </a>
-            {showMbtiList ?
-            <ul className='MBTI-sub-menu'>
-              <li><a href="/mbti">검사하기</a></li>
-              <li><a href="/MBTITypes">설명보기</a></li>
-            </ul>
-            : null}
-          </li>
+          </li> */}
+          <li><a href="/mbti">MBTI 검사</a></li>
+          <li><a href="/MBTITypes">MBTI 유형</a></li>
+          <li><a href="/guestbook">방명록</a></li>
           <li><a href="/matching">MATCHING</a></li>
-          <li><a href="/chathome">채팅</a></li>
         </ul>
 
-      {/* Main 영역 */}        
-        <div className="Main">
-          <span className="LoginUser" onClick={onClickAccount}>
-            <span class="material-symbols-outlined">account_circle</span>
-          </span>
+      {/* Main 영역 */}
+        <div className="Main-Icon">
+          <a className="User">
+            <span className="material-symbols-outlined" onClick={onClickAccount}>account_circle</span>
+          </a>
           {showAccount ?
-          <ul className='Main-sub-menu'>
+          <ul className="User-submenu">
             <li><a href="/mypage">마이페이지</a></li>
             <li><a href="/postbox">쪽지함</a></li>
             <li><a href="/chathome">1:1채팅</a></li>
             <li><Logout /></li>
           </ul>
-          : null}
-          <span className="material-symbols-outlined" 
+         : null}
+          <div className="material-symbols-outlined"
             id="menu-icon" onClick={onClickMenu}>
             {isMenuOpen ? "menu" : "close"}
-          </span>
+          </div>
         </div>
 
       </header>
