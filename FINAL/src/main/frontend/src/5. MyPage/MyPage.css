@@ -125,6 +125,11 @@
     height: max-content;
 }
 
+.mypage-btn-ema1:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
+}
 .mypage-btn-ema1 {
     min-width: 106px;
     width: 106px;
@@ -135,6 +140,11 @@
     margin-left: 10px;
     font-weight: 900;
 
+}
+.mypage-btn-ema2:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
 }
 .mypage-btn-ema2 {
     min-width: 106px;
@@ -147,6 +157,11 @@
     font-weight: 900;
     position:relative;
 }
+.mypage-btn-int1:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
+}
 .mypage-btn-int1 {
     min-width: 106px;
     width: 106px;
@@ -157,6 +172,11 @@
     margin-left: 10px;
     font-weight: 900;
    
+}
+.mypage-btn-int2:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
 }
 .mypage-btn-int2 {
     width: 106px;
@@ -170,6 +190,11 @@
     position:relative;
  
 }
+.mypage-btn-nick:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
+}
 .mypage-btn-nick{
     min-width: 106px;
     width: 106px;
@@ -181,6 +206,10 @@
     font-weight: 900;
     position: relative;
    
+}
+.mypage-btn-nick2:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
 }
 .mypage-btn-nick2 {
     width: 106px;
@@ -238,6 +267,11 @@
     top: 2px;
 }
 
+.mypage-btn-addr:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
+}
 .mypage-btn-addr{
     width: 106px;
     height: 50px;
@@ -364,15 +398,15 @@ table tr{
 
 
 
-.MyPage-Modify-Btn {
-    width: 100px;
-    border-radius: 20px;
-}
 
+.Mypage-leave-btn:active{
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+}
 .Mypage-leave-btn {
     margin-top: 20px;
     position: relative;
-    left: 650px;
+    left: 660px;
     bottom:100px;
     width: 106px;
     height: 50px;
@@ -382,11 +416,6 @@ table tr{
     font-weight: 900;
 }
 
-.Mypage-leave-btn:active{
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
-    position: relative;
-    top: 2px;
-}
 
 .MyPage-input-file {
     display: flex;
