@@ -14,7 +14,6 @@ import { storage } from '../firebase'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 //쿠키
 import Cookies from 'universal-cookie';
-import { set } from 'date-fns';
 
 const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
 
