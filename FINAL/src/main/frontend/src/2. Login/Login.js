@@ -13,6 +13,7 @@ import { REST_API_KEY, REDIRECT_URI } from '../0. API/kakaoAPI';
 import { useNavigate } from "react-router-dom";
 import lock from "../images/lock.png";
 import person from "../images/person.png";
+import google from "../images/google.png";
 
 
 
@@ -191,7 +192,7 @@ function Login() {
 
         <div className="Login-Main-font">
           <p className='Login-Main-Word'>MBTISOUR</p>
-          <p>로그인을 해주세요!</p>
+       
         </div>
 
         {/* <form action="" className="Login-card-form"> */}
@@ -219,20 +220,24 @@ function Login() {
         </form>
 
         
-        <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login</motion.button>
+        <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login
+        
+        </motion.button>
 
                 {/* 소셜로그인 */}
-  
+          
           <div className='Login-kakao'>
+          
             <a href={kakao_Auth_Url}>
               <img className='kakao-img' src={kakao} />
             </a>
-          </div>
-    
-        <div className='Login-Google'>
-            <GoogleButton onClick={signInWithGoogle} />
+            <div className='Login-Google'>
+            <img src={google} style={{width: "3.5rem" }} onClick={signInWithGoogle} />
           </div>
 
+          </div>
+    
+        
         <div className="Login-footer">
           가입하고 친구를 만들어봐요! <a href="/signup">회원가입</a>
         </div>
