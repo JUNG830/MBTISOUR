@@ -15,7 +15,7 @@
   object-fit: cover;
   box-shadow: 5px 5px 12px rgba(128, 128, 128, 0.6);
 }
-.img_container:hover img {
+.img_container:hover img { 
   opacity: 0.5;
 }
 .img_container:hover .overlay {
@@ -81,7 +81,7 @@
   align-items: center;
   justify-content: center;
 }
-
+  
 .btn-upload:hover {
   background: rgb(11, 255, 105);
   color: #fff;

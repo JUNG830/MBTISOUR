@@ -22,7 +22,7 @@ const Postbox = () => {
   /* 변수(useState) 선언 */
   const [loading, setLoading] = useState(false);
   const [postList, setPostList] = useState([]);
-
+  
   const [limit, setLimit] = useState(10); // 페이지당 게시물 수
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
@@ -36,18 +36,18 @@ const Postbox = () => {
   const [modalOn, setModalOn] = useState(false);
   const [goPagination, setGoPagination] = useState(false);
 
-  /*
+  /* 
   최초 통신(useEffect) */
   useEffect(() => {
 
     if(myId === undefined) location("/login");
-    // ▲ 로그인 안 되어 있으면 로그인 페이지로
+    // ▲ 로그인 안 되어 있으면 로그인 페이지로 
 
     const postData = async () => {
       setLoading(true);
 
       try {
-
+        
         const response = await TeamAPI.postbox(myId);
         if (response.status == 200) {
           console.log("통신 성공(200)");
@@ -67,7 +67,7 @@ const Postbox = () => {
     postData();
   }, []);
 
-  /*
+  /* 
   쪽지 자세히 보기 */
   const openModal = () => { setModalOn(true); };
   const closeModal = () => { setModalOn(false); };
@@ -83,7 +83,7 @@ const Postbox = () => {
     setModalOn(true);
   }
 
-  /*
+  /* 
   체크박스 단일 선택 */
   const handleSingleCheck = (checked, num) => {
     console.log(num + "번 쪽지가 선택 되었나요? : " + checked);
@@ -97,7 +97,7 @@ const Postbox = () => {
     }
   };
 
-  /*
+  /* 
   체크박스 전체 선택 */
   const handleAllCheck = (checked) => {
     console.log("전체 선택 되었나요? : " + checked);
@@ -113,7 +113,7 @@ const Postbox = () => {
     }
   }
 
-  /*
+  /* 
   쪽지 삭제 */
   const onClickDelete = async () => {
     console.log("\n\n삭제 버튼 눌렀어요.");
@@ -149,7 +149,7 @@ const Postbox = () => {
     );
   }
 
-  return (
+  return ( 
     <div className='Container'>
       <div className='Middle-Container'>
         <PostModal open={modalOn} close={closeModal} sender={postSender} content={content} senderId={postSenderId} />
@@ -183,8 +183,8 @@ const Postbox = () => {
 
               {/* tbody 의 시작 */}
               <tbody>
-                {postList.length === 0
-                ?
+                {postList.length === 0 
+                ? 
                 <tr>
                   <td colSpan='4'>쪽지가 없습니다.</td>
                 </tr>

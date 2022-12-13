@@ -149,40 +149,44 @@ const ChatHome = () => {
 
   return (
     <div className="Container">
-      <div className="home_container">
-        <div className="users_container">
-          {users.map((user) => (
-            <User
-              key={user.id}
-              user={user}
-              selectUser={selectUser}
-              user1={user1} // 나
-              chat={chat}
-            />
-          ))}
-        </div>
-        <div className="messages_container">
-          {chat ? (
-            <>
-              <div>
-              </div>
-              <div className="messages">
-                {msgs.length
+      <div className="Chat-middle">
+        <div className="home_container">
+
+          <div className="users_container">
+            {users.map((user) => (
+              <User
+                key={user.id}
+                user={user}
+                selectUser={selectUser}
+                user1={user1} // 나
+                chat={chat}
+              />
+            ))}
+          </div>
+          
+          <div className="messages_container">
+              {chat ? (
+                <div className="messages-box">
+                  {msgs.length
                   ? msgs.map((msg, i) => (
+                    <div className="message">
                       <ChatMsg key={i} msg={msg} user1={user1}/>
+                    </div>
                     ))
                   : null}
-              </div>
-              <ChatForm
-                handleSubmit={handleSubmit}
-                text={text}
-                setText={setText}
-                setImg={setImg}
-              />
-            </>
-          ): (
-          <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
-          )}
+
+                  <ChatForm
+                  handleSubmit={handleSubmit}
+                  text={text}
+                  setText={setText}
+                  setImg={setImg}
+                  />
+                </div>
+              )
+              : (
+              <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
+              )}
+          </div>
         </div>
       </div>
     </div>

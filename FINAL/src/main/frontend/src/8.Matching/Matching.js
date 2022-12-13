@@ -96,7 +96,7 @@ const Matching = () => {
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
         console.log("****************");
         console.log(Mat.data);
-        console.log(Mat.data[0].matId);
+        console.log(Mat.data[0].mat_id);
         console.log("****************");
         setMat_MemberInfo(Mat.data);
         // 마지막 페이지 찾기
@@ -208,7 +208,7 @@ const Matching = () => {
             </div>
           </div>
 
-         { (mat_memberInfo.length != 0 ) ?
+          { (mat_memberInfo.length != 0 ) ?
 
           mat_memberInfo.map((mat) => (
           <div>
@@ -243,8 +243,9 @@ const Matching = () => {
             </div>
           </div>
             ))
-        : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
-        }
+
+          : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
+          }
 
           <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
             <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   

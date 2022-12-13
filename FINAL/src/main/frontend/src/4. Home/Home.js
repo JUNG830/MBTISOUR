@@ -64,7 +64,7 @@ const Home = () => {
         const localId_num = response.data.idNum;
 
         // setCookie('rememberEmail', email);
-        cookies.set('rememberId_num', localId_num, {
+        cookies.set('rememberMyInfo', response.data, {
           path: '/',
           expires: 0
         })

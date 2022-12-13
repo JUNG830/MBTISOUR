@@ -7,9 +7,251 @@
   --color-6: #333;
 }
 
+.Chat-middle {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home_container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  overflow: hidden;
+  width: 900px;
+  height: 700px;
+  margin: 100px auto;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgba(255, 255, 255, 0.788);
+}
 
 /* Register */
-section .form {
+.btn {
+  padding: 10px;
+  border-radius: 25px;
+  outline: none;
+  border: 1px solid var(--color-4);
+  background: var(--color-1);
+  color: var(--color-2);
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+  font-size: 16px;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* 
+채팅 목록
+*/
+.users_container {
+  margin-top: 10px;
+  border-right: 2px solid var(--color-6);
+  overflow-y: auto;
+}
+.user_wrapper {
+  margin-bottom: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+.user_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user_detail {
+  display: flex;
+  align-items: center;
+}
+.user_detail h4 {
+  margin-left: 10px;
+}
+/* 
+유저 프로필 사진
+*/
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+} 
+/* 
+유저 상태 표시
+*/
+.user_status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.online {
+  background: #34eb52;
+}
+.offline {
+  background: var(--color-5);
+}
+
+/* 
+메세지 창
+*/
+.messages_container {
+  /* display: flex;
+  flex-direction: column; */
+  /* flex: 1; */
+  padding: 10px;
+  /* position: relative; */
+  overflow-y: scroll;
+}
+
+.messages-box {
+  /* position: relative; */
+  display: inline-flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+.no_conv {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+}
+
+/* 
+Enter message
+*/
+.message_form {
+  /* position: absolute; */
+  /* bottom: 1rem; */
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.Send {
+  position: sticky;
+  bottom: 3rem;
+}
+
+.message_form input {
+  width: 400px;
+  height: 35px;
+  padding-left: 20px;
+  border-radius: 15px;
+  border: 0px;
+  box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  outline: none;
+  margin-right: 1rem;
+}
+
+.message {
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+
+
+/* 
+메세지 보낸 사람이 친구일 경우
+*/
+.message_wrapper {
+  /* margin-top: 5px; */
+  padding: 0px 5px;
+  list-style: none;
+}
+/* .message_wrapper img {
+  width: 100%;
+  border-radius: 5px;
+} */
+
+/* 
+채팅 말풍선
+*/
+.message_wrapper li {
+  padding: 10px 20px;
+  max-width: 70%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 
+시간
+*/
+
+/* 
+내가 보낸 채팅
+*/
+/* .message_wrapper .own {
+  text-align: right;
+} */
+/* 
+내가 보낸 채팅
+*/
+.me {
+  background: rgb(255, 215, 142);
+  float: right;
+  /* margin: 10px; */
+}
+
+.me > small {
+  position: relative;
+  left: calc(100% - 40px);
+  display: inline-block;
+  top: 30px;
+  color: gray;
+}
+
+/* 
+친구가 보낸 채팅
+*/
+.friend {
+  background: rgb(0, 182, 228);
+  float: left;
+  /* margin: 10px; */
+}
+
+.friend > small {
+  position: relative;
+  right: 10px;
+  display: inline-block;
+  top: 30px;
+  color: gray;
+}
+
+.selected_user {
+  background: wheat;
+}
+.truncate {
+  font-size: 14px;
+  white-space: nowrap;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate strong {
+  margin-right: 10px;
+}
+.unread {
+  margin-left: 10px;
+  background: var(--color-3);
+  color: white;
+  padding: 2px 4px;
+  border-radius: 10px;
+}
+.sm_screen {
+  display: none;
+}
+
+
+
+
+
+
+/* Register */
+/* section .form {
   margin-top: 30px;
   padding: 0px 20px;
 }
@@ -45,10 +287,10 @@ section .form {
 .error {
   text-align: center;
   color: var(--color-5);
-}
+} */
 
 /* Profile */
-.profile_container {
+/* .profile_container {
   display: flex;
   align-items: center;
 }
@@ -84,23 +326,21 @@ section .form {
 .text_container h3 {
   text-align: left;
 }
+
 .home_container {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 3fr;
   overflow: hidden;
-  height: 800px;
   box-sizing: border-box;
-  width: 1180px;
-  margin: 0 auto;
+  width: 900px;
+  height: 800px;
+  margin: 100px auto;
   padding: 0;
-  font-family: "Jalnan";
-  /* 아래 두 줄 조혜경이 추가(확인용) */
-  margin-top: 200px;
-  background-color: yellow;
-
+  background-color: rgb(211, 211, 211);
 }
 .users_container {
+  height: 100vh;
   margin-top: 10px;
   border-right: 2px solid var(--color-6);
   overflow-y: auto;
@@ -126,9 +366,9 @@ section .form {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 1px solid var(--color-4);
-}
-.user_status {
+} */
+
+/* .user_status {
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -150,7 +390,7 @@ section .form {
 }
 .no_conv {
   font-size: 20px;
-  color: var(--color-4);
+  color: black;
   text-align: center;
 }
 .message_form {
@@ -166,7 +406,6 @@ section .form {
   width: 600px;
   padding: 10px;
   margin-bottom: 30px;
-  
   border-radius: 5px;
   border: 1px solid black;
 }
@@ -231,7 +470,9 @@ section .form {
 }
 .sm_screen {
   display: none;
-}
+} */
+
+
 @media screen and (max-width: 767px) {
   .home_container {
     grid-template-columns: 2fr 3fr;

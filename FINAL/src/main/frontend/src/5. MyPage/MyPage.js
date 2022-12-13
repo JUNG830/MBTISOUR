@@ -34,7 +34,7 @@ const MyPage = () => {
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
 
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
-
+  
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 나이, 성별, 주소 1, 주소 2
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -65,13 +65,13 @@ const MyPage = () => {
   const [isChangeIntroduce, setIsChangeIntroduce] = useState(false);
   const [isChangeEmail, setIsChangeEmail] = useState(false);
   const [isChangeAddress, setIsChangeAddress] = useState(false);
-
-  /*
+  
+  /* 
   최초 통신(useEffect) */
   useEffect(() => {
     const localId = cookies.get('rememberId');
     //  if(localId === undefined) window.location.replace("/login");
-    // ▲ 로그인 안 되어 있으면 로그인 페이지로
+    // ▲ 로그인 안 되어 있으면 로그인 페이지로 
 
 
     const memberData = async () => {
@@ -190,14 +190,14 @@ const MyPage = () => {
   }
 
   /**
-▶ 변경 가능 항목(비밀번호, 닉네임, 자기소개, 이메일, 주소)
+▶ 변경 가능 항목(비밀번호, 닉네임, 자기소개, 이메일, 주소) 
   */
 
  /* 비밀번호 저장 */
   const getPwd = (pwd) => { setPwd(pwd); }
   const openChangePwdModal = () => { setChangePwdModalOpen(true); };
   const closeChangePwdModal = () => { setChangePwdModalOpen(false); };
-  const onSavePwd = async(e) => {
+  const onSavePwd = async(e) => { 
     console.log("변경한 pwd :" + pwd);
     console.log("변경한 e :" + e);
 
@@ -217,15 +217,15 @@ const MyPage = () => {
           console.log("통신 성공(200)");
           console.log("\n>> 비밀번호 수정 완료");
           alert("비밀번호 수정 완료!!");
-        }
+        } 
       } catch (e) {console.log(e);}
 
   }
 
   /* 닉네임 변경 */
-  const onChangeNickname = e => {
+  const onChangeNickname = e => { 
     let temp_nickname = e.target.value;
-    setNickname(temp_nickname);
+    setNickname(temp_nickname); 
   }
 
   /* 닉네임 중복확인 버튼 클릭 */
@@ -292,10 +292,10 @@ const MyPage = () => {
         console.log("통신 성공(200)");
         console.log("\n>> 닉네임 수정 완료");
         alert("닉네임 수정 완료!!");
-      }
+      } 
 
     } catch (e) {console.log(e);}
-  }
+  } 
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () =>{
     setIsChangeIntroduce(false);
@@ -303,9 +303,9 @@ const MyPage = () => {
   }
 
   /* 자기소개 변경 */
-  const onChangeIntroduce = e => {
+  const onChangeIntroduce = e => { 
     let temp_introduce = e.target.value;
-    setIntroduce(temp_introduce);
+    setIntroduce(temp_introduce); 
   }
 
   /* 자기소개 저장 */
@@ -328,19 +328,19 @@ const MyPage = () => {
           console.log("통신 성공(200)");
           console.log("\n>> 자기소개 수정 완료");
           alert("자기소개 수정 완료!!");
-      }
+      } 
 
     } catch (e) {console.log(e);}
-  }
+  } 
 
   /* 이메일 변경 */
-  const onChangeEmail = e => {
+  const onChangeEmail = e => { 
     let temp_email = e.target.value;
-    setEmail(temp_email);
+    setEmail(temp_email); 
   }
 
    /* 이메일 변경 취소 */
-   const cancelEmail = () => {
+   const cancelEmail = () => { 
     setIsChangeEmail(false);
     setEmail(emailBefore);
   }
@@ -365,7 +365,7 @@ const MyPage = () => {
           console.log("통신 성공(200)");
           console.log("\n>> 이메일 수정 완료");
           alert("이메일 수정 완료!!");
-      }
+      } 
 
     } catch (e) {console.log(e);}
   }
@@ -411,7 +411,7 @@ const MyPage = () => {
           console.log("통신 성공(200)");
           console.log("\n>> 주소 수정 완료");
           alert("주소 수정 완료!!");
-      }
+      } 
 
     } catch (e) {console.log(e);}
   }
@@ -440,7 +440,7 @@ const MyPage = () => {
       try {
         const response = await TeamAPI.memberDelete(localId, inputPwd);
         console.log("response.data : " + response.data);
-
+  
         // if(res.data.result === "OK") {
         if(response.data === true) {
           console.log("통신 성공(200)");
@@ -462,7 +462,7 @@ const MyPage = () => {
       console.log("\n>> 탈퇴하기를 취소합니다.");
     }
   };
-
+  
   return(
     <div className='Container'>
       <div className='Mypage-Container'>
@@ -479,12 +479,12 @@ const MyPage = () => {
                 <label htmlFor="photo">
                   <CameraAltIcon style={{fontSize: "2rem", cursor: "pointer"}}/>
                 </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  id="photo"
-                  onChange={onChangeFace}
+                <input 
+                  type="file" 
+                  accept="image/*" 
+                  style={{ display: "none" }} 
+                  id="photo" 
+                  onChange={onChangeFace} 
                   />
                 {url ? <DeleteForeverIcon style={{fontSize: "2rem", cursor: "pointer"}} onClick={onDeleteFace}/> : null}
               </div>
@@ -647,7 +647,7 @@ const MyPage = () => {
               <button className='input10-btn' onClick={e => setIsChangeAddress(false)}>취소</button>
             </tr>
           </tr>
-          :
+          : 
           <>
           <tr className="Form-item">
             <div className="Form-Name">
