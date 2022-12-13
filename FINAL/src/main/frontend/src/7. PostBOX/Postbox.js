@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TeamAPI from '../0. API/TeamAPI';
 import PostModal from '../99. Modal/PostModal';
+import CustomModal from '../99. Modal/CustomModal'
 import yong from '../images/아이셔용.png';
 import Cookies from 'universal-cookie';
 import Moment from "react-moment";
@@ -16,8 +17,22 @@ const Postbox = () => {
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
   const myNickname = myInfo.nickname
+
+  /* ===== CustomModal 에 필요 ===== */
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "회원가입 성공", errorMsg: "아이디 또는 비밀번호를 확인하세요!"
+  });
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
+
+
+
+
   const location = useNavigate();
-  // console.log(myInfo.name);
 
   /* 변수(useState) 선언 */
   const [loading, setLoading] = useState(false);
@@ -122,17 +137,19 @@ const Postbox = () => {
     console.log("typeof(checkedPosts) : " + typeof (checkedPosts));
 
     if (checkedPosts.length < 1) {
-      alert('삭제할 쪽지를 선택해주세요~^^');
+      setState({...state, open: true, error: true, errorMsg: "삭제할 쪽지를 선택해주세요~^^"});
     } else {
       try {
         const response = await TeamAPI.postDelete(checkedPosts);
         if (response.status == 200) {
           console.log("통신 성공(200)");
-          alert("선택한 쪽지가 삭제되었습니다.");
+          setState({...state, open: true, success: true, successMsg: "선택한 쪽지가 삭제되었습니다."});
+
           window.location.reload();
         } else {
           console.log("통신 실패 : " + response.status);
-          alert("통신 실패 : " + response.status);
+          setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+
         }
       } catch (e) {
         console.log(e);
@@ -152,6 +169,7 @@ const Postbox = () => {
   return ( 
     <div className='Container'>
       <div className='Middle-Container'>
+        <CustomModal state={state} changeState={onChangeState}/>
         <PostModal open={modalOn} close={closeModal} sender={postSender} content={content} senderId={postSenderId} />
         <div className='Postbox-Container'>
 

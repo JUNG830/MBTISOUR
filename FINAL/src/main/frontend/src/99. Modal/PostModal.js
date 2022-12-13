@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import TeamAPI from '../0. API/TeamAPI';
 import Cookies from 'universal-cookie';
+import CustomModal from '../99. Modal/CustomModal'
 import './ChangePwdModal.css';
 
 const PostModal = (props) => {
@@ -10,6 +11,19 @@ const PostModal = (props) => {
   const cookies = new Cookies();
   // ▼ 로그인 안 되어 있으면 로그인 페이지로
   const localId = cookies.get('rememberId');
+
+
+  /* ===== CustomModal 에 필요 ===== */
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "", errorMsg: ""
+  });
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
+
   let sendMessage;
 
   const onClickReply = async() => {
@@ -29,14 +43,17 @@ const PostModal = (props) => {
           console.log("\n\n보내는 사람(localId) : " + localId);
           console.log("받는 사람(modalName) : " + senderId);
           console.log("쪽지 내용(sendMessage) : " + sendMessage);
-          alert("쪽지 보내기 성공!!");
+          setState({...state, open: true, success: true, successMsg: "쪽지 보내기 성공!"});
+
         } else {
           console.log("\n\n!!쪽지 내용 없음!!");
-          alert("쪽지 내용을 작성하셔야죠..^^");
+          setState({...state, open: true, error: true, errorMsg: "쪽지 내용을 작성하셔야죠..^^"});
+
         } 
       /* 탈퇴한 회원이라면 */  
       } else {
-        alert("존재하지 않는(탈퇴한) 회원입니다.");
+        setState({...state, open: true, error: true, errorMsg: "존재하지 않는(탈퇴한) 회원입니다."});
+
         alert("쪽지를 삭제하시겠습니까? (구현하면 좋을 듯)");
         console.log("쪽지를 보낼 수 없습니다.");
       }
@@ -47,6 +64,8 @@ const PostModal = (props) => {
 
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
+      <CustomModal state={state} changeState={onChangeState}/>
+
       {open ? (
         <section>
 

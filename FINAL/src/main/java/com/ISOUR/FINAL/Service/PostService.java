@@ -33,9 +33,13 @@ public class PostService {
             PostDTO postDTO = new PostDTO();
             postDTO.setPostNum(e.getPostNum());
             postDTO.setPostSenderId(e.getPostSender());
+
             String getSender = e.getPostSender();
-            MemberInfo memberInfo = memberRepository.findById(getSender);
-            postDTO.setPostSender(memberInfo.getNickname());
+            MemberInfo senderInfo = memberRepository.findById(getSender);
+//            log.warn("senderInfo : " + senderInfo);
+            if(senderInfo != null) postDTO.setPostSender(senderInfo.getNickname());
+            else postDTO.setPostSender("탈퇴한 회원");
+
             postDTO.setContent(e.getContent());
             postDTO.setPostTime(e.getPostTime());
 

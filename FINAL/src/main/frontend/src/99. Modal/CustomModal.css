@@ -139,6 +139,7 @@ button.error_btn:hover{
 
 .CustomModal_wrapper.active {
   visibility: visible;
+  z-index: 999;
 }
 
 .CustomModal_wrapper.active .Shadow {

@@ -25,11 +25,19 @@ const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-z
 function SignUp() {
 
   const cookies = new Cookies();
+
+  /* ===== CustomModal 에 필요 ===== */
   const [state, setState] = useState({
     open: false, success: false, error: false,
-    successMsg: "회원가입 성공", errorMsg: "입력된 값을 확인하세요"
+    successMsg: "회원가입 성공", errorMsg: "입력된 값을 확인하세요!"
   });
-  console.log(state);
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
+
+
   const [mode, setMode] = useState("agree");
   const [checkedItems, setCheckedItems] = useState([]);
   const [check_term1, setCheck_term1] = useState("");
@@ -37,9 +45,7 @@ function SignUp() {
   const [check_term3, setCheck_term3] = useState("");
   const [emailConfirm, setEmailConfirm] = useState(false);
 
-  const onChangeState = () => {
-    setState({...state, open: false, success: false, error: false});
-  }
+
 
   const Terms = () => {
     const [termsList, setTermsList] = useState([

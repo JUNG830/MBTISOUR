@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import lock from "../images/lock.png";
 import person from "../images/person.png";
 import google from "../images/google.png";
+import CustomModal from '../99. Modal/CustomModal'
 
 
 
@@ -29,6 +30,17 @@ function Login() {
   const navigate = useNavigate();
 
   if (localId !== undefined) navigate("/home");
+
+  /* ===== CustomModal 에 필요 ===== */
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "회원가입 성공", errorMsg: "아이디 또는 비밀번호를 확인하세요!"
+  });
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
 
   const EnterPress = (e) => {
     if (e.key === 'Enter') {
@@ -172,7 +184,8 @@ function Login() {
         }
         navigate("/home");
       } else {
-        alert("아이디 또는 비밀번호를 확인하세요!");
+        // alert("아이디 또는 비밀번호를 확인하세요!");
+        setState({...state, open: true, error: true, errorMsg: "아이디 또는 비밀번호를 확인하세요!"});
       }
     } catch (e) {
       console.log(e);
@@ -183,6 +196,7 @@ function Login() {
 
   return (
     <div className='L-Container'>
+      <CustomModal state={state} changeState={onChangeState}/>
     <div className="Login-Container">
       <div className="Login-box1">
 

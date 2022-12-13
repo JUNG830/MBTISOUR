@@ -4,6 +4,7 @@ import hangjungdong from '../other/hangjungdong';
 import face from '../images/기본 프로필.png'
 import { ChangePwdModal } from '../99. Modal/ChangePwdModal';
 import { UnregisterModal } from '../99. Modal/UnregisterModal';
+import CustomModal from '../99. Modal/CustomModal'
 import '../5. MyPage/MyPage.css';
 import '../0. API/defultMain.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -20,10 +21,23 @@ const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
 
 const MyPage = () => {
   const cookies = new Cookies();
-  // ▼ 로그인 안 되어 있으면 로그인 페이지로
 
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
+
+
+  /* ===== CustomModal 에 필요 ===== */
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "회원가입 성공", errorMsg: "입력된 값을 확인하세요!"
+  });
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
+
+
 
   const session_id = window.sessionStorage.getItem("id");
   console.log(myId);
@@ -144,10 +158,14 @@ const MyPage = () => {
           console.log(response.data.result);
           if(response.status == 200) {
             console.log("통신 성공(200)");
-            alert("프사 저장 성공");
+            // alert("프사 저장 성공");
+            setState({...state, open: true, success: true, successMsg: "프사 저장 성공"});
+
           } else {
             console.log("\n>> 통신 실패 : " + response.status);
-            alert("통신 실패 : " + response.status);
+            // alert("통신 실패 : " + response.status);
+            setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+
           }
         } catch (e) {
           console.log(e);
@@ -180,11 +198,15 @@ const MyPage = () => {
 
         if(response.status == 200) {
           console.log("통신 성공(200)");
-          alert("프사 삭제 성공");
+          // alert("프사 삭제 성공");
+          setState({...state, open: true, success: true, successMsg: "프사 삭제 성공"});
+
           setIsSetImage(false);
         } else {
           console.log("\n>> 통신 실패 : " + response.status);
-          alert("통신 실패 : " + response.status);
+          // alert("통신 실패 : " + response.status);
+          setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+
         }
 
       } catch (e) {
@@ -222,7 +244,9 @@ const MyPage = () => {
         if(response.status == 200) {
           console.log("통신 성공(200)");
           console.log("\n>> 비밀번호 수정 완료");
-          alert("비밀번호 수정 완료!!");
+          // alert("비밀번호 수정 완료!!");
+          setState({...state, open: true, success: true, successMsg: "비밀번호 수정 완료!!"});
+
         } 
       } catch (e) { console.log(e); }
 
@@ -242,7 +266,8 @@ const MyPage = () => {
 
     if (nickname === '' || !regexName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
-      alert("먼저, 닉네임을 확인하세요.");
+      // alert("먼저, 닉네임을 확인하세요.");
+      setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
     } else {
       try {
         const nicknameCheck = await TeamAPI.nicknameCheck(nickname);
@@ -251,12 +276,15 @@ const MyPage = () => {
         // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
           setNickname("");
-          alert("사용할 수 없는 닉네임 입니다.");
+          // alert("사용할 수 없는 닉네임 입니다.");
+          setState({...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다."});
           console.log("사용할 수 없는 닉네임 입니다.");
         } else {
           console.log("사용 가능한 닉네임 입니다.");
           setIsNicknamecheck(true);
-          alert("사용 가능한 닉네임 입니다.");
+          // alert("사용 가능한 닉네임 입니다.");
+          setState({...state, open: true, error: true, errorMsg: "사용 가능한 닉네임 입니다."});
+          
           setIsCheckedNickname(false);
         }
       } catch (e) {
@@ -276,7 +304,9 @@ const MyPage = () => {
   const onSaveNickname = async(e) => {
     console.log("\n>> 닉네임 저장 버튼 눌렀어요.");
     if(!isNicknamecheck) {
-      alert("닉네임을 다시 확인하거나 중복확인이 필요합니다.")
+      // alert("닉네임을 다시 확인하거나 중복확인이 필요합니다.")
+      setState({...state, open: true, error: true, errorMsg: "닉네임을 다시 확인하거나 중복확인이 필요합니다."});
+
       return;
     }
 
@@ -297,7 +327,9 @@ const MyPage = () => {
       if(response.status == 200) {
         console.log("통신 성공(200)");
         console.log("\n>> 닉네임 수정 완료");
-        alert("닉네임 수정 완료!!");
+        // alert("닉네임 수정 완료!!");
+        setState({...state, open: true, success: true, successMsg: "닉네임 수정 완료!!"});
+        
       } 
 
     } catch (e) { console.log(e); }
@@ -333,7 +365,9 @@ const MyPage = () => {
         if(response.status == 200) {
           console.log("통신 성공(200)");
           console.log("\n>> 자기소개 수정 완료");
-          alert("자기소개 수정 완료!!");
+          // alert("자기소개 수정 완료!!");
+          setState({...state, open: true, success: true, successMsg: "자기소개 수정 완료!!"});
+
       } 
 
     } catch (e) { console.log(e); }
@@ -370,7 +404,9 @@ const MyPage = () => {
         if(response.status == 200) {
           console.log("통신 성공(200)");
           console.log("\n>> 이메일 수정 완료");
-          alert("이메일 수정 완료!!");
+          // alert("이메일 수정 완료!!");
+          setState({...state, open: true, success: true, successMsg: "이메일 수정 완료!!"});
+
       } 
 
     } catch (e) { console.log(e); }
@@ -416,7 +452,9 @@ const MyPage = () => {
         if(response.status == 200) {
           console.log("통신 성공(200)");
           console.log("\n>> 주소 수정 완료");
-          alert("주소 수정 완료!!");
+          // alert("주소 수정 완료!!");
+          setState({...state, open: true, success: true, successMsg: "주소 수정 완료!!"});
+
       } 
 
     } catch (e) { console.log(e); }
@@ -455,13 +493,19 @@ const MyPage = () => {
           window.localStorage.setItem("userPw", "");
           window.localStorage.setItem("isLogin", "FALSE");
           closeUnregisterModal();
-          alert("회원 탈퇴 성공");
+          // alert("회원 탈퇴 성공");
+          setState({...state, open: true, success: true, successMsg: "회원 탈퇴 성공"});
+
           window.location.replace("/");
         } else {
-          alert("비밀번호를 확인하세요.");
+          // alert("비밀번호를 확인하세요.");
+          setState({...state, open: true, error: true, errorMsg: "비밀번호를 확인하세요."});
+
         }
       } catch (e) {
-        alert("오류 발생!!");
+        // alert("오류 발생!!");
+        setState({...state, open: true, error: true, errorMsg: "오류 발생!!"});
+
         console.log("탈퇴 에러!! 왜 또 안 될까..?");
       }
     } else {
@@ -474,6 +518,7 @@ const MyPage = () => {
       <div className='Middle-Container'>
         <div className='Mypage-Container'>
           <div className='Mypage-box'>
+            <CustomModal state={state} changeState={onChangeState}/>
             <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd} />
             <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
             <div className='MyPage-header'>
