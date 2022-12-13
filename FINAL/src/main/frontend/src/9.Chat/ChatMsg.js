@@ -14,17 +14,19 @@ const ChatMsg = ({ msg, user1}) => {
       className={`message_wrapper ${msg.from === user1 ? "own" : ""}`}
       ref={scrollRef}
     >
-      <li className={msg.from === user1 ? "me" : "friend"}>
-        {msg.media ? 
-        <img src={msg.media} alt={msg.text} /> 
-        : null}
-        {msg.text}
-      {/* </li>
-      <li > */}
-        <small>
-          <Moment format="LT">{msg.createdAt.toDate()}</Moment>
-        </small>
-      </li>
+      <div className={msg.from === user1 ? "me" : "friend"}>
+        <li className="message">
+          {msg.media ? 
+          <img src={msg.media} alt={msg.text} /> 
+          : null}
+          {msg.text}
+        </li>
+        <li className="message-time">
+          <small>
+            <Moment format="LT">{msg.createdAt.toDate()}</Moment>
+          </small>
+        </li>
+      </div>
 
     </ul>
   );

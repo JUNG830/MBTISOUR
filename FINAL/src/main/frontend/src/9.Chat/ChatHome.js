@@ -164,32 +164,31 @@ const ChatHome = () => {
             ))}
           </div>
           
+          {chat ? (
           <div className="messages_container">
-              {chat ? (
-                <div className="messages-box">
-                  {msgs.length
-                  ? msgs.map((msg, i) => (
-                    <div className="message">
-                      <ChatMsg key={i} msg={msg} user1={user1}/>
-                    </div>
-                    ))
-                  : null}
-
-                  <ChatForm
-                  handleSubmit={handleSubmit}
-                  text={text}
-                  setText={setText}
-                  setImg={setImg}
-                  />
-                </div>
-              )
-              : (
-              <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
-              )}
+            <div className="messages-box">
+              {msgs.length
+                ? msgs.map((msg, i) => (
+                  <ChatMsg key={i} msg={msg} user1={user1}/>
+                  ))
+                : null}
+            </div>
+            <div className="message-send">
+                <ChatForm
+                handleSubmit={handleSubmit}
+                text={text}
+                setText={setText}
+                setImg={setImg}
+                />
+            </div>
           </div>
-        </div>
+          )
+          : (
+          <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
+          )}
       </div>
     </div>
+  </div>
   );
 };
 
