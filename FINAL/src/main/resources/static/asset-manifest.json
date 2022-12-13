@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4a8e033f.css",
-    "main.js": "/static/js/main.65ac12a0.js",
+    "main.css": "/static/css/main.ac73b3db.css",
+    "main.js": "/static/js/main.d8436e91.js",
     "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
     "static/media/Jalnan.ttf": "/static/media/Jalnan.4b55e11e029184231b61.ttf",
     "static/media/아이셔용.png": "/static/media/아이셔용.dfe60f07928cc8aaf1e8.png",
@@ -19,12 +19,12 @@
     "static/media/중재자.png": "/static/media/중재자.1033e5b9eaa63f29165c.png",
     "static/media/논리술사.png": "/static/media/논리술사.646c930c8f67670c7d23.png",
     "index.html": "/index.html",
-    "main.4a8e033f.css.map": "/static/css/main.4a8e033f.css.map",
-    "main.65ac12a0.js.map": "/static/js/main.65ac12a0.js.map",
+    "main.ac73b3db.css.map": "/static/css/main.ac73b3db.css.map",
+    "main.d8436e91.js.map": "/static/js/main.d8436e91.js.map",
     "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a8e033f.css",
-    "static/js/main.65ac12a0.js"
+    "static/css/main.ac73b3db.css",
+    "static/js/main.d8436e91.js"
   ]
 }

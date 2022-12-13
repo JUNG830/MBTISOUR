@@ -3,7 +3,7 @@ import "./Chat.css";
 
 const ChatForm = ({ handleSubmit, text, setText, setImg }) => {
     return (
-    <div>
+
         <form className="message_form" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="img">
@@ -16,8 +16,6 @@ const ChatForm = ({ handleSubmit, text, setText, setImg }) => {
                 accept="image/*"
                 style={{ display: "none" }}
                 />
-
-
             </div>
             <div className="Send">
                 <input
@@ -29,7 +27,6 @@ const ChatForm = ({ handleSubmit, text, setText, setImg }) => {
                 <button className="btn">Send</button>
             </div>
         </form>
-    </div>
     )
 }
 export default ChatForm;
