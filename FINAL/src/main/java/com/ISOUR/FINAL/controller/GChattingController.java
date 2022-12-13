@@ -1,19 +1,21 @@
 package com.ISOUR.FINAL.controller;
 
+
+import com.ISOUR.FINAL.Service.GChatService;
 import com.ISOUR.FINAL.dto.GChatDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.ISOUR.FINAL.Service.GChatService;
+
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(value = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000/")
 @RestController
 @Slf4j
 public class GChattingController {
-    private GChatService GChatService;
+    private com.ISOUR.FINAL.Service.GChatService GChatService;
 
     public GChattingController(GChatService GChatService) {
         this.GChatService = GChatService;
@@ -21,11 +23,15 @@ public class GChattingController {
     @PutMapping("/Chat")
     public ResponseEntity<Boolean> sendPost(@RequestBody Map<String, String> chatData) {
         log.warn("★★★★★★★★★쪽지 보내기 Controller★★★★★★★★★");
+
         String getContent = chatData.get("content");
+        String getNickname = chatData.get("nickname");
+//        String getId = chatData.get("id");
+        String getFace = chatData.get("face");
 
         log.info(getContent);
 
-        boolean isTrue = GChatService.sendPost(getContent);
+        boolean isTrue = GChatService.sendPost(getContent,getNickname,getFace);
         if(isTrue) {
             log.warn(">" + isTrue + " : 채팅성공 ");
             return new ResponseEntity<>(true, HttpStatus.OK);
