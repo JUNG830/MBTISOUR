@@ -224,16 +224,16 @@ function Login() {
         ><motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login</motion.button></motion.div>
 
                 {/* 소셜로그인 */}
-        <div className='social-Login'>
+  
           <div className='Login-kakao'>
             <a href={kakao_Auth_Url}>
               <img className='kakao-img' src={kakao} />
             </a>
           </div>
-          <div className='Login-Google'>
+    
+        <div className='Login-Google'>
             <GoogleButton onClick={signInWithGoogle} />
           </div>
-        </div>
 
         <div className="Login-footer">
           가입하고 친구를 만들어봐요! <a href="/signup">회원가입</a>
