@@ -1,94 +1,94 @@
 .chat-Container{
-    display: flex;
-    margin-right: auto;
-    margin-left: auto;
-    align-items: center;
-    text-align: center;
-    flex-direction: column;
-    max-width: 1180px;
-    font-family: "Jalnan";
-    background-color: white;
-    justify-content:center;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  max-width: 1180px;
+  font-family: "Jalnan";
+  background-color: white;
+  justify-content:center;
 
-  }
+}
 
-  .chat-box1 {
-    border: 1px solid;
-    height: 80%;
-    width: 100%;
-    padding: 25px;
-    margin: 7rem;
-    margin-left: auto;
-    margin-right: auto;
-    scroll-padding-right: 10px;
-    font-family: "Jalnan";
-    border-radius: 20px;
-    background-image:linear-gradient( rgba(243, 245, 135, 0.8),
-    rgba(243, 245, 135, 0.8)), url(../images/123.png);
-    background-size: cover;
-    
-  }
-
+.chat-box1 {
+  border: 1px solid;
+  height: 80%;
+  width: 100%;
+  padding: 25px;
+  margin: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+  scroll-padding-right: 10px;
+  font-family: "Jalnan";
+  border-radius: 20px;
+  background-image:linear-gradient( rgba(243, 245, 135, 0.8),
+  rgba(243, 245, 135, 0.8)), url(../images/123.png);
+  background-size: cover;
   
-  .gsend {
-    width: 25rem;
-    font-family: "Jalnan";
-    padding: 0.8rem;
-    border-radius: 10px;
-  }
+}
 
-  .gbtn {
-     margin-right: auto;
-     font-family: "Jalnan";
-     padding: 0.8rem;
-     border-radius: 10px;
-  }
-  .gchatNum {
-    width: 11rem;
-    text-align: left;
-    float: left;
-    margin-left: 0.3rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.8rem;
-  }
- 
-  .gcontent {
-   width: 85%;
-   margin-left:  7rem;
+
+.gsend {
+  width: 25rem;
+  font-family: "Jalnan";
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+
+.gbtn {
    margin-right: auto;
-   margin-top: 1rem;
+   font-family: "Jalnan";
+   padding: 0.8rem;
+   border-radius: 10px;
+}
+.gchatNum {
+  width: 11rem;
   text-align: left;
-   word-break:break-all; 
-   white-space: normal;
-  }
-  .gchattime{
-    float: right;
-    margin-top: 0.2rem;
-    font-size: 0.5rem;
-  } 
+  float: left;
+  margin-left: 0.3rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.8rem;
+}
 
-  .gchat {
-    float: left;
-    font-family: "Jalnan";
-    flex-direction: column-reverse;
-    word-break:break-all;  
-    white-space: normal;
-    width: 90%;
-    margin-left: 3rem;
-    margin-right: auto;
-    border-bottom: 1px solid gray;
- }
- .minibox {
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    border: 1px solid;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    height: 700px;
-    width: 80%;
-    overflow-y: auto;
-    font-family: "Jalnan";
-    border-radius: 10px;
-    background-color: rgb(178, 199, 217);
- }
+.gcontent {
+ width: 85%;
+ margin-left:  7rem;
+ margin-right: auto;
+ margin-top: 1rem;
+text-align: left;
+ word-break:break-all; 
+ white-space: normal;
+}
+.gchattime{
+  float: right;
+  margin-top: 0.2rem;
+  font-size: 0.5rem;
+} 
+
+.gchat {
+  float: left;
+  font-family: "Jalnan";
+  flex-direction: column-reverse;
+  word-break:break-all;  
+  white-space: normal;
+  width: 90%;
+  margin-left: 3rem;
+  margin-right: auto;
+  border-bottom: 1px solid gray;
+}
+.minibox {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  border: 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  height: 700px;
+  width: 80%;
+  overflow-y: auto;
+  font-family: "Jalnan";
+  border-radius: 10px;
+  background-color: rgb(178, 199, 217);
+}

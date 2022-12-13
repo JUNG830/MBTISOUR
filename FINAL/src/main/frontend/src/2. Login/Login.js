@@ -8,9 +8,12 @@ import { GoogleButton } from 'react-google-button';
 import { auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
 import Cookies from 'universal-cookie';
-import kakao from '../images/kakao_login_small (1).png';
+import kakao from '../images/kakao2.png';
 import { REST_API_KEY, REDIRECT_URI } from '../0. API/kakaoAPI';
 import { useNavigate } from "react-router-dom";
+import lock from "../images/lock.png";
+import person from "../images/person.png";
+
 
 
 function Login() {
@@ -194,19 +197,23 @@ function Login() {
 
         {/* 아이디 */}
         <div className="Login-Id">
+        <img src={person} style={{width: "1rem", marginRight:"0.3rem" }}/>
           <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
         </div>
 
         {/* 비밀번호 */}
         <div className="Login-PW">
+        <img src={lock} style={{width: "1rem", marginRight:"0.3rem" }}/>
           <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
         </div>
 
-        <form>
-          <div className='Auto-Login'>
+        <form className='Auto-Login'>
+          <div className='Auto-Login2' >
             <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin}></input>
-            <label for='checkbox'>자동로그인</label>
-          </div>
+            <span><label for='checkbox'>자동로그인</label> </span>  
+              <span>| </span>
+             <span><a href="/FindInfo">아이디/비밀번호 찾기</a> </span>  
+        </div>
         </form>
 
         <motion.div
@@ -214,29 +221,25 @@ function Login() {
           whileHover={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 250, damping: 30 }}
-        ><button className="Login-botton" type="submit" onClick={onClickLogin}>Login</button></motion.div>
+        ><motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login</motion.button></motion.div>
 
-
-        <div className="Login-findId">
-          <a href="/FindInfo">아이디/비밀번호 찾기</a>
-        </div>
-
-        <div className="Login-footer">
-          가입하고 친구를 만들어봐요! <p><a href="/signup">회원가입</a></p>
-        </div>
-
-        {/* 소셜로그인 */}
+                {/* 소셜로그인 */}
         <div className='social-Login'>
           <div className='Login-kakao'>
             <a href={kakao_Auth_Url}>
               <img className='kakao-img' src={kakao} />
             </a>
           </div>
-
           <div className='Login-Google'>
             <GoogleButton onClick={signInWithGoogle} />
           </div>
         </div>
+
+        <div className="Login-footer">
+          가입하고 친구를 만들어봐요! <a href="/signup">회원가입</a>
+        </div>
+
+
       </div>
     </div>
   );
