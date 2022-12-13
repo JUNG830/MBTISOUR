@@ -631,13 +631,13 @@ const MyPage = () => {
                   </div>
                   <div>
                     {isCheckedNickname &&
-                      <button className='mypage-btn' onClick={onClickNicknameCheck}>중복확인</button>}
+                      <button className='mypage-btn-nick' onClick={onClickNicknameCheck}>중복확인</button>}
                     {isCheckedNickname &&
-                      <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
+                      <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
                     {isNicknamecheck &&
-                      <button className='mypage-btn' onClick={onSaveNickname}>저장</button>}
+                      <button className='mypage-btn-nick' onClick={onSaveNickname}>저장</button>}
                     {isNicknamecheck &&
-                      <button className='mypage-btn' onClick={cancelNickname}>취소</button>}
+                      <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
                   </div>
                 </>
                 }
@@ -662,8 +662,8 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' type="text" onChange={onChangeIntroduce} />
                   </div>
-                  <button className='mypage-btn' onClick={onSaveIntroduce}>저장</button>
-                  <button className='mypage-btn' onClick={cancelIntroduce}>취소</button>
+                  <button className='mypage-btn-int1' onClick={onSaveIntroduce}>저장</button>
+                  <button className='mypage-btn-int2' onClick={cancelIntroduce}>취소</button>
                 </>
                 }
               </tr>
@@ -686,8 +686,8 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' type="mail" onChange={onChangeEmail} />
                   </div>
-                  <button className='mypage-btn' onClick={onSaveEmail}>저장</button>
-                  <button className='mypage-btn' onClick={cancelEmail}>취소</button>
+                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>
+                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>
                 </>
                 }
               </tr>
@@ -731,10 +731,10 @@ const MyPage = () => {
                     <span>주소</span>
                   </div>
                   <div className='mypage-input'>
-                    <input className='mypage-input-adrr1' type="text" value={region1} />
-                    <input className='mypage-input-adrr2' type="text" value={region2} />
+                    <input className='mypage-input-addr1' type="text" value={region1} />
+                    <input className='mypage-input-addr2' type="text" value={region2} />
                   </div>
-                  <button className='mypage-btn' onClick={e => setIsChangeAddress(true)}>수정</button>
+                  <button className='mypage-btn-addr' onClick={e => setIsChangeAddress(true)}>수정</button>
                 </tr>
               </div>
               }
