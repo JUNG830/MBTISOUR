@@ -28,24 +28,23 @@ import '../0. API/defultMain.css';
 //스타일 컴포넌트
 
 const Startbtn = styled.button`
-  background: black;
+  background: #29335c;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   color: white;
   padding: 0.3rem;
-  width: 400px;
+  width: 600px;
   border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 25px;
-  background-color: orangered;
   border: 0px none;
   transition: all .2s ea  se-in-out;
   font-weight: 900;  
   position: relative;
-  bottom:10px;
+  bottom:0px;
 
   &:hover{
-  background-color: firebrick;
-  border-color: firebrick;
   cursor: pointer;
   opacity: 0.95;
   transition-duration: .5s;
@@ -63,8 +62,10 @@ const Startbtn = styled.button`
 
   .arrow{
     position: relative;
-    bottom: 4px;
+    top:8px;
   }
+
+  
   
 `
 
@@ -449,10 +450,11 @@ const StartContainer = styled.div`
 
   padding-top: 50px;
   text-align: center;
-  max-width:600px;
-  height: 700px;
-  margin:50px auto 0px;
+  max-width:700px;
+  height: 800px;
+  margin:0px auto 0px;
   top : 100px;
+  border-radius: 25px;
 
   
   border: 0px;
@@ -461,19 +463,24 @@ const StartContainer = styled.div`
   
   &>.mbti-person1{
     position: relative;
-    bottom: 50px;
+    bottom: 110px;
+    right:20px;
   }
   &>.mbti-person2{
     position: relative;
-    bottom: 50px;
+    bottom: 75px;
+  }
+  &>.mbti-person3{
+    position: relative;
+    bottom: 125px;
   }
   &>.mbti-quiz{
     position: relative;
-    bottom: 20px;
+    bottom: 50px;
   }
   &>.mbti-brain{
     position: relative;
-    bottom: 20px;
+    bottom: 50px;
   }
 
 `
@@ -486,8 +493,10 @@ const Container = styled.div`
     height: 100vh;
 `
 
-const Sentence1 = styled.div`
-  font-size: 39px;
+
+const Sentence2 = styled.div`
+  font-size: 40px;
+  margin-bottom: 40px;
   & span:nth-of-type(1){
     color: rgba(149,98,123);
   }
@@ -500,23 +509,21 @@ const Sentence1 = styled.div`
   & span:nth-of-type(4){
     color: rgba(228,199,40);
   }
+  
+
   span:nth-of-type(5){
     color:#0000FF;
   }
-`
-const Sentence2 = styled.div`
-  font-size: 25px;
-  margin-bottom: 40px;
-  span{
-    color: red;
+  &>div{
+    margin-bottom: 10px;
   }
 `
 
 const Mbtiword = styled.p`
-  font-size: 30px;
+  font-size: 40px;
   position: relative;
-  right:50px;
-  top:10px;
+  right:60px;
+  top:20px;
 
   span:nth-of-type(1){
     color:red;
@@ -2014,14 +2021,11 @@ const MBTI = () => {
         {states.mode === 'start'
           ?
           <StartContainer>
-            <Sentence1>당신은 이 검사가 끝나고
-              <span>m</span>
+            
+            <Sentence2><div><span>m</span>
               <span>b</span>
               <span>t</span>
-              <span>i</span>
-              <br /><span>ISOUR</span> 의 검사가 너무 정확해<br /> "조금 소름이 돋을 정도예요"<br /> 라고 말할것입니다.</Sentence1>
-            <p />
-            <Sentence2>여러분의 특성을 파악하고 그 특성을 통한<br /> <span>인생 최고의 친구</span>를 찾으세요!</Sentence2>
+              <span>i</span> 검사를 통해서</div><div>여러분의 특성을 파악하고</div><div> 그 특성을 통한</div><span>인생 최고의 친구</span>를 찾으세요!</Sentence2>
 
             <Startbtn onClick={() => { changeMode('quiz') }}>검 사 시 작 <VscArrowRight className="arrow" size={35} /></Startbtn>
             <Mbtiword>
@@ -2030,9 +2034,11 @@ const MBTI = () => {
               <span>t</span>
               <span>i</span>
             </Mbtiword>
-            <MdQuiz size={80} className='mbti-quiz' /><MdPsychology size={80} className='mbti-brain' />
+            <MdQuiz size={100} className='mbti-quiz' /><MdPsychology size={120} className='mbti-brain' />
             <p></p>
-            <IoPeople className='mbti-person1' size={180} /><IoPersonAdd className='mbti-person2' size={120} />
+            <IoPeople className='mbti-person1' size={200} />
+            <IoPersonAdd className='mbti-person2' size={180} />
+            <IoPersonAdd className='mbti-person3' size={160} />
 
           </StartContainer>
 

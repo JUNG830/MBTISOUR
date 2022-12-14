@@ -4,6 +4,8 @@ import Login from './2. Login/Login';
 import SignUp from './3. SignUp/SignUp';
 import '../src/App.css';
 import LoginUser from './App_Navbar';
+import FindInfo from './2. Login/FindInfo';
+
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/*' element={<LoginUser />} />
+        <Route path='/FindInfo' element={<FindInfo />} />
+
       </Routes>
     </Router>
   );

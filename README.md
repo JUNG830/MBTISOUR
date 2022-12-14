@@ -7,6 +7,8 @@ ISOUR 파이널 그리들
 ### 실행 하기
 java -jar build\libs\FINAL-0.0.1-SNAPSHOT.jar
 
+java -jar FINAL-0.0.1-SNAPSHOT.jar
+
 ----------------------------------------------------------------------------
 22.12.13(화) 
 

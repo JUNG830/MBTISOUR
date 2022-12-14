@@ -9,63 +9,93 @@ import '../0. API/defultMain.css';
 
 
 const Find_Container = styled.div`
-    width:600px;
+    width:700px;
+    height: 800px;
     border: 1px  ;
     position: relative;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
     z-index: 1;
-    margin: 20vh auto;
-    height: 400px;
     box-sizing: border-box;
+    margin:0 auto;
+    padding:50px;
+    background-color: white;
+
+
 `
-const Select_Mode = styled.span`
-    width:300px;
-    border: 1px  black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 20%;
-    overflow: hidden;
-    z-index: 3;
+
+const ErrorMsg = styled.p`
+    text-align: right;
+    color:red;
+`
+
+const FindIdMode = styled.div`
+    background-color: #29335c;
+`
+const FindIdMode2 = styled.div`
+    background-color: #29335c;
+    opacity: 0.4;
+`
+const FindPwdMode = styled.div`
+    background-color: #29335c;
+`
+const FindPwdMode2 = styled.div`
+    background-color: #29335c;
+    opacity: 0.4;
+`
+
+
+const SelectMode = styled.div`
+    display: flex;
+    align-items:center;
+    justify-content: center;
     
-    position: absolute;
-    height: 10vh;
-    &>p{
-        margin-top: 30px;
-        font-size: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`
-const Select_Mode2 = styled.span`
-    width:300px;
-    border: 1px black;
-    border-radius: 20%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 3;
-    overflow: hidden;
+    
+    div{
+        margin: 0 auto;
+        font-size: 35px;
+        width: 300px;
+        height: 135px;
+        text-align: center;
+        position: relative;
+        line-height: 135px;
+        color:whitesmoke;
+        
+        
+        &:nth-of-type(1){
+            border: solid ;
+            border-left:none;
+            border-top:none;
+            border-bottom:none;
+            border-color: rgb(0,0,0,0.15);
+        }
 
-    position: absolute;
-    height: 10vh;
-    left:300px;
-    &>p{
-        margin-top: 30px;
-        font-size: 25px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        
     }
+
+    
 `
+
 
 const Input_Container = styled.div`
-    margin-top: 200px;
     position: relative;
     top: 160px;
+    margin-top:50px;
+    table{
+        margin: 0 auto;
+        div{
+            margin-bottom: 70px;
+            position: relative;
+            bottom: 140px;
+        }
+        
+    }
 
     th{
         position: relative;
-        left: 20px;
-        width: 80px;
+        width: 130px;
+        font-size: 25px;
     }
 
     .findInfo-btn{
@@ -73,8 +103,8 @@ const Input_Container = styled.div`
         background-color: white;
         background: black;
         color: white;
-        padding: 0.1rem;
-        width: 560px;
+        width: 600px;
+        height: 50px;
         border-radius: 100px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -83,31 +113,29 @@ const Input_Container = styled.div`
         border: 0px none;
         font-weight: 900;  
         position: relative;
-        top:30px;
-        margin-left: 20px;
     }
     
     
 `
 
 const Input = styled.input`
-        width:350px;
+        width:340px;
+        height: 50px;
         position: relative;
-        margin-left: 130px;
+        margin-left: 80px;
         border : none;
         background-color: white;
         color: black;
         padding: 0.1rem;
-        height: 30px;
         border-radius: 100px;
         text-transform: uppercase;
         letter-spacing: 2px;
-        padding-left: 20px;
+        padding-left: 40px;
         font-size: 15px;
         border: 0px none;
         font-weight: 900;  
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+        
 `
 
 
@@ -335,7 +363,7 @@ const FindInfo = () => {
                     setBirth("");
                     console.log('일치하지 않는 정보입니다.');
                     alert('일치하지 않는 정보입니다.');
-                    
+
                 } else {
                     // alert(findId.data.id);
                     console.log("입력 정보가 맞습니다.");
@@ -359,12 +387,14 @@ const FindInfo = () => {
             {states.mode === 'findId'
                 ?
                 <Find_Container>
-                    <Select_Mode>
-                        <p>아이디 찾기</p>
-                    </Select_Mode>
-                    <Select_Mode2 onClick={() => changeMode('findPwd')}>
-                        <p>비밀번호 찾기</p>
-                    </Select_Mode2>
+                    <SelectMode>
+                        <FindIdMode>
+                            아이디 찾기
+                        </FindIdMode>
+                        <FindIdMode2 onClick={() => changeMode('findPwd')}>
+                            비밀번호 찾기
+                        </FindIdMode2>
+                    </SelectMode>
                     <Input_Container>
                         <FindInfoModal open={open} modalName={getId} onHide={() => setOpen(false)} />
                         <form>
@@ -376,7 +406,7 @@ const FindInfo = () => {
                                     <td>
                                         <Input type="text" placeholder="이름" value={name} onChange={onChangeName} required />
                                     </td>
-                                    <p>{showReqName && reqName}</p>
+                                    <ErrorMsg>{showReqName && reqName}</ErrorMsg>
                                 </div>
                                 <div>
                                     <th>
@@ -385,7 +415,7 @@ const FindInfo = () => {
                                     <td>
                                         <Input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} required />
                                     </td>
-                                    <p>{showReqEmail && reqEmail}</p>
+                                    <ErrorMsg>{showReqEmail && reqEmail}</ErrorMsg>
                                 </div>
                                 <div>
                                     <th>
@@ -395,67 +425,73 @@ const FindInfo = () => {
                                         <Input type="date" value={birth} onChange={onChangeBirth} />
                                     </td>
                                 </div>
+                                <div>
+                                    <button className='findInfo-btn' onClick={onClickFindId}>아이디 찾기</button>
+                                </div>
                             </table>
                         </form>
-                        <button className='findInfo-btn' onClick={onClickFindId}>아이디 찾기</button>
                     </Input_Container>
                 </Find_Container>
                 : null
             }
 
-            {states.mode === 'findPwd'
-                ?
-                <Find_Container>
-                    <Select_Mode onClick={() => changeMode('findId')}>
-                        <p>아이디 찾기</p>
-                    </Select_Mode>
-                    <Select_Mode2>
-                        <p>비밀번호 찾기</p>
-                    </Select_Mode2>
-                    <Input_Container>
-                        <EmailModal open={open} modalName={email} modalContent={() => setChangePwdModalOpen(true)} onHide={() => setOpen(false)} />
-                        <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd}></ChangePwdModal>
-                        <form>
-                            <table>
-                                <div>
-                                    <th>
-                                        <label >아 이 디</label>
-                                    </th>
-                                    <td>
-                                        <Input type="text" placeholder="아이디" value={id} onChange={onChangeId} required />
-                                    </td>
-                                    <p>{showReqId && reqId}</p>
-                                </div>
-                                <div>
-                                    <th>
-                                        <label>이 메 일</label>
-                                    </th>
-                                    <td>
-                                        <Input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} disabled={findDate ? true : false} />
-                                    </td>
+            {
+                states.mode === 'findPwd'
+                    ?
+                    <Find_Container>
+                        <SelectMode>
+                            <FindPwdMode2 onClick={() => changeMode('findId')}>
+                                아이디 찾기
+                            </FindPwdMode2>
+                            <FindPwdMode>
+                                비밀번호 찾기
+                            </FindPwdMode>
+                        </SelectMode>
+                        <Input_Container>
+                            <EmailModal open={open} modalName={email} modalContent={() => setChangePwdModalOpen(true)} onHide={() => setOpen(false)} />
+                            <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd}></ChangePwdModal>
+                            <form>
+                                <table>
+                                    <div>
+                                        <th>
+                                            <label >아 이 디</label>
+                                        </th>
+                                        <td>
+                                            <Input type="text" placeholder="아이디" value={id} onChange={onChangeId} required />
+                                        </td>
+                                        <ErrorMsg>{showReqId && reqId}</ErrorMsg>
+                                    </div>
+                                    <div>
+                                        <th>
+                                            <label>이 메 일</label>
+                                        </th>
+                                        <td>
+                                            <Input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} disabled={findDate ? true : false} />
+                                        </td>
 
-                                    <p>{showReqEmail && reqEmail}</p>
-                                </div>
-                                <div>
-                                    <th>
-                                        <label>생 년 월 일</label>
-                                    </th>
-                                    <td>
-                                        <Input type="date" value={birth} onChange={onChangeBirth} />
-                                    </td>
-                                </div>
-                            </table>
-                        </form>
+                                        <ErrorMsg>{showReqEmail && reqEmail}</ErrorMsg>
+                                    </div>
+                                    <div>
+                                        <th>
+                                            <label>생 년 월 일</label>
+                                        </th>
+                                        <td>
+                                            <Input type="date" value={birth} onChange={onChangeBirth} />
+                                        </td>
+                                    </div>
+                                    <div>
+                                        {isFind && <button className='findInfo-btn' onClick={onClickFindPwd}>정보 조회 하기</button>}
+                                        {findDate && <button className='findInfo-btn' onClick={onClickEmailAdress}>이메일 인증</button>}
+                                    </div>
+                                </table>
+                            </form>
 
-                        {isFind&&<button className='findInfo-btn' onClick={onClickFindPwd}>정보 조회 하기</button>}
-                        {findDate && <button className='findInfo-btn' onClick={onClickEmailAdress}>이메일 인증</button>}
-
-                    </Input_Container>
-                </Find_Container>
-                : null
+                        </Input_Container>
+                    </Find_Container>
+                    : null
             }
 
-        </div>
+        </div >
 
     )
 

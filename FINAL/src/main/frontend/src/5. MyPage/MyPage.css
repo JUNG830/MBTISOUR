@@ -6,6 +6,7 @@
 .img_container {
   position: relative;
   margin: 0 auto;
+  top:50px
 }
 .img_container img {
   width: 180px;
@@ -37,7 +38,7 @@
     display: block;
     gap: 20px;
     margin: 0 auto;
-    width: 800px;
+    width: 700px;
     height: 800px;
     border: none;
     margin-top: 60px;
@@ -63,8 +64,9 @@
 
 
 .MyPage-header {
-    margin-top: 10px;
     text-align: center;
+    position: relative;
+    top:50px;
 }
 
 .MyPage-img {
@@ -104,11 +106,11 @@
 
 .MyPage-Table {
     flex-direction: column;
-    width: 800px;
+    width: 700px;
     position: relative;
     bottom: 30px;
     margin: 100px auto;
-    right:20px;
+    right:40px;
 }
 
 .inputBox {
@@ -154,7 +156,7 @@
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
-    margin-left: 10px;
+    margin-left: 20px;
     font-weight: 900;
     position:relative;
 }
@@ -185,7 +187,7 @@
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
-    margin-left: 10px;
+    margin-left: 20px;
     font-weight: 900;
     min-width: 106px;
     position:relative;
@@ -222,7 +224,7 @@
     font-weight: 900;
     min-width: 106px;
     position:relative;
-    left:115px;
+    left:125px;
     bottom:50px;
  
 }
@@ -259,7 +261,10 @@
     position:relative;
     margin-bottom: 5px;
     left:154px;
+}
 
+.mypage-btn-select:nth-of-type(1){
+    margin-right: 10px;
 }
 
 .mypage-btn-select:active{
@@ -290,12 +295,13 @@
 
 
 .Form-Name {
+    position: relative;
     
-    min-width: 150px;
+    min-width: 130px;
 }
 
 .mypage-input-addr1 {
-    width: 128px;
+    width: 108px;
     height: 48px;
     display: flex;
     align-items: center;
@@ -303,21 +309,22 @@
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
-    padding-left: 20px;
-    font-size: 17px;
+    padding-left: 40px;
+    font-size: 14px;
 }
 
 .mypage-input-addr2 {
-    width: 128px;
+    width: 108px;
     height: 48px;
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
-    padding-left: 20px;
-    font-size: 17px;
+    padding-left: 40px;
+    font-size: 14px;
     position: relative;
     left:152px;
     bottom:63px;
+
 
 }
 
@@ -332,7 +339,7 @@
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
     padding-left: 20px;
-    font-size: 17px;;
+    font-size: 14px;;
 }
 
 .mypage-input-select2 {
@@ -342,7 +349,7 @@
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
     padding-left: 20px;
-    font-size: 17px;
+    font-size: 14px;
     position: relative;
     left:152px;
     bottom:60px;
@@ -407,8 +414,8 @@ table tr{
 .Mypage-leave-btn {
     margin-top: 20px;
     position: relative;
-    left: 660px;
-    bottom:100px;
+    left: 580px;
+    bottom:50px;
     width: 106px;
     height: 50px;
     border-style: none;
@@ -430,7 +437,7 @@ table tr{
     align-items: center;
     justify-content: center;
     position:relative;
-    right:20px;
+    right:10px;
     top:10px
     
 }

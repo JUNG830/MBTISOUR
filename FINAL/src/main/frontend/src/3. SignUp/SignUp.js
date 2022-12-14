@@ -123,7 +123,7 @@ function SignUp() {
 
     return (
       <form>
-        <div className='SignUp-Container'>
+        <div className='Terms-Container'>
           <div className='SignUp-Main-Box'>
             <div className='checkbox-check-all'>
               <div className='SignUp-Allagree'>
