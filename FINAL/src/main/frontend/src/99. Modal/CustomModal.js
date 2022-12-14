@@ -10,6 +10,8 @@ function CustomModal(props) {
     changeState();
   }
 
+  if(state.success) setTimeout(() => { changeState() }, 2000);
+
   return (
     <div className={state.open ? "CustomModal_wrapper active" : "CustomModal_wrapper"}>
       <div className="Shadow close_btn"></div>

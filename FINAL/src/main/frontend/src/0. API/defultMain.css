@@ -43,12 +43,13 @@ button {
 .Container {
     box-sizing: border-box;
     width: 1180px;
-    margin: 0 auto;
+    margin: auto;
     background-color: rgba(0, 0, 0, 0.04);
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    padding-top: 50px;
 }
 
 /* .Middle-Container {

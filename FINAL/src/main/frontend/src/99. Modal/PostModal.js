@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TeamAPI from '../0. API/TeamAPI';
 import Cookies from 'universal-cookie';
 import CustomModal from '../99. Modal/CustomModal'
-import './ChangePwdModal.css';
+import './PostModal.css';
 
 const PostModal = (props) => {
   const { open, close, sender, content, senderId } = props;
@@ -25,6 +25,19 @@ const PostModal = (props) => {
   /* ============================== */
 
   let sendMessage;
+
+  const onKeyUpContent = (e) => {
+    // console.log("\n>> onKeyUpContent 실행");
+    // console.log(e);
+    // console.log(e.target);
+    // console.log(e.target.style);
+
+    // let scHeight = e.target.scrollHeight;
+    // console.log(scHeight);
+    // e.target.style = scHeight;
+    // console.log(e.target.style);
+  }
+ 
 
   const onClickReply = async() => {
     console.log("답장하기 버튼 눌렀어요.");
@@ -63,7 +76,7 @@ const PostModal = (props) => {
   }
 
   return (
-    <div className={open ? 'openModal modal' : 'modal'}>
+    <div className={open ? 'openPostModal PostModal' : 'PostModal'}>
       <CustomModal state={state} changeState={onChangeState}/>
 
       {open ? (
@@ -79,22 +92,23 @@ const PostModal = (props) => {
 
         {/* main 영역 */}
           <main>
-            <div className="Modal-Form-item">
-              <label className="form-label">보낸 사람 닉네임</label>
-              <input type="text" className="Modal-Form-control" value={sender} disabled/>
+            <div className="PostModal-Form-item">
+              <label className="form-label">보낸 사람</label>
+              <input type="text" className="PostModal-Form-control" value={sender} readOnly/>
             </div>
 
-            <div className="Modal-Form-item">
+            <div className="PostModal-Form-item">
               <label className="form-label">쪽지 내용</label>
-              <input type="text" className="Modal-Form-control" value={content} disabled/>
+              <textarea className="PostModal-Form-control textarea" value={content} 
+                onFocus={onKeyUpContent} readOnly/>
             </div>
           </main>
 
         {/* footer 영역 */}
           <footer>
-            <button className="close" onClick={close}>
+            {/* <button className="close" onClick={close}>
               닫기
-            </button>
+            </button> */}
             <button type="button" onClick={onClickReply}>
               답장하기
             </button>
@@ -103,6 +117,7 @@ const PostModal = (props) => {
         </section>
       ) : null}
     </div>
+    // </>
   );
 }
 
