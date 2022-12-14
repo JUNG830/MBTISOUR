@@ -4,7 +4,7 @@ import "./Chat.css";
 const ChatForm = ({ handleSubmit, text, setText, setImg }) => {
     return (
 
-        <form className="message_form" onSubmit={handleSubmit}>
+        <form className="message_form" onSubmit={handleSubmit} disabled={text === ""}>
             <div>
                 <label htmlFor="img">
                     {/* <Attachment /> */}
@@ -24,7 +24,7 @@ const ChatForm = ({ handleSubmit, text, setText, setImg }) => {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-                <button className="btn">Send</button>
+                <button className="btn" disabled={text === ""}>Send</button>
             </div>
         </form>
     )
