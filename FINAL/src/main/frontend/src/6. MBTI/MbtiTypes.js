@@ -144,25 +144,25 @@ function MbtiTypes() {
             <MbtiTypeBox>
               <h2 className="title-box1" >분석가형</h2>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" >
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
                   <img src={전략가} />
                   <div>INTJ 전략가 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" >
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
                   <img src={논리술사} />
                   <div>INTP 논리술사 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" >
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
                   <img src={통솔자} />
                   <div>ENTJ 통솔자 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" >
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
                   <img src={변론가} />
                   <div>ENTP 변론가 </div>
                 </a>
@@ -176,25 +176,25 @@ function MbtiTypes() {
             <MbtiTypeBox>
               <h2 className="title-box1" >외교관형</h2>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
                   <img src={옹호자} />
                   <div>INFJ 옹호자 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" target='_blank'>
                   <img src={중재자} />
                   <div>INFP 중재자 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" target='_blank'>
                   <img src={선도자} />
                   <div>ENFJ 선도자 </div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
                   <img src={활동가} />
                   <div>ENFP 활동가</div>
                 </a>
@@ -207,25 +207,25 @@ function MbtiTypes() {
             <MbtiTypeBox>
               <h2 className="title-box1" >관리자형</h2>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" target='_blank'>
                   <img src={현실주의자} />
                   <div>ISTJ 현실주의자</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
                   <img src={수호자} />
                   <div>ISFJ 수호자</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
                   <img src={경영자} />
                   <div>ESTJ 경영자</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
                   <img src={집정관} />
                   <div>ESFJ 집정관</div>
                 </a>
@@ -238,25 +238,25 @@ function MbtiTypes() {
             <MbtiTypeBox>
               <h2 className="title-box1" >탐험가형</h2>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp" target='_blank'>
                   <img src={장인} />
                   <div>ISTP 장인</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
                   <img src={모험가} />
                   <div>ISFP 모험가</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp" target='_blank'>
                   <img src={사업가} />
                   <div>ESTP 사업가</div>
                 </a>
               </MbtiInfoBox1>
               <MbtiInfoBox1>
-                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp">
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
                   <img src={연예인} />
                   <div>ESFP 연예인</div>
                 </a>
