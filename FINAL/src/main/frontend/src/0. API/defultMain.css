@@ -3,6 +3,7 @@
     --navy: #29335c;
     --red: red; 
     --white: white;
+    --pink: #e24b4b;
 }
 
 /* 
@@ -40,16 +41,32 @@ button {
 
 */
 
-.Container {
+* { 
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.Container {
     width: 1180px;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.04);
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.No-Nav-Container {
+    width: 1180px;
+    margin: auto;
     height: 100vh;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    padding-top: 50px;
+    align-items: center;
 }
 
 /* .Middle-Container {

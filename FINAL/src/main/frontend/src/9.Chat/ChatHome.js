@@ -149,44 +149,42 @@ const ChatHome = () => {
 
   return (
     <div className="Container">
-      <div className="Chat-middle">
-        <div className="home_container">
-          
-          <div className="users_container">
-            {users.map((user) => (
-              <User
-                key={user.id}
-                user={user}
-                selectUser={selectUser}
-                user1={user1} // 나
-                chat={chat}
-              />
-            ))}
+      <div className="home_container">
+
+        <div className="users_container">
+          {users.map((user) => (
+            <User
+              key={user.id}
+              user={user}
+              selectUser={selectUser}
+              user1={user1} // 나
+              chat={chat}
+            />
+          ))}
+        </div>
+        
+        {chat ? (
+        <div className="messages_container">
+          <div className="messages-box">
+            {msgs.length
+              ? msgs.map((msg, i) => (
+                <ChatMsg key={i} msg={msg} user1={user1}/>
+                ))
+              : null}
           </div>
-          
-          {chat ? (
-          <div className="messages_container">
-            <div className="messages-box">
-              {msgs.length
-                ? msgs.map((msg, i) => (
-                  <ChatMsg key={i} msg={msg} user1={user1}/>
-                  ))
-                : null}
-            </div>
-            <div className="message-send">
-              <ChatForm
-                handleSubmit={handleSubmit}
-                text={text}
-                setText={setText}
-                setImg={setImg}
-              />
-            </div>
+          <div className="message-send">
+            <ChatForm
+              handleSubmit={handleSubmit}
+              text={text}
+              setText={setText}
+              setImg={setImg}
+            />
           </div>
-          )
-          : (
-          <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
-          )}
-      </div>
+        </div>
+        )
+        : (
+        <h3 className="no_conv">대화하고싶은 상대의 이름을 클릭하세요</h3>
+        )}
     </div>
   </div>
   );

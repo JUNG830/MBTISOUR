@@ -13,7 +13,7 @@ import { REST_API_KEY, REDIRECT_URI } from '../0. API/kakaoAPI';
 import { useNavigate } from "react-router-dom";
 import lock from "../images/lock.png";
 import person from "../images/person.png";
-import google from "../images/google.png";
+import google from "../images/google_logo_icon.png";
 import CustomModal from '../99. Modal/CustomModal'
 
 
@@ -195,43 +195,44 @@ function Login() {
 
 
   return (
-    <div className='L-Container'>
+    <div className='No-Nav-Container'>
       <CustomModal state={state} changeState={onChangeState}/>
     <div className="Login-Container">
-      <div className="Login-box1">
-
         {/* <div className="Login-card-logo">
             <img src={logo} alt="logo" />
           </div> */}
 
-        <div className="Login-Main-font">
-          <p className='Login-Main-Word'>MBTISOUR</p>
-       
+        <div className="Login-Main-Header">
+          <p>MBTISOUR</p>
         </div>
 
         {/* <form action="" className="Login-card-form"> */}
 
         {/* 아이디 */}
-        <div className="Login-Id">
-        <img src={person} style={{width: "1.5rem" }}/>
-          <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
-        </div>
+        <div className='Login-Body'>
+          <div className="Login-Id">
+            <img src={person} />
+            <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
+          </div>
 
-        {/* 비밀번호 */}
-        
-        <div className="Login-PW">
-        <img src={lock} style={{width: "1.5rem" }}/>
-          <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
-        </div>
+          {/* 비밀번호 */}
+          
+          <div className="Login-PW">
+            <img src={lock} />
+            <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
+          </div>
 
-        <form className='Auto-Login'>
-          <div className='Auto-Login2' >
-            <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin}></input>
-            <span><label for='checkbox'>자동로그인</label> </span>  
-              <span>| </span>
-             <span><a href="/FindInfo">아이디/비밀번호 찾기</a> </span>  
+        {/* <form className='Auto-Login'> */}
+          <div className='Auto-Login' >
+            <label>
+              <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin} />
+              <span className='Auto-Login-text'>자동로그인</span>
+            </label>
+            <span>|</span>
+            <span><a href="/FindInfo">아이디/비밀번호 찾기</a> </span>  
+          </div>
         </div>
-        </form>
+        {/* </form> */}
 
         
         <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login
@@ -241,24 +242,22 @@ function Login() {
                 {/* 소셜로그인 */}
           
           <div className='Login-kakao'>
-          
             <a href={kakao_Auth_Url}>
               <img className='kakao-img' src={kakao} />
             </a>
-            <div className='Login-Google'>
-            <img src={google} style={{width: "3.5rem" }} onClick={signInWithGoogle} />
-          </div>
+          {/* <div className='Login-Google'> */}
+            <img src={google} onClick={signInWithGoogle} />
+          {/* </div> */}
 
           </div>
     
         
         <div className="Login-footer">
-          가입하고 친구를 만들어봐요! <a href="/signup">회원가입</a>
+          가입하고 친구를 만들어봐요! <a href="/signup">  회원가입</a>
         </div>
 
 
       </div>
-    </div>
     </div>
   );
 }

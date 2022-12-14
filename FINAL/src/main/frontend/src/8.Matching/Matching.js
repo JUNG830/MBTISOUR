@@ -190,71 +190,69 @@ const Matching = () => {
 
   return (
     <div className='Container'>
-      <div className='Middle-Container'>
-        <div className='Matching-Container' >
-          <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
-          
-          <div className='User-Box'>
-            <div className='User-profile'>
-              {myFace != null 
-              ? <img src={myFace} alt="프로필 이미지"/>
+      <div className='Matching-Container' >
+        <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
+        
+        <div className='User-Box'>
+          <div className='User-profile'>
+            {myFace != null 
+            ? <img src={myFace} alt="프로필 이미지"/>
+            : <img src={face} alt="프로필 이미지"/> }
+          </div>
+          <div className="User-item">
+            <input type="text" value={myNickname} />
+            <input type="text" value={myMbti} />
+          </div>
+          <div className="User-item">
+              <input className='User-Introduce' type="text" value={myIntroduce} />
+          </div>
+        </div>
+
+        { (mat_memberInfo.length != 0 ) ?
+
+        mat_memberInfo.map((mat) => (
+        <div>
+          <div className='Mat-Box' key={mat.id}>
+            <div className='Mat-profile'>
+              {mat.mat_face != null 
+              ? <img src={mat.mat_face} alt="프로필 이미지" />
               : <img src={face} alt="프로필 이미지"/> }
             </div>
-            <div className="User-item">
-              <input type="text" value={myNickname} />
-              <input type="text" value={myMbti} />
+            <div className="Mat-item">
+              <input type="text" value={mat.mat_nick} />
+              <input type="text" value={mat.mat_mbti} />
+              <input className='Mat-Introduce' type="text" value={mat.mat_introduce} />
             </div>
-            <div className="User-item">
-                <input className='User-Introduce' type="text" value={myIntroduce} />
-            </div>
+          {/* { like_num === 0 ?
+              <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
+              : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
+          } */}
+          </div> 
+          <div className='Mat-icon'>
+            {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
+              <IconButton>
+                <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} />
+              </IconButton>
+              <IconButton>
+                <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
+              </IconButton>
+              <IconButton>
+                <EmailIcon className='Post-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickPostIcon(mat.mat_id, mat.mat_nick)}/>
+              </IconButton>
+            {/* </ButtonGroup> */}
           </div>
-
-          { (mat_memberInfo.length != 0 ) ?
-
-          mat_memberInfo.map((mat) => (
-          <div>
-            <div className='Mat-Box' key={mat.id}>
-              <div className='Mat-profile'>
-                {mat.mat_face != null 
-                ? <img src={mat.mat_face} alt="프로필 이미지" />
-                : <img src={face} alt="프로필 이미지"/> }
-              </div>
-              <div className="Mat-item">
-                <input type="text" value={mat.mat_nick} />
-                <input type="text" value={mat.mat_mbti} />
-                <input className='Mat-Introduce' type="text" value={mat.mat_introduce} />
-              </div>
-            {/* { like_num === 0 ?
-                <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
-                : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
-            } */}
-            </div> 
-            <div className='Mat-icon'>
-              {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
-                <IconButton>
-                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} />
-                </IconButton>
-                <IconButton>
-                  <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
-                </IconButton>
-                <IconButton>
-                  <EmailIcon className='Post-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickPostIcon(mat.mat_id, mat.mat_nick)}/>
-                </IconButton>
-              {/* </ButtonGroup> */}
-            </div>
-          </div>
-            ))
-
-          : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
-          }
-
-          <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
-            <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
-          </IconButton>
-          <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : rnum)) ? true : false }>
-            <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
-          </IconButton>           
         </div>
+          ))
+
+        : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
+        }
+
+        <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
+          <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
+        </IconButton>
+        <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : rnum)) ? true : false }>
+          <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
+        </IconButton>           
       </div>
     </div>
   )
