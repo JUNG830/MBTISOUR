@@ -39,13 +39,6 @@ button {
     color: var(--white);
 }
 
-나눔바른펜 일반용
-font-family: 'NanumBarunPen';
-font-family: 'NanumBarunPenBold';
-
- 빙그레체
-font-family: 'Binggrae';
-
 */
 /* 메이플스토리체 */
 @font-face {
@@ -55,7 +48,6 @@ font-family: 'Binggrae';
     font-style: normal;
 }
 
-
 /* 라인체 */
 @font-face {
     font-family: 'LINESeedKR-Bd';
@@ -64,44 +56,14 @@ font-family: 'Binggrae';
     font-style: normal;
 }
 
-/* 조혜경 찾는 중 - 빙그레, 만화진흥원체, 마포한아름, 이랜드 초이스체, 문화재돌봄체, 환경체 */ 
-
-@font-face {
-    font-family: 'MapoPeacefull';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'ELAND_Choice_M';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Dolbomche_R';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2104@1.0/Dolbomche_R.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'EnvironmentR';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/EnvironmentR.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
 /* 나눔고딕 */
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
-
-
-
 .nanumgothic * {
  font-family: 'Nanum Gothic', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'MaplestoryOTFBold';
 }
 
 
@@ -118,7 +80,6 @@ a {
 }
 
 .Container {
-    font-family: 'MaplestoryOTFBold';
     width: 100vw;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.04);
