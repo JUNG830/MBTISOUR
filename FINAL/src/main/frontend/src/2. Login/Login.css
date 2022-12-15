@@ -12,13 +12,14 @@
 }
 
 .Login-Main-Header {
-  font-size: 50px;
-  height: 130px;
+  margin-top: 4rem;
+  font-size: 3.3rem;
+  height: 8rem;
 }
 
 .Login-Body {
-  width: 330px;
   height: 250px;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -59,11 +60,16 @@ outline: none;
 font-size: large;
 box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-
-.Auto-Login {
+.Auto-Login2 {
   width: 330px;
   display: flex;
+  float: left;
+}
+
+.Auto-Login{
+  width: 330px;
+  display: flex;
+  margin-top: 1rem;
   justify-content: space-around;
 }
 .Auto-Login-text {
@@ -74,6 +80,9 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
 .Auto-Login-input {
   scale: 1.3;
 }
+.login-logo {
+  
+}
 
 .Login-botton {
   border: 0px;
@@ -82,10 +91,15 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
   border-radius: 20px;
   padding: 10px;
   font-size: 1.5rem;
+  margin-bottom: 3rem;
   letter-spacing: 0.5rem;
   box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: var(--navy);
   color: var(--white);
+
+}
+.Login-Google{
+
 }
 
 .Login-kakao {
@@ -95,25 +109,35 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
 }
 
 .Login-kakao > a > img{
-  border-radius: 100%;
-  object-fit: cover;
-  width: 4rem;
+  border-radius: 50%;
+  width: 1rem;
   height: 4rem;
 }
 
-.Login-kakao > img{
+.img-circle {
+  /* border: 0.1rem solid rgb(134, 133, 133); */
   border-radius: 100%;
-  object-fit: cover;
   width: 4rem;
   height: 4rem;
   cursor: pointer;
+  margin-left: 0.9rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.kakao-img{
+  /* margin-top: 0.1rem; */
+}
+.google-img{
+  margin-top: 1rem;
 }
 
+
 .Login-footer {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 50px;
+  margin-top: 2rem;
 }
 
 .Login-footer > a {
