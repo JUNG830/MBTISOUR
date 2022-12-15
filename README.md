@@ -15,7 +15,18 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 ♥ 조혜경
 - (1차) 쪽지함 모달 살짝 수정, 방명록 css 완성
 
+
+♥ 전규한
+- mypage , mbti , mbti type 
+
 22.12.14(수) 
+
+♥ 전규한
+- 마이페이지 css 변경
+- 아이디 비밀번호 찾기 css 변경
+- mbti 시작페이지 css 변경
+- terms 약관 css 변경
+
 
 ♥ 조혜경
 - (1차) AboutUs, Mypage, Postbox 마진탑 삭제
