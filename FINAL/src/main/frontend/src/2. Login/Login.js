@@ -15,7 +15,7 @@ import lock from "../images/lock.png";
 import person from "../images/person.png";
 import google from "../images/google_logo_icon.png";
 import CustomModal from '../99. Modal/CustomModal'
-import yong from '../images/아이셔용.png';
+import logo from '../images/logo.png';
 
 
 
@@ -49,11 +49,7 @@ function Login() {
     }
   }
 
-
-
   const signInWithGoogle = () => {
-
-
 
     // e.preventDefault();
     signInWithPopup(auth, provider).then((result) => {
@@ -199,12 +195,10 @@ function Login() {
     <div className='No-Nav-Container'>
       <CustomModal state={state} changeState={onChangeState}/>
     <div className="Login-Container">
-        {/* <div className="Login-card-logo">
-            <img src={logo} alt="logo" />
-          </div> */}
 
         <div className="Login-Main-Header">
-          <h1>MBTISOUR</h1>
+            <img src={logo} alt="logo" />
+            <h1>MBTISOUR</h1>
         </div>
 
         {/* <form action="" className="Login-card-form"> */}
@@ -230,14 +224,14 @@ function Login() {
           </div>
 
         {/* <form className='Auto-Login'> */}
-          <div className='Auto-Login' >
+        <div className='Auto-Login' >
           {/* <div className='Auto-Login2'> */}
-        <label>
-              <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin} />
-              <span className='Auto-Login-text'>자동로그인</span>
-        </label>
-        <span>|</span>
-        <a href="/FindInfo">아이디/비밀번호 찾기</a>
+          <label>
+            <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin} />
+            <span className='Auto-Login-text'>자동로그인</span>
+          </label>
+          <span>|</span>
+          <a href="/FindInfo">아이디/비밀번호 찾기</a>
         </div>
             
             {/* <span>|</span> */}

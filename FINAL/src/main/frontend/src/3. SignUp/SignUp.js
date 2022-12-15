@@ -10,6 +10,7 @@ import { auth, db } from "../firebase";
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import '../0. API/defultMain.css';
+import logo from '../images/logo.png';
 
 
 // 정규식 - 이름, 아이디, 비밀번호
@@ -684,17 +685,17 @@ function SignUp() {
       :
       <div className='No-Nav-Container'>
           <CustomModal state={state} changeState={onChangeState}/>
-      <div className='SignUp-middle'>
-        <div className="SignUp-Container">
+        {/* <div className="SignUp-Container"> */}
           {/* 이메일 인증 모달창 */}
           <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
           <div className='SignUp-Box'>
             <div className="SignUp-header">
+              <img src={logo} />
               <h1>Sign Up</h1>
-              <p>회원정보를 입력해주세요</p>
+              {/* <h4>회원정보를 입력해주세요</h4> */}
             </div>
-            <table action="" className="SignUp-Table">
 
+            <table action="" className="SignUp-Table">
 
               {/* 이름 */}
               <tr className="SignUp-item">
@@ -717,7 +718,7 @@ function SignUp() {
                   </div>
                 </td>
                 <td>
-                  <button className='Chacked-btn' onClick={onClickIdCheck} required><span>중복확인 </span></button>
+                  <button className='Chacked-btn' onClick={onClickIdCheck} required>중복확인</button>
                 </td>
               </tr>
 
@@ -789,9 +790,6 @@ function SignUp() {
                     생년월일을 선택하세요
                   </div>
                 </td>
-                <td>
-                  <p className='Span-Age'>만 {age}세</p>
-                </td>
               </tr>
 
               {/* 성별 */}
@@ -839,15 +837,13 @@ function SignUp() {
                   </div>
                 </td>
               </tr>
-
-              {/* 회원가입 */}
-
-              <button className="SignUp-btn" type="submit" onClick={onClickButton}><span>회원가입</span></button>
-
             </table>
+            <div className='SignUp-footer'>
+              <button className="SignUp-btn" type="submit" onClick={onClickButton}>회원가입</button>
+            </div>
+
           </div>
-        </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }

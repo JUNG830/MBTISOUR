@@ -1,7 +1,6 @@
 .Home-Container {
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
     justify-content: center;
     align-items: center;
 }
@@ -15,6 +14,19 @@
     justify-content: center;
     background-color: rgba(0 ,0, 0, 0.05);
     border-radius: 25px;
+}
+
+.WelcomeMessage span {
+    font-family: 'MaplestoryOTFBold';
+}
+
+.WelcomeMessage > h2 {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+.WelcomeMessage > h3 {
+    font-size: 1.8rem;
+    line-height: 1.5;
 }
 
 .Dino {

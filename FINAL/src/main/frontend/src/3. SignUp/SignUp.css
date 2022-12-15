@@ -1,14 +1,10 @@
 .SignUp-Container {
-    display: grid;
-    gap: 20px;
-    width: 700px;
-    height: 800px;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: scroll;
-    align-items: center;
-    justify-items: stretch;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
 }
+
 .Terms-Container {
     display: grid;
     gap: 20px;
@@ -34,6 +30,7 @@
 .Terms-title > input {
     scale: 1.3;
 }
+
 .Terms-content{
     width: 100%;
     height: 100px;
@@ -107,35 +104,65 @@
     margin-bottom: 5rem;
 }
 
-.SignUp-header {
-    margin: 50px;
-    font-size: 2rem;
+/* 
+-------- 회원가입 
+*/
+.SignUp-Box {
+    display: grid;
+    grid-template-rows: 1.8fr 4fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 700px;
+    height: 800px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+.SignUp-Box h1 {
+    font-size: 2.5rem;
+    padding: 10px;
+}
+.SignUp-Box h4 {
+    font-family: 'Nanum Gothic', sans-serif;
+    color: rgb(160, 160, 160);
 }
 
-.SignUp-Box {
+.SignUp-header {
+    grid-row: 1/2;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
+    width: 100%;
+    height: 100%;
 }
+
+.SignUp-header img {
+    width: 10%;
+}
+
 
 .SignUp-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 .SignUp-Table {
-    height: 1100px;
+    grid-row: 2/3;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 450px;
-    justify-content: space-around
+    overflow-y: scroll;
+    padding: 0 18%;
 }
-
-.SignUp-item > tr {
-    height: 80px;
+.SignUp-Table::-webkit-scrollbar {
+    width: 10px;
+}
+.SignUp-Table::-webkit-scrollbar-thumb {
+background: linear-gradient(#000e88, #303030);
+border-radius: 25px;
 }
 
 .SignUp-item > th {
@@ -146,10 +173,13 @@
     border-radius: 25px;
     height: 50px;
     width: 310px;
-    box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 0.9rem;
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     padding-left: 20px;
     border: 0px;
     outline: none;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
 }
 
 .SignUp-item > td > select {
@@ -157,7 +187,7 @@
     height: 50px;
     width: 155px;
     margin-right: 10px;
-    box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.19);
     padding-left: 20px;
     outline: none;
     border: 0px;
@@ -173,10 +203,8 @@
 }
 
 .gender {
-    margin: 0;
-    padding: 0;
     width: 150px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -201,21 +229,35 @@
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 0px;
     outline: none;
-    color: white;
+    color: var(--white);
+    letter-spacing: 3px;
+    text-indent: 3px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-weight: bold;
+}
+
+.SignUp-footer {
+    grid-row: 3/4;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .SignUp-btn {
-    width: 332px;
-    height: 50px;
+    width: 64%;
+    height: 60px;
     border-radius: 25px;
     background-color:  rgb(0, 11, 59);
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 0px;
     outline: none;
-    color: white;
+    color: var(--white);
     letter-spacing: 10px;
-    position: sticky;
-    bottom: 15px
+    font-size: 1.3rem;
+    vertical-align: middle;
+    font-family: 'MaplestoryOTFBold';
 }
 
 

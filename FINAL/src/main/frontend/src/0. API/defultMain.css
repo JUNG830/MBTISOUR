@@ -80,7 +80,7 @@ a {
 }
 
 .Container {
-    width: 100vw;
+    width: 1180px;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.04);
     height: calc(100vh - 70px);

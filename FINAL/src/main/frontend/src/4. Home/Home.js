@@ -82,22 +82,20 @@ const Home = () => {
 
   return (
     <div className="Container">
-      <div className="Middle-Container">
-        <div className="Home-Container">
-          
-          <div className="WelcomeMessage">
-            <h2><span style={{ color: "navy", fontWeight: "bold" }}>{nickName}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
-            <h3>새로운 쪽지가 있습니다!</h3>
-          </div>
-
-          <div className="Dino">
-            <iframe className="DinoAddr" src="https://chromedino.com/" type="text/css" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
-          </div>
-          <div className="DinoStartMessage">
-            <p>게임을 시작하려면 spacebar를 누르세요</p>
-          </div>
-
+      <div className="Home-Container">
+        
+        <div className="WelcomeMessage">
+          <h2><span style={{ color: "navy", fontWeight: "bold" }}>{nickName}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
+          <h3>새로운 쪽지가 있습니다!</h3>
         </div>
+
+        <div className="Dino">
+          <iframe className="DinoAddr" src="https://chromedino.com/" type="text/css" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+        </div>
+        <div className="DinoStartMessage">
+          <p>게임을 시작하려면 spacebar를 누르세요</p>
+        </div>
+
       </div>
     </div>
   );
