@@ -1,0 +1,36 @@
+
+#cursor {
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-transfrm: transform;
+}
+
+.cursor__inner {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #9e57d9;
+  transition: all .6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hide .cursor__inner {
+  opacity: 0;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+#cursor.overlay {
+  z-index: 1;
+}
+
+.overlay .cursor__inner {
+  width: 3rem;
+  height: 3rem;
+  background-color: #c185f230;
+  border-color: transparent;
+}
