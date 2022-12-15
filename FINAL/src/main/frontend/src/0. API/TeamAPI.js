@@ -152,8 +152,9 @@ const TeamAPI = {
     return await axios.post(TEAM_DOMAIN + "DeletePost", obj, HEADER);
   },
   //chat
-  memberChat: async function (content,nickname,face) {
+  memberChat: async function (content,id,nickname,face) {
     const chatObj = {
+      id:id,
       nickname:nickname,
       content: content,
       face: face

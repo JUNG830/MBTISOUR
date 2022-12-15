@@ -26,12 +26,12 @@ public class GChattingController {
 
         String getContent = chatData.get("content");
         String getNickname = chatData.get("nickname");
-//        String getId = chatData.get("id");
+        String getId = chatData.get("id");
         String getFace = chatData.get("face");
 
         log.info(getContent);
 
-        boolean isTrue = GChatService.sendPost(getContent,getNickname,getFace);
+        boolean isTrue = GChatService.sendPost(getContent,getId,getNickname,getFace);
         if(isTrue) {
             log.warn(">" + isTrue + " : 채팅성공 ");
             return new ResponseEntity<>(true, HttpStatus.OK);

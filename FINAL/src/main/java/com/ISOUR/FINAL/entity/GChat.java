@@ -15,5 +15,6 @@ public class GChat {
     private String content;
     private String face;
     private String nickname;
+    private String id;
     private LocalDateTime chatTime;
 }

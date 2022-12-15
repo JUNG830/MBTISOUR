@@ -29,14 +29,15 @@ public class GChatService {
     @Autowired
     private ChatListRepository chatListRepository;
 
-    public boolean sendPost(String content, String nickname, String url) {
+    public boolean sendPost(String content, String nickname, String url, String id) {
         log.warn("★★★★★★★★★채팅 보내기 서비스★★★★★★★★★");
         log.warn("내용(content) : " + content);
 
         GChat GChat = new GChat();
         GChat.setContent(content);
-        GChat.setChatTime(LocalDateTime.now().withNano(0));
         GChat.setNickname(nickname);
+        GChat.setChatTime(LocalDateTime.now().withNano(0));
+        GChat.setId(id);
         GChat.setFace(url);
 
 
@@ -55,6 +56,7 @@ public class GChatService {
             GChatDTO GChatDTO = new GChatDTO();
             GChatDTO.setFace(e.getFace());
             GChatDTO.setNickname(e.getNickname());
+            GChatDTO.setId(e.getId());
             GChatDTO.setChatNum(e.getChatNum());
             GChatDTO.setContent(e.getContent());
             GChatDTO.setChatTime(e.getChatTime());
