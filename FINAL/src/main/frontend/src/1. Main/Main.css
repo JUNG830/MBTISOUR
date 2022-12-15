@@ -44,8 +44,19 @@ padding-top: 320px;
     cursor: pointer;
     align-items: center;
   }
+  .loading {
+    position: relative;
+    bottom:188px;
+    left: 3px;
+    width: 195px;
+    height: 195px;
 
-  #loading {
+    border-radius: 50%;
+    border-top-color: #fff;
+ 
+
+  }
+  .loading:hover {
     position: relative;
     bottom:188px;
     left: 3px;
@@ -56,7 +67,7 @@ padding-top: 320px;
     border-top-color: #fff;
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
-    z-index: -1;
+
   }
   
   @keyframes spin {
