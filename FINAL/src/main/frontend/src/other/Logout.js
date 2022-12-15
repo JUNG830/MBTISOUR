@@ -2,6 +2,7 @@ import Cookies from 'universal-cookie';
 import { db } from "../firebase";
 import { updateDoc, doc } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
+import "./Logout.css";
 
 function Logout() {
   const cookies = new Cookies();
