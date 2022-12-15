@@ -3,7 +3,8 @@
     --navy: #29335c;
     --red: red; 
     --white: white;
-    --pink: #e24b4b;
+    --pink: #ffc0cb;
+    --tongue: #e24b4b;
 }
 
 /* 
@@ -69,7 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 
 * { 
     box-sizing: border-box;
-    font-family: 'LINESeedKR-Bd';
     margin: 0;
     padding: 0;
 }
@@ -88,7 +88,6 @@ a {
     justify-content: center;
     align-items: center;
     font-family: 'LINESeedKR-Bd'
-   
 }
 
 .No-Nav-Container {
