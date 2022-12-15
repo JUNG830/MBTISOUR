@@ -33,7 +33,7 @@ const Startbtn = styled.button`
 
   color: white;
   padding: 0.3rem;
-  width: 600px;
+  width: 300px;
   border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -316,30 +316,29 @@ const RecommendByOne = styled.div`
     border-radius: 70%;
     overflow: hidden;
     object-fit: cover;
-    margin: 15px auto;
+    margin: 0 auto;
     position: relative;
-    left: px;
   }
   &>p{
     color:#00FFFF;
     font-size: 30px;
     text-align: center;
     position: relative;
-    bottom:30px;
     font-weight: 900;
+    bottom:30px;
   }
-  height: 250px;
+  height: 170px;
 	width: 170px;
 	border-radius: 15px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	overflow: hidden;
   margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     grid-row: 2/3;
-    background-color: #6633FF;
+    /* background-color: #6633FF; */
     position: relative;
+    padding:20px;
     
 `;
 const ResultContainer = styled.div`
@@ -349,15 +348,12 @@ const ResultContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  top:170px;
-  /* border-right: 2px solid black;
-  border-left: 2px solid black; */
   
 `;
 
 const MyMbti = styled.div`
-  height: 300px;
-	width: 200px;
+  height: 200px;
+	width: 400px;
 	border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	overflow: hidden;
@@ -368,8 +364,8 @@ const MyMbti = styled.div`
     grid-column-start: 1;
     grid-column-end: 5;
     grid-row: 1/2;
-    background-color: #6699FF;
     margin: 0 auto 30px;
+    background-color: #29335c;
 
   img{
     width: 120px;
@@ -383,8 +379,21 @@ const MyMbti = styled.div`
     color:#66FF33;
     font-size: 40px;
     position: relative;
-    bottom: 40px;
+    bottom: 60px;
     font-weight: 900;
+    left:13px;
+  }
+  & td{
+    min-width: 200px;
+    position: relative;
+    right: 70px;
+  }
+  & span{
+    color:black;
+    position: relative;
+    bottom:190px;
+    left:70px;
+
   }
 
 `
@@ -404,10 +413,11 @@ const StyledButton = styled.button`
   position: relative;
   margin : 20px auto 0;
   left : 145px;
+  bottom: 20px;
 
   &:hover{
-  background-color: firebrick;
-  border-color: firebrick;
+  border-color: skyblue;
+  font-size:27px;
   cursor: pointer;
   opacity: 0.95;
   transition-duration: .5s;
@@ -424,41 +434,48 @@ const StyledButton = styled.button`
   
   .arrow{
     position: relative;
-    bottom: 4px;
+    top:5px;
   }
   
   
 `
-const RecommendWord = styled.div`
-  color: orangered;
-  font-weight: 900;
-  font-size: 40px;
-  position: relative;
-  text-align:center;
+
+const Mbtiment = styled.div`
+  text-align: center;
+  font-size: 20px;
+
+`
+const Mbtiment2 = styled.div`
+  text-align: center;
+  color:red;
+  font-size: 13px;
+
+`
+
+
+const Underline = styled.div`
+  border-bottom: 2px groove black;
+  width:650px;
+  margin: 0 auto;
+  border-color: rgba(0,0,0,0.2);
 `
 
 const Character = styled.div`
-  color: #FFFFCC;
+  color: whitesmoke;
   font-weight: 900;
-  font-size: 16px;
+  font-size: 1.5em;
   position: relative;
   text-align:center;
   bottom: 45px;
-  margin: 5px 0px;
+
+  
 `
 const StartContainer = styled.div`
 
-  padding-top: 50px;
   text-align: center;
-  max-width:700px;
-  height: 800px;
-  margin:0px auto 0px;
-  top : 100px;
-  border-radius: 25px;
-
   
+  margin:0px auto 0px;
   border: 0px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: relative;
   
   &>.mbti-person1{
@@ -476,21 +493,38 @@ const StartContainer = styled.div`
   }
   &>.mbti-quiz{
     position: relative;
-    bottom: 50px;
+    bottom: 70px;
   }
   &>.mbti-brain{
     position: relative;
-    bottom: 50px;
+    bottom: 70px;
   }
 
-`
+  `
+const Mbtiword = styled.p`
+    font-size: 40px;
+    position: relative;
+    right:40px;
+    bottom:10px;
+  
+    span:nth-of-type(1){
+      color:red;
+    }
+    span:nth-of-type(2){
+      color:orange;
+    }
+    span:nth-of-type(3){
+      color:yellowgreen;
+    }
+    span:nth-of-type(4){
+      color:#CC33FF;
+    }
+  `
 const Container = styled.div`
     box-sizing: border-box;
     width: 1180px;
     margin: 0 auto;
     padding: 0;
-    background-color: rgba(0,0,0, .04);
-    height: 100vh;
 `
 
 
@@ -519,25 +553,6 @@ const Sentence2 = styled.div`
   }
 `
 
-const Mbtiword = styled.p`
-  font-size: 40px;
-  position: relative;
-  right:60px;
-  top:20px;
-
-  span:nth-of-type(1){
-    color:red;
-  }
-  span:nth-of-type(2){
-    color:orange;
-  }
-  span:nth-of-type(3){
-    color:yellowgreen;
-  }
-  span:nth-of-type(4){
-    color:#CC33FF;
-  }
-`
 const DetailWord = styled.p`
     text-align: center;
     position: relative;
@@ -584,8 +599,6 @@ const Quiz = (props) => {
     answer: ["E", "S", "T", "J"]
   };
 
-  const RecommendWord2 = "내 유형과 잘맞는 단짝 유형"
-
   // 결과 페이지
   if (count === props.questionList.length) {
     if (testMBTI === "ISTJ") {
@@ -593,31 +606,37 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" target='_blank'>
-                <img src={현실주의자}></img>
-              </a>
-              <p>{"ISTJ"}</p>
-              <Character>{"#진실한 삶"}</Character>
-              <Character>{"#책임감 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" target='_blank'>
+                  <img src={현실주의자}></img>
+                </a>
+                <p>{"ISTJ"}</p>
+              </td>
+              <span>
+                <Character>{"#진실한 삶"}</Character>
+                <Character>{"#책임감 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
                   <img src={연예인}></img>
                 </a>
                 <p>{'ESFP'}</p>
-                <Character>{"#열정적"}</Character>
-                <Character>{"#즐거움 추구"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ESTJ") {
@@ -625,46 +644,44 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
-                <img src={경영자}></img>
-              </a>
-              <p>{"ESTJ"}</p>
-              <Character>{"#높은 책임감"}</Character>
-              <Character>{"#지도력"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
+                  <img src={경영자}></img>
+                </a>
+                <p>{"ESTJ"}</p>
+              </td>
+              <span>
+                <Character>{"#높은 책임감"}</Character><br />
+                <Character>{"#지도력"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
                   <img src={논리술사}></img>
                 </a>
                 <p>{'INTP'}</p>
-                <Character>{"#아이디어 뿜뿜"}</Character>
-                <Character>{"#생각많음"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
                   <img src={모험가}></img>
                 </a>
                 <p>{'ISFP'}</p>
-                <Character>{"#개방적"}</Character>
-                <Character>{"#조화로운 삶"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp">
                   <img src={장인}></img>
                 </a>
                 <p>{'ISTP'}</p>
-                <Character>{"#장인"}</Character>
-                <Character>{"#색다름 추구"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
         </ResultContainer>
       );
@@ -673,39 +690,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
-                <img src={집정관}></img>
-              </a>
-              <p>{"ESFJ"}</p>
-              <Character>{"#오랜관계 추구"}</Character>
-              <Character>{"#책임감"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
+                  <img src={집정관}></img>
+                </a>
+                <p>{"ESFJ"}</p>
+              </td>
+              <span>
+                <Character>{"#오랜관계 추구"}</Character>
+                <Character>{"#책임감"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
                   <img src={모험가}></img>
                 </a>
                 <p>{'ISFP'}</p>
-                <Character>{"#조화로운 삶"}</Character>
-                <Character>{"#개방적"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp">
                   <img src={장인}></img>
                 </a>
                 <p>{'ISTP'}</p>
-                <Character>{"#색다름 추구"}</Character>
-                <Character>{"#장인"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ISFJ") {
@@ -713,39 +734,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
-                <img src={수호자}></img>
-              </a>
-              <p>{"ISFJ"}</p>
-              <Character>{"#소통 추구"}</Character>
-              <Character>{"#충실한 성격"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
+                  <img src={수호자}></img>
+                </a>
+                <p>{"ISFJ"}</p>
+              </td>
+              <span>
+                <Character>{"#소통 추구"}</Character>
+                <Character>{"#충실한 성격"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
                   <img src={연예인}></img>
                 </a>
                 <p>{'ESFP'}</p>
-                <Character>{"#즐거움 추구"}</Character>
-                <Character>{"#열정적"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp" target='_blank'>
                   <img src={사업가}></img>
                 </a>
                 <p>{'ESTP'}</p>
-                <Character>{"#실천 추구"}</Character>
-                <Character>{"#높은 관찰력"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ESTP") {
@@ -753,31 +778,37 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp" target='_blank'>
-                <img src={사업가}></img>
-              </a>
-              <p>{"ESTP"}</p>
-              <Character>{"#높은 관찰력"}</Character>
-              <Character>{"#실천 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp" target='_blank'>
+                  <img src={사업가}></img>
+                </a>
+                <p>{"ESTP"}</p>
+              </td>
+              <span>
+                <Character>{"#높은 관찰력"}</Character>
+                <Character>{"#실천 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
                   <img src={수호자}></img>
                 </a>
                 <p>{'ISFJ'}</p>
-                <Character>{"#소통 추구"}</Character>
-                <Character>{"#충실한 성격"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ISTP") {
@@ -785,39 +816,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp">
-                <img src={장인}></img>
-              </a>
-              <p>{"ISTP"}</p>
-              <Character>{"#장인"}</Character>
-              <Character>{"#색다름 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp">
+                  <img src={장인}></img>
+                </a>
+                <p>{"ISTP"}</p>
+              </td>
+              <span>
+                <Character>{"#장인"}</Character>
+                <Character>{"#색다름 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
                   <img src={집정관}></img>
                 </a>
                 <p>{'ESFJ'}</p>
-                <Character>{"#오랜관계 추구"}</Character>
-                <Character>{"#책임감"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
                   <img src={경영자}></img>
                 </a>
                 <p>{'ESTJ'}</p>
-                <Character>{"#지도력"}</Character>
-                <Character>{"#높은 책임감"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ESFP") {
@@ -825,39 +860,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
-                <img src={연예인}></img>
-              </a>
-              <p>{"ESFP"}</p>
-              <Character>{"#열정적"}</Character>
-              <Character>{"#즐거움 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
+                  <img src={연예인}></img>
+                </a>
+                <p>{"ESFP"}</p>
+              </td>
+              <span>
+                <Character>{"#열정적"}</Character>
+                <Character>{"#즐거움 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
                   <img src={수호자}></img>
                 </a>
                 <p>{'ISFJ'}</p>
-                <Character>{"#소통 추구"}</Character>
-                <Character>{"#충실한 성격"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" target='_blank'>
                   <img src={현실주의자}></img>
                 </a>
                 <p>{'ISTJ'}</p>
-                <Character>{"#책임감 추구"}</Character>
-                <Character>{"#진실한 삶"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ISFP") {
@@ -865,39 +904,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
-                <img src={모험가}></img>
-              </a>
-              <p>{"ISFP"}</p>
-              <Character>{"#개방적"}</Character>
-              <Character>{"#조화로운 삶"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
+                  <img src={모험가}></img>
+                </a>
+                <p>{"ISFP"}</p>
+              </td>
+              <span>
+                <Character>{"#개방적"}</Character>
+                <Character>{"#조화로운 삶"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
                   <img src={집정관}></img>
                 </a>
                 <p>{'ESFJ'}</p>
-                <Character>{"#책임감"}</Character>
-                <Character>{"#오랜관계 추구"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
                   <img src={경영자}></img>
                 </a>
                 <p>{'ESTJ'}</p>
-                <Character>{"#지도력"}</Character>
-                <Character>{"#높은 책임감"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ENTP") {
@@ -905,39 +948,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
-                <img src={변론가}></img>
-              </a>
-              <p>{"ENTP"}</p>
-              <Character>{"#규칙파괴자"}</Character>
-              <Character>{"#풍부한 지식"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
+                  <img src={변론가}></img>
+                </a>
+                <p>{"ENTP"}</p>
+              </td>
+              <span>
+                <Character>{"#규칙파괴자"}</Character>
+                <Character>{"#풍부한 지식"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
                   <img src={옹호자}></img>
                 </a>
                 <p>{'INFJ'}</p>
-                <Character>{"#소통 추구"}</Character>
-                <Character>{"#목적 중시"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
                   <img src={논리술사}></img>
                 </a>|
                 <p>{'INTJ'}</p>
-                <Character>{"#지적갈망"}</Character>
-                <Character>{"#개척자정신"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "INTP") {
@@ -945,31 +992,37 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
-                <img src={논리술사}></img>
-              </a>
-              <p>{"INTP"}</p>
-              <Character>{"#아이디어 뿜뿜"}</Character>
-              <Character>{"#생각많음"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
+                  <img src={논리술사}></img>
+                </a>
+                <p>{"INTP"}</p>
+              </td>
+              <span>
+                <Character>{"#아이디어 뿜뿜"}</Character>
+                <Character>{"#생각많음"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
                   <img src={통솔자}></img>
                 </a>
                 <p>{'ENTJ'}</p>
-                <Character>{"#현실적"}</Character>
-                <Character>{"#목표 갈망"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ENTJ") {
@@ -977,39 +1030,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
-                <img src={통솔자}></img>
-              </a>
-              <p>{"ENTJ"}</p>
-              <Character>{"#목표 갈망"}</Character>
-              <Character>{"#현실적"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
+                  <img src={통솔자}></img>
+                </a>
+                <p>{"ENTJ"}</p>
+              </td>
+              <span>
+                <Character>{"#목표 갈망"}</Character>
+                <Character>{"#현실적"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
                   <img src={옹호자}></img>
                 </a>
                 <p>{'INFJ'}</p>
-                <Character>{"#소통 추구"}</Character>
-                <Character>{"#목적 중시"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
                   <img src={논리술사}></img>
                 </a>
                 <p>{'INTP'}</p>
-                <Character>{"#아이디어 뿜뿜"}</Character>
-                <Character>{"#생각많음"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "INTJ") {
@@ -1017,39 +1074,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
-                <img src={논리술사}></img>
-              </a>|
-              <p>{"INTJ"}</p>
-              <Character>{"#개척자정신"}</Character>
-              <Character>{"#지적갈망"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
+                  <img src={논리술사}></img>
+                </a>|
+                <p>{"INTJ"}</p>
+              </td>
+              <span>
+                <Character>{"#개척자정신"}</Character>
+                <Character>{"#지적갈망"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
                   <img src={활동가}></img>
                 </a>
                 <p>{'ENFP'}</p>
-                <Character>{"#즐거움 추구"}</Character>
-                <Character>{"#사교적"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
                   <img src={변론가}></img>
                 </a>
                 <p>{'ENTP'}</p>
-                <Character>{"#규칙파괴자"}</Character>
-                <Character>{"#풍부한 지식"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ENFJ") {
@@ -1057,39 +1118,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" target='_blank'>
-                <img src={선도자}></img>
-              </a>
-              <p>{"ENFJ"}</p>
-              <Character>{"#깊은 배려"}</Character>
-              <Character>{"#신념 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" target='_blank'>
+                  <img src={선도자}></img>
+                </a>
+                <p>{"ENFJ"}</p>
+              </td>
+              <span>
+                <Character>{"#깊은 배려"}</Character>
+                <Character>{"#신념 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" target='_blank'>
                   <img src={중재자} />
                 </a>
                 <p>{'INFP'}</p>
-                <Character>{"#솔직함 추구"}</Character>
-                <Character>{"#공감능력"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
                   <img src={모험가}></img>
                 </a>|
                 <p>{'ISFP'}</p>
-                <Character>{"#조화로운 삶"}</Character>
-                <Character>{"#개방적"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "INFJ") {
@@ -1097,39 +1162,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
-                <img src={옹호자}></img>
-              </a>
-              <p>{"INFJ"}</p>
-              <Character>{"#목적 중시"}</Character>
-              <Character>{"#소통 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
+                  <img src={옹호자}></img>
+                </a>
+                <p>{"INFJ"}</p>
+              </td>
+              <span>
+                <Character>{"#목적 중시"}</Character>
+                <Character>{"#소통 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
                   <img src={활동가}></img>
                 </a>
                 <p>{'ENFP'}</p>
-                <Character>{"#사교적"}</Character>
-                <Character>{"#즐거움 추구"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
                   <img src={변론가}></img>
                 </a>
                 <p>{'ENTP'}</p>
-                <Character>{"#풍부한 지식"}</Character>
-                <Character>{"#규칙파괴자"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "ENFP") {
@@ -1137,39 +1206,43 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
-                <img src={활동가}></img>
-              </a>
-              <p>{"ENFP"}</p>
-              <Character>{"#사교적"}</Character>
-              <Character>{"#즐거움 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
+                  <img src={활동가}></img>
+                </a>
+                <p>{"ENFP"}</p>
+              </td>
+              <span>
+                <Character>{"#사교적"}</Character>
+                <Character>{"#즐거움 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
                   <img src={옹호자}></img>
                 </a>
                 <p>{'INFJ'}</p>
-                <Character>{"#목적 중시"}</Character>
-                <Character>{"#소통 추구"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
                   <img src={논리술사}></img>
                 </a>|
                 <p>{'INTJ'}</p>
-                <Character>{"#개척자정신"}</Character>
-                <Character>{"#지적갈망"}</Character>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
+
         </ResultContainer>
       );
     } else if (testMBTI === "INFP") {
@@ -1177,44 +1250,49 @@ const Quiz = (props) => {
         <ResultContainer>
           <div>
             <MyMbti>
-              <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" target='_blank'>
-                <img src={중재자} />
-              </a>
-              <p>{"INFP"}</p>
-              <Character>{"#공감능력"}</Character>
-              <Character>{"#솔직함 추구"}</Character>
+              <td>
+                <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" target='_blank'>
+                  <img src={중재자} />
+                </a>
+                <p>{"INFP"}</p>
+              </td>
+              <span>
+                <Character>{"#공감능력"}</Character>
+                <Character>{"#솔직함 추구"}</Character>
+              </span>
             </MyMbti>
-            <RecommendWord>
-              {RecommendWord2}
-            </RecommendWord>
+
+            <StyledButton onClick={OnclickGetFreind}>
+              단짝 친구 찾으러 가기
+              <VscArrowRight className="arrow" size={35} />
+            </StyledButton>
+            <Underline />
+            <Mbtiment>{testMBTI}의 단짝 유형</Mbtiment>
+
+
             <Recommend>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" target='_blank'>
                   <img src={선도자}></img>
                 </a>
                 <p>{'ENFJ'}</p>
-                <Character>{"#신념 추구"}</Character>
-                <Character>{"#깊은 배려"}</Character>
               </RecommendByOne>
               <RecommendByOne>
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
                   <img src={통솔자}></img>
                 </a>
-                <p>{'ENTJ'}</p>
-                <Character>{"#현실적"}</Character>
-                <Character>{"#목표 갈망"}</Character>
+                <span>
+                  <p>{'ENTJ'}</p>
+                </span>
               </RecommendByOne>
             </Recommend>
-            <StyledButton onClick={OnclickGetFreind}>
-              단짝 친구 찾으러 가기
-              <VscArrowRight className="arrow" size={35} />
-            </StyledButton>
-            <DetailWord>해당 mbti에 대한 더 자세한 정보는 이미지를 클릭해주세요.</DetailWord>
+            <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
           </div>
         </ResultContainer>
       );
     }
   }
+
 
 
   //선택지
@@ -2021,7 +2099,7 @@ const MBTI = () => {
         {states.mode === 'start'
           ?
           <StartContainer>
-            
+
             <Sentence2><div><span>m</span>
               <span>b</span>
               <span>t</span>
@@ -2034,11 +2112,11 @@ const MBTI = () => {
               <span>t</span>
               <span>i</span>
             </Mbtiword>
-            <MdQuiz size={100} className='mbti-quiz' /><MdPsychology size={120} className='mbti-brain' />
+            <MdQuiz size={75} className='mbti-quiz' /><MdPsychology size={90} className='mbti-brain' />
             <p></p>
-            <IoPeople className='mbti-person1' size={200} />
-            <IoPersonAdd className='mbti-person2' size={180} />
-            <IoPersonAdd className='mbti-person3' size={160} />
+            <IoPeople className='mbti-person1' size={130} />
+            <IoPersonAdd className='mbti-person2' size={100} />
+            <IoPersonAdd className='mbti-person3' size={110} />
 
           </StartContainer>
 
