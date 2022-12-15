@@ -32,7 +32,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .PostModal > section > header {
   position: relative;
-  padding: 1rem 4rem 1rem 2rem;
+  padding: 1.2rem 4rem 1rem 2rem;
   background-color: var(--navy);
   /* font-weight: 700; */
   /* 아래부터는 조혜경이 추가 */
@@ -40,6 +40,8 @@
   align-items: center;
   justify-content: space-between;
   color: white;
+  font-weight: 700;
+  font-size: large;
 }
 .PostModal > section > header button {
   position: absolute;
@@ -75,13 +77,13 @@
   /* margin-bottom: 1rem; */
   display: flex;
   flex-direction: column;
-  margin: 1rem 2rem;
+  margin: 1.5rem 2rem 1rem;
 }
 .PostModal-Form-control {
   display: block;
   border-radius: 0.5rem;
   border: 1px solid #bfbfbf;
-  padding: 0.5rem;
+  padding: .75rem;
   font-size: 1rem;
   margin-top: .5rem;
   /* position: relative;
@@ -106,7 +108,8 @@
 .PostModal-Form-item textarea {
   /* width: 100%; */
   height: 4.5rem;
-  padding: .5rem 1.5rem .5rem .5rem;
+  padding: .75rem 1.2rem .75rem .75rem;
+  /* padding: .75rem; */
   outline: none;
   resize: none;
   font-size: 1rem;
@@ -133,7 +136,7 @@
   footer 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .PostModal > section > footer {
-  padding: 1rem 2rem;
+  padding: .5rem 2rem 1rem;
   text-align: right;
 }
 .PostModal > section > footer button {
