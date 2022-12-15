@@ -13,7 +13,7 @@
 
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 
 
 
@@ -26,7 +26,8 @@
   display: flex;
   /* padding: 10px 2rem; */
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'MaplestoryOTFBold';
+  letter-spacing: 3px;
   /* width: 100%; */
   color: #fff;
   background: #29335c;
@@ -97,6 +98,7 @@
   text-align: left;
   padding: 0;
   align-items: center;
+  justify-content: space-around;
 }
 .Navbar-Container .Navbar li {
   width: 150px;
@@ -111,7 +113,7 @@
 }
 .Navbar-Container .Navbar li a {
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   padding: 0 20px;
   /* margin: 0px 30px; */
@@ -165,7 +167,7 @@
   /* margin-right: 20px; */
   /* margin-left: 10px; */
   /* margin: auto 10px; */
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   transition: all .50s ease;
   color: white;
@@ -197,6 +199,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, .2);
   transition: all .50s ease;
 }
+.User-submenu :last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -224,7 +231,10 @@
 }
 
 #logout {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-family: 'MaplestoryOTFBold';
+  letter-spacing: 3px;
+  cursor: pointer;
 }
 
 /*

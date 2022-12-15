@@ -84,7 +84,7 @@ const PostModal = (props) => {
 
         {/* header 영역 */}
           <header>
-            쪽지 자세히 보기
+            <h2>쪽지 자세히 보기</h2>
             <button className="close" onClick={close}>
               &times;
             </button>
