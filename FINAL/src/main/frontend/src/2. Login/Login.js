@@ -207,9 +207,15 @@ function Login() {
         </div>
 
         {/* <form action="" className="Login-card-form"> */}
-
+       
         {/* 아이디 */}
         <div className='Login-Body'>
+        {/* <div className='Auto-Login2'>
+        <label>
+              <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin} />
+              <span className='Auto-Login-text'>자동로그인</span>
+        </label>
+        </div> */}
           <div className="Login-Id">
             <img src={person} />
             <input className="Login-input" type="text" placeholder="Enter ID" value={id} onKeyDown={EnterPress} onChange={onChangeId} required />
@@ -218,39 +224,54 @@ function Login() {
           {/* 비밀번호 */}
           
           <div className="Login-PW">
-            <img src={lock} />
+            <img className="Login-input-img" src={lock} />
             <input className="Login-input" type="password" placeholder="Enter Password" onKeyDown={EnterPress} value={pwd} onChange={onChangePwd} />
           </div>
 
         {/* <form className='Auto-Login'> */}
           <div className='Auto-Login' >
-            <label>
+          {/* <div className='Auto-Login2'> */}
+        <label>
               <input className='Auto-Login-input' type="checkbox" id='checkbox' onClick={onClickAutologin} />
               <span className='Auto-Login-text'>자동로그인</span>
-            </label>
-            <span>|</span>
-            <span><a href="/FindInfo">아이디/비밀번호 찾기</a> </span>  
-          </div>
+        </label>
+        <span>|</span>
+        <a href="/FindInfo">아이디/비밀번호 찾기</a>
+        </div>
+            
+            {/* <span>|</span> */}
+            {/* <span><a href="/signup">  회원가입</a> </span>   */}
+          {/* </div> */}
+          
+          
         </div>
         {/* </form> */}
-
         
-        <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>Login
+        <motion.button className="Login-botton" type="submit" onClick={onClickLogin}>로그인
         
         </motion.button>
 
                 {/* 소셜로그인 */}
           
-          <div className='Login-kakao'>
+        <div className='Login-kakao'>
+          <a  className='login-logo'>
             <a href={kakao_Auth_Url}>
-              <img className='kakao-img' src={kakao} />
+              <div className='img-circle'>
+              <img className='kakao-img'style={{width:"4rem",height:"4rem",objectFit:"cover"}} src={kakao} />
+              </div>
             </a>
-          {/* <div className='Login-Google'> */}
-            <img src={google} onClick={signInWithGoogle} />
-          {/* </div> */}
-
+          카카오 로그인
+            </a>
+            <a  className='login-logo'>
+          <div className='img-circle'>
+          <img className='google-img' src={google} onClick={signInWithGoogle} style={{width:"2rem",height:"2rem",objectFit:"cover"}} >
+            </img>
           </div>
-    
+          구글 로그인
+            </a>
+         </div>
+         
+       
         
         <div className="Login-footer">
           가입하고 친구를 만들어봐요! <a href="/signup">  회원가입</a>
