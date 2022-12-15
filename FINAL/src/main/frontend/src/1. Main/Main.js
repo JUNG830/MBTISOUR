@@ -20,33 +20,36 @@ function Main () {
             <span style={{ fontSize: "30px" }}>MBTISOUR</span>
         </Animator>
     </ScrollPage>
+    
     <ScrollPage>
         <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -250))}>
-            <span style={{ fontSize: "30px" }}> <strong><p>인간들은 제각각 성격이 다릅니다.</p></strong></span>
+            <span style={{ fontSize: "30px" }}> <strong><p>인간들은 성격이 존재합니다.</p></strong></span>
         </Animator>
     </ScrollPage>
     <ScrollPage>
         <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -250))}>
-            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>그러기에 서로 존중하는 문화가 있어용</p></strong></span>
+            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>안맞는 사람들이 있을거고</p></strong></span>
         </Animator>
     </ScrollPage>
     <ScrollPage>
         <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -250))}>
-            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>무슨 말을 더 할까요? 어휘력이 부족합니다</p></strong></span>
+            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>또 잘맞는 사람이 있습니다.</p></strong></span>
         </Animator>
     </ScrollPage>
     <ScrollPage>
         <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -250))}>
-            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>이런 분위기 어떤가요</p></strong></span>
+            <span className="Page3" style={{ fontSize: "30px" }}> <strong><p>내 성격이 궁금하신가요?</p></strong></span>
         </Animator>
     </ScrollPage>
+    
     <ScrollPage>
         <Animator animation={FadeUp}>
             <span style={{ fontSize: "40px" }}><motion.div
                 className="box"
                 whileHover={{ scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}>  
                 <button className="Main-box-button2"><a href="/login">START</a></button>
+                <div id="loading"></div>
                 </motion.div></span>
         </Animator>
     </ScrollPage>
