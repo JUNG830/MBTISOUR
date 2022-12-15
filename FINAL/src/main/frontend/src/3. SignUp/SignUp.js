@@ -128,18 +128,18 @@ function SignUp() {
             {/* <div className='checkbox-check-all'> */}
             <div className='SignUp-Allagree'>
               {/* <span className='checkbox-check-btn1'> */}
-              <label htmlFor="checkbox-check_all">
-                <p>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</p>
+              <label className='Terms-title' htmlFor="checkbox-check_all">
+                <b className='All-Term'>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</b>
                 <input type="checkbox" id="checkbox-check_all"
                   onChange={(e) => handleAllCheck(e.target.checked)}
                   checked={termsList.length === checkedItems.length ? true : false} />
-                </label>
+              </label>
               {/* </span> */}
             {/* </div> */}
             </div>
 
             {termsList?.map(ball => (
-              <div>
+              <div className='Term-Box'>
                 <div className='SignUp-Allagree'>
                   <label className='Terms-title' htmlFor="checkbox-check_single">
                     <b>{ball.title}</b>
@@ -152,8 +152,8 @@ function SignUp() {
                 </div>
               </div>
             ))}
-            <div className='SignUp-Allagree'>
-              선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
+            <div className='SignUp-Allagree-S'>
+              * 선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
             </div>
             <div className='Terms-agree-btn'>
               <button type="button" className='nonAgreeBtn' onClick={onClickNonAgree}>취소</button>

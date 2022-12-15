@@ -130,7 +130,7 @@
 }
 
 .messages_container::-webkit-scrollbar-thumb {
-  background: linear-gradient(#000e88, #303030);
+  background: linear-gradient(var(--navy), #303030);
   border-radius: 25px;
 }
 
