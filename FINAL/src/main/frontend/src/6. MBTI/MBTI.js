@@ -31,6 +31,8 @@ const Startbtn = styled.button`
   background: #29335c;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  font-family: 'MaplestoryOTFBold';
+
   color: white;
   padding: 0.3rem;
   width: 300px;
@@ -480,24 +482,24 @@ const StartContainer = styled.div`
   
   &>.mbti-person1{
     position: relative;
-    bottom: 110px;
+    bottom: 60px;
     right:20px;
   }
   &>.mbti-person2{
     position: relative;
-    bottom: 75px;
+    bottom: 45px;
   }
   &>.mbti-person3{
     position: relative;
-    bottom: 125px;
+    bottom: 65px;
   }
   &>.mbti-quiz{
     position: relative;
-    bottom: 70px;
+    bottom: 30px;
   }
   &>.mbti-brain{
     position: relative;
-    bottom: 70px;
+    bottom: 30px;
   }
 
   `
@@ -505,7 +507,7 @@ const Mbtiword = styled.p`
     font-size: 40px;
     position: relative;
     right:40px;
-    bottom:10px;
+    bottom:0px;
   
     span:nth-of-type(1){
       color:red;
@@ -529,19 +531,25 @@ const Container = styled.div`
 
 
 const Sentence2 = styled.div`
-  font-size: 40px;
   margin-bottom: 40px;
+  font-size: 45px;
+
   & span:nth-of-type(1){
     color: rgba(149,98,123);
-  }
-  & span:nth-of-type(2){
-    color: rgba(153,194,108);
-  }
-  & span:nth-of-type(3){
-    color: rgba(113,202,204);
-  }
-  & span:nth-of-type(4){
-    color: rgba(228,199,40);
+  font-family: 'MaplestoryOTFBold';
+  
+}
+& span:nth-of-type(2){
+  color: rgba(153,194,108);
+  font-family: 'MaplestoryOTFBold';
+}
+& span:nth-of-type(3){
+  color: rgba(113,202,204);
+  font-family: 'MaplestoryOTFBold';
+}
+& span:nth-of-type(4){
+  color: rgba(228,199,40);
+  font-family: 'MaplestoryOTFBold';
   }
   
 
@@ -2100,10 +2108,14 @@ const MBTI = () => {
           ?
           <StartContainer>
 
-            <Sentence2><div><span>m</span>
+            <Sentence2><h3>
+              <span>m</span>
               <span>b</span>
               <span>t</span>
-              <span>i</span> 검사를 통해서</div><div>여러분의 특성을 파악하고</div><div> 그 특성을 통한</div><span>인생 최고의 친구</span>를 찾으세요!</Sentence2>
+              <span>i</span>
+              검사를 통해서<h3>여러분의 특성을 파악하고</h3><h3> 그 특성을 통한</h3>인생 최고의 친구를 찾으세요!
+            </h3>
+            </Sentence2>
 
             <Startbtn onClick={() => { changeMode('quiz') }}>검 사 시 작 <VscArrowRight className="arrow" size={35} /></Startbtn>
             <Mbtiword>
