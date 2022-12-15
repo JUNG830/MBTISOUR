@@ -260,7 +260,7 @@
     min-width: 106px;
     position:relative;
     margin-bottom: 5px;
-    left:154px;
+    left:142px;
 }
 
 .mypage-btn-select:nth-of-type(1){
@@ -288,7 +288,7 @@
     font-weight: 900;
     margin-bottom: 5px;
     position: relative;
-    left:152px;
+    left:142px;
     
 }
 
@@ -301,7 +301,7 @@
 }
 
 .mypage-input-addr1 {
-    width: 108px;
+    width: 138px;
     height: 48px;
     display: flex;
     align-items: center;
@@ -314,7 +314,7 @@
 }
 
 .mypage-input-addr2 {
-    width: 108px;
+    width: 138px;
     height: 48px;
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -322,15 +322,15 @@
     padding-left: 40px;
     font-size: 14px;
     position: relative;
-    left:152px;
-    bottom:63px;
+    left:140px;
+    bottom:60px;
 
 
 }
 
 
 .mypage-input-select1 {
-    width: 151px;
+    width: 138px;
     height: 48px;
     display: flex;
     align-items: center;
@@ -343,7 +343,7 @@
 }
 
 .mypage-input-select2 {
-    width: 151px;
+    width: 138px;
     height: 48px;
     border-style: none;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -351,7 +351,7 @@
     padding-left: 20px;
     font-size: 14px;
     position: relative;
-    left:152px;
+    left:140px;
     bottom:60px;
 
 
@@ -414,7 +414,7 @@ table tr{
 .Mypage-leave-btn {
     margin-top: 20px;
     position: relative;
-    left: 580px;
+    left: 555px;
     bottom:50px;
     width: 106px;
     height: 50px;
