@@ -1,4 +1,4 @@
-.PostModal {
+.PostModal { 
   display: none;
   position: fixed;
   top: 0;
@@ -7,6 +7,7 @@
   left: 0;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.6);
+  font-family: 'LINESeedKR-Bd'
 }
 .PostModal button {
   outline: none;
@@ -32,7 +33,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .PostModal > section > header {
   position: relative;
-  padding: 1.2rem 4rem 1rem 2rem;
+  padding: 1.2rem 4rem 1rem 2rem; 
   background-color: var(--navy);
   /* font-weight: 700; */
   /* 아래부터는 조혜경이 추가 */
@@ -40,8 +41,8 @@
   align-items: center;
   justify-content: space-between;
   color: white;
-  font-weight: 700;
-  font-size: large;
+  font-family: 'MaplestoryOTFBold';
+  letter-spacing: 3px;
 }
 .PostModal > section > header button {
   position: absolute;
@@ -67,7 +68,7 @@
   border-top: 1px solid #dee2e6;
   /* 아래부터는 조혜경이 추가 */
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 1 auto; 
 }
 
 
@@ -78,14 +79,17 @@
   display: flex;
   flex-direction: column;
   margin: 1.5rem 2rem 1rem;
+  font-family: 'MaplestoryOTFBold';
+  letter-spacing: 3px;
 }
 .PostModal-Form-control {
   display: block;
   border-radius: 0.5rem;
   border: 1px solid #bfbfbf;
   padding: .75rem;
-  font-size: 1rem;
   margin-top: .5rem;
+  font-family: 'LINESeedKR-Bd';
+  font-size: 1rem;
   /* position: relative;
   top:10px;
   display: block;
@@ -112,11 +116,12 @@
   /* padding: .75rem; */
   outline: none;
   resize: none;
-  font-size: 1rem;
+  /* font-size: 1rem; */
   /* margin-top: 20px; */
   border-radius: .5rem;
   border-color: #bfbfbf;
   max-height: 300px;
+  font-family: 'LINESeedKR-Bd'
 }
 .PostModal-Form-item textarea:is(:focus :valid) {
   border-width: 2px;
@@ -138,6 +143,7 @@
 .PostModal > section > footer {
   padding: .5rem 2rem 1rem;
   text-align: right;
+  
 }
 .PostModal > section > footer button {
   background-color: var(--navy);
@@ -147,6 +153,8 @@
   font-size: 1rem;
   padding: .5rem;
   border-radius: 25px;
+  font-family: 'MaplestoryOTFBold';
+  letter-spacing: 3px;
 }
 
 

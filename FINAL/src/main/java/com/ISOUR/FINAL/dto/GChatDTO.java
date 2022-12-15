@@ -11,6 +11,7 @@ public class GChatDTO {
     private Long chatNum;
     private String content;
     private String face;
+    private  String id;
     private String nickname;
     private LocalDateTime chatTime;
 }

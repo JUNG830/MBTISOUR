@@ -29,12 +29,12 @@ function CustomModal(props) {
               <span className="material-symbols-outlined">check</span>
             </div>
             <div className="s_text">
-              <h2>SUCCESS</h2>
+              <h1>SUCCESS</h1>
               <p>{state.successMsg}</p>
             </div>
           </div>
-          <div className="s_button">
-            <button className="success_btn">Continue</button>
+          <div className="s_button" onClick={onClickClose}>
+            <button className="success_btn">닫기</button>
           </div>
         </div>
       : null }
@@ -50,12 +50,12 @@ function CustomModal(props) {
               <span className="material-symbols-outlined">question_mark</span>
             </div>
             <div className="s_text">
-              <h2>ERROR</h2>
+              <h1>ERROR</h1>
               <p>{state.errorMsg}</p>
             </div>
           </div>
-          <div className="s_button">
-            <button className="error_btn">Continue</button>
+          <div className="s_button" onClick={onClickClose} >
+            <button className="error_btn">닫 기</button>
           </div>
         </div>
       : null }

@@ -31,6 +31,8 @@ const Startbtn = styled.button`
   background: #29335c;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  font-family: 'MaplestoryOTFBold';
+
   color: white;
   padding: 0.3rem;
   width: 300px;
@@ -86,8 +88,10 @@ const Word1 = styled.span`
   width:100px;
   height: 20px;
   color:skyblue;
-  right: 470px;
+  right: 445px;
   bottom: 250px;
+  font-family: 'MaplestoryOTFBold';
+
 `;
 const Word2 = styled.span`
   position: relative;
@@ -97,6 +101,8 @@ const Word2 = styled.span`
   color:orangered;
   bottom: 250px;
   right:100px;
+  font-family: 'MaplestoryOTFBold';
+
 
 `;
 const NumContainer = styled.div`
@@ -120,7 +126,8 @@ const Num = styled.span`
   display: flex;
   justify-content:center;
   margin: 0 auto;
-`;
+  font-family: 'MaplestoryOTFBold';
+  `;
 const OXcontainer = styled.div`
     align-items: center;
     display: flex;
@@ -133,6 +140,7 @@ const OXcontainer = styled.div`
     z-index: 1;
 `;
 const QuizContainer = styled.div`
+
    align-items: center;
   display: flex;
   justify-content:center;
@@ -142,6 +150,7 @@ const QuizContainer = styled.div`
     position: relative;
     top:350px;
     font-size: 30px;
+    font-family: 'MaplestoryOTFBold';
   }
 `
 
@@ -308,6 +317,8 @@ const Recommend = styled.div`
   display: flex;
   width :800px;
   margin: 40px auto 0;
+  font-family: 'MaplestoryOTFBold';
+
 `;
 const RecommendByOne = styled.div`
   &>a>img{
@@ -318,6 +329,8 @@ const RecommendByOne = styled.div`
     object-fit: cover;
     margin: 0 auto;
     position: relative;
+    font-family: 'MaplestoryOTFBold';
+
   }
   &>p{
     color:#00FFFF;
@@ -325,7 +338,8 @@ const RecommendByOne = styled.div`
     text-align: center;
     position: relative;
     font-weight: 900;
-    bottom:30px;
+    font-family: 'MaplestoryOTFBold';
+
   }
   height: 170px;
 	width: 170px;
@@ -339,6 +353,8 @@ const RecommendByOne = styled.div`
     /* background-color: #6633FF; */
     position: relative;
     padding:20px;
+    font-family: 'MaplestoryOTFBold';
+
     
 `;
 const ResultContainer = styled.div`
@@ -366,6 +382,8 @@ const MyMbti = styled.div`
     grid-row: 1/2;
     margin: 0 auto 30px;
     background-color: #29335c;
+    font-family: 'MaplestoryOTFBold';
+
 
   img{
     width: 120px;
@@ -379,20 +397,26 @@ const MyMbti = styled.div`
     color:#66FF33;
     font-size: 40px;
     position: relative;
-    bottom: 60px;
+    bottom: 20px;
     font-weight: 900;
     left:13px;
+    font-family: 'MaplestoryOTFBold';
+
   }
   & td{
     min-width: 200px;
     position: relative;
     right: 70px;
+    font-family: 'MaplestoryOTFBold';
+
   }
   & span{
     color:black;
     position: relative;
     bottom:190px;
     left:70px;
+    font-family: 'MaplestoryOTFBold';
+
 
   }
 
@@ -414,6 +438,8 @@ const StyledButton = styled.button`
   margin : 20px auto 0;
   left : 145px;
   bottom: 20px;
+  font-family: 'MaplestoryOTFBold';
+
 
   &:hover{
   border-color: skyblue;
@@ -466,7 +492,9 @@ const Character = styled.div`
   font-size: 1.5em;
   position: relative;
   text-align:center;
-  bottom: 45px;
+  bottom : -30px;
+  margin-bottom: 30px;
+  font-family: 'MaplestoryOTFBold';
 
   
 `
@@ -480,43 +508,48 @@ const StartContainer = styled.div`
   
   &>.mbti-person1{
     position: relative;
-    bottom: 110px;
+    bottom: 20px;
     right:20px;
   }
   &>.mbti-person2{
     position: relative;
-    bottom: 75px;
+    bottom: 5px;
   }
   &>.mbti-person3{
     position: relative;
-    bottom: 125px;
+    bottom: 25px;
   }
   &>.mbti-quiz{
     position: relative;
-    bottom: 70px;
+    bottom: -10px;
   }
   &>.mbti-brain{
     position: relative;
-    bottom: 70px;
+    bottom: -10px;
   }
 
   `
 const Mbtiword = styled.p`
-    font-size: 40px;
+    font-size: 60px;
     position: relative;
-    right:40px;
-    bottom:10px;
+    right:50px;
+    top:30px;
   
     span:nth-of-type(1){
       color:red;
+      font-family: 'MaplestoryOTFBold';
+      
     }
     span:nth-of-type(2){
       color:orange;
+      font-family: 'MaplestoryOTFBold';
     }
     span:nth-of-type(3){
       color:yellowgreen;
+      font-family: 'MaplestoryOTFBold';
     }
     span:nth-of-type(4){
+      font-family: 'MaplestoryOTFBold';
       color:#CC33FF;
     }
   `
@@ -529,19 +562,27 @@ const Container = styled.div`
 
 
 const Sentence2 = styled.div`
-  font-size: 40px;
   margin-bottom: 40px;
+  font-size: 45px;
+  font-family: 'MaplestoryOTFBold';
+
+
   & span:nth-of-type(1){
     color: rgba(149,98,123);
-  }
-  & span:nth-of-type(2){
-    color: rgba(153,194,108);
-  }
-  & span:nth-of-type(3){
-    color: rgba(113,202,204);
-  }
-  & span:nth-of-type(4){
-    color: rgba(228,199,40);
+  font-family: 'MaplestoryOTFBold';
+  
+}
+& span:nth-of-type(2){
+  color: rgba(153,194,108);
+  font-family: 'MaplestoryOTFBold';
+}
+& span:nth-of-type(3){
+  color: rgba(113,202,204);
+  font-family: 'MaplestoryOTFBold';
+}
+& span:nth-of-type(4){
+  color: rgba(228,199,40);
+  font-family: 'MaplestoryOTFBold';
   }
   
 
@@ -550,6 +591,10 @@ const Sentence2 = styled.div`
   }
   &>div{
     margin-bottom: 10px;
+  }
+  &>p{
+    font-family: 'MaplestoryOTFBold';
+
   }
 `
 
@@ -1281,9 +1326,9 @@ const Quiz = (props) => {
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
                   <img src={통솔자}></img>
                 </a>
-                <span>
-                  <p>{'ENTJ'}</p>
-                </span>
+
+                <p>{'ENTJ'}</p>
+
               </RecommendByOne>
             </Recommend>
             <Mbtiment2>이미지를 클릭하면 해당 상세페이지로 이동합니다.</Mbtiment2>
@@ -2100,10 +2145,14 @@ const MBTI = () => {
           ?
           <StartContainer>
 
-            <Sentence2><div><span>m</span>
+            <Sentence2><>
+              <span>m</span>
               <span>b</span>
               <span>t</span>
-              <span>i</span> 검사를 통해서</div><div>여러분의 특성을 파악하고</div><div> 그 특성을 통한</div><span>인생 최고의 친구</span>를 찾으세요!</Sentence2>
+              <span>i</span>
+              검사를 통해서<p/> 여러분의 특성을 파악하고<p> 그 특성을 통한</p>인생 최고의 친구를 찾으세요!
+            </>
+            </Sentence2>
 
             <Startbtn onClick={() => { changeMode('quiz') }}>검 사 시 작 <VscArrowRight className="arrow" size={35} /></Startbtn>
             <Mbtiword>
@@ -2114,9 +2163,9 @@ const MBTI = () => {
             </Mbtiword>
             <MdQuiz size={75} className='mbti-quiz' /><MdPsychology size={90} className='mbti-brain' />
             <p></p>
-            <IoPeople className='mbti-person1' size={130} />
-            <IoPersonAdd className='mbti-person2' size={100} />
-            <IoPersonAdd className='mbti-person3' size={110} />
+            <IoPeople className='mbti-person1' size={160} />
+            <IoPersonAdd className='mbti-person2' size={120} />
+            <IoPersonAdd className='mbti-person3' size={140} />
 
           </StartContainer>
 

@@ -1,17 +1,23 @@
 .Postbox-Container {
   width: 800px;
-  height: 700px;
-  /* background: rgba(0, 0, 128, .2); */
+  height: 800px;
   align-items: center;
-  padding: 1rem;
+
+  padding: 2rem;
   border-radius: 10px;
   position: relative;
-  background-color: yellow;
-  /* box-shadow: 0 12px 12px rgba(32,32,32,.8); */
-  /* font-family: 'Poppins', sans-serif; */
-  /* border: 1px solid grey; */
-  /* top: 50%; */
+  /* background-color: yellow; */
+  
 }
+
+.Postbox-table input[type="checkbox"] {
+  display: flex;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  padding: .5rem;
+}
+
 
 
 /*
@@ -19,28 +25,26 @@
   header 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .Postbox-header {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin: 1rem auto 2rem;
   text-align: center;
-}
-
-.Postbox-header h1 {
-  font-size: 2rem;
-  font-weight: 600;
 }
 
 .Postbox-Container .delete {
   margin-bottom: 1rem;
-
+  align-content: center;
   border: none;
-  outline: none;
-  background: black;
-  color: white;
-  padding: .2rem;
-  letter-spacing: 2px;
-  border-radius: 10px;
-  width: 50px;
+  letter-spacing: .2rem;
   transition: background .5s;
+
+  background-color: var(--pink);
+  color: var(--white);
+  outline: none;
+  width: 80px;
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: 25px;
+  /* font-family: 'LINESeedKR-Bd'; */
+  font-family: 'MaplestoryOTFBold';
 }
 
 
@@ -51,11 +55,12 @@
 .Postbox-main {
   height: 450px;
   margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
 }
 
 
 .Postbox-table {
-  /* width: 100%; */
   text-align: center;
   box-shadow: 12px 12px 12px rgba(32,32,32,.5);
   border: 1px solid skyblue;
@@ -75,18 +80,24 @@
   main 영역 - thead
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .Postbox-table thead tr  {
-  background-color: #29335c;
-  color: white;
+  background-color: var(--navy);
+  color: var(--white);
 }
 .Postbox-table thead tr th {
-  padding: .8rem;
+  /* padding: .75rem; */
+  padding: 0.5rem 1rem; 
   border: 1px solid skyblue;
+  letter-spacing: 3px;
 }
 
-.Postbox-table .checkbox { width: 34x; }
-.Postbox-table .postSender { width: 146px; }
-.Postbox-table .content { width: 375px; }
-.Postbox-table .postTime { width: 178px; }
+.Postbox-table .thead-checkbox { 
+  width: 49px; 
+  padding: .5rem;
+}
+.Postbox-table .thead-postSender { width: 132px; }
+.Postbox-table .thead-content { width: 398px; }
+.Postbox-table .thead-postTime { width: 152px; }
+
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -94,14 +105,16 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .Postbox-table tbody td {
   /* padding: 위아래 좌우 */
-  padding: 10px 12px;
-
+  /* padding: 10px 12px; */
+  padding: 0.5rem 1rem; 
+  /* padding: .75rem;  */
   border: 1px solid skyblue;
   background-color: white;
+  align-content: center;
 }
 
 .Postbox-table-tbody-td-content-div {
-  width: 370px;
+  width: 362px;
   text-align: left;
   display: block;
   overflow: hidden;
@@ -133,7 +146,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  background: #29335c;
+  background: var(--navy);
   border-radius: 50px;
   color: white;
   list-style: none;
@@ -142,12 +155,15 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  height: 30px;
+  /* height: 30px; */
   padding: 8px;
+  font-family: 'MaplestoryOTFBold';
 }
 
 .Postbox-Pagination .move {
   border-radius: 25px;
+  display: flex;
+  align-items: center;
 }
 .Postbox-Pagination .before:hover {
   border-radius: 25px 5px 5px 25px;
@@ -160,7 +176,13 @@
 .Postbox-Pagination .next:hover,
 .Postbox-Pagination li:hover {
   background: #fff;
-  color: #29335c;
+  color: var(--navy);
+}
+.Postbox-Pagination .move .selected_page {
+  background: var(--navy);
+  color: yellow;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
 }
 
 

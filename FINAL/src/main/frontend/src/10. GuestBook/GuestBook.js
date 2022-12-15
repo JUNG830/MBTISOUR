@@ -23,9 +23,11 @@ const GuestBook = () => {
   const onClickSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await TeamAPI.memberChat(inputContent,"내닉네임길잖아",myFace);
+      const response = await TeamAPI.memberChat(inputContent,myNickname,myFace,myId);
       if(response.data === true) {
         setInputContent('');
+       
+
         window.location.reload();
       } else {
         alert("통신 실패")
@@ -48,10 +50,9 @@ const GuestBook = () => {
   return (
     <div className="Container">
       <div className="GuestBook-Container">
-
         <div className="GuestBook-header">
-          <input className="GuestBook-input" type="text" onChange={onChangeText} />
-          <button className ="GuestBook-submit" onClick={onClickSubmit} disabled={inputContent !== ""}>등록</button>
+          <input className="GuestBook-input" type="text" onChange={onChangeText}  />
+          <button className ="GuestBook-submit" onClick={onClickSubmit} disabled={inputContent === ""} >등록</button>
         </div>
 
         <div className="GuestBook-main">

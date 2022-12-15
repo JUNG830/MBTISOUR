@@ -31,7 +31,7 @@ const MbtiInfoBox1 = styled.span`
       color:white;
       text-align: center;
       margin-bottom: 5px;
-
+      font-family: 'MaplestoryOTFBold';
     }
 
     & a{
@@ -97,18 +97,27 @@ const MbtiInfoHead = styled.div`
   bottom: 770px;
   font-size: 35px;
   text-align: center;
+  font-family: 'MaplestoryOTFBold';
+
 
   & span:nth-of-type(1){
     color: rgba(149,98,123);
+    font-family: 'MaplestoryOTFBold';
+
   }
   & span:nth-of-type(2){
     color: rgba(153,194,108);
+    font-family: 'MaplestoryOTFBold';
+
   }
   & span:nth-of-type(3){
     color: rgba(113,202,204);
+    font-family: 'MaplestoryOTFBold';
+
   }
   & span:nth-of-type(4){
     color: rgba(228,199,40);
+    font-family: 'MaplestoryOTFBold';
   }
 
 
@@ -116,6 +125,8 @@ const MbtiInfoHead = styled.div`
     position: relative;
     font-size: 16px ;
     top: 10px;
+    font-family: 'MaplestoryOTFBold';
+
   }
 
 

@@ -20,6 +20,7 @@ const Find_Container = styled.div`
     margin:0 auto;
     padding:50px;
     background-color: white;
+    
 
 
 `
@@ -60,8 +61,8 @@ const SelectMode = styled.div`
         position: relative;
         line-height: 135px;
         color:whitesmoke;
-        
-        
+        font-family: 'MaplestoryOTFBold';
+
         &:nth-of-type(1){
             border: solid ;
             border-left:none;
@@ -88,14 +89,20 @@ const Input_Container = styled.div`
             margin-bottom: 70px;
             position: relative;
             bottom: 140px;
+            
         }
         
+    }
+    label{
+        font-family: 'LINESeedKR-Bd';
+
     }
 
     th{
         position: relative;
         width: 130px;
         font-size: 25px;
+        
     }
 
     .findInfo-btn{
@@ -113,6 +120,8 @@ const Input_Container = styled.div`
         border: 0px none;
         font-weight: 900;  
         position: relative;
+        font-family: 'MaplestoryOTFBold';
+
     }
     
     
@@ -135,7 +144,8 @@ const Input = styled.input`
         border: 0px none;
         font-weight: 900;  
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        
+        font-family: 'MaplestoryOTFBold';
+
 `
 
 

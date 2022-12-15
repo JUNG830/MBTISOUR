@@ -21,9 +21,10 @@ const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
 
 const MyPage = () => {
   const cookies = new Cookies();
-
+  const localId = cookies.get('rememberId');
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
+
 
 
   /* ===== CustomModal 에 필요 ===== */
@@ -273,6 +274,7 @@ const MyPage = () => {
         const nicknameCheck = await TeamAPI.nicknameCheck(nickname);
         console.log("nicknameCheck.data : " + nicknameCheck.data);
         console.log("nicknameCheck.status : " + nicknameCheck.status);
+
         // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
           setNickname("");
@@ -292,6 +294,8 @@ const MyPage = () => {
       }
     }
   }
+
+  
     /* 닉네임 변경 취소 */
   const cancelNickname = () => {
       setIsChangeNickname(false);
@@ -323,17 +327,24 @@ const MyPage = () => {
       console.log("email : " + email);
       console.log("region1 : " + region1);
       console.log("region2 : " + region2);
+      const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
+      setNickname(response.data.nickname)
 
       if(response.status == 200) {
         console.log("통신 성공(200)");
         console.log("\n>> 닉네임 수정 완료");
         // alert("닉네임 수정 완료!!");
         setState({...state, open: true, success: true, successMsg: "닉네임 수정 완료!!"});
+        cookies.set('rememberMyInfo', response2.data, {
+          path: '/',
+          expires: 0
+        })
         
       } 
 
     } catch (e) { console.log(e); }
   } 
+  
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () => {
     setIsChangeIntroduce(false);
@@ -627,11 +638,11 @@ const MyPage = () => {
                 :
                 <>
                   <div className='mypage-input'>
-                    <input className='inputBox' type="text" onChange={onChangeNickname} />
+                    <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
                   </div>
                   <div>
                     {isCheckedNickname &&
-                      <button className='mypage-btn-nick' onClick={onClickNicknameCheck}>중복확인</button>}
+                      <button className='mypage-btn-nick'  onClick={onClickNicknameCheck} >중복확인</button>}
                     {isCheckedNickname &&
                       <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
                     {isNicknamecheck &&

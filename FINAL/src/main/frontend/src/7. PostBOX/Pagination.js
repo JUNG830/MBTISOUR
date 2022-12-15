@@ -70,6 +70,7 @@ function Pagination(props) {
           <span className="move">
             <li onClick={() => setPage(ball)}
               aria-current={page === ball ? "page" : null}
+              className={page === ball && "selected_page"}
             >
               {ball}
             </li>

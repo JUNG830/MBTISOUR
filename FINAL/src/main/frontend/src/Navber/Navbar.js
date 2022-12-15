@@ -33,7 +33,7 @@ function Navbar() {
       {/* logo 영역 */}
         <a href='/home' className="logo">
           <img src={logo} alt="logo" />
-          <span>MBTISOUR</span>
+          <span><h3>MBTISOUR</h3></span>
         </a>
 
       {/* Navbar 영역 */}

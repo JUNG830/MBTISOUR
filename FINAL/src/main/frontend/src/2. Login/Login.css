@@ -9,17 +9,20 @@
   justify-content: space-around;
   border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
 }
 
 .Login-Main-Header {
   margin-top: 4rem;
-  font-size: 3.3rem;
+  margin-bottom: -1rem;
+  font-size: 2rem;
   height: 8rem;
+  letter-spacing: 1rem;
 }
 
 .Login-Body {
   height: 250px;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -80,9 +83,7 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
 .Auto-Login-input {
   scale: 1.3;
 }
-.login-logo {
-  
-}
+
 
 .Login-botton {
   border: 0px;
@@ -91,15 +92,20 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
   border-radius: 20px;
   padding: 10px;
   font-size: 1.5rem;
-  margin-bottom: 3rem;
-  letter-spacing: 0.5rem;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
   box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: var(--navy);
   color: var(--white);
-
 }
-.Login-Google{
-
+.Login-botton:hover{
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.Login-botton:active{
+  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
 }
 
 .Login-kakao {
@@ -120,13 +126,11 @@ box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1
   width: 4rem;
   height: 4rem;
   cursor: pointer;
-  margin-left: 0.9rem;
+  margin-left: 0.5rem;
   margin-bottom: 0.5rem;
   background-color: rgba(0, 0, 0, 0.04);
 }
-.kakao-img{
-  /* margin-top: 0.1rem; */
-}
+
 .google-img{
   margin-top: 1rem;
 }
