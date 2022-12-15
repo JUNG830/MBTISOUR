@@ -38,6 +38,15 @@
   border: 1px solid var(--navy);
 }
 
+.GuestBook-submit:hover {
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+.GuestBook-submit:active{
+  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
+}
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Main 영역

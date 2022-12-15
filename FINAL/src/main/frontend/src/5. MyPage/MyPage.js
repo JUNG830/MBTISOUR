@@ -638,11 +638,11 @@ const MyPage = () => {
                 :
                 <>
                   <div className='mypage-input'>
-                    <input className='inputBox' type="text" onChange={onChangeNickname} />
+                    <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
                   </div>
                   <div>
                     {isCheckedNickname &&
-                      <button className='mypage-btn-nick' onClick={onClickNicknameCheck}>중복확인</button>}
+                      <button className='mypage-btn-nick'  onClick={onClickNicknameCheck} >중복확인</button>}
                     {isCheckedNickname &&
                       <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
                     {isNicknamecheck &&
