@@ -39,10 +39,62 @@ button {
     color: var(--white);
 }
 
+나눔바른펜 일반용
+font-family: 'NanumBarunPen';
+font-family: 'NanumBarunPenBold';
+
+ 빙그레체
+font-family: 'Binggrae';
+
 */
+/* 메이플스토리체 */
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+/* 원스토어 모바일POP체 */
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 티몬체 */
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 라인체 */
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    /* font-weight: 400; */
+    font-style: normal;
+}
+
+/* 카페24 */
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 나눔고딕 */
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+}
+
 
 * { 
     box-sizing: border-box;
+    font-family: 'LINESeedKR-Bd';
 }
 
 a {
@@ -51,19 +103,21 @@ a {
 }
 
 .Container {
-    width: 1180px;
+    font-family: 'MaplestoryOTFBold';
+    width: 100vw;
     margin: auto;
     background-color: rgba(0, 0, 0, 0.04);
     height: calc(100vh - 70px);
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .No-Nav-Container {
-    width: 1180px;
+    width: 100vw;
     margin: auto;
-    height: 100vh;
+    height: calc(100vh - 20px);
     display: flex;
     justify-content: center;
     align-items: center;

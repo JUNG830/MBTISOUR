@@ -122,43 +122,44 @@ function SignUp() {
     }
 
     return (
-      <form>
+      <form className='No-Nav-Container'>
         <div className='Terms-Container'>
           <div className='SignUp-Main-Box'>
-            <div className='checkbox-check-all'>
-              <div className='SignUp-Allagree'>
-                <b>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.<br /></b>
-              </div>
-              <span className='checkbox-check-btn1'>
+            {/* <div className='checkbox-check-all'> */}
+            <div className='SignUp-Allagree'>
+              {/* <span className='checkbox-check-btn1'> */}
+              <label htmlFor="checkbox-check_all">
+                <p>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</p>
                 <input type="checkbox" id="checkbox-check_all"
                   onChange={(e) => handleAllCheck(e.target.checked)}
                   checked={termsList.length === checkedItems.length ? true : false} />
-                <label htmlFor="checkbox-check_all"></label>
-              </span>
-
-              <div className='SignUp-Allagree'>
-              선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
-              </div>
+                </label>
+              {/* </span> */}
+            {/* </div> */}
             </div>
+
             {termsList?.map(ball => (
               <div>
                 <div className='SignUp-Allagree'>
-                  <label className='Terms-title' htmlFor="checkbox-check_single"><b>{ball.title}</b></label>
-                  <span className='checkbox-check-btn2'>
+                  <label className='Terms-title' htmlFor="checkbox-check_single">
+                    <b>{ball.title}</b>
                     <input type="checkbox" id="checkbox-check_single"
                       onChange={(e) => handleSingleCheck(e.target.checked, ball.termNum)}
                       checked={checkedItems.includes(ball.termNum) ? true : false} />
-                    <label htmlFor="checkbox-check_all"></label>
-                  </span>
+                  </label>
+                    {/* <label htmlFor="checkbox-check_all"></label> */}
                   <div className='Terms-content'>{ball.content}</div>
                 </div>
               </div>
             ))}
-          </div>
+            <div className='SignUp-Allagree'>
+              선택항목에 대한 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.
+            </div>
             <div className='Terms-agree-btn'>
               <button type="button" className='nonAgreeBtn' onClick={onClickNonAgree}>취소</button>
               <button type="button" className='agreeBtn'  onClick={onClickAgree}>확인</button>
             </div>
+          </div>
         </div>
       </form>
     );
@@ -681,7 +682,7 @@ function SignUp() {
     mode === 'agree' ?
       <Terms />
       :
-      <div className='Container'>
+      <div className='No-Nav-Container'>
           <CustomModal state={state} changeState={onChangeState}/>
       <div className='SignUp-middle'>
         <div className="SignUp-Container">
