@@ -15,6 +15,7 @@ import lock from "../images/lock.png";
 import person from "../images/person.png";
 import google from "../images/google_logo_icon.png";
 import CustomModal from '../99. Modal/CustomModal'
+import yong from '../images/아이셔용.png';
 
 
 
@@ -203,7 +204,7 @@ function Login() {
           </div> */}
 
         <div className="Login-Main-Header">
-          <p>MBTISOUR</p>
+          <h1>MBTISOUR</h1>
         </div>
 
         {/* <form action="" className="Login-card-form"> */}
