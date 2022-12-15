@@ -124,11 +124,14 @@
       font-size: 17px;
       border-radius: 25px;
       padding-left: 20px;
+      font-family: 'MaplestoryOTFBold';
+
   
   }
   
   .myPage-input>input {
       height: max-content;
+      
   }
   
   .mypage-btn-ema1:active{
@@ -145,6 +148,9 @@
       border-radius: 25px;
       margin-left: 10px;
       font-weight: 900;
+      font-family: 'MaplestoryOTFBold';
+
+      
   
   }
   .mypage-btn-ema2:active{
@@ -162,6 +168,8 @@
       margin-left: 20px;
       font-weight: 900;
       position:relative;
+      font-family: 'MaplestoryOTFBold';
+
   }
   .mypage-btn-int1:active{
       box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
@@ -177,6 +185,8 @@
       border-radius: 25px;
       margin-left: 10px;
       font-weight: 900;
+      font-family: 'MaplestoryOTFBold';
+
      
   }
   .mypage-btn-int2:active{
@@ -194,6 +204,8 @@
       font-weight: 900;
       min-width: 106px;
       position:relative;
+      font-family: 'MaplestoryOTFBold';
+
    
   }
   .mypage-btn-nick:active{
@@ -211,11 +223,14 @@
       margin-left: 10px;
       font-weight: 900;
       position: relative;
+      font-family: 'MaplestoryOTFBold';
+
      
   }
   .mypage-btn-nick2:active{
       box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
       position: relative;
+      
   }
   .mypage-btn-nick2 {
       width: 106px;
@@ -229,6 +244,8 @@
       position:relative;
       left:125px;
       bottom:50px;
+      font-family: 'MaplestoryOTFBold';
+
    
   }
   .mypage-btn {
@@ -241,6 +258,8 @@
       font-weight: 900;
       margin-bottom: 5px;
       position: relative;
+      font-family: 'MaplestoryOTFBold';
+
       
   }
   
@@ -264,6 +283,8 @@
       position:relative;
       margin-bottom: 5px;
       left:142px;
+      font-family: 'MaplestoryOTFBold';
+
   }
   
   .mypage-btn-select:nth-of-type(1){
@@ -292,6 +313,8 @@
       margin-bottom: 5px;
       position: relative;
       left:142px;
+      font-family: 'MaplestoryOTFBold';
+
       
   }
   
@@ -314,6 +337,8 @@
       border-radius: 25px;
       padding-left: 40px;
       font-size: 14px;
+      font-family: 'MaplestoryOTFBold';
+
   }
   
   .mypage-input-addr2 {
@@ -327,6 +352,8 @@
       position: relative;
       left:140px;
       bottom:60px;
+      font-family: 'MaplestoryOTFBold';
+
   
   
   }
@@ -342,7 +369,9 @@
       box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       border-radius: 25px;
       padding-left: 20px;
-      font-size: 14px;;
+      font-size: 14px;
+      font-family: 'MaplestoryOTFBold';
+
   }
   
   .mypage-input-select2 {
@@ -356,6 +385,8 @@
       position: relative;
       left:140px;
       bottom:60px;
+      font-family: 'MaplestoryOTFBold';
+
   
   
   }
@@ -425,6 +456,8 @@
       border-radius: 25px;
       box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: 900;
+      font-family: 'MaplestoryOTFBold';
+
   }
   
   

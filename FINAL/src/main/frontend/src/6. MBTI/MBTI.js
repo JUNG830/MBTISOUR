@@ -67,6 +67,11 @@ const Startbtn = styled.button`
     top:8px;
   }
 
+  p{
+    position: relative;
+    bottom:5px;
+  }
+
   
   
 `
@@ -2154,7 +2159,7 @@ const MBTI = () => {
             </>
             </Sentence2>
 
-            <Startbtn onClick={() => { changeMode('quiz') }}>검 사 시 작 <VscArrowRight className="arrow" size={35} /></Startbtn>
+            <Startbtn onClick={() => { changeMode('quiz') }}><p>검 사 시 작 <VscArrowRight className="arrow" size={35} /></p></Startbtn>
             <Mbtiword>
               <span>m</span>
               <span>b</span>
