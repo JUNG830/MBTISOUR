@@ -16,6 +16,8 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { doc, updateDoc } from "firebase/firestore";
 //쿠키
 import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
+  
 
 const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
 
@@ -24,6 +26,7 @@ const MyPage = () => {
   const localId = cookies.get('rememberId');
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
+  const nav = useNavigate();
 
 
 
@@ -481,7 +484,7 @@ const MyPage = () => {
   const onClickTestStart = () => {
     console.log("\n>> 검사하기 버튼 눌렀어요.");
     // alert("콘솔 확인하세요.")
-    window.location.replace("/MBTI");
+    nav("/MBTI");
   }
 
   /* 탈퇴하기 */
