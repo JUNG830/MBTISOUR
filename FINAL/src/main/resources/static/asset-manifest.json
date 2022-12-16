@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.1436882d.css",
-    "main.js": "/static/js/main.e848eefd.js",
+    "main.css": "/static/css/main.c4509168.css",
+    "main.js": "/static/js/main.b4fe9497.js",
     "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
     "static/media/Jalnan.ttf": "/static/media/Jalnan.4b55e11e029184231b61.ttf",
     "static/media/아이셔용.png": "/static/media/아이셔용.dfe60f07928cc8aaf1e8.png",
-    "static/media/123.png": "/static/media/123.c9cb053d35a3720ec77d.png",
     "static/media/person.png": "/static/media/person.26cc981957db12ae5677.png",
     "static/media/logo.png": "/static/media/logo.db1b0b0d4d781aed2d5a.png",
     "static/media/연예인.png": "/static/media/연예인.c2151d8d13b5bee8673c.png",
@@ -19,12 +18,12 @@
     "static/media/중재자.png": "/static/media/중재자.1033e5b9eaa63f29165c.png",
     "static/media/논리술사.png": "/static/media/논리술사.646c930c8f67670c7d23.png",
     "index.html": "/index.html",
-    "main.1436882d.css.map": "/static/css/main.1436882d.css.map",
-    "main.e848eefd.js.map": "/static/js/main.e848eefd.js.map",
+    "main.c4509168.css.map": "/static/css/main.c4509168.css.map",
+    "main.b4fe9497.js.map": "/static/js/main.b4fe9497.js.map",
     "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1436882d.css",
-    "static/js/main.e848eefd.js"
+    "static/css/main.c4509168.css",
+    "static/js/main.b4fe9497.js"
   ]
 }

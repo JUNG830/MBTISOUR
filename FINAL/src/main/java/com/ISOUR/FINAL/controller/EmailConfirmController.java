@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static com.ISOUR.FINAL.Service.EmailServiceImpl.ePw;
 
-@CrossOrigin(value = "http://localhost:3000")
+//@CrossOrigin(value = "http://localhost:3000")
 @Slf4j
 @RestController
 @RequestMapping("/service/*")

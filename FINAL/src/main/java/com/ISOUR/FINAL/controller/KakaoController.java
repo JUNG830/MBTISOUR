@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@CrossOrigin(value = "http://localhost:3000")
+//@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @Slf4j
 @RequiredArgsConstructor
