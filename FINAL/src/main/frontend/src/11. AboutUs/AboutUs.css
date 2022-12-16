@@ -49,3 +49,19 @@
   border-radius: 20px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 700px) {
+  .AboutUs-Container {
+    width: 100%;
+        padding: 0 20px;
+        flex-direction: column;
+  }
+
+  .AboutUs-main {
+  }
+
+  .OurInfo > img {
+    width: 20rem;
+    height: 20rem;
+  }
+}
