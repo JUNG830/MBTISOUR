@@ -653,6 +653,7 @@ const Quiz = (props) => {
   if (count === props.questionList.length) {
     if (testMBTI === "ISTJ") {
       return (
+        
         <ResultContainer>
           <div>
             <MyMbti>
