@@ -157,10 +157,16 @@ const MyPage = () => {
         try {
           const response = await TeamAPI.changeFace(url, myId);
           console.log(response.data.result);
+          const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
+          setImage(response.data.result)
           if(response.status == 200) {
             console.log("통신 성공(200)");
             // alert("프사 저장 성공");
             setState({...state, open: true, success: true, successMsg: "프사 저장 성공"});
+            cookies.set('rememberMyInfo', response2.data, {
+              path: '/',
+              expires: 0
+            })
 
           } else {
             console.log("\n>> 통신 실패 : " + response.status);
