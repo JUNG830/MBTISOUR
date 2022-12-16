@@ -23,70 +23,61 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 .Navbar-Container {
-  display: flex;
-  /* padding: 10px 2rem; */
-  margin: 0;
+  width: 100vw;
+  height: 70px;
+  background: var(--navy);
+  color: var(--white);
   font-family: 'MaplestoryOTFBold';
   letter-spacing: 3px;
-  /* width: 100%; */
-  color: #fff;
-  background: #29335c;
-  height: 70px;
 }
-.Navbar-Container a {
-  text-decoration: none;
-}
+
 .Navbar-Container li {
   list-style: none;
 }
+
+.Navbar-Container a {
+  text-decoration: none;
+}
+
 
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   header 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* 붙여넣기 : header */
 .Navbar-Container header {
   width: 100%;
-  background: #29335c;
+  height: inherit;
+
+  display: flex;
+  align-items: center;
+  position: fixed;
   top: 0;
   z-index: 1000;
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  /* padding: 10px 2rem; */
   transition: all .50s ease;
-  position: fixed;
-  margin: 0;
 }
-.Navbar-Container header ul {
-  margin: 0;
-  padding: 0;
-}
+
 
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   logo 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* 붙여넣기 : logo */
 .Navbar-Container header .logo {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin: auto 1.5rem;
   margin-right: 5rem;
-  margin-bottom: 1rem;
-  margin-left: 2rem;
 }
 .Navbar-Container header .logo img {
   width: 35px;
-  margin-right: 5px;
+  margin-right: .5rem;
 }
 .Navbar-Container header .logo span {
   color: #fff;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.5rem;
 }
+
 
 
 /*
@@ -94,62 +85,106 @@
   Navbar 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .Navbar-Container .Navbar {
+  width: calc(100vw - 340px);
+  margin-right: 1.5rem;
+
   display: flex;
-  text-align: left;
-  padding: 0;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
 }
-.Navbar-Container .Navbar li {
-  width: 150px;
-  /* background-color: brown; */
-  list-style: none;
-  position: relative;
-  padding: 10px 0;
-  transition: 0.5s;
-  box-sizing: border-box;
-  /* width: 150px; */
-  border-right: 1px solid rgba(255, 255, 255, .2);
-}
-.Navbar-Container .Navbar li a {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding: 0 20px;
-  /* margin: 0px 30px; */
-  transition: all .50s ease;
+
+
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Navbar 영역 - User
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.User {
   display: flex;
+  align-items: center;
 }
 
-
-.Navbar-Container .Navbar li:hover {
-  background: #2196f3;
-}
-.Navbar-Container .Navbar a.active {
-  color: yellow;
+#User-icon {
+  color: var(--pink);
+  font-size: 50px;
 }
 
-.MBTI-sub-menu {
-  position: absolute;
-  /* top 은 전체 네비 높이에 따라 다르게 설정할 것! */
-  top: 70px;
-  left: 0;
-  display: block;
-  background: #e24b4b;
-  /* line-height: 40px; */
-  border-radius: 0 0 70px 70px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  padding: 0 10px;
+.User:hover {
+  cursor: pointer;
+}
+
+.User-submenu {
   width: 150px;
-  text-align: center;
+  height: 18vh;
+  line-height: 2.5rem;
+  padding: 0 1rem;
+
+  position: absolute;
+  top: 70px;
+  right: 1%;
+
+  background: var(--tongue);
+  border-radius: 0 0 60% 60%;
   transition: .5s;
 }
 
-.MBTI-sub-menu li {
-  padding: 5px;
-  border-right: none;
+.User-submenu li {
+  text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, .2);
+  transition: all .50s ease;
 }
+
+.User-submenu li a {
+  color: var(--white);
+}
+
+.User-submenu :last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 2.5rem;
+  border-bottom: none;
+}
+
+#logout {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 1rem;
+  transition-duration: 0.3s;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Navbar 영역 - Menu
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.Menu-submenu {
+  display: flex;
+}
+
+.Menu-submenu li {
+  width: 150px;
+  padding: .5rem 1rem;
+
+  border-right: 1px solid rgba(255, 255, 255, .2);
+  transition: 0.5s;
+  /* background-color: brown; */
+  /* position: relative; */
+}
+.Menu-submenu li a {
+  color: var(--white);
+  transition: all .50s ease;
+}
+
+.Menu-submenu li:hover {
+  background: var(--white);
+}
+.Menu-submenu li:hover a {
+  color: var(--tongue);
+}
+
+
 
 
 
@@ -173,53 +208,17 @@
   color: white;
 }
 
-.User-submenu {
-  position: absolute;
-  /* top 은 전체 네비 높이에 따라 다르게 설정할 것! */
-  top: 61px;
-  right: 2%;
-  display: block;
-  transition: 0.5s;
-  background: rgb(226, 75, 75);
-  line-height: 40px;
-  border-radius: 0 0 60% 60%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  /* padding: 5px 20px; */
-  width: 200px;
-  text-align: left;
-  color: white;
-  transition: all .50s ease;
-}
 
-.User-submenu li {
-  text-align: center;
-  color: white;
-  padding: 10px 0;
-  border-right: none;
-  border-bottom: 1px solid rgba(255, 255, 255, .2);
-  transition: all .50s ease;
-}
-.User-submenu :last-child {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Main-Icon 영역 - User
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.User {
-  display: flex;
-  align-items: center;
-}
-.User span {
-  color: pink;
-  font-size: 50px;
-  margin-right: 7px;
-}
-.User:hover {
-  cursor: pointer;
+
+
+.myProfile {
+  padding: 0 25px;
 }
 
 #menu-icon {
@@ -230,13 +229,7 @@
   display: none;
 }
 
-#logout {
-  font-size: 1.2rem;
-  font-family: 'MaplestoryOTFBold';
-  letter-spacing: 3px;
-  cursor: pointer;
-  transition-duration: 0.3s;
-}
+
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -257,6 +250,8 @@
   #menu-icon {
     display: block;
   }
+
+  /* Navbar 영역 */
   .Navbar-Container .Navbar {
     position: absolute;
     top: 100%;
@@ -271,27 +266,77 @@
     border-radius: 10px;
     transition: all .50s ease;
   }
-  .Navbar-Container .Navbar li {
+  .Menu-submenu li {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, .2);
+    width: 150px;
   }
-  .Navbar-Container .Navbar a {
+  .Menu-submenu li a {
     display: block;
-    margin: 12px 0;
-    padding: 0px 25px;
+    margin: .5rem 0;
     transition: all .50s ease;
+    color: var(--tongue);
+  }
+  .Menu-submenu li:hover {
+    background: none;
   }
   .Navbar-Container .Navbar a:hover {
-    color: #fff;
+    color: black;
     transform: translateY(5px);
   }
-  .Navbar-Container .Navbar a.active {
+  .Navbar-Container .Navbar a:active {
     color: #fff;
   }
   .Navbar.open {
-    right: 2%;
+    right: 1%;
   }
-  .User-submenu .open {
-    top: 61px
+
+  /* Navbar 영역 - User */
+  .User {
+    display: block;
+  }
+  #User-icon {
+    font-size: 2rem;
+  }
+  .myProfile {
+    display: inline-block;
+    width: 150px;
+    line-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    transition: all .50s ease;
+    color: var(--tongue);
+  }
+
+  .User li {
+    width: 150px;
+    line-height: 2.5rem;
+    padding: 0.5rem 1rem;
+  
+  
+    transition: 0.5s;
+
+
+
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    transition: all .50s ease;
+    
+  }
+  .User li a {
+    color: var(--tongue);
+  }
+  .User ul > li:hover {
+    color: black;
+    transform: translateY(5px);
+  }
+  .User a:hover {
+    color: black;
+    transform: translateY(5px);
+  }
+  /* Navbar 영역 - Menu */
+  .Menu-submenu {
+    display: block;
   }
 }
