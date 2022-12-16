@@ -47,3 +47,50 @@
     padding-top: 10px;
     color: gray;
 }
+
+@media screen and (max-width: 1199px) {
+
+    .Container {
+        width: 100%;
+        padding: 0 20px;
+        flex-direction: column;
+    }
+
+    .Home-Container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .Dino {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+        min-width: 360px;
+        margin-top: 100px;
+    }
+
+    .WelcomeMessage {
+        width: 100%;
+        height: 150px;
+        min-width: 360px;
+    }
+
+    .WelcomeMessage >h3 {
+        font-size: 25px;
+    }
+
+    .WelcomeMessage >h2 {
+        font-size: 20px;
+    
+    }
+
+    .DinoAddr {
+        width: 100%;
+        min-width: 360px;
+    }
+
+
+}
