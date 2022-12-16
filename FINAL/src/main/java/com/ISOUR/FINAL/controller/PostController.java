@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-//@CrossOrigin(value = "http://localhost:3000")
+@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @Slf4j
 public class PostController {

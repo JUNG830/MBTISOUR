@@ -263,8 +263,8 @@
 
     right: -100%; /* rigth : 2% ☞ -100% */
     width: 200px;
-    height: 30vh; /* 전체 길이*/
-    background: purple;
+    /* height: 50vh; 전체 길이 */
+    background: var(--pink);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -288,7 +288,7 @@
   .Navbar-Container .Navbar a.active {
     color: #fff;
   }
-  .Navbar .open {
+  .Navbar.open {
     right: 2%;
   }
   .User-submenu .open {
