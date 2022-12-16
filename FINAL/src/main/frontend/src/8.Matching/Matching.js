@@ -214,9 +214,7 @@ const Matching = () => {
         <div>
           <div className='Mat-Box' key={mat.id}>
             <div className='Mat-profile'>
-              {mat.mat_face != null 
-              ? <img src={mat.mat_face} alt="프로필 이미지" />
-              : <img src={face} alt="프로필 이미지"/> }
+              <img src={mat.mat_face || face} alt="프로필 이미지" />
             </div>
             <div className="Mat-item">
               <input type="text" value={mat.mat_nick} />

@@ -80,13 +80,13 @@ public class MatchingService {
                 "\t                im2.INTRODUCE AS matIntroduce,\n" +
                 "\t                m.ORDER_MBTI AS orderMbti\n" +
                 "\t                , COUNT(*) OVER (PARTITION BY im.ID_NUM) as cnt\n" +
-                "                FROM I_MEMBER im\n" +
-                "\t                INNER JOIN MBTI m\n" +
+                "                FROM isour.i_member im\n" +
+                "\t                INNER JOIN isour.MBTI m\n" +
                 "\t                ON im.MBTI = m.USER_MBTI\n" +
-                "\t                INNER JOIN I_MEMBER im2\n" +
+                "\t                INNER JOIN isour.i_member im2\n" +
                 "\t                ON im2.MBTI = m.MAT_MBTI\n" +
                 "                WHERE im.ID = ? \n" +
-                "                \tand M.ORDER_MBTI <= 1 \n" +
+                "                \tand m.ORDER_MBTI <= 1 \n" +
                 "                \tand not im.ID_NUM = im2.ID_NUM\n" +
                 "                ORDER BY rand(?)) PG1\n" +
                 "        WHERE (@rownum \\:= 0) = 0 <= /*count*/2 * /*startNum*/?) PG2\n" +
