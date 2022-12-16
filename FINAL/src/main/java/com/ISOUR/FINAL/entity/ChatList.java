@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Table(name = "Chat_List")
 public class ChatList {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="chatList_num")
     private Long chatListNum;
     private String userId;

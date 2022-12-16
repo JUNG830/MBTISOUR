@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "Chat")
 public class GChat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatNum;
     private String content;
     private String face;

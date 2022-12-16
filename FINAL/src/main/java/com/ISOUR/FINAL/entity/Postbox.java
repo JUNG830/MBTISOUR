@@ -9,7 +9,7 @@ import java.time.*;
 @Table(name="Postbox")
 public class Postbox {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postNum;
     private String postReceiver;
     private String postSender;

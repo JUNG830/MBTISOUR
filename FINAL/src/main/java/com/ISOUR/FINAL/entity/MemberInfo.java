@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @DynamicUpdate
 public class MemberInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_num")
     private Long idNum;
     @Column(unique = true)
