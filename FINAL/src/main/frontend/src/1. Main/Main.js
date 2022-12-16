@@ -48,8 +48,10 @@ function Main () {
                 className="box"
                 whileHover={{ scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}>  
-                <button className="Main-box-button2"><a href="/login">START</a></button>
-                <div className="loading"></div>
+                <button className="Main-box-button2">START</button>
+                <a href="/login">
+                    <div className="loading"/>
+                    </a>
                 </motion.div></span>
         </Animator>
     </ScrollPage>
