@@ -9,49 +9,13 @@
     box-shadow: 0 4px 8px 0 rgba(202, 202, 202, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.User-item > input {
-    width: 100px;
-    height: 30px;
-    border: 0px;
-    text-align: center;
-    font-size: 1.2rem;
-    padding-left: 10px ;
-    background-color: transparent;
-    color: white;
-    outline: none;
-}
-
-.Mat-item > input {
-    width: 120px;
-    height: 30px;
-    border: 0px;
-    text-align: center;
-    font-size: 1.2rem;
-    padding-left: 10px ;
-    background-color: transparent;
-    color: white;
-    outline: none;
-}
-
-/* .Mat-item > input:first-child {
-    border-right: 1px solid;
-} */
-
-/* p {
-    margin-bottom: 5px;
-    line-height: 25px;
-    width: 200px;
-    padding-left: 10px;
-    font-weight: bolder;
-} */
-
 /* 
     내 정보
 */
 .User-Box {
 	height: 300px;
 	width: 300px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 	border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	overflow: hidden;
@@ -66,8 +30,8 @@
 }
 
 .User-profile > img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 70%;
     overflow: hidden;
     object-fit: cover;
@@ -77,16 +41,41 @@
 .User-item {
     margin-top: 5px;
     padding: 5px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.User-item > input {
+    width: 70px;
+    height: 30px;
+    text-align: right;
+    color: white;
+    outline: none;
+    font-size: 1.2rem;
+    border: none;
+    font-family: 'LINESeedKR-Bd';
+    background-color: transparent;
 }
 
-
+.User-item > textarea {
+    font-family: 'LINESeedKR-Bd';
+    height: 30px;
+    width: 180px;
+    border: none;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    word-break:break-all;
+    resize: none;
+}
 .User-item > .User-Introduce {
     width: 250px;
-    height: 40px;
+    height: 70px;
     text-align: center;
     padding-left: 10px;
     font-size: 1.2rem;
-    font-weight: 400;
 }
 
 /* 
@@ -107,8 +96,8 @@
 }
 
 .Mat-profile > img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 70%;
     overflow: hidden;
     object-fit: cover;
@@ -117,10 +106,41 @@
 
 .Mat-item {
     margin: 5px;
-    justify-content: center;
+    height: 30px;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
+}
+.Mat-item > input {
+    width: 70px;
+    height: 30px;
+    text-align: right;
+    color: white;
+    outline: none;
+    font-size: 1.2rem;
+    border: none;
+    font-family: 'LINESeedKR-Bd';
+    background-color: transparent;
+}
+.Mat-item > textarea {
+    font-family: 'LINESeedKR-Bd';
+    border: none;
+    width: 180px;
+    height: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    resize: none;
+    word-break:break-all;
+}
+
+.Mat-item > .Mat-Introduce {
+    width: 250px;
+    height: 70px;
+    text-align: center;
+    padding-left: 10px;
+    font-size: 1.2rem;
 }
 
 .Mat-icon {
@@ -141,7 +161,26 @@
 .Matching-Message {
     grid-column: 2/4;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.mbti-btn {
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    border-radius: 25px;
+    padding: 0.4rem 1rem;
+    border: 0px;
+    line-height: 1.7rem;
+    background-color: var(--navy);
+    color: var(--white);
+}
+.mbti-btn:hover {
+    cursor: pointer;
+    color: var(--navy);
+    background-color: var(--pink);
+    font-weight: bold;
 }
 
 .prevbtn {
@@ -157,17 +196,36 @@
 }
 
 
-.Mat-item > .Mat-Introduce {
-    width: 250px;
-    height: 40px;
-    text-align: center;
-    padding-left: 10px;
-    font-size: 1.2rem;
-    font-weight: 400;
-}
+
 
 /* .MuiIconButton-root {
     background-color: unset;
     display: flex;
     float: left;
 } */
+
+@media screen and (max-width: 400px) {
+    .Matching-Container {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: calc(100vh - 70px);
+        border: 0px;
+        border-radius: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .User-Box {
+        display: none;
+    }
+    .Mat-Box {
+        width: 250px;
+        height: 250px;
+
+    }
+    .prevbtn, .nextbtn {
+        display: none;
+    }
+}

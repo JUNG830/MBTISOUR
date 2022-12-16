@@ -96,3 +96,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,react,java,gradle
+FINAL/src/main/frontend/src/0. API/TeamAPI local.js
+FINAL/src/main/frontend/src/0. API/TeamAPI.js
+FINAL/src/main/frontend/src/0. API/TeamAPI2.js

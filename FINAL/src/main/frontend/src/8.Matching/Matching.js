@@ -23,7 +23,6 @@ const Matching = () => {
   const localMyInfo = cookies.get('rememberMyInfo');
   const localId = localMyInfo.id;
   const localId_num = localMyInfo.idNum;
-  const navigate = useNavigate();
 
   const [url, setUrl] = useState(null);
   const [myId, setMyId] = useState('');
@@ -81,7 +80,7 @@ const Matching = () => {
   // 매칭 회원 정보 조회
   const nav = useNavigate();
   useEffect(() => {
-    if(localId === undefined) navigate("/login");
+    if(localId === undefined) nav("/login");
     // ▲ 로그인 안 되어 있으면 로그인 페이지로
 
     const memberData = async () => {
@@ -137,13 +136,16 @@ const Matching = () => {
   } catch (e) {
     console.log(e);
   }
-  
 
   nav("/chathome")
-
-
-
   };
+
+  /* MBTI 검사하기 */
+  const onClickTestStart = () => {
+    console.log("\n>> 검사하기 버튼 눌렀어요.");
+    // alert("콘솔 확인하세요.")
+    nav("/MBTI");
+  }
 
   /* 쪽지 기능 구현 */
   const [receiverId, setReceiverId] = useState("");
@@ -200,50 +202,59 @@ const Matching = () => {
             : <img src={face} alt="프로필 이미지"/> }
           </div>
           <div className="User-item">
-            <input type="text" value={myNickname} />
             <input type="text" value={myMbti} />
+            <textarea type="text" value={myNickname} />
           </div>
           <div className="User-item">
-              <input className='User-Introduce' type="text" value={myIntroduce} />
+              <textarea className='User-Introduce' type="text" value={myIntroduce} />
           </div>
         </div>
 
-        { (mat_memberInfo.length != 0 ) ?
+        { (myMbti == null ) ?
 
-        mat_memberInfo.map((mat) => (
-        <div>
-          <div className='Mat-Box' key={mat.id}>
-            <div className='Mat-profile'>
-              <img src={mat.mat_face || face} alt="프로필 이미지" />
-            </div>
-            <div className="Mat-item">
-              <input type="text" value={mat.mat_nick} />
-              <input type="text" value={mat.mat_mbti} />
-              <input className='Mat-Introduce' type="text" value={mat.mat_introduce} />
-            </div>
-          {/* { like_num === 0 ?
-              <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
-              : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
-          } */}
-          </div> 
-          <div className='Mat-icon'>
-            {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
-              <IconButton>
-                <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} />
-              </IconButton>
-              <IconButton>
-                <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
-              </IconButton>
-              <IconButton>
-                <EmailIcon className='Post-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickPostIcon(mat.mat_id, mat.mat_nick)}/>
-              </IconButton>
-            {/* </ButtonGroup> */}
-          </div>
+        <div className='Matching-Message'>
+          <p>MBTI 검사를 아직 하지 않았어요!</p>
+          <button className='mbti-btn' onClick={onClickTestStart}>검사하러가기</button>
         </div>
+
+        : (mat_memberInfo.length != 0 ) ?
+
+          mat_memberInfo.map((mat) => (
+          <div className='mat-cont'>
+            <div className='Mat-Box' key={mat.id}>
+              <div className='Mat-profile'>
+                <img src={mat.mat_face || face} alt="프로필 이미지" />
+              </div>
+              <div className="Mat-item">
+                <input value={mat.mat_mbti} />
+                <textarea value={mat.mat_nick} />
+              </div>
+              <div className="Mat-item">
+                <textarea className='Mat-Introduce' type="text" value={mat.mat_introduce} />
+              {/* { like_num === 0 ?
+                  <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
+                  : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
+              } */}
+              </div>
+            </div> 
+            <div className='Mat-icon'>
+              {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
+                <IconButton>
+                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} />
+                </IconButton>
+                <IconButton>
+                  <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
+                </IconButton>
+                <IconButton>
+                  <EmailIcon className='Post-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickPostIcon(mat.mat_id, mat.mat_nick)}/>
+                </IconButton>
+              {/* </ButtonGroup> */}
+            </div>
+          </div>
           ))
 
-        : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
-        }
+          : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
+          }
 
         <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
           <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
