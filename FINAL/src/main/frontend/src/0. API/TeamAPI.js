@@ -14,8 +14,7 @@ const TeamAPI = {
       id: id
     };
     // @PostMapping("/IsMemberCheck")
-    // return await axios.post(TEAM_DOMAIN + "IsMemberCheck", regCheck, HEADER);
-    return await axios.post("IsMemberCheck", regCheck, HEADER);
+    return await axios.post(TEAM_DOMAIN + "IsMemberCheck", regCheck, HEADER);
   },
 
   /* 닉네임 중복확인(회원가입 여부 확인) */
@@ -24,8 +23,7 @@ const TeamAPI = {
       nickname: nickname
     };
     // @PostMapping("/IsNicknameCheck")
-    // return await axios.post(TEAM_DOMAIN + "IsNicknameCheck", nicknameObj, HEADER);
-    return await axios.post("IsNicknameCheck", nicknameObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "IsNicknameCheck", nicknameObj, HEADER);
   },
 
   /* 회원가입 */
@@ -47,8 +45,7 @@ const TeamAPI = {
       check_term2: check_term2
     };
     // @PostMapping("/SignUp")
-    // return await axios.post(TEAM_DOMAIN + "SignUp", memberObj, HEADER);
-    return await axios.post("SignUp", memberObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "SignUp", memberObj, HEADER);
   },
 
   /* 로그인 */
@@ -58,8 +55,7 @@ const TeamAPI = {
       pwd: pwd
     }
     // @PostMapping("/Login")
-    // return await axios.post(TEAM_DOMAIN + "Login", loginObj, HEADER);
-    return await axios.post("Login", loginObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "Login", loginObj, HEADER);
   },
 
   /* MBTI 검사 결과 저장*/
@@ -69,8 +65,7 @@ const TeamAPI = {
       id: id
     };
     // @PostMapping("/MBTI")
-    // return await axios.post(TEAM_DOMAIN + "MBTI", resultObj, HEADER);
-    return await axios.post("MBTI", resultObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "MBTI", resultObj, HEADER);
   },
 
   /* 프로필 이미지 변경 */
@@ -80,29 +75,25 @@ const TeamAPI = {
       id: localId
     };
     // @PostMapping("/changeFace")
-    // return await axios.post(TEAM_DOMAIN + "changeFace", faceObj, HEADER);
-    return await axios.post("changeFace", faceObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "changeFace", faceObj, HEADER);
   },
 
   /* 회원 조회 */
   memberInfo: async function (id) {
     // @GetMapping("/MyPage")
-    // return await axios.get(TEAM_DOMAIN + `MyPage?id=${id}`, HEADER);
-    return await axios.get(`MyPage?id=${id}`, HEADER);
+    return await axios.get(TEAM_DOMAIN + `MyPage?id=${id}`, HEADER);
   },
 
   /* 비밀번호 찾기 */
   findPwd: async function (id, email, birth) {
     // @GetMapping("/FindPwd")
-    // return await axios.get(TEAM_DOMAIN + `FindPwd?id=${id}&email=${email}&birth=${birth}`, HEADER);
-    return await axios.get(`FindPwd?id=${id}&email=${email}&birth=${birth}`, HEADER);
+    return await axios.get(TEAM_DOMAIN + `FindPwd?id=${id}&email=${email}&birth=${birth}`, HEADER);
   },
 
   /* 아이디 찾기 */
   findId: async function (name, email, birth) {
     // @GetMapping("/FindId")
-    // return await axios.get(TEAM_DOMAIN + `FindId?name=${name}&email=${email}&birth=${birth}`, HEADER);
-    return await axios.get(`FindId?name=${name}&email=${email}&birth=${birth}`, HEADER);
+    return await axios.get(TEAM_DOMAIN + `FindId?name=${name}&email=${email}&birth=${birth}`, HEADER);
   },
 
   /* 회원정보 수정 */
@@ -117,8 +108,7 @@ const TeamAPI = {
       region2: region2
     };
     // @PutMapping("/MyPage")
-    // return await axios.put(TEAM_DOMAIN + "MyPage", memberObj, HEADER);
-    return await axios.put("MyPage", memberObj, HEADER);
+    return await axios.put(TEAM_DOMAIN + "MyPage", memberObj, HEADER);
   },
 
   /* 회원 탈퇴 */
@@ -128,8 +118,7 @@ const TeamAPI = {
       pwd: pwd
     };
     // @PostMapping("/Goodbye")
-    // return await axios.post(TEAM_DOMAIN + "Goodbye", goodbyeObj, HEADER);
-    return await axios.post("Goodbye", goodbyeObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "Goodbye", goodbyeObj, HEADER);
   },
 
   // ========= PostController =========
@@ -140,8 +129,7 @@ const TeamAPI = {
       id: id
     }
     // @PostMapping("/GetPostbox")
-    // return await axios.post(TEAM_DOMAIN + "GetPostbox", postObj, HEADER);
-    return await axios.post("GetPostbox", postObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "GetPostbox", postObj, HEADER);
   },
 
   /* 쪽지 보내기 */
@@ -152,8 +140,7 @@ const TeamAPI = {
       content: content
     };
     // @PostMapping("/SendPost")
-    // return await axios.post(TEAM_DOMAIN + "SendPost", postObj, HEADER);
-    return await axios.post("SendPost", postObj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "SendPost", postObj, HEADER);
   },
 
   /* 쪽지 삭제 */
@@ -162,8 +149,7 @@ const TeamAPI = {
       obj: obj
     };
     // @PostMapping("/DeletePost")
-    // return await axios.post(TEAM_DOMAIN + "DeletePost", obj, HEADER);
-    return await axios.post("DeletePost", obj, HEADER);
+    return await axios.post(TEAM_DOMAIN + "DeletePost", obj, HEADER);
   },
   //chat
   memberChat: async function (content,id,nickname,face) {
@@ -173,21 +159,18 @@ const TeamAPI = {
       content: content,
       face: face
     };
-    // return await axios.put(TEAM_DOMAIN + `Chat?id=${content}`, chatObj, HEADER);
-    return await axios.put(`Chat?id=${content}`, chatObj, HEADER);
+    return await axios.put(TEAM_DOMAIN + `Chat?id=${content}`, chatObj, HEADER);
   },
 
   chatInfo: async function (content) {
-    // return await axios.post(TEAM_DOMAIN + "Chat", HEADER);
-    return await axios.post("Chat", HEADER);
+    return await axios.post(TEAM_DOMAIN + "Chat", HEADER);
   },
 
   chatRoomOpen: async function (name) {
     const chatObject = {
       "name": name
     };
-    // return await axios.put(TEAM_DOMAIN + "Chatting", chatObject, HEADER);
-    return await axios.put("Chatting", chatObject, HEADER);
+    return await axios.put(TEAM_DOMAIN + "Chatting", chatObject, HEADER);
   },
 
 
@@ -202,8 +185,7 @@ const TeamAPI = {
       },
     };
 
-    // return await axios.post(TEAM_DOMAIN + "UploadService", regCheck, config, HEADER);
-    return await axios.post("UploadService", regCheck, config, HEADER);
+    return await axios.post(TEAM_DOMAIN + "UploadService", regCheck, config, HEADER);
   },
 
   // 매칭회원 불러오기
@@ -213,8 +195,7 @@ const TeamAPI = {
       localId_num: localId_num,
       pageNum: pageNum
     }
-    // return await axios.post(TEAM_DOMAIN + "Matching", regCmd, HEADER);
-    return await axios.post("Matching", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "Matching", regCmd, HEADER);
   },
 
   //회원가입 이메일 주소 전송(인증 번호 받기 위해)
@@ -222,8 +203,7 @@ const TeamAPI = {
     const regCmd = {
       id: email
     }
-    // return await axios.post(TEAM_DOMAIN + "service/mail", regCmd, HEADER);
-    return await axios.post("service/mail", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "service/mail", regCmd, HEADER);
   },
 
   //회원가입 이메일 인증번호받은거 확인차 전송
@@ -231,8 +211,7 @@ const TeamAPI = {
     const regCmd = {
       code: code
     }
-    // return await axios.post(TEAM_DOMAIN + "service/verifyCode", regCmd, HEADER);
-    return await axios.post("service/verifyCode", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "service/verifyCode", regCmd, HEADER);
   },
 
 
@@ -241,8 +220,7 @@ const TeamAPI = {
     const regCmd = {
       email: email
     }
-    // return await axios.post(TEAM_DOMAIN + "service/isEmailCheck", regCmd, HEADER);
-    return await axios.post("service/isEmailCheck", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "service/isEmailCheck", regCmd, HEADER);
   },
 
   //구글 이메일 중복확인
@@ -251,15 +229,14 @@ const TeamAPI = {
       email: googleEmail
     }
     //@PostMapping("/GoogleInfo")
-    // return await axios.post(TEAM_DOMAIN + "GoogleInfo", regCmd, HEADER);
-    return await axios.post("GoogleInfo", regCmd, HEADER);
+
+    return await axios.post(TEAM_DOMAIN + "GoogleInfo", regCmd, HEADER);
   },
 
   /* 카카오 회원 조회 */
   kakaomember: async function (id_num) {
     // @GetMapping("/MyPage")
-    // return await axios.post(TEAM_DOMAIN + `MyPage?id_num=${id_num}`, HEADER);
-    return await axios.post(`MyPage?id_num=${id_num}`, HEADER);
+    return await axios.post(TEAM_DOMAIN + `MyPage?id_num=${id_num}`, HEADER);
   },
 
    // 카카오 로그인
@@ -267,8 +244,7 @@ const TeamAPI = {
     const regCmd = {
       access_token: access_token
     }
-    // return await axios.post(TEAM_DOMAIN + "login/kakao", regCmd, HEADER);
-    return await axios.post("login/kakao", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "login/kakao", regCmd, HEADER);
   },
 
   // 채팅 친구 추가
@@ -278,8 +254,7 @@ const TeamAPI = {
       chatMemberId: chatMemberId,
       nickname : nickname
     }
-    // return await axios.post(TEAM_DOMAIN + "chat/addMember", regCmd, HEADER);
-    return await axios.post("chat/addMember", regCmd, HEADER);
+    return await axios.post(TEAM_DOMAIN + "chat/addMember", regCmd, HEADER);
   },
 
     // 채팅 친구 찾기
@@ -288,8 +263,7 @@ const TeamAPI = {
         MyId: MyId,
         chatMemberId: chatMemberId
       }
-      // return await axios.post(TEAM_DOMAIN + "chat/findMember", regCmd, HEADER);
-      return await axios.post("chat/findMember", regCmd, HEADER);
+      return await axios.post(TEAM_DOMAIN + "chat/findMember", regCmd, HEADER);
     },
 
 }

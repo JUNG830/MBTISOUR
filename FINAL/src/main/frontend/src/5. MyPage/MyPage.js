@@ -533,14 +533,14 @@ const MyPage = () => {
   return(
     <div className='Container'>
       <div className='Middle-Container'>
-            <div className='MyPage-header'>
-              <h1>마이페이지</h1>
-            </div>
         <div className='Mypage-Container'>
           <div className='Mypage-box'>
             <CustomModal state={state} changeState={onChangeState}/>
             <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd} />
             <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
+            <div className='MyPage-header'>
+              <h1>마이페이지</h1>
+            </div>
             <div className="profile_container">
               <div className="img_container">
                 <img src={url || face} alt="avatar" />
