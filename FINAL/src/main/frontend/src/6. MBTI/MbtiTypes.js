@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
+import '../6. MBTI/MbtiTypes.css';
 import 전략가 from '../images/전략가.png';
 import 논리술사 from '../images/논리술사.png';
 import 통솔자 from '../images/통솔자.png';
@@ -20,264 +21,139 @@ import 연예인 from '../images/연예인.png';
 import styled from 'styled-components';
 import { style } from "@mui/system";
 
-
-
-const MbtiInfoBox1 = styled.span`
-
-    position: relative;
-
-    & div{
-      position:relative;
-      color:white;
-      text-align: center;
-      margin-bottom: 5px;
-      font-family: 'MaplestoryOTFBold';
-    }
-
-    & a{
-      text-decoration: none;
-    }
-
-    
-`
-const MbtiInfoBox2 = styled.div`
-  
-  
-  img{
-    width: 130px;
-    height: 130px;
-    position: relative;
-    
-  }
-  display  : flex;
-  align-items: center;
-  justify-content: center;
-
-  & h2{
-    text-align: center;
-    color:whitesmoke;
-  }
-
-  /* background-color: rgba(0, 0, 0, 0.04); */
-  height: 100%;
-
-  list-style: none;
-
-  & li{
-    position:relative;
-    top:60px;
-  }
-
-  & li:nth-of-type(1){
-    background-color: rgba(149,98,123,0.7);
-  }
-  & li:nth-of-type(2){
-    background-color: rgba(153,194,108,0.7);
-  }
-  & li:nth-of-type(3){
-    background-color: rgba(113,202,204,0.7);
-  }
-  & li:nth-of-type(4){
-    background-color: rgba(228,199,40,0.7);
-  }
-
-
-
-`
-const MbtiTypeBox = styled.div`
-  margin: 0 10px;
-
-
-
-`
-
-const MbtiInfoHead = styled.div`
-  
-  position: absolute;
-  bottom: 770px;
-  font-size: 35px;
-  text-align: center;
-  font-family: 'MaplestoryOTFBold';
-
-
-  & span:nth-of-type(1){
-    color: rgba(149,98,123);
-    font-family: 'MaplestoryOTFBold';
-
-  }
-  & span:nth-of-type(2){
-    color: rgba(153,194,108);
-    font-family: 'MaplestoryOTFBold';
-
-  }
-  & span:nth-of-type(3){
-    color: rgba(113,202,204);
-    font-family: 'MaplestoryOTFBold';
-
-  }
-  & span:nth-of-type(4){
-    color: rgba(228,199,40);
-    font-family: 'MaplestoryOTFBold';
-  }
-
-
-  & div{
-    position: relative;
-    font-size: 16px ;
-    top: 10px;
-    font-family: 'MaplestoryOTFBold';
-
-  }
-
-
-`
-
-
-
-
-
 function MbtiTypes() {
 
   return (
     <div className="Container">
       <div className="Middle-Container">
-        <MbtiInfoBox2>
-          <MbtiInfoHead>
+        <div className="MBTITYPES-MbtiInfoBox2">
+          <div className="MBTITYPES-MbtiInfoHead">
             <span>m</span>
             <span>b</span>
             <span>t</span>
             <span>i </span>
             유형 상세설명
             <div>이미지를 클릭하시면 해당 유형의 설명페이지로 이동합니다.</div>
-          </MbtiInfoHead>
+          </div>
           <li>
 
-            <MbtiTypeBox>
-              <h2 className="title-box1" >분석가형</h2>
-              <MbtiInfoBox1>
+            <div className="MBTITYPES-MbtiTypeBox">
+              <h2 className="MBTITYPES-title-box1" >분석가형</h2>
+              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" target='_blank'>
                   <img src={전략가} />
                   <div>INTJ 전략가 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>
+              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" target='_blank'>
                   <img src={논리술사} />
                   <div>INTP 논리술사 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" target='_blank'>
                   <img src={통솔자} />
                   <div>ENTJ 통솔자 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" target='_blank'>
                   <img src={변론가} />
                   <div>ENTP 변론가 </div>
                 </a>
-              </MbtiInfoBox1>
-            </MbtiTypeBox>
+              </span>            </div>
           </li>
 
           <br></br>
           <li>
 
-            <MbtiTypeBox>
-              <h2 className="title-box1" >외교관형</h2>
-              <MbtiInfoBox1>
+            <div className="MBTITYPES-MbtiTypeBox">
+
+              <h2 className="MBTITYPES-title-box1" >외교관형</h2>
+              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" target='_blank'>
                   <img src={옹호자} />
                   <div>INFJ 옹호자 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" target='_blank'>
                   <img src={중재자} />
                   <div>INFP 중재자 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" target='_blank'>
                   <img src={선도자} />
                   <div>ENFJ 선도자 </div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" target='_blank'>
                   <img src={활동가} />
                   <div>ENFP 활동가</div>
                 </a>
-              </MbtiInfoBox1>
-            </MbtiTypeBox>
+              </span>
+            </div>
           </li>
           <br></br>
           <li>
 
-            <MbtiTypeBox>
-              <h2 className="title-box1" >관리자형</h2>
-              <MbtiInfoBox1>
+            <div className="MBTITYPES-MbtiTypeBox">
+
+              <h2 className="MBTITYPES-title-box1" >관리자형</h2>
+              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" target='_blank'>
                   <img src={현실주의자} />
                   <div>ISTJ 현실주의자</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" target='_blank'>
                   <img src={수호자} />
                   <div>ISFJ 수호자</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" target='_blank'>
                   <img src={경영자} />
                   <div>ESTJ 경영자</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" target='_blank'>
                   <img src={집정관} />
                   <div>ESFJ 집정관</div>
                 </a>
-              </MbtiInfoBox1>
-            </MbtiTypeBox>
+              </span>
+            </div>
           </li>
           <br></br>
           <li>
 
-            <MbtiTypeBox>
-              <h2 className="title-box1" >탐험가형</h2>
-              <MbtiInfoBox1>
+            <div className="MBTITYPES-MbtiTypeBox">
+
+              <h2 className="MBTITYPES-title-box1" >탐험가형</h2>
+              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp" target='_blank'>
                   <img src={장인} />
                   <div>ISTP 장인</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" target='_blank'>
                   <img src={모험가} />
                   <div>ISFP 모험가</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estp" target='_blank'>
                   <img src={사업가} />
                   <div>ESTP 사업가</div>
                 </a>
-              </MbtiInfoBox1>
-              <MbtiInfoBox1>
+              </span>              <span className="MBTITYPES-MbtiInfoBox1">
                 <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" target='_blank'>
                   <img src={연예인} />
                   <div>ESFP 연예인</div>
                 </a>
-              </MbtiInfoBox1>
-            </MbtiTypeBox>
+              </span>
+            </div>
           </li>
           <br></br>
 
 
-        </MbtiInfoBox2>
+        </div>
       </div >
     </div >
   );
