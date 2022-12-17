@@ -256,12 +256,19 @@ const Matching = () => {
           : <div className='Matching-Message'> 아쉽지만, 매칭된 친구가 없어요 <SadIcon style = {{fontSize: 'xx-large'}}/> </div>
           }
 
-        <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
-          <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
-        </IconButton>
-        <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : rnum)) ? true : false }>
-          <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
-        </IconButton>           
+        <div className='page-btn1'>
+          <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
+            <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
+          </IconButton>
+        {/* </div>
+
+        <div className='page-btn2'> */}
+          <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : rnum)) ? true : false }>
+            <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
+          </IconButton>           
+
+        </div>
+
       </div>
     </div>
   )
