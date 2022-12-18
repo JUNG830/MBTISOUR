@@ -240,7 +240,7 @@ const Matching = () => {
             <div className='Mat-icon'>
               {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
-                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} />
+                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', color:'red', backgroundColor: 'unset'}} />
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>

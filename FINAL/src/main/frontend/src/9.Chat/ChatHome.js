@@ -149,7 +149,7 @@ const ChatHome = () => {
 
   return (
     <div className="Container">
-      <div className="home_container">
+      <div className="chat_container">
 
         <div className="users_container">
           {users.map((user) => (
