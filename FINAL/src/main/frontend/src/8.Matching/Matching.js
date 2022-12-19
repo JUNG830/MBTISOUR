@@ -118,7 +118,11 @@ const Matching = () => {
   }, [pageNum]);
 
   // 좋아요
+  const [color , setColor] = useState('unLike');
+  const styles  = { color : color};
   const [like, setLike] = useState(false);
+  const [pid_num, setPid_num] = useState("");
+
   // state = { isClicked: false };
   // const { isClicked } = this.state;
 
@@ -129,7 +133,30 @@ const Matching = () => {
   const onClickLike = async (idx, LikeIdNum) => {
     console.log("LikeIdNum :", LikeIdNum);
     console.log("index :", idx);
-    setLike(!like);
+
+
+    // setLike(!like);
+    const memberData = async () => {
+      console.log("\n>> 회원 정보 조회(useEffect)");
+      console.log("myId : " + session_id);
+
+        const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
+        if(response.status == 200) {
+          console.log("통신 성공(200)");
+          const member = response.data;
+    
+          console.log(member)
+          console.log("------------------");
+          setPid_num(response.data.idNum)
+        
+
+    if(like){
+      setLike(false);
+      setColor('unLike');
+    } else{
+      setLike(true);
+      setColor(like); 
+    }
     
     try {
       const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
