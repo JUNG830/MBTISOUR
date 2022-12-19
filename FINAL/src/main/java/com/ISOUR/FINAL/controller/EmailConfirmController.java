@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
+import static com.ISOUR.FINAL.Service.EmailServiceImpl.createKey;
 import static com.ISOUR.FINAL.Service.EmailServiceImpl.ePw;
 
 @CrossOrigin(value = "http://localhost:3000")
@@ -45,7 +46,7 @@ public class EmailConfirmController {
         System.out.println("code match : "+ ePw.equals(getEmailCode));
         if(ePw.equals(getEmailCode)) {
             result =1;
-//            ePw=createKey();
+            ePw=createKey();
         }
         return result;
     }

@@ -290,6 +290,8 @@ const FindInfo = () => {
     }
 
     const onClickFindPwd = async (e) => {
+        e.preventDefault();
+
 
         console.log("\n\n비밀번호 찾기 버튼을 눌렀어요");
         console.log("isId : " + isId);
@@ -355,6 +357,7 @@ const FindInfo = () => {
 
 
     const onClickFindId = async (e) => {
+        e.preventDefault();
 
         console.log("\n\n아이디 찾기 버튼을 눌렀어요");
         console.log("isName : " + isName);
