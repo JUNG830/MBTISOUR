@@ -25,14 +25,14 @@ class MemberRepositoryTest {
         String[] MBTI = new String[] {"", "INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"};
         for(int i = 1; i <= 16; i++) {
             MemberInfo memberInfo = new MemberInfo();
-            memberInfo.setName("나라" + ball[i]);
-            memberInfo.setId("skfk" + i);
+            memberInfo.setName("미리2" + ball[i]);
+            memberInfo.setId("alfl2" + i);
             memberInfo.setPwd("dkfldkfl");
-            memberInfo.setEmail("skfk" + i + "@skfk" + i +".com");
-            memberInfo.setNickname("닉나라" + ball[i]);
+            memberInfo.setEmail("alfl2" + i + "@alfl" + i +".com");
+            memberInfo.setNickname("닉미리2" + ball[i]);
             memberInfo.setGender("남자");
             memberInfo.setBirth("1999-09-09");
-            memberInfo.setIntroduce("나라" + ball[i] + "의 자기소개");
+            memberInfo.setIntroduce("미리2" + ball[i] + "의 자기소개");
             memberInfo.setMbti(MBTI[i]);
             memberInfo.setRegistrationDate(LocalDateTime.now().withNano(0));
             memberRepository.save(memberInfo);

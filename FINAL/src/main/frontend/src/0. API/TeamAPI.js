@@ -217,6 +217,16 @@ const TeamAPI = {
     // return await axios.post("Matching", regCmd, HEADER);
   },
 
+    // 매칭 좋아요 
+    likeMember: async function (id_num, mat_id_num) {
+      const likecmd = {
+        id_num: id_num,
+        mat_id_num: mat_id_num
+      }
+      return await axios.post(TEAM_DOMAIN + "like", likecmd, HEADER);
+      // return await axios.post("like", likecmd, HEADER);
+    },
+
   //회원가입 이메일 주소 전송(인증 번호 받기 위해)
   emailCheck: async function (email) {
     const regCmd = {
