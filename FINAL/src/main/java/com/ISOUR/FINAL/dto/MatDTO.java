@@ -34,7 +34,8 @@ public class MatDTO {
     private String mat_mbti;
     private String mat_introduce;
     private Integer order_mbti;
-    private BigInteger r_NUM;
     private BigInteger cnt;
+    private String like_member_idx;
+    private BigInteger r_NUM;
 
 }

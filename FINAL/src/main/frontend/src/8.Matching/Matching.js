@@ -35,7 +35,7 @@ const Matching = () => {
 
   const [mat_memberInfo, setMat_MemberInfo] = useState([]);
   const [pageNum, setPageNum] = useState(1);
-  const [rnum, setRnum] = useState();
+  const [cnt, setCnt] = useState();
 
 
 
@@ -100,16 +100,17 @@ const Matching = () => {
         console.log("****************");
         setMat_MemberInfo(Mat.data);
         // 마지막 페이지 찾기
-        const Rnum = Number(Mat.data[0].r_NUM);
+        const cnt = Number(Mat.data[0].cnt);
         console.log(typeof(Rnum));
         // console.log(Rnum);
         // console.log(Math.ceil(Rnum / 2));
-        setRnum(Math.ceil(Rnum / 2));
+        setCnt(Math.ceil(cnt / 2));
         console.log("1", Mat.data);
         console.log("matIdNum : ", Mat.data[0].mat_id_num);
         console.log("matFace : ", Mat.data[0].mat_face);
         console.log("matNick : ", Mat.data[0].mat_nick);
-        console.log("r_NUM : ", Rnum);
+        console.log("like_member_idx : ", Mat.data[0].like_member_idx);
+        console.log("cnt : ", cnt);
       } catch (e) {
         console.log(e);
       }
@@ -155,16 +156,20 @@ const Matching = () => {
     
     try {
       const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
+      // 좋아요: 1
+      // 좋아요 취소: 2
+      // 아무것도 수행 안됨: 0
       console.log("%%%%% 좋아요 전송");
       console.log(likeData.data);
-            
+
       if (likeData.data === 1) {
         setColor('red-btn');
 
-      } else {
+      } else if (likeData.data === 2) {
         setColor('');
+      } else {
+        console.log("좋아요 오류");
       }
-
     } catch (e) {
       console.log(e);
     }
@@ -293,7 +298,7 @@ const Matching = () => {
             <div className='Mat-icon'>
               {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
-                  <FavoriteIcon className={`${(like === mat.mat_id_num) && color}`} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
+                  <FavoriteIcon className={`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
@@ -316,7 +321,7 @@ const Matching = () => {
         {/* </div>
 
         <div className='page-btn2'> */}
-          <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : rnum)) ? true : false }>
+          <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : cnt)) ? true : false }>
             <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
           </IconButton>           
 

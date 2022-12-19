@@ -32,11 +32,14 @@ public class LikeMemberController {
         Integer isSave = likeMemberService.LikeMember(user_Id_num, Like_Id_num);
         // 좋아요: 1
         // 좋아요 취소: 2
+        // 아무것도 수행 안됨: 0
         if (isSave == 1) {
             log.warn("LikeMember 테이블 DB 저장 " + isSave);
             return new ResponseEntity<>(1, HttpStatus.OK);
+        } else if (isSave == 2) {
+            log.warn("LikeMember 테이블 DB 삭제 " + isSave);
+            return new ResponseEntity<>(2, HttpStatus.OK);
         }
-        log.warn("LikeMember 테이블 DB 삭제 " + isSave);
-        return new ResponseEntity<>(2, HttpStatus.OK);
+        return new ResponseEntity<>(0, HttpStatus.OK);
     }
 }
