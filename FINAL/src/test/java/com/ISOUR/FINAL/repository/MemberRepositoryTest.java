@@ -25,15 +25,31 @@ class MemberRepositoryTest {
         String[] MBTI = new String[] {"", "INTJ", "INTP", "ENTJ", "ENTP", "INFJ", "INFP", "ENFJ", "ENFP", "ISTJ", "ISFJ", "ESTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ESFP"};
         for(int i = 1; i <= 16; i++) {
             MemberInfo memberInfo = new MemberInfo();
-            memberInfo.setName("미리2" + ball[i]);
-            memberInfo.setId("alfl2" + i);
+            memberInfo.setName("미리" + ball[i]);
+            memberInfo.setId("alfl" + i);
             memberInfo.setPwd("dkfldkfl");
-            memberInfo.setEmail("alfl2" + i + "@alfl" + i +".com");
-            memberInfo.setNickname("닉미리2" + ball[i]);
+            memberInfo.setEmail("alfl" + i + "@alfl" + i +".com");
+            memberInfo.setNickname("닉미리" + ball[i]);
             memberInfo.setGender("남자");
             memberInfo.setBirth("1999-09-09");
-            memberInfo.setIntroduce("미리2" + ball[i] + "의 자기소개");
+            memberInfo.setIntroduce("미리" + ball[i] + "의 자기소개");
             memberInfo.setMbti(MBTI[i]);
+            memberInfo.setRegistrationDate(LocalDateTime.now().withNano(0));
+            memberRepository.save(memberInfo);
+        }
+    }
+
+    @Test
+    @DisplayName("개발자 회원가입 테스트")
+    public void teamSignUp() {
+        String[] ourName = new String[] {"조혜경", "우혜정", "", "", ""};
+        String[] ourId = new String[] {"9lovejhk", "kkongkkong", "", "", ""};
+        String[] ourNickname = new String[] {"개발자조혜경", "손이시려워", "", "", ""};
+        for(int i = 0; i <= 4; i++) {
+            MemberInfo memberInfo = new MemberInfo();
+            memberInfo.setName(ourName[i]);
+            memberInfo.setId(ourId[i]);
+            memberInfo.setNickname(ourNickname[i]);
             memberInfo.setRegistrationDate(LocalDateTime.now().withNano(0));
             memberRepository.save(memberInfo);
         }
