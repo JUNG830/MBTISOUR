@@ -50,11 +50,6 @@
 
 @media screen and (max-width: 1199px) {
 
-    .Container {
-        width: 100%;
-        /* padding: 0 20px; */
-        flex-direction: column;
-    }
 
     .Home-Container {
         display: flex;

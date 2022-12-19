@@ -20,6 +20,7 @@
     font-weight: 900;
     position: relative;
     bottom: 0px;
+    cursor: pointer;
 }
 
 .MBTI-Startbtn:hover {
@@ -405,7 +406,6 @@
     
     }
 }
-
 
 
 
