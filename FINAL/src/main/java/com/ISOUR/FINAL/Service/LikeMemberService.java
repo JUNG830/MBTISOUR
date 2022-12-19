@@ -35,10 +35,13 @@ public class LikeMemberService {
             // 좋아요 취소
             log.warn("★★★★★★★★★좋아요 취소 서비스★★★★★★★★★");
 
-            LikeMember result = likeMemberRepository.deleteByUserIdxAndLikeUserIdx(user_Id_num, Like_Id_num);
+           Integer result = likeMemberRepository.deleteByUserIdxAndLikeUserIdx(user_Id_num, Like_Id_num);
 //            log.warn(result.toString());
-            log.warn("여기까지 오나,,");
-            return 2;
+            if (result > 0) {
+                log.warn("여기까지 오나,,");
+                return 2;
+            }
+            return 0;
         }
     }
 }

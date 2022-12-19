@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface LikeMemberRepository extends JpaRepository<LikeMember, Long> {
-    LikeMember deleteByUserIdxAndLikeUserIdx(Long user_Id_num, Long Like_Id_num);
+    Integer deleteByUserIdxAndLikeUserIdx(Long user_Id_num, Long Like_Id_num);
     LikeMember findByUserIdxAndLikeUserIdx(Long user_Id_num, Long Like_Id_num);
 
 }
