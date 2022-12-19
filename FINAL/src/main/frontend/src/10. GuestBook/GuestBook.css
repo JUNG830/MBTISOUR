@@ -1,9 +1,15 @@
+
 .GuestBook-Container {
   width: 700px;
   height: 800px;
   text-align: center;
   flex-direction: column;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
+  margin-top: 1rem;
   border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -103,23 +109,31 @@
 }
 
 @media screen and (max-width: 700px) {
+  .Container-a{
+    width: 500px
+  }
   .GuestBook-Container {
     grid-template-columns: 2fr 3fr;
-    width: 105%;
-    height: 800px;
+    width: 107%;
+    height: 700px;
     text-align: center;
     flex-direction: column;
+
   }
 
 }
 
 
 @media screen and (max-width: 500px) {
+  .Container-a{
+    width: 380px
+  }
   .GuestBook-Container {
     grid-template-columns: 2fr 3fr;
     height: 800px;
     text-align: center;
     flex-direction: column;
+    margin: 0;
   }
   .Guest-face {
     width: 3  rem;
@@ -164,8 +178,8 @@
 }
 
 @media screen and (max-width: 300px) {
-  .Container{
-    width: none;
+  .Container-a{
+    width: 500px
   }
   .GuestBook-Container > .Container {
     grid-template-columns: 2fr 3fr;
@@ -173,6 +187,7 @@
     height: 500px;
     text-align: center;
     flex-direction: column;
+    margin: 0;
   }
   .GuestBook-header {
     margin-bottom: 1rem;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TeamAPI from '../0. API/TeamAPI A';
+import TeamAPI from '../0. API/TeamAPI';
 import hangjungdong from '../other/hangjungdong';
 import '../3. SignUp/SignUp.css';
 import EmailModal from './EmailModal';
