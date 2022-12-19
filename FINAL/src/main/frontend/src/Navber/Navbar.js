@@ -17,7 +17,7 @@ function Navbar() {
 
   // User 아이콘 눌렀을 때
   const onClickAccount = () => {
-    setShowAccount(showAccount => !showAccount);
+    if(isMenuOpen) setShowAccount(showAccount => !showAccount);
   }
 
   return (
@@ -33,15 +33,13 @@ function Navbar() {
       {/* Navbar 영역 */}
         <ul className= {isMenuOpen ? "Navbar" : "Navbar open"}>
           <div className="User">
-            {isMenuOpen ?
-            <span className="material-symbols-outlined" onClick={onClickAccount} id="User-icon">account_circle</span> : null}
-            {!isMenuOpen ? <a href="/mypage" className='myProfile'>내 프로필</a> : null }
-            <ul className={showAccount && isMenuOpen ? "User-submenu" : null}>
-              {showAccount ? <>
+            <span className="material-symbols-outlined" onClick={onClickAccount} id="User-icon">account_circle</span>
+            {/* {isMenuOpen ? <a href="/mypage" className='myProfile'>내 프로필</a> : null } */}
+            <ul className={showAccount ? "User-submenu open" : "User-submenu-close"}>
               <li><a href="/mypage">마이페이지</a></li> 
               <li><a href="/postbox">쪽지함</a></li>
-              <li><a href="/chathome">1:1채팅</a></li> </> : null }
-              {showAccount && isMenuOpen ? <li><Logout /></li> : null}
+              <li><a href="/chathome">1:1채팅</a></li>
+              {showAccount ? <li><Logout /></li> : null}
             </ul>
           </div>
           

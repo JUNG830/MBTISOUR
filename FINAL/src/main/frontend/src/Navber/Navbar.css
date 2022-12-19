@@ -128,6 +128,9 @@
   border-radius: 0 0 60% 60%;
   transition: .5s;
 }
+.User-submenu-close {
+  display: none;
+}
 
 .User-submenu li {
   text-align: center;
@@ -297,6 +300,7 @@
   }
   #User-icon {
     font-size: 2rem;
+    color: black;
   }
   .myProfile {
     display: inline-block;
@@ -334,6 +338,10 @@
   .User a:hover {
     color: black;
     transform: translateY(5px);
+  }
+
+  .User-submenu-close {
+    display: block;
   }
   /* Navbar 영역 - Menu */
   .Menu-submenu {
