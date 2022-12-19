@@ -43,7 +43,9 @@ function Pagination(props) {
   if(endPage > totalPages) {
     endPage = totalPages;
   }
+  
   let firstPage = endPage - pageLimit;
+  if(firstPage < 0) firstPage = 0;
   console.log("firstPage : " + firstPage);
   console.log("endPage : " + endPage);
 
