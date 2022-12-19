@@ -15,6 +15,9 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 ♥ 조혜경
 - 쪽지 없을 때 한 줄로만 쪽지가 없습니다 문구 보이게 수정
 
+♥ 이민형
+- 방명록css 반응형 추가
+
 22.12.17(토) 
 
 ♥ 전규한
@@ -32,6 +35,10 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 
 - 네비바 반응형 일단 메뉴가 보이게끔만 수정
 
+♥ 이민형
+
+- 시퀀스 auto => identity로 수정
+- start버튼 클릭시 login페이지 이동가능수정
 
 
 22.12.15(목) 
@@ -59,6 +66,10 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 ♥ 전규한
 - mypage , mbti , mbti type 
 
+♥ 이민형
+- mypage 닉네임, 프로필사진 수정시 바로 전 페이지 적용되도록 수정
+- login css 간격, 글자크기, 위치 수정
+
 22.12.14(수) 
 
 우혜정
@@ -75,6 +86,10 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 - (1차) AboutUs, Mypage, Postbox 마진탑 삭제
 - (2차) 채팅 빈 값일 때 등록되지 않도록 수정
 - (3차) 네비바 높이(70px) 지정, 쪽지함 모달 수정, success 모달 2초 후 자동 닫기
+
+♥ 이민형
+- 방명록 프로필사진 사이즈 수정
+- 방명록 css 세부수정(위치, 크기, 내용)
 
 22.12.13(화) 
 
