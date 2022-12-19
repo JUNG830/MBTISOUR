@@ -5,11 +5,12 @@
     justify-content: center;
     height: 100%;
     list-style: none;
+    margin-bottom:30px;
 }
 
 .MBTITYPES-MbtiInfoBox2 img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     position: relative;
 }
 
@@ -52,7 +53,7 @@
 .MBTITYPES-MbtiInfoHead {
 
     position: absolute;
-    bottom: 950px;
+    bottom: 780px;
     font-size: 3rem;
     text-align: center;
     font-family: 'MaplestoryOTFBold';
