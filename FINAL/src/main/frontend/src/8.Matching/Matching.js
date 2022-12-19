@@ -118,57 +118,51 @@ const Matching = () => {
   }, [pageNum]);
 
   // 좋아요
-  const [color , setColor] = useState('unLike');
-  const styles  = { color : color};
-  const [like, setLike] = useState(false);
+  const [color , setColor] = useState('');
+  // const styles  = { color : color};
+  const [like, setLike] = useState(0);
   const [pid_num, setPid_num] = useState("");
 
   // state = { isClicked: false };
   // const { isClicked } = this.state;
+  
+    // setLike(!like);
+    // const memberData = async () => {
+    //   console.log("\n>> 회원 정보 조회(useEffect)");
+    //   console.log("myId : " + session_id);
 
-  const handleBookmark = () => {
-    setLike(!like);
-  }
+    //     const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
+    //     if(response.status == 200) {
+    //       console.log("통신 성공(200)");
+    //       const member = response.data;
+    
+    //       console.log(member)
+    //       console.log("------------------");
+    //       setPid_num(response.data.idNum)
+        
 
+    // if(like){
+    //   setLike(false);
+    //   setColor('unLike');
+    // } else{
+    //   setLike(true);
+    //   setColor(like); 
+    // }
   const onClickLike = async (idx, LikeIdNum) => {
     console.log("LikeIdNum :", LikeIdNum);
     console.log("index :", idx);
-
-
-    // setLike(!like);
-    const memberData = async () => {
-      console.log("\n>> 회원 정보 조회(useEffect)");
-      console.log("myId : " + session_id);
-
-        const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
-        if(response.status == 200) {
-          console.log("통신 성공(200)");
-          const member = response.data;
-    
-          console.log(member)
-          console.log("------------------");
-          setPid_num(response.data.idNum)
-        
-
-    if(like){
-      setLike(false);
-      setColor('unLike');
-    } else{
-      setLike(true);
-      setColor(like); 
-    }
+    setLike(LikeIdNum);
     
     try {
       const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
       console.log("%%%%% 좋아요 전송");
       console.log(likeData.data);
-      // this.setState({ isClicked: !this.state.isClicked });
             
       if (likeData.data === 1) {
+        setColor('red-btn');
 
-        // document.getElementsById(`${LikeIdNum}`).style.color = 'red';
       } else {
-        // document.getElementsById({LikeIdNum}).style.color = 'unset';
+        setColor('');
       }
 
     } catch (e) {
@@ -299,7 +293,7 @@ const Matching = () => {
             <div className='Mat-icon'>
               {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
-                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset', color:like ? 'red': 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
+                  <FavoriteIcon className={`${(like === mat.mat_id_num) && color}`} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
