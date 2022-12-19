@@ -116,6 +116,38 @@ const Matching = () => {
     };
   memberData();
   }, [pageNum]);
+
+  // 좋아요
+  const [like, setLike] = useState(false);
+  // state = { isClicked: false };
+  // const { isClicked } = this.state;
+
+  const handleBookmark = () => {
+    setLike(!like);
+  }
+
+  const onClickLike = async (idx, LikeIdNum) => {
+    console.log("LikeIdNum :", LikeIdNum);
+    console.log("index :", idx);
+    setLike(!like);
+    
+    try {
+      const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
+      console.log("%%%%% 좋아요 전송");
+      console.log(likeData.data);
+      // this.setState({ isClicked: !this.state.isClicked });
+            
+      if (likeData.data === 1) {
+
+        // document.getElementsById(`${LikeIdNum}`).style.color = 'red';
+      } else {
+        // document.getElementsById({LikeIdNum}).style.color = 'unset';
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
  // 채팅하기 onClick
  const user1 = localId;
@@ -219,7 +251,7 @@ const Matching = () => {
 
         : (mat_memberInfo.length != 0 ) ?
 
-          mat_memberInfo.map((mat) => (
+          mat_memberInfo.map((mat, index) => (
           <div className='mat-cont'>
             <div className='Mat-Box' key={mat.id}>
               <div className='Mat-profile'>
@@ -240,7 +272,7 @@ const Matching = () => {
             <div className='Mat-icon'>
               {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
-                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', color:'red', backgroundColor: 'unset'}} />
+                  <FavoriteIcon className='Like-icon' style = {{fontSize: 'xx-large', backgroundColor: 'unset', color:like ? 'red': 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
@@ -275,19 +307,3 @@ const Matching = () => {
 }
 
 export default Matching;
-// const [like_user_num, setLike_user_num] = useState('');
-// const [like_num, setLike_num] = useState(0);
-// const [mat_id_num, setMat_id_num] = useState('');
-
-// 좋아요 버튼
-// const Click_like = () => {
-//     setLike_num(1);
-//     console.log("Click_like : " + like_num);
-// }
-
-// const UnClick_like = (e) => {
-//     const like_user_num = e.target.value
-//     setLike_user_num(like_user_num);
-//     setLike_num(0);
-//     console.log("UnClick_like : " + like_user_num);
-// }
