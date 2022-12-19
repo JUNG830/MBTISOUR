@@ -48,7 +48,7 @@ const GuestBook = () => {
   }, [inputContent]);
     
   return (
-    <div className="Container">
+    <div className="Container-a">
       <div className="GuestBook-Container">
         <div className="GuestBook-header">
           <input className="GuestBook-input" type="text" onChange={onChangeText}  />

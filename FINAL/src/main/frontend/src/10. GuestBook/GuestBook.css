@@ -1,4 +1,13 @@
-
+.Container-a{
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.04);
+  height: calc(100vh - 70px);
+  font-family: 'LINESeedKR-Bd';
+  width: 1180px;
+}
 .GuestBook-Container {
   width: 700px;
   height: 95%;
@@ -59,7 +68,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .GuestBook-main {
   width: 100%;
-  height: 650px;
+
   font-size: 1rem;
   overflow-y: auto;
 }
@@ -110,13 +119,13 @@
 
 @media screen and (max-width: 700px) {
   .Container-a{
-    width: 700px;
+    width: 100%
 
   }
   .GuestBook-Container {
     grid-template-columns: 2fr 3fr;
     width: 107%;
-    height: 700px;
+    height: 600px;
     text-align: center;
     flex-direction: column;
 
@@ -127,11 +136,10 @@
 
 @media screen and (max-width: 500px) {
   .Container-a{
-
+    width:100%;
   }
   .GuestBook-Container {
     grid-template-columns: 2fr 3fr;
-    width: 100%;
     height: 95%;
     text-align: center;
     flex-direction: column;
