@@ -106,3 +106,8 @@ a {
     justify-content: center;
     align-items: center;
 } */
+@media (max-width: 500px) {
+    .Container {
+        width: 100%;
+    }
+}

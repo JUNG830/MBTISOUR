@@ -178,8 +178,8 @@ const TeamAPI = {
   },
 
   chatInfo: async function (content) {
-    // return await axios.post(TEAM_DOMAIN + "Chat", HEADER);
-    return await axios.post("Chat", HEADER);
+    return await axios.post(TEAM_DOMAIN + "Chat", HEADER);
+    // return await axios.post("Chat", HEADER);
   },
 
   chatRoomOpen: async function (name) {
