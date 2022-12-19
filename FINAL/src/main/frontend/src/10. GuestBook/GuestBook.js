@@ -19,9 +19,14 @@ const GuestBook = () => {
     let temp_text = e.target.value;
     setInputContent(temp_text);
   }
-
+  const onKeyPress = (e) => {
+    if(e.key === 'Enter') {
+      onClickSubmit();
+    }
+  }
   const onClickSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+
     try {
       const response = await TeamAPI.memberChat(inputContent,myNickname,myFace,myId);
       if(response.data === true) {
@@ -51,7 +56,7 @@ const GuestBook = () => {
     <div className="Container-a">
       <div className="GuestBook-Container">
         <div className="GuestBook-header">
-          <input className="GuestBook-input" type="text" onChange={onChangeText}  />
+          <input className="GuestBook-input" type="text" onChange={onChangeText} onKeyDown={onKeyPress} />
           <button className ="GuestBook-submit" onClick={onClickSubmit} disabled={inputContent === ""} >등록</button>
         </div>
 
