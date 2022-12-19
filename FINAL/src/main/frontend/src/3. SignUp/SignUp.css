@@ -54,6 +54,9 @@
 .All-Term {
     border-bottom: 1px solid;
 }
+.SignUp-Allagree > label > p {
+    font-size: 0.9rem;
+}
 .SignUp-Allagree > label > b {
     font-size: 0.9rem;
     font-weight: bold;
@@ -258,6 +261,59 @@ border-radius: 25px;
     font-size: 1.3rem;
     vertical-align: middle;
     font-family: 'MaplestoryOTFBold';
+}
+
+@media screen and (max-width: 500px) {
+    /* 약관 동의 */
+    .Terms-Container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+    }
+    .SignUp-Main-Box{
+        width: 85%;
+        height: 80%;
+    }
+    .SignUp-Allagree > label > p {
+        font-size: 0.75rem;
+    }
+    .SignUp-Allagree > label > b {
+        font-size: 0.7rem;
+    }
+    .Terms-title > input {
+        scale: 1;
+    }
+    .SignUp-Allagree-S {
+        font-style: italic;
+        font-size: 0.6rem;
+    }
+    .Terms-content  {
+        font-size: 0.6rem;
+    }
+    .SignUp-Box {
+        grid-template-rows: 1.3fr 4fr 1fr;
+        border-radius: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .SignUp-Table {
+        padding: 0 8%;
+    }
+    .SignUp-item > td > input {
+        width: 220px;
+        font-size: 0.7rem;
+    }
+    .Chacked-btn {
+        width: 80px;
+        font-size: 0.7rem;
+    }
+    .SignUp-item > td > select {
+        width:105px;
+    }
+    .SignUp-btn {
+        width: 84%;
+    }
 }
 
 

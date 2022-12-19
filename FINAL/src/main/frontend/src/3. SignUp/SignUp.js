@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import TeamAPI from '../0. API/TeamAPI';
+import TeamAPI from '../0. API/TeamAPI A';
 import hangjungdong from '../other/hangjungdong';
 import '../3. SignUp/SignUp.css';
 import EmailModal from './EmailModal';
@@ -130,7 +130,7 @@ function SignUp() {
             <div className='SignUp-Allagree'>
               {/* <span className='checkbox-check-btn1'> */}
               <label className='Terms-title' htmlFor="checkbox-check_all">
-                <b className='All-Term'>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</b>
+                <p className='All-Term'>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</p>
                 <input type="checkbox" id="checkbox-check_all"
                   onChange={(e) => handleAllCheck(e.target.checked)}
                   checked={termsList.length === checkedItems.length ? true : false} />
