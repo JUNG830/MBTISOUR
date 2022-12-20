@@ -75,7 +75,7 @@ const Home = () => {
         
         <div className="WelcomeMessage">
           <h2><span style={{ color: "navy", fontWeight: "bold" }}>{nickName}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
-          <h3>새로운 쪽지가 있습니다!</h3>
+          {/* <h3>새로운 쪽지가 있습니다!</h3> */}
         </div>
 
         <div className="Dino">
@@ -83,6 +83,9 @@ const Home = () => {
         </div>
         <div className="DinoStartMessage">
           <p>게임을 시작하려면 spacebar를 누르세요</p>
+        </div>
+        <div className="DinoStartMessage_mobile">
+          <p>게임을 시작하려면 Dino를 터치하세요</p>
         </div>
 
       </div>

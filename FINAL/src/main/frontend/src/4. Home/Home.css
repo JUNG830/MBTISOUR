@@ -46,11 +46,14 @@
 .DinoStartMessage {
     padding-top: 10px;
     color: gray;
+    display: contents;
+}
+.DinoStartMessage_mobile {
+    display: none;
+
 }
 
-@media screen and (max-width: 450px) {
-
-
+@media screen and (max-width: 500px) {
     .Home-Container {
         display: flex;
         width: 100%;
@@ -68,7 +71,7 @@
     }
 
     .WelcomeMessage {
-        width: 100%;
+        width: 90%;
         height: 150px;
         min-width: 360px;
     }
@@ -85,6 +88,14 @@
     .DinoAddr {
         width: 90%;
         min-width: 360px;
+    }
+    .DinoStartMessage {
+        display: none;
+    }
+    .DinoStartMessage_mobile {
+        display: contents;
+        padding-top: 10px;
+        color: gray;
     }
 
 

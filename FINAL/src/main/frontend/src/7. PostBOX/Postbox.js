@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TeamAPI from '../0. API/TeamAPI';
@@ -21,7 +20,7 @@ const Postbox = () => {
   /* ===== CustomModal 에 필요 ===== */
   const [state, setState] = useState({
     open: false, success: false, error: false,
-    successMsg: "회원가입 성공", errorMsg: "아이디 또는 비밀번호를 확인하세요!"
+    successMsg: "", errorMsg: ""
   });
 
   const onChangeState = () => {
@@ -174,7 +173,7 @@ const Postbox = () => {
           <h1>{myNickname} 님의 쪽지함</h1>
         </div>
 
-        <button className='delete' onClick={onClickDelete} disabled={postList.length === 0}>삭제</button>
+        <button id="Post-Delete" onClick={onClickDelete} disabled={postList.length === 0}>삭제</button>
 
         {/* main 영역 */}
         <div className='Postbox-main'>
@@ -189,8 +188,10 @@ const Postbox = () => {
                     // ▼ 전체 쪽지 수와 체크된 쪽지의 수가 다르면 false(전체 선택 해제)
                     checked={checkedPosts.length === postList.slice(offset, offset + limit).length && postList.length !== 0 ? true : false} />
                 </th>
-                <th className='Postbox-table thead-postSender'><h4>보낸 사람</h4></th>
-                <th className='Postbox-table thead-content'><h4>내용</h4></th>
+                <div className='Group-tbody'>
+                  <th className='Postbox-table thead-postSender'><h4>보낸 사람</h4></th>
+                  <th className='Postbox-table thead-content'><h4>내용</h4></th>
+                </div>
                 <th className='Postbox-table thead-postTime'><h4>시간</h4></th>
               </tr>
             </thead>
@@ -200,26 +201,29 @@ const Postbox = () => {
               {postList.length === 0 
               ? 
               <tr>
-                <td colSpan='4'>쪽지가 없습니다.</td>
+                <td id="No-post" colSpan='4'>쪽지가 없습니다.</td>
               </tr>
               // slice(2, 4) : 인덱스 2부터 4-1(=3)까지
               : (postList.slice(offset, offset + limit).map(post => (
                 <tr key={post.postNum}>
-                  <td className='Postbox-table-tbody-td-checkbox'>
+                  <td className='Postbox-table tbody-checkbox'>
                     <input type='checkbox'
                       onChange={(e) => handleSingleCheck(e.target.checked, post.postNum)}
                       // ▼ checkedPosts 에 해당 쪽지의 postNum 이 있으면 true, 아니면 false
                       checked={checkedPosts.includes(post.postNum) ? true : false} />
                   </td>
-                  <td className='Postbox-table-tbody-td-postSender'>{post.postSender}</td>
-                  <td className='Postbox-table-tbody-td-content'
-                    onClick={() => onClickPost(post.postSenderId, post.postSender, post.content)}>
-                    <div className='Postbox-table-tbody-td-content-div'>
-                      {post.content}
-                    </div>
-                  </td>
-                  <td className='Postbox-table-tbody-td-postTime'>
-                    <Moment format='YY-MM-DD HH:mm'>{post.postTime}</Moment>
+                  <div className='Group-tbody'>
+                    <td className='Postbox-table tbody-postSender'>{post.postSender}</td>
+                    <td className='Postbox-table tbody-content'
+                      onClick={() => onClickPost(post.postSenderId, post.postSender, post.content)}>
+                      {/* <div className='Postbox-table tbody-content-div'> */}
+                        {post.content}
+                      {/* </div> */}
+                    </td>
+                  </div>
+                  <td className='Postbox-table tbody-postTime'>
+                    <Moment id='postTime-web' format='YY-MM-DD HH:mm'>{post.postTime}</Moment>
+                    <Moment id='postTime-mobile' format='MM/DD'>{post.postTime}</Moment>
                   </td>
                 </tr>
               )))}
