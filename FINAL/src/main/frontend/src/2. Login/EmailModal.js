@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import TeamAPI from '../0. API/TeamAPI';
+import CustomModal from '../99. Modal/CustomModal'
 import './EmailModal.css';
 
 const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
+    
+  /* ===== CustomModal 에 필요 ===== */
+  const [state, setState] = useState({
+    open: false, success: false, error: false,
+    successMsg: "", errorMsg: ""
+  });
+
+  const onChangeState = () => {
+    setState({...state, open: false, success: false, error: false});
+  }
+  /* ============================== */
+
     const [code, setCode] = useState("");
 
     const onChangeCode = e => {
@@ -21,19 +34,19 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
             const emailConfirm = await TeamAPI.emailCode(code);
             console.log(emailConfirm);
             console.log(emailConfirm.data);
-            alert("코드 보내기 성공!!");
+            // alert("코드 보내기 성공!!");
             if (emailConfirm.data === 1) {
-                alert("인증이 완료되었습니다.")
+                setState({...state, open: true, success: true, successMsg: "이메일 인증이 완료되었습니다."});
                 onHide();
                 modalContent();
                
             } else {
-                alert("인증코드가 일치하지 않습니다. 다시 입력해주세요.");
+                setState({...state, open: true, error: true, errorMsg: "인증코드가 일치하지 않습니다. 다시 입력해주세요."});
                 setCode("");
             }
         } else {
             console.log("\n\n!!코드내용없음!!");
-            alert("코드정보를 넣어주세요..^^");
+            setState({...state, open: true, error: true, errorMsg: "인증코드를 입력해주세요."});
         }
     }
 
@@ -70,6 +83,7 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
                 </footer>
             </section>
             ) : null}
+            <CustomModal state={state} changeState={onChangeState}/>
         </div>
     )
 }

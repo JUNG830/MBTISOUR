@@ -114,7 +114,7 @@ function SignUp() {
         setMode("join");
 
       } else {
-        alert("1번과 2번에에 무조건 동의해야합니다.");
+        setState({...state, open: true, error: true, errorMsg: "필수 항목에 동의해야 회원가입이 가능합니다."});
       }
     }
     const onClickNonAgree = () => {
@@ -345,7 +345,7 @@ function SignUp() {
 
     if (id === '' || !regexId.test(id)) {
       console.log("아이디를 입력하지 않았거나 정규식에 맞지 않아요.");
-      alert("먼저, 아이디를 확인하세요.");
+      setState({...state, open: true, error: true, errorMsg: "먼저, 아이디를 확인하세요."});
     } else {
       setIsIdcheck(true);
       // 가입 여부 우선 확인
@@ -356,11 +356,11 @@ function SignUp() {
         // if(memberCheck.data.result === true) {
         if (memberCheck.data === true) {
           setNickname("");
-          alert("이미 가입되어 있는 ID 입니다.");
+          setState({...state, open: true, error: true, errorMsg: "이미 가입되어 있는 ID 입니다."});
           console.log("이미 가입되어 있는 ID 입니다.");
         } else {
           console.log("사용 가능한 ID 입니다.");
-          alert("사용 가능한 ID 입니다.");
+          setState({...state, open: true, success: true, successMsg: "사용 가능한 ID 입니다."});
         }
       } catch (e) {
         console.log(e);
@@ -378,7 +378,7 @@ function SignUp() {
 
     if (nickname === '' || !regexName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
-      alert("먼저, 닉네임을 확인하세요.");
+      setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
     } else {
       setIsNicknamecheck(true);
       // 가입 여부 우선 확인
@@ -388,13 +388,13 @@ function SignUp() {
         console.log("nicknameCheck.status : " + nicknameCheck.status);
         // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
-          setNickname("");
-          alert("사용할 수 없는 닉네임 입니다.");
           console.log("사용할 수 없는 닉네임 입니다.");
+          setNickname("");
+          setState({...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다."});
         } else {
           console.log("사용 가능한 닉네임 입니다.");
-          alert("사용 가능한 닉네임 입니다.");
           setIsNickname(true);
+          setState({...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다."});
         }
       } catch (e) {
         console.log(e);
@@ -641,7 +641,7 @@ function SignUp() {
       console.log("선택 약관 : " + check_term3);
 
       alert("회원가입 성공! 콘솔창 보세요");
-      setState({...state, open: true, success: true})
+      setState({...state, open: true, success: true, successMsg: "회원가입 성공!"});
       console.log("가입 성공!! \n로그인 페이지로 이동합니다.");
       navigate("/login");
 
@@ -673,15 +673,17 @@ function SignUp() {
 
     } else {
       console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
-      alert('입력된 값을 확인하세요.');
-      setState({...state, open: true, error: true})
+      setState({...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요."});
     }
   };
 
 
   return (
     mode === 'agree' ?
-      <Terms />
+      <>
+        <Terms />
+        <CustomModal state={state} changeState={onChangeState}/>
+      </>
       :
       <div className='No-Nav-Container'>
           <CustomModal state={state} changeState={onChangeState}/>

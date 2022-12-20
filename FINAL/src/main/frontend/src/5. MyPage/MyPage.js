@@ -276,7 +276,6 @@ const MyPage = () => {
 
     if (nickname === '' || !regexName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
-      // alert("먼저, 닉네임을 확인하세요.");
       setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
     } else {
       try {
@@ -287,14 +286,12 @@ const MyPage = () => {
         // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
           setNickname("");
-          // alert("사용할 수 없는 닉네임 입니다.");
           setState({...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다."});
           console.log("사용할 수 없는 닉네임 입니다.");
         } else {
           console.log("사용 가능한 닉네임 입니다.");
           setIsNicknamecheck(true);
-          // alert("사용 가능한 닉네임 입니다.");
-          setState({...state, open: true, error: true, errorMsg: "사용 가능한 닉네임 입니다."});
+          setState({...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다."});
           
           setIsCheckedNickname(false);
         }
