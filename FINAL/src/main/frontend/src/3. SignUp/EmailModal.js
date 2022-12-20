@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TeamAPI from '../0. API/TeamAPI';
+import TeamAPI from '../0. API/TeamAPI A';
 import './EmailModal.css';
 
 const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
