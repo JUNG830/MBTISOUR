@@ -15,6 +15,7 @@ import logo from '../images/logo.png';
 
 // 정규식 - 이름, 아이디, 비밀번호
 const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
+const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
 const regexId = /^\w{5,20}$/;
 const regexPw = /^\w{8,20}$/;
 const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -294,7 +295,7 @@ function SignUp() {
     let temp_nickname = e.target.value;
     setNickname(temp_nickname);
 
-    if (temp_nickname === '' || !regexName.test(temp_nickname)) {
+    if (temp_nickname === '' || !regexNickName.test(temp_nickname)) {
       setIsNickname(false);
       setShowReqNickname(true); // 닉네임을 정확히 입력하세요.
     } else {
@@ -376,7 +377,7 @@ function SignUp() {
     setIsNicknamecheck(false);
     console.log("\n\n중복확인 버튼 눌렀어요.");
 
-    if (nickname === '' || !regexName.test(nickname)) {
+    if (nickname === '' || !regexNickName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({ ...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요." });
     } else {

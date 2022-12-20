@@ -19,7 +19,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
   
 
-const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
+const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
 
 const MyPage = () => {
   const cookies = new Cookies();
@@ -274,7 +274,7 @@ const MyPage = () => {
     setIsNicknamecheck(false);
     console.log("\n>> 닉네임 중복확인 버튼 눌렀어요.");
 
-    if (nickname === '' || !regexName.test(nickname)) {
+    if (nickname === '' || !regexNickName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
     } else {
