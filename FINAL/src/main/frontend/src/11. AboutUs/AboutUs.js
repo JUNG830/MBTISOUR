@@ -87,7 +87,7 @@ function AboutUs() {
               <h4>전규한</h4>
               <h6>Backend / Frontend</h6>
               <CallIcon />
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("kongdole", "콩돌형")}>mail</span>
             </div>
             <div className='OurInfo'>
               <img src={이민형} alt="face"/>

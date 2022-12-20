@@ -27,7 +27,7 @@ const FindInfoModal = ({ open,  onHide, modalName }) => {
                         <div className="modal-findId">
                             <label>조회된 아이디</label>
                             <p></p>
-                            <div>{<b>{id.substring(0,2)+seq+seq+id.substring(3)}</b>}</div>
+                            <div>{<b>{id}</b>}</div>
                         </div>
                     </form>
                 </main>
@@ -41,5 +41,7 @@ const FindInfoModal = ({ open,  onHide, modalName }) => {
         </div>
     )
 }
+//<div>{<b>{id.substring(0,2)+seq+seq+id.substring(3)}*/</b>}</div>
+// 가운데 아이디 두글자 가리기 위한 코드
 
 export default FindInfoModal;
