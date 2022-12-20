@@ -26,15 +26,15 @@ function MbtiTypes() {
   return (
     <div className="Container">
       <div className="Middle-Container">
+        <div className="MBTITYPES-MbtiInfoHead">
+          <span>m</span>
+          <span>b</span>
+          <span>t</span>
+          <span>i </span>
+          유형 상세설명
+          <div>이미지를 클릭하시면 해당 유형의 설명페이지로 이동합니다.</div>
+        </div>
         <div className="MBTITYPES-MbtiInfoBox2">
-          <div className="MBTITYPES-MbtiInfoHead">
-            <span>m</span>
-            <span>b</span>
-            <span>t</span>
-            <span>i </span>
-            유형 상세설명
-            <div>이미지를 클릭하시면 해당 유형의 설명페이지로 이동합니다.</div>
-          </div>
           <li>
 
             <div className="MBTITYPES-MbtiTypeBox">

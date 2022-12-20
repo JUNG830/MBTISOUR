@@ -1,3 +1,15 @@
+.MBTITYPES-Container{
+    width: 1180px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.04);
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'LINESeedKR-Bd'
+    
+}
+
 .MBTITYPES-MbtiInfoBox2 {
 
     display: flex;
@@ -5,13 +17,15 @@
     justify-content: center;
     height: 100%;
     list-style: none;
-    margin-bottom:30px;
+    position: relative;
+    bottom: 45px;
 }
 
 .MBTITYPES-MbtiInfoBox2 img {
-    width: 130px;
-    height: 130px;
+    width: 125px;
+    height: 125px;
     position: relative;
+
 }
 
 .MBTITYPES-MbtiInfoBox2 h2 {
@@ -52,8 +66,7 @@
 
 .MBTITYPES-MbtiInfoHead {
 
-    position: absolute;
-    bottom: 900px;
+    position: relative;
     font-size: 3rem;
     text-align: center;
     font-family: 'MaplestoryOTFBold';
@@ -119,16 +132,37 @@
     text-align: center;
     margin-bottom: 5px;
     font-family: 'MaplestoryOTFBold';
-    font-size:1.2rem;
+    font-size:1.1rem;
 }
 
 .MBTITYPES-MbtiInfoBox1 a {
     text-decoration: none;
 
 }
+@media (max-width: 1180px) {
+    .Container {
+        width: 100%;
+    }
+}
 
 
 @media screen and (max-width: 800px) {
+    .MBTITYPES-Container{
+        width: 1180px;
+        margin: auto;
+        background-color: rgba(0, 0, 0, 0.04);
+        height: calc(100vh - 70px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'LINESeedKR-Bd'
+        @{
+
+        }
+        
+    }
+
+
     .MBTITYPES-MbtiInfoBox2 {
 
         display: flex;
@@ -182,8 +216,6 @@
     
     
     .MBTITYPES-MbtiInfoHead {
-        bottom : 640px;
-        position: absolute;
         font-size: 3rem;
         text-align: center;
         font-family: 'MaplestoryOTFBold';
@@ -313,8 +345,6 @@
     
     
     .MBTITYPES-MbtiInfoHead {
-        bottom : 550px;
-        position: absolute;
         font-size: 3rem;
         text-align: center;
         font-family: 'MaplestoryOTFBold';
@@ -443,8 +473,6 @@
     
     
     .MBTITYPES-MbtiInfoHead {
-        bottom : 400px;
-        position: absolute;
         font-size: 2.3rem;
         text-align: center;
         font-family: 'MaplestoryOTFBold';
