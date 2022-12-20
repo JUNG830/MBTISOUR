@@ -264,6 +264,7 @@ Enter message
     margin-left: 0px;
     width: 60px;
   }
+  
   .user_info {
     display: flex;
     justify-content: space-between;
@@ -280,8 +281,21 @@ Enter message
     display: inline-flex;
     justify-content: flex-start;
   }
+  .message-send {
+    position: flex;
+    align-items: center;
+    margin: 0 auto;
+    bottom: 0.5rem; 
+  }
   .chat_container > h3 {
     display: none;
+  }
+  .messages-box {
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    margin-bottom: 1rem;
   }
   .user_detail {
     display: grid;
@@ -343,7 +357,7 @@ Enter message
   }
 
   .message_form input {
-    width: 197px;
+    width: 70%;
   }
   /* .message_form .btn {
       margin: 0px 200px 300px;
