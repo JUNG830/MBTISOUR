@@ -27,7 +27,7 @@
   height: 70px;
   position: sticky;
   top: 0;
-  background: var(--navy);
+  background: var(--navy); background: var(--navy);
   color: var(--white);
   font-family: 'MaplestoryOTFBold';
   letter-spacing: 3px;
