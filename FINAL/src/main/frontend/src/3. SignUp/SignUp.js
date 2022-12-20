@@ -797,10 +797,10 @@ function SignUp() {
             {/* 생년월일 */}
             <tr className="SignUp-item">
               <td>
-                <input className='date' type="date" value={birth} onChange={onChangeBirth} />
-                <div className='Message'>
+                <input className='date' type="date" value={birth} min="1900-01-01" max="2024-12-30"  onChange={onChangeBirth} />
+                {!isBirth&&<div className='Message'>
                   생년월일을 선택하세요
-                </div>
+                </div>}
               </td>
             </tr>
 
@@ -844,9 +844,9 @@ function SignUp() {
                       </option>
                     ))}
                 </select>
-                <div className='Message'>
+                {!isRegion2&&<div className='Message'>
                   주소를 선택하세요
-                </div>
+                </div>}
               </td>
             </tr>
           </table>

@@ -116,6 +116,8 @@ const Input_Container = styled.div`
     position: relative;
     top: 160px;
     margin-top:50px;
+
+
     table{
         margin: 0 auto;
         div{
@@ -138,16 +140,16 @@ const Input_Container = styled.div`
     }
 
     th{
-        position: relative;
+        poition: relative;
         width: 130px;
         font-size: 25px;
-        @media screen and (max-width: 450px) {
-        font-size: 20px;
+            @media screen and (max-width: 450px) {
+            font-size: 20px;
 
-        width:300px;
-        min-width: 80px;
+            width:300px;
+            min-width: 80px;
 
-    }
+        }
     }
 
     .findInfo-btn{
@@ -166,14 +168,41 @@ const Input_Container = styled.div`
         position: relative;
         font-family: 'MaplestoryOTFBold';
 
+            @media screen and (max-width: 750px) {
+            width:420px;
+            margin-left: 40px;
+            right:24px;
+            }
+            @media screen and (max-width: 450px) {
+            width:300px;
+            right:10px;
+
+        }
+    }
+    .findInfo-btn2{
+        border : none;
+        background: var(--navy);
+        color: white;
+        width: 200px;
+        height: 50px;
+        border-radius: 100px;
+        letter-spacing: 2px;
+        font-size: 20px;
+        border: 0px none;
+        font-weight: 900;  
+        position: relative;
+        font-family: 'MaplestoryOTFBold';
+        bottom:50px;
+        left:200px;
+
         @media screen and (max-width: 750px) {
-        width:420px;
-        margin-left: 40px;
-        right:24px;
+           left:130px;
         }
         @media screen and (max-width: 450px) {
-        width:300px;
-        right:10px;
+            font-size: 15px;
+            width:150px;
+            bottom:30px;
+            left:110px;
 
     }
 
@@ -505,6 +534,9 @@ const FindInfo = () => {
                                 <div>
                                     <button className='findInfo-btn' onClick={onClickFindId}>아이디 찾기</button>
                                 </div>
+                                <div>
+                                    <button className='findInfo-btn2' onClick={()=>navigate('/login')}>로그인으로 돌아가기</button>
+                                </div>
                             </table>
                         </form>
                     </Input_Container>
@@ -560,6 +592,9 @@ const FindInfo = () => {
                                         {isFind && <button className='findInfo-btn' onClick={onClickFindPwd}>정보 조회 하기</button>}
                                         {findDate && <button className='findInfo-btn' onClick={onClickEmailAdress}>이메일 인증</button>}
                                     </div>
+                                    <div>
+                                    <button className='findInfo-btn2' onClick={()=>navigate('/login')}>로그인으로 돌아가기</button>
+                                </div>
                                 </table>
                             </form>
 

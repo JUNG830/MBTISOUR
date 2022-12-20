@@ -83,6 +83,7 @@ const MyPage = () => {
   const [introduceBefore, setIntroduceBefore] = useState("");
   const [emailBefore, setEmailBefore] = useState("");
 
+  
 
   const [isNicknamecheck, setIsNicknamecheck] = useState(false);
 
@@ -93,6 +94,7 @@ const MyPage = () => {
   const [isChangeEmail, setIsChangeEmail] = useState(false);
   const [isChangeAddress, setIsChangeAddress] = useState(false);
   const [isSetImage, setIsSetImage] = useState(false);
+  const [isFixEmail, setIsFixEmail] = useState(false);
   
   /* 
   최초 통신(useEffect) */
@@ -403,33 +405,68 @@ const MyPage = () => {
     } catch (e) { console.log(e); }
   } 
 
-  /* 이메일 변경 */
-  const onChangeEmail = e => { 
-    
+  /*이메일 변경*/
+  const OnChangeEmail = e => {
+ 
     let temp_email = e.target.value;
-    setEmail(temp_email); 
+    setEmail(temp_email);
+
     if (temp_email === '' || !regexEmail.test(temp_email)) {
-      setIsEmail(false);
+      setEmailDuplicateCheck(false);
 
-  
     } else {
-      setIsEmail(true);
-
+      setEmailDuplicateCheck(true);
     }
-  }
+  };
 
 
 
    /* 이메일 변경 취소 */
    const cancelEmail = () => { 
     setIsChangeEmail(false);
-    setEmail(emailBefore);
+    setEmail(false);
   }
 
   const OnclickRepairNickname = () =>{
     setIsChangeNickname(true);
     setIsNicknamecheck(false);
     setIsCheckedNickname(true);
+  }
+
+  const RepairEmail=()=>{
+    setIsChangeEmail(true);
+    setIsFixEmail(true);
+  }
+
+   const [emailDuplicateCheck,setEmailDuplicateCheck] = useState(false);
+   const [emailDoubleCheck, setEmailDoubleCheck] = useState(false);
+   
+   /*이메일 중복확인*/
+  const onClickEmailCheck = async (e) => {
+    e.preventDefault();
+    console.log("\n\nemail 인증 버튼을 눌렀어요");
+    console.log(isEmail);
+    if (emailDuplicateCheck === true) {
+      try {
+        const emailResult = await TeamAPI.emailDuplicateCheck(email);
+        console.log("emailResult.data : " + emailResult.data);
+        console.log("emailResult.status : " + emailResult.status);
+        if (emailResult.data === false) {
+          alert('사용 가능한 이메일 입니다. 이메일 인증을 진행해주세요.')
+          setEmailDoubleCheck(true);
+          setIsFixEmail(false);
+        } else {
+          alert('중복된 이메일 입니다. 다른 이메일을 입력해주세요.')
+          setEmail("");
+        }
+      } catch (e) {
+        console.log(e);
+      }
+
+    }else{
+      setState({ ...state, open: true, error: true, errorMsg: "이메일을 양식에 맞게 입력해주세요." });
+          console.log("이메일을 양식에 맞게 입력해주세요.");
+    }
   }
 
 
@@ -452,6 +489,7 @@ const MyPage = () => {
         console.log("region1 : " + region1);
         console.log("region2 : " + region2);
         if(response.status == 200) {
+          setEmailDoubleCheck(false);
           console.log("통신 성공(200)");
           console.log("\n>> 이메일 수정 완료");
           // alert("이메일 수정 완료!!");
@@ -731,16 +769,21 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' type="mail" value={email} />
                   </div>
-                  <button className='mypage-btn' onClick={e => setIsChangeEmail(true)}>수정</button>
+                  <button className='mypage-btn' onClick={RepairEmail}>수정</button>
                 </>
                 :
                 <>
                   <div className='mypage-input'>
-                    <input className='inputBox' type="mail" onChange={onChangeEmail} />
+                    <input className='inputBox' type="mail" onChange={OnChangeEmail} />
                   </div>
-                  {isEmail &&
+                  {isFixEmail&&
+                  <button className='mypage-btn-ema1' onClick={onClickEmailCheck}>중복확인</button>}
+                  {isFixEmail&&
+                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                  {emailDoubleCheck&&
                   <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
-                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>
+                  {emailDoubleCheck&&
+                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
                 </>
                 }
               </tr>
