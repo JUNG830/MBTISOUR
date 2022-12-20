@@ -428,7 +428,7 @@
 
 }
 
-table tr {
+.MyPage-Table tr {
 
     margin: 50px auto;
 }
@@ -951,7 +951,7 @@ table tr {
 
     }
 
-    table tr {
+    .MyPage-Table tr {
 
         margin: 50px auto;
     }
