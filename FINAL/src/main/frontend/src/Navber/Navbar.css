@@ -31,6 +31,7 @@
   color: var(--white);
   font-family: 'MaplestoryOTFBold';
   letter-spacing: 3px;
+  z-index: 1000;
 }
 
 .Navbar-Container li {
@@ -55,7 +56,6 @@
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 1000;
   transition: all .50s ease;
 }
 
@@ -262,6 +262,7 @@
   .Navbar-Container .Navbar {
     position: absolute;
     top: 100%;
+    z-index: 1000;
 
     right: -100%; /* rigth : 2% ☞ -100% */
     width: 200px;
