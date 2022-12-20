@@ -34,7 +34,7 @@ function SignUp() {
   });
 
   const onChangeState = () => {
-    setState({...state, open: false, success: false, error: false});
+    setState({ ...state, open: false, success: false, error: false });
   }
   /* ============================== */
 
@@ -56,9 +56,9 @@ function SignUp() {
       },
       {
         termNum: 2, title: "[필수] 개인 정보 수집 및 이용에 대한 안내(필수)",
-        content: 
-        "개인정보보호법에 따라 MBTISOUR 에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다."
-        + "이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다."
+        content:
+          "개인정보보호법에 따라 MBTISOUR 에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다."
+          + "이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다."
       },
       {
         termNum: 3, title: "[선택] 프로모션 정보 수신 동의(선택)",
@@ -114,11 +114,11 @@ function SignUp() {
         setMode("join");
 
       } else {
-        setState({...state, open: true, error: true, errorMsg: "필수 항목에 동의해야 회원가입이 가능합니다."});
+        setState({ ...state, open: true, error: true, errorMsg: "필수 항목에 동의해야 회원가입이 가능합니다." });
       }
     }
     const onClickNonAgree = () => {
-      
+
       navigate('/login');
     }
 
@@ -136,7 +136,7 @@ function SignUp() {
                   checked={termsList.length === checkedItems.length ? true : false} />
               </label>
               {/* </span> */}
-            {/* </div> */}
+              {/* </div> */}
             </div>
 
             {termsList?.map(ball => (
@@ -148,7 +148,7 @@ function SignUp() {
                       onChange={(e) => handleSingleCheck(e.target.checked, ball.termNum)}
                       checked={checkedItems.includes(ball.termNum) ? true : false} />
                   </label>
-                    {/* <label htmlFor="checkbox-check_all"></label> */}
+                  {/* <label htmlFor="checkbox-check_all"></label> */}
                   <div className='Terms-content'>{ball.content}</div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ function SignUp() {
             </div>
             <div className='Terms-agree-btn'>
               <button type="button" className='nonAgreeBtn' onClick={onClickNonAgree}>취소</button>
-              <button type="button" className='agreeBtn'  onClick={onClickAgree}>확인</button>
+              <button type="button" className='agreeBtn' onClick={onClickAgree}>확인</button>
             </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ function SignUp() {
 
     if (id === '' || !regexId.test(id)) {
       console.log("아이디를 입력하지 않았거나 정규식에 맞지 않아요.");
-      setState({...state, open: true, error: true, errorMsg: "먼저, 아이디를 확인하세요."});
+      setState({ ...state, open: true, error: true, errorMsg: "먼저, 아이디를 확인하세요." });
     } else {
       setIsIdcheck(true);
       // 가입 여부 우선 확인
@@ -356,11 +356,11 @@ function SignUp() {
         // if(memberCheck.data.result === true) {
         if (memberCheck.data === true) {
           setNickname("");
-          setState({...state, open: true, error: true, errorMsg: "이미 가입되어 있는 ID 입니다."});
+          setState({ ...state, open: true, error: true, errorMsg: "이미 가입되어 있는 ID 입니다." });
           console.log("이미 가입되어 있는 ID 입니다.");
         } else {
           console.log("사용 가능한 ID 입니다.");
-          setState({...state, open: true, success: true, successMsg: "사용 가능한 ID 입니다."});
+          setState({ ...state, open: true, success: true, successMsg: "사용 가능한 ID 입니다." });
         }
       } catch (e) {
         console.log(e);
@@ -378,7 +378,7 @@ function SignUp() {
 
     if (nickname === '' || !regexName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
-      setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
+      setState({ ...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요." });
     } else {
       setIsNicknamecheck(true);
       // 가입 여부 우선 확인
@@ -390,11 +390,11 @@ function SignUp() {
         if (nicknameCheck.data === true) {
           console.log("사용할 수 없는 닉네임 입니다.");
           setNickname("");
-          setState({...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다."});
+          setState({ ...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다." });
         } else {
           console.log("사용 가능한 닉네임 입니다.");
           setIsNickname(true);
-          setState({...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다."});
+          setState({ ...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다." });
         }
       } catch (e) {
         console.log(e);
@@ -463,7 +463,7 @@ function SignUp() {
 
 
 
-
+  const [emailDuplicateCheck,setEmialDuplicateCheck] = useState(false);
   /*이메일 변경*/
   const OnChangeEmail = e => {
 
@@ -473,9 +473,12 @@ function SignUp() {
     if (temp_email === '' || !regexEmail.test(temp_email)) {
       setIsEmail(false);
       setShowReqEmail(true); // 이메일을 정확히 입력하세요.
+      setEmialDuplicateCheck(false);
+
     } else {
       setIsEmail(true);
       setShowReqEmail(false); // 이메일을 정확히 입력하세요.
+      setEmialDuplicateCheck(true);
     }
   };
 
@@ -484,22 +487,28 @@ function SignUp() {
   const onClickEmailCheck = async (e) => {
     e.preventDefault();
     console.log("\n\nemail 인증 버튼을 눌렀어요");
-    try {
-      const emailResult = await TeamAPI.emailDuplicateCheck(email);
-      console.log("emailResult.data : " + emailResult.data);
-      console.log("emailResult.status : " + emailResult.status);
-      if (emailResult.data === false) {
-        alert('사용 가능한 이메일 입니다. 이메일 인증을 진행해주세요.')
-        setIsEmail(false);
-        setEmailDoubleCheck(true);
-      } else {
-        alert('중복된 이메일 입니다. 다른 이메일을 입력해주세요.')
-        setEmail("");
+    console.log(isEmail);
+    if (emailDuplicateCheck === true) {
+      try {
+        const emailResult = await TeamAPI.emailDuplicateCheck(email);
+        console.log("emailResult.data : " + emailResult.data);
+        console.log("emailResult.status : " + emailResult.status);
+        if (emailResult.data === false) {
+          alert('사용 가능한 이메일 입니다. 이메일 인증을 진행해주세요.')
+          setIsEmail(false);
+          setEmailDoubleCheck(true);
+        } else {
+          alert('중복된 이메일 입니다. 다른 이메일을 입력해주세요.')
+          setEmail("");
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
-    }
 
+    }else{
+      setState({ ...state, open: true, error: true, errorMsg: "이메일을 양식에 맞게 입력해주세요." });
+          console.log("이메일을 양식에 맞게 입력해주세요.");
+    }
   }
 
   /*이메일 인증*/
@@ -623,7 +632,7 @@ function SignUp() {
         pwd
       );
 
-      const memberReg = await TeamAPI.memberReg(kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2,check_term3);
+      const memberReg = await TeamAPI.memberReg(kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2, check_term3);
 
       console.log("name : " + name);
       console.log("id : " + id);
@@ -641,7 +650,7 @@ function SignUp() {
       console.log("선택 약관 : " + check_term3);
 
       alert("회원가입 성공! 콘솔창 보세요");
-      setState({...state, open: true, success: true, successMsg: "회원가입 성공!"});
+      setState({ ...state, open: true, success: true, successMsg: "회원가입 성공!" });
       console.log("가입 성공!! \n로그인 페이지로 이동합니다.");
       navigate("/login");
 
@@ -673,7 +682,7 @@ function SignUp() {
 
     } else {
       console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
-      setState({...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요."});
+      setState({ ...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요." });
     }
   };
 
@@ -682,171 +691,171 @@ function SignUp() {
     mode === 'agree' ?
       <>
         <Terms />
-        <CustomModal state={state} changeState={onChangeState}/>
+        <CustomModal state={state} changeState={onChangeState} />
       </>
       :
       <div className='No-Nav-Container'>
-          <CustomModal state={state} changeState={onChangeState}/>
+        <CustomModal state={state} changeState={onChangeState} />
         {/* <div className="SignUp-Container"> */}
-          {/* 이메일 인증 모달창 */}
-          <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
-          <div className='SignUp-Box'>
-            <div className="SignUp-header">
-              <img src={logo} />
-              <h1>Sign Up</h1>
-              {/* <h4>회원정보를 입력해주세요</h4> */}
-            </div>
+        {/* 이메일 인증 모달창 */}
+        <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
+        <div className='SignUp-Box'>
+          <div className="SignUp-header">
+            <img src={logo} />
+            <h1>Sign Up</h1>
+            {/* <h4>회원정보를 입력해주세요</h4> */}
+          </div>
 
-            <table action="" className="SignUp-Table">
+          <table action="" className="SignUp-Table">
 
-              {/* 이름 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input type="text" placeholder="이름" value={name} onChange={onChangeName} />
-                  <div className='Message'>
-                    {showReqName && reqName}
-                  </div>
-                </td>
-              </tr>
+            {/* 이름 */}
+            <tr className="SignUp-item">
+              <td>
+                <input type="text" placeholder="이름" value={name} onChange={onChangeName} />
+                <div className='Message'>
+                  {showReqName && reqName}
+                </div>
+              </td>
+            </tr>
 
-              {/* 아이디 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className="Input-border-2" type="text" placeholder="아이디" value={id} onChange={onChangeId} />
-                  <div className='Message'>
-                    {showReqId && reqId}
-                    {showGuideId && guideId}
-                    {showAcceptId && acceptId}
-                  </div>
-                </td>
-                <td>
-                  <button className='Chacked-btn' onClick={onClickIdCheck} required>중복확인</button>
-                </td>
-              </tr>
+            {/* 아이디 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className="Input-border-2" type="text" placeholder="아이디" value={id} onChange={onChangeId} />
+                <div className='Message'>
+                  {showReqId && reqId}
+                  {showGuideId && guideId}
+                  {showAcceptId && acceptId}
+                </div>
+              </td>
+              <td>
+                <button className='Chacked-btn' onClick={onClickIdCheck} required>중복확인</button>
+              </td>
+            </tr>
 
 
-              {/* 비밀번호 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className="Input-border-3" type="password" placeholder="비밀번호" value={pwd} onChange={onChangePassword} />
-                  <div className='Message'>
-                    {showGuidePwd && guidePwd}
-                    {showAcceptPwd && acceptPwd}
-                  </div>
-                </td>
-              </tr>
+            {/* 비밀번호 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className="Input-border-3" type="password" placeholder="비밀번호" value={pwd} onChange={onChangePassword} />
+                <div className='Message'>
+                  {showGuidePwd && guidePwd}
+                  {showAcceptPwd && acceptPwd}
+                </div>
+              </td>
+            </tr>
 
-              {/* 비밀번호 확인 */}
-              <th className="SignUp-item">
-                <td>
-                  <input className="Input-border-4" type="password" placeholder="비밀번호 확인" value={pwdcheck} onChange={onChangePassword_check} disabled={!regexPw.test(pwd)} />
-                  <div className='Message'>
-                    {showErrorPwdcheck && errorPwdcheck}
-                    {showAcceptPwdcheck && acceptPwdcheck}
-                  </div>
-                </td>
-              </th>
+            {/* 비밀번호 확인 */}
+            <th className="SignUp-item">
+              <td>
+                <input className="Input-border-4" type="password" placeholder="비밀번호 확인" value={pwdcheck} onChange={onChangePassword_check} disabled={!regexPw.test(pwd)} />
+                <div className='Message'>
+                  {showErrorPwdcheck && errorPwdcheck}
+                  {showAcceptPwdcheck && acceptPwdcheck}
+                </div>
+              </td>
+            </th>
 
-              {/* 닉네임 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className="Input-border-5" type="text" placeholder="닉네임(한글 2~20자)" value={nickname} onChange={onChangeNickname} />
-                  <div className='Message'>
-                    {showReqNickname && reqNickname}
-                  </div>
-                </td>
-                <td>
-                  <button className='Chacked-btn' onClick={onClickNicknameCheck} required> 중복확인 </button>
-                </td>
-              </tr>
+            {/* 닉네임 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className="Input-border-5" type="text" placeholder="닉네임(한글 2~20자)" value={nickname} onChange={onChangeNickname} />
+                <div className='Message'>
+                  {showReqNickname && reqNickname}
+                </div>
+              </td>
+              <td>
+                <button className='Chacked-btn' onClick={onClickNicknameCheck} required> 중복확인 </button>
+              </td>
+            </tr>
 
-              {/* 자기소개 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className="Input-border-6" type="text" placeholder="자기소개(한글 2~20자)" value={introduce} onChange={onChangeIntroduce} />
-                </td>
-              </tr>
+            {/* 자기소개 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className="Input-border-6" type="text" placeholder="자기소개(한글 2~20자)" value={introduce} onChange={onChangeIntroduce} />
+              </td>
+            </tr>
 
-              {/* 이메일 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className="Input-border-7" type="text" placeholder="이메일" value={email} onChange={OnChangeEmail} disabled={emailDoubleCheck ? true : false} />
-                  <div className='Message'>
-                    {showReqEmail && reqEmail}
-                    {emailConfirm && confirmEmail}
-                  </div>
-                </td>
-                <td>
-                  {isEmail &&
-                    <button className='Chacked-btn' onClick={onClickEmailCheck} > 중복확인 </button>}
-                  {emailDoubleCheck &&
-                    <button className='Chacked-btn' onClick={onClickEmailAdress}> 이메일인증</button>}
-                </td>
-              </tr>
+            {/* 이메일 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className="Input-border-7" type="text" placeholder="이메일" value={email} onChange={OnChangeEmail} disabled={emailDoubleCheck ? true : false} />
+                <div className='Message'>
+                  {showReqEmail && reqEmail}
+                  {emailConfirm && confirmEmail}
+                </div>
+              </td>
+              <td>
+                {isEmail &&
+                  <button className='Chacked-btn' onClick={onClickEmailCheck} > 중복확인 </button>}
+                {emailDoubleCheck &&
+                  <button className='Chacked-btn' onClick={onClickEmailAdress}> 이메일인증</button>}
+              </td>
+            </tr>
 
-              {/* 생년월일 */}
-              <tr className="SignUp-item">
-                <td>
-                  <input className='date' type="date" value={birth} onChange={onChangeBirth} />
-                  <div className='Message'>
-                    생년월일을 선택하세요
-                  </div>
-                </td>
-              </tr>
+            {/* 생년월일 */}
+            <tr className="SignUp-item">
+              <td>
+                <input className='date' type="date" value={birth} onChange={onChangeBirth} />
+                <div className='Message'>
+                  생년월일을 선택하세요
+                </div>
+              </td>
+            </tr>
 
-              {/* 성별 */}
-              <tr className="SignUp-item">
-                <td>
-                  <div className='Gender'>
-                    <label className='gender'>
-                      <input className='gender-checkbox' type="radio" name="gender" value="남자" onChange={onChangeRadio} />
-                      남자
-                    </label>
+            {/* 성별 */}
+            <tr className="SignUp-item">
+              <td>
+                <div className='Gender'>
+                  <label className='gender'>
+                    <input className='gender-checkbox' type="radio" name="gender" value="남자" onChange={onChangeRadio} />
+                    남자
+                  </label>
 
-                    <label className='gender'>
-                      <input className='gender-checkbox' type="radio" name="gender" value="여자" onChange={onChangeRadio} />
-                      여자
-                    </label>
-                  </div>
-                </td>
-              </tr>
+                  <label className='gender'>
+                    <input className='gender-checkbox' type="radio" name="gender" value="여자" onChange={onChangeRadio} />
+                    여자
+                  </label>
+                </div>
+              </td>
+            </tr>
 
-              {/* 주소 */}
-              <tr className="SignUp-item">
-                <td>
-                  <select className='Select-Sido' onChange={onChangeRegion1}>
-                    <option disabled selected>시도선택</option>
-                    {sido.map((e) => (
-                      <option key={e.sido} value={e.codeNm}>
+            {/* 주소 */}
+            <tr className="SignUp-item">
+              <td>
+                <select className='Select-Sido' onChange={onChangeRegion1}>
+                  <option disabled selected>시도선택</option>
+                  {sido.map((e) => (
+                    <option key={e.sido} value={e.codeNm}>
+                      {e.codeNm}
+                    </option>
+                  ))}
+                </select>
+                <select className='Select-SiGuGun' onChange={onChangeRegion2}>
+                  <option disabled selected>시/구/군선택</option>
+
+                  {sigugun
+                    // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
+                    .filter((e) => e.sido === keySido)
+                    .map((e) => (
+                      <option key={e.sigugun} value={e.codeNm}>
                         {e.codeNm}
                       </option>
                     ))}
-                  </select>
-                  <select className='Select-SiGuGun' onChange={onChangeRegion2}>
-                    <option disabled selected>시/구/군선택</option>
-
-                    {sigugun
-                      // 필터함수를 사용하여 배열을 필터링하여 군/구를 불러옴
-                      .filter((e) => e.sido === keySido)
-                      .map((e) => (
-                        <option key={e.sigugun} value={e.codeNm}>
-                          {e.codeNm}
-                        </option>
-                      ))}
-                  </select>
-                  <div className='Message'>
-                    주소를 선택하세요
-                  </div>
-                </td>
-              </tr>
-            </table>
-            <div className='SignUp-footer'>
-              <button className="SignUp-btn" type="submit" onClick={onClickButton}>회원가입</button>
-            </div>
-
+                </select>
+                <div className='Message'>
+                  주소를 선택하세요
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div className='SignUp-footer'>
+            <button className="SignUp-btn" type="submit" onClick={onClickButton}>회원가입</button>
           </div>
-      {/* </div> */}
-    </div>
+
+        </div>
+        {/* </div> */}
+      </div>
   );
 }
 
