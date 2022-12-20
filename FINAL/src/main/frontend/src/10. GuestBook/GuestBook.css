@@ -127,7 +127,9 @@
     height: 600px;
     text-align: center;
     flex-direction: column;
-
+    border-radius: 0px;
+    border: 0 0 0 0;
+    box-shadow: 0 0px 0px 0 rgba(255, 255, 255, 0.2), 0 0px 0px 0 rgba(255, 255, 255, 0.19);
   }
 
 }
