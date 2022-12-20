@@ -637,9 +637,9 @@ const MyPage = () => {
                 {!isChangeNickname ?
                 <>
                   <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={nickname} />
+                    <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
                   </div>
-                  <button className='mypage-btn' onClick={e => setIsChangeNickname(true)}>수정</button>
+                  <button className='mypage-btn'  onClick={e => setIsChangeNickname(true)}>수정</button>
                 </>
                 :
                 <>
