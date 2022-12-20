@@ -5,7 +5,7 @@
   padding: 1rem 2rem;
   border-radius: 10px;
   position: relative;
-  background-color: yellow;
+  background-color: rosybrown;
 }
 /* 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -52,16 +52,27 @@
 
 @media screen and (max-width: 700px) {
   .AboutUs-Container {
-    width: 100%;
+    width: 105%;
+    height: 500px;
+
+    margin-left: -0.5rem;
         padding: 0 20px;
         flex-direction: column;
   }
-
-  .AboutUs-main {
+  .AboutUs-header {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    text-align: center;
   }
 
+  .AboutUs-main {
+    
+  }
+  .OurInfo{
+    width: 4rem;
+  }
   .OurInfo > img {
-    width: 20rem;
-    height: 20rem;
+    width: 6rem;
+    height: 6rem;
   }
 }
