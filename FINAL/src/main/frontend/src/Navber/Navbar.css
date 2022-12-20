@@ -187,7 +187,9 @@
   color: var(--tongue);
 }
 
-
+.Logout.open {
+  display: none;
+}
 
 
 
@@ -299,8 +301,7 @@
     display: block;
   }
   #User-icon {
-    font-size: 2rem;
-    color: black;
+    display: none;
   }
   .myProfile {
     display: inline-block;
@@ -345,6 +346,9 @@
   }
   /* Navbar 영역 - Menu */
   .Menu-submenu {
+    display: block;
+  }
+  .Logout.open {
     display: block;
   }
 }
