@@ -19,7 +19,7 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
   
 
-const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
+const regexNickName = /^[가-힣]{2,7}$/;
 const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const MyPage = () => {
   const cookies = new Cookies();

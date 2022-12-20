@@ -12,7 +12,7 @@ export const ChangePwdModal = (props) => {
   // console.log("넘겨받은 props(getPwd) : " + getPwd);
   // console.log("넘겨받은 props(onSavePwd) : " + onSavePwd);
 
-  const regexPw = /^\w{8,20}$/;
+  const regexPw = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
   const [pwd, setPwd] = useState('');
   const [pwdcheck, setPwdcheck] = useState('');
 

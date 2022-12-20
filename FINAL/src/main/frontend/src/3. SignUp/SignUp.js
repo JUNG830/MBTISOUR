@@ -14,10 +14,10 @@ import logo from '../images/logo.png';
 
 
 // 정규식 - 이름, 아이디, 비밀번호
-const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
-const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
+const regexName = /^[가-힣]{2,20}$/;
+const regexNickName = /^[가-힣]{2,7}$/;
 const regexId = /^\w{5,20}$/;
-const regexPw = /^\w{8,20}$/;
+const regexPw = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
 const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 // const regexPw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
 
@@ -236,7 +236,7 @@ function SignUp() {
   const acceptId = "사용 가능한 ID 입니다.";
   const reqEmail = "이메일을 정확히 입력하세요."
   const confirmEmail = "이메일 인증 완료."
-  const guidePwd = "임시 정규식 : 8~20자"
+  const guidePwd = "영문/숫자/특수문자 조합 (8~20자)"
   const acceptPwd = "사용 가능한 비밀번호입니다."
   const errorPwdcheck = "비밀번호가 일치하지 않습니다."
   const acceptPwdcheck = "비밀번호가 일치합니다."

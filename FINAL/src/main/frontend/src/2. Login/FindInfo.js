@@ -225,7 +225,7 @@ const Input = styled.input`
 const FindInfo = () => {
     const navigate = useNavigate();
 
-    const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
+    const regexName = /^[가-힣]{2,20}$/;
     const regexId = /^\w{5,20}$/;
     const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
@@ -267,7 +267,7 @@ const FindInfo = () => {
     const reqEmail = "이메일을 정확히 입력하세요."
 
 
-    const regexPw = /^\w{8,20}$/;
+    const regexPw = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
 
 
     const [pwd, setPwd] = useState('');
