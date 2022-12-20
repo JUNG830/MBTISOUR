@@ -8,6 +8,18 @@ import { useNavigate } from "react-router-dom";
 import '../0. API/defultMain.css';
 
 
+const FindInfo_Container = styled.div`
+    width: 100vw;
+    margin: auto;
+    height: calc(100vh - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'LINESeedKR-Bd'
+`
+
+
+
 const Find_Container = styled.div`
     width:700px;
     height: 800px;
@@ -21,6 +33,23 @@ const Find_Container = styled.div`
     padding:50px;
     background-color: white;
     
+    @media screen and (max-width: 750px) {
+        width:550px;
+
+    }
+    @media screen and (max-width: 570px) {
+        width:450px;
+        padding: 0px;
+        padding-top:40px;
+
+    }
+    @media screen and (max-width: 450px) {
+        width:360px;
+        padding: 0px;
+        padding-top:40px;
+        height: 650px;
+
+    }
 
 
 `
@@ -70,6 +99,18 @@ const SelectMode = styled.div`
             border-bottom:none;
             border-color: rgb(0,0,0,0.15);
         }
+        @media screen and (max-width: 750px) {
+            font-size: 30px;
+
+        }
+        @media screen and (max-width: 570px) {
+            font-size: 25px;
+
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 20px;
+
+        }
 
 
         
@@ -89,20 +130,32 @@ const Input_Container = styled.div`
             margin-bottom: 70px;
             position: relative;
             bottom: 140px;
+
+            @media screen and (max-width: 450px) {
+                bottom: 140px;
+                margin-bottom: 40px;
+
+            }
             
         }
         
     }
     label{
         font-family: 'LINESeedKR-Bd';
-
+        
     }
 
     th{
         position: relative;
         width: 130px;
         font-size: 25px;
-        
+        @media screen and (max-width: 450px) {
+        font-size: 20px;
+
+        width:300px;
+        min-width: 80px;
+
+    }
     }
 
     .findInfo-btn{
@@ -113,7 +166,6 @@ const Input_Container = styled.div`
         width: 600px;
         height: 50px;
         border-radius: 100px;
-        text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 25px;
         background-color: skyblue;
@@ -122,7 +174,17 @@ const Input_Container = styled.div`
         position: relative;
         font-family: 'MaplestoryOTFBold';
 
+        @media screen and (max-width: 750px) {
+        width:420px;
+        margin-left: 40px;
+        right:20px;
+        }
+        @media screen and (max-width: 450px) {
+        width:300px;
+
     }
+
+}
     
     
 `
@@ -137,7 +199,6 @@ const Input = styled.input`
         color: black;
         padding: 0.1rem;
         border-radius: 100px;
-        text-transform: uppercase;
         letter-spacing: 2px;
         padding-left: 40px;
         font-size: 15px;
@@ -145,6 +206,17 @@ const Input = styled.input`
         font-weight: 900;  
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         font-family: 'MaplestoryOTFBold';
+
+        @media screen and (max-width: 750px) {
+        width:270px;
+        margin-left: 40px;
+
+        }
+        @media screen and (max-width: 450px) {
+            width:240px;
+            margin-left: 10px;
+            margin-right: 10px;
+    }
 
 `
 
@@ -394,7 +466,7 @@ const FindInfo = () => {
     };
 
     return (
-        <div className='Container'>
+        <FindInfo_Container>
 
             {/* mode 가 main 일 때 */}
             {states.mode === 'findId'
@@ -414,7 +486,7 @@ const FindInfo = () => {
                             <table>
                                 <div>
                                     <th>
-                                        <label>이 름</label>
+                                        <label>이름</label>
                                     </th>
                                     <td>
                                         <Input type="text" placeholder="이름" value={name} onChange={onChangeName} required />
@@ -423,7 +495,7 @@ const FindInfo = () => {
                                 </div>
                                 <div>
                                     <th>
-                                        <label>이 메 일</label>
+                                        <label>이메일</label>
                                     </th>
                                     <td>
                                         <Input type="text" placeholder="이메일" value={email} onChange={onChangeEmail} required />
@@ -432,7 +504,7 @@ const FindInfo = () => {
                                 </div>
                                 <div>
                                     <th>
-                                        <label>생 년 월 일</label>
+                                        <label>생년월일</label>
                                     </th>
                                     <td>
                                         <Input type="date" value={birth} onChange={onChangeBirth} />
@@ -504,7 +576,7 @@ const FindInfo = () => {
                     : null
             }
 
-        </div >
+        </FindInfo_Container >
 
     )
 
