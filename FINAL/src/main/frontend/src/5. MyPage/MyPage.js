@@ -402,6 +402,15 @@ const MyPage = () => {
     setEmail(emailBefore);
   }
 
+  const OnclickRepairNickname = () =>{
+    setIsChangeNickname(true);
+    setIsNicknamecheck(false);
+    setIsCheckedNickname(true);
+  }
+
+
+  
+
   /* 이메일 저장 */
   const onSaveEmail = async(e) => {
     e.preventDefault();
@@ -639,7 +648,7 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
                   </div>
-                  <button className='mypage-btn'  onClick={e => setIsChangeNickname(true)}>수정</button>
+                  <button className='mypage-btn'  onClick={OnclickRepairNickname}>수정</button>
                 </>
                 :
                 <>
