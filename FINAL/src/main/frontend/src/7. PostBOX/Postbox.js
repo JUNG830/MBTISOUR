@@ -119,7 +119,7 @@ const Postbox = () => {
 
     if (checked) {
       const postNumArray = []; // postNum 을 담을 빈 배열(postNumArray) 생성
-      postList.forEach((e) => postNumArray.push(e.postNum)); // postList 를 하나씩 돌면서 postNumArray에 postNum을 추가
+      postList.slice(offset, offset + limit).forEach((e) => postNumArray.push(e.postNum)); // postList 를 하나씩 돌면서 postNumArray에 postNum을 추가
       console.log("postNumArray : " + postNumArray); // 모든 쪽지의 postNum 을 담은 배열로 checkedPosts 상태 업데이트
       setCheckedPosts(postNumArray);
     }
@@ -149,11 +149,8 @@ const Postbox = () => {
         } else {
           console.log("통신 실패 : " + response.status);
           setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
-
         }
-      } catch (e) {
-        console.log(e);
-      }
+      } catch (e) { console.log(e); }
     }
   }
 
@@ -190,7 +187,7 @@ const Postbox = () => {
                     // ▼ checked 는 true 또는 false
                     onChange={(e) => handleAllCheck(e.target.checked)}
                     // ▼ 전체 쪽지 수와 체크된 쪽지의 수가 다르면 false(전체 선택 해제)
-                    checked={checkedPosts.length === postList.length && postList.length !== 0 ? true : false} />
+                    checked={checkedPosts.length === postList.slice(offset, offset + limit).length && postList.length !== 0 ? true : false} />
                 </th>
                 <th className='Postbox-table thead-postSender'><h4>보낸 사람</h4></th>
                 <th className='Postbox-table thead-content'><h4>내용</h4></th>

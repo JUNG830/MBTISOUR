@@ -67,7 +67,7 @@ const PostModal = (props) => {
       } else {
         setState({...state, open: true, error: true, errorMsg: "존재하지 않는(탈퇴한) 회원입니다."});
 
-        alert("쪽지를 삭제하시겠습니까? (구현하면 좋을 듯)");
+        // alert("쪽지를 삭제하시겠습니까? (구현하면 좋을 듯)");
         console.log("쪽지를 보낼 수 없습니다.");
       }
     } catch (e) {
