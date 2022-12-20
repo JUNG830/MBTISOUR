@@ -49,6 +49,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 .user_detail {
   display: flex;
@@ -263,6 +264,12 @@ Enter message
     margin-left: 0px;
     width: 60px;
   }
+  .user_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
  
   .chat_container {
     width: 576px;
@@ -279,7 +286,6 @@ Enter message
   .user_detail {
     display: grid;
     align-items: center;
-    margin-left: -0.5rem;
     justify-items: center;
     text-align: center;
     

@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
   
 
 const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
-
+const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const MyPage = () => {
   const cookies = new Cookies();
   const localId = cookies.get('rememberId');
@@ -48,7 +48,7 @@ const MyPage = () => {
   const localIdNum = window.sessionStorage.getItem("id_num");
   const localNickname = window.sessionStorage.getItem("nickname");
 
-
+  const [isEmail, setIsEmail] = useState('');
   const [changePwdModalOpen, setChangePwdModalOpen] = useState(false);
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
 
@@ -392,9 +392,20 @@ const MyPage = () => {
 
   /* 이메일 변경 */
   const onChangeEmail = e => { 
+    
     let temp_email = e.target.value;
     setEmail(temp_email); 
+    if (temp_email === '' || !regexEmail.test(temp_email)) {
+      setIsEmail(false);
+
+  
+    } else {
+      setIsEmail(true);
+
+    }
   }
+
+
 
    /* 이메일 변경 취소 */
    const cancelEmail = () => { 
@@ -712,7 +723,8 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' type="mail" onChange={onChangeEmail} />
                   </div>
-                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>
+                  {isEmail &&
+                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
                   <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>
                 </>
                 }
