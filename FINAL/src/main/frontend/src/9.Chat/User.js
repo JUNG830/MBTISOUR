@@ -38,7 +38,6 @@ const User = ({ user1 , user, selectUser, chat }) => {
 
   return (
     <>
-    <div className="chat_title">목록</div>
       <div
         className={`user_wrapper ${chat.nickname === user.nickname && "selected_user"}`}
         onClick={() => selectUser(user)}

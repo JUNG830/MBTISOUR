@@ -152,6 +152,7 @@ const ChatHome = () => {
       <div className="chat_container">
 
         <div className="users_container">
+          <div className="chat_title">목 록</div>
           {users.map((user) => (
             <User
               key={user.id}

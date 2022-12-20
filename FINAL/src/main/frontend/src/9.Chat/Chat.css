@@ -239,8 +239,9 @@ Enter message
 .chat_title{
   display: none;
   font-family: 'MaplestoryOTFBold';
-
+  font-size: 1.3rem;
   text-align: center;
+  background-color: var(--pink);
 }
 
 /* @media screen and (max-width: 767px) {
@@ -293,6 +294,7 @@ Enter message
     flex-direction: column;
     justify-content: flex-start;
     border: 0px;
+    margin: 0;
   }
   .messages_container {
     padding: 5px;
@@ -302,16 +304,12 @@ Enter message
     grid-template-rows: 3fr 0.3fr;
     align-items: flex-start;
     flex-direction: column;
-    /* display: none; */
+    justify-content: flex-end;
   }
   .user_detail h4{
     display: grid;
   }
 /* selected_user */
-
-.users_container {
-
-}
 .chat_title{
   display: block;
 }
