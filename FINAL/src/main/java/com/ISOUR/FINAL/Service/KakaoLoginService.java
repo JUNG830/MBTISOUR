@@ -10,6 +10,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,17 +41,10 @@ public class KakaoLoginService {
         KakaoLogin kakaoLogin = kakaoRepository.findBykakaoEmail(email);
         if(kakaoLogin != null) {
             Map<String, String> kakaoDTO = new HashMap<>();
-//            String kakaoId_num = kakaoLogin.getId_num().toString();
-            String id_num = kakaoLogin.getId_num().toString();
-//            String kakaoId = kakaoLogin.getKakaoId().toString();
-//            String kakaoEmail = kakaoLogin.getKakaoEmail();
 
-//            kakaoDTO.put("kakaoId_num", kakaoId_num);
-//            kakaoDTO.put("kakaoEmail", kakaoEmail);
-//            kakaoDTO.put("kakaoId", kakaoId);
-//            kakaoDTO.put("kakaoId_num", id_num);
+            Long id_num = kakaoLogin.getId_num();
 
-            MemberInfo memberInfo = memberRepository.findByIdNum(Long.valueOf(id_num));
+            MemberInfo memberInfo = memberRepository.findByIdNum(id_num);
             Map<String, String> memberDTO = new HashMap<>();
 
             String id = memberInfo.getId();
@@ -100,7 +95,6 @@ public class KakaoLoginService {
             {
                 res+=line;
             }
-
             log.warn("카톡 회원정보 res = " + res);
 
             JSONParser parser = new JSONParser();
@@ -122,7 +116,6 @@ public class KakaoLoginService {
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 }
