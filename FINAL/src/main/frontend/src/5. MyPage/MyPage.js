@@ -19,8 +19,8 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
   
 
-const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
-
+const regexNickName = /^[ㄱ-ㅎ가-힣]{2,7}$/;
+const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const MyPage = () => {
   const cookies = new Cookies();
   const localId = cookies.get('rememberId');
@@ -48,7 +48,7 @@ const MyPage = () => {
   const localIdNum = window.sessionStorage.getItem("id_num");
   const localNickname = window.sessionStorage.getItem("nickname");
 
-
+  const [isEmail, setIsEmail] = useState('');
   const [changePwdModalOpen, setChangePwdModalOpen] = useState(false);
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
 
@@ -274,7 +274,7 @@ const MyPage = () => {
     setIsNicknamecheck(false);
     console.log("\n>> 닉네임 중복확인 버튼 눌렀어요.");
 
-    if (nickname === '' || !regexName.test(nickname)) {
+    if (nickname === '' || !regexNickName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
     } else {
@@ -392,9 +392,20 @@ const MyPage = () => {
 
   /* 이메일 변경 */
   const onChangeEmail = e => { 
+    
     let temp_email = e.target.value;
     setEmail(temp_email); 
+    if (temp_email === '' || !regexEmail.test(temp_email)) {
+      setIsEmail(false);
+
+  
+    } else {
+      setIsEmail(true);
+
+    }
   }
+
+
 
    /* 이메일 변경 취소 */
    const cancelEmail = () => { 
@@ -712,7 +723,8 @@ const MyPage = () => {
                   <div className='mypage-input'>
                     <input className='inputBox' type="mail" onChange={onChangeEmail} />
                   </div>
-                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>
+                  {isEmail &&
+                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
                   <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>
                 </>
                 }
