@@ -27,6 +27,14 @@ const MyPage = () => {
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
   const nav = useNavigate();
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    loading: false,
+    id: "",
+    nickname: "",
+    friends: [],
+  });
 
 
 
@@ -346,6 +354,11 @@ const MyPage = () => {
           expires: 0
         })
         
+        updateDoc(doc(db, "users", id), {
+          nickname
+        });
+        
+        
       } 
 
     } catch (e) { console.log(e); }
@@ -443,7 +456,9 @@ const MyPage = () => {
           console.log("\n>> 이메일 수정 완료");
           // alert("이메일 수정 완료!!");
           setState({...state, open: true, success: true, successMsg: "이메일 수정 완료!!"});
-
+          updateDoc(doc(db, "users", id), {
+            email
+          });
       } 
 
     } catch (e) { console.log(e); }
