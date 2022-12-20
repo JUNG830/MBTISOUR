@@ -138,7 +138,7 @@
   display: inline-flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .message-send {
   position: sticky;
@@ -236,6 +236,12 @@ Enter message
   margin-top: .1rem;
   color: gray;
 }
+.chat_title{
+  display: none;
+  font-family: 'MaplestoryOTFBold';
+
+  text-align: center;
+}
 
 /* @media screen and (max-width: 767px) {
   .chat_container {
@@ -262,7 +268,7 @@ Enter message
     height: 100%;
     border-radius: 0px;
     grid-template-columns: 1fr 1fr;
-    padding-left: 20px;
+    padding-left: 0px;
     display: inline-flex;
     justify-content: flex-start;
   }
@@ -273,6 +279,8 @@ Enter message
     display: grid;
     align-items: center;
     margin-left: -0.5rem;
+    justify-items: center;
+    text-align: center;
     
   }
   .user_status{
@@ -280,7 +288,7 @@ Enter message
   }
   .users_container {
     /* display: none; */
-    width: 23%;
+    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -303,6 +311,9 @@ Enter message
 
 .users_container {
 
+}
+.chat_title{
+  display: block;
 }
 
   .sm_container {
