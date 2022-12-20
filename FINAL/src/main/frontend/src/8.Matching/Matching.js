@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TeamAPI from '../0. API/TeamAPI';
-import { MatchingPostModal } from '../99. Modal/MatchingPostModal';
+import { SendPostModal } from '../99. Modal/SendPostModal';
 import SmsIcon from '@mui/icons-material/Sms';
 import { IconButton } from '@mui/material';
 import { db } from "../firebase";
@@ -217,7 +217,6 @@ const Matching = () => {
   const closeModal = () => { setModalOn(false); };
 
   const onClickPostIcon = (receiverId, receiverNickname) => {
-    alert("쪽지보내실?");
     console.log("\n>> 쪽지 아이콘 눌렀어요.");
 
     setReceiverId(receiverId);
@@ -251,7 +250,7 @@ const Matching = () => {
   return (
     <div className='Container'>
       <div className='Matching-Container' >
-        <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
+        <SendPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
         
         <div className='User-Box'>
           <div className='User-profile'>
