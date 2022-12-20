@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TeamAPI from '../0. API/TeamAPI';
 import Cookies from 'universal-cookie';
-import {MatchingPostModal} from '../99. Modal/MatchingPostModal';
+import SendPostModal from '../99. Modal/SendPostModal';
 import CustomModal from '../99. Modal/CustomModal'
 import 조혜경 from '../images/조혜경.png'
 import 이동균 from '../images/이동균.png'
@@ -125,10 +125,9 @@ function AboutUs() {
               </div>
             </div>
           </div>
-          <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
         </div>
-        <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
       </div>
+      <SendPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>
       <CustomModal state={state} changeState={onChangeState}/>
     </div>
   )
