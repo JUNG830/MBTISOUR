@@ -25,6 +25,8 @@
 .Navbar-Container {
   width: 100vw;
   height: 70px;
+  position: sticky;
+  top: 0;
   background: var(--navy);
   color: var(--white);
   font-family: 'MaplestoryOTFBold';
