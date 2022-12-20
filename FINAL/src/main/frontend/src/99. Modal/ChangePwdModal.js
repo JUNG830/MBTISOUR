@@ -35,6 +35,7 @@ export const ChangePwdModal = (props) => {
   display: flex;
   justify-content: flex-end;
   height: 1.5rem;
+  margin-top: 0.5rem;
   margin-right: 20px;
   align-items: center; // 세로 기준으로 가운데 정렬
 `;
