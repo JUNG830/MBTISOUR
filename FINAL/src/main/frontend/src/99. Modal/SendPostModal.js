@@ -3,7 +3,7 @@ import TeamAPI from '../0. API/TeamAPI';
 import './SendPostModal.css';
 
 
-export const SendPostModal = (props) => {
+const SendPostModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, receiver, getInputContent, onSendPost } = props;
   console.log("\n>> SendPostModal : " + open);
@@ -19,6 +19,7 @@ export const SendPostModal = (props) => {
   /* 쪽지 내용 작성 */
   const onChangeContent = e => {
     let temp_content = e.target.value;
+    console.log(temp_content);
     setContent(temp_content);
     getInputContent(temp_content);
   };
@@ -31,6 +32,7 @@ export const SendPostModal = (props) => {
     }
     // e.preventDefault();
     onSendPost(e);
+    setContent("");
   };
   
   
@@ -76,3 +78,4 @@ export const SendPostModal = (props) => {
   );
 };
 
+export default SendPostModal;

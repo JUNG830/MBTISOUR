@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Moment from "react-moment";
+import Cookies from 'universal-cookie';
 import TeamAPI from '../0. API/TeamAPI';
 import PostModal from '../99. Modal/PostModal';
 import CustomModal from '../99. Modal/CustomModal'
-import yong from '../images/아이셔용.png';
-import Cookies from 'universal-cookie';
-import Moment from "react-moment";
 import Pagination from "./Pagination";
 import './Postbox.css'
-import '../font/Jalnan.ttf';
+import 아이셔용 from '../images/아이셔용.png';
 
 const Postbox = () => {
 
@@ -27,7 +26,6 @@ const Postbox = () => {
     setState({...state, open: false, success: false, error: false});
   }
   /* ============================== */
-
 
 
 
@@ -156,7 +154,7 @@ const Postbox = () => {
   if (loading) {
     return (
       <>
-        <img src={yong} alt="아이셔용" />
+        <img src={아이셔용} alt="아이셔용" />
         <div>대기 중...</div>
       </>
     );
@@ -215,7 +213,7 @@ const Postbox = () => {
                   <div className='Group-tbody'>
                     <td className='Postbox-table tbody-postSender'>{post.postSender}</td>
                     <td className='Postbox-table tbody-content'
-                      onClick={() => onClickPost(post.postSenderId, post.postSender, post.content)}>
+                      onClick={() => onClickPost(post.postSenderId, post.postSender, post.content)}> 
                       {/* <div className='Postbox-table tbody-content-div'> */}
                         {post.content}
                       {/* </div> */}
