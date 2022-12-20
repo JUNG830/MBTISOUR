@@ -15,7 +15,6 @@
   padding: 0.3rem;
   width: 45%;
   border-radius: 100px;
-  text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 25px;
   background-color: orangered;
@@ -38,7 +37,6 @@ section>main>form>div>label {
   padding: 0.08rem;
   height: 30px;
   border-radius: 100px;
-  text-transform: uppercase;
   letter-spacing: 2px;
   padding-left: 20px;
   font-size: 15px;

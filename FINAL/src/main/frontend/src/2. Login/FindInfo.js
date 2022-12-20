@@ -8,15 +8,7 @@ import { useNavigate } from "react-router-dom";
 import '../0. API/defultMain.css';
 
 
-const FindInfo_Container = styled.div`
-    width: 100vw;
-    margin: auto;
-    height: calc(100vh - 20px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'LINESeedKR-Bd'
-`
+
 
 
 
@@ -33,17 +25,17 @@ const Find_Container = styled.div`
     padding:50px;
     background-color: white;
     
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 750px){
         width:550px;
 
     }
-    @media screen and (max-width: 570px) {
+    @media screen and (max-width: 570px){
         width:450px;
         padding: 0px;
         padding-top:40px;
 
     }
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 450px){
         width:360px;
         padding: 0px;
         padding-top:40px;
@@ -177,10 +169,11 @@ const Input_Container = styled.div`
         @media screen and (max-width: 750px) {
         width:420px;
         margin-left: 40px;
-        right:20px;
+        right:24px;
         }
         @media screen and (max-width: 450px) {
         width:300px;
+        right:10px;
 
     }
 
@@ -225,7 +218,7 @@ const Input = styled.input`
 const FindInfo = () => {
     const navigate = useNavigate();
 
-    const regexName = /^[가-힣]{2,20}$/;
+    const regexName = /^[ㄱ-ㅎ가-힣]{2,20}$/;
     const regexId = /^\w{5,20}$/;
     const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
@@ -267,7 +260,7 @@ const FindInfo = () => {
     const reqEmail = "이메일을 정확히 입력하세요."
 
 
-    const regexPw = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
+    const regexPw = /^\w{8,20}$/;
 
 
     const [pwd, setPwd] = useState('');
@@ -466,8 +459,7 @@ const FindInfo = () => {
     };
 
     return (
-        <FindInfo_Container>
-
+        <div className='No-Nav-Container'>
             {/* mode 가 main 일 때 */}
             {states.mode === 'findId'
                 ?
@@ -576,7 +568,7 @@ const FindInfo = () => {
                     : null
             }
 
-        </FindInfo_Container >
+        </div >
 
     )
 
