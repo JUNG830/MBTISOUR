@@ -48,7 +48,7 @@
     color: gray;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 450px) {
 
 
     .Home-Container {
@@ -83,7 +83,7 @@
     }
 
     .DinoAddr {
-        width: 100%;
+        width: 90%;
         min-width: 360px;
     }
 

@@ -72,36 +72,46 @@ function AboutUs() {
               <img src={우혜정} alt="face"/>
               <h4>우혜정</h4>
               <h6>Backend / Frontend</h6>
-              <CallIcon />              
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("kkongkkong", "손이시려워")}>mail</span>
+              <div className='AboutUs-icon'>
+                <CallIcon />              
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("kkongkkong", "손이시려워")}>mail</span>
+              </div>
             </div>
             <div className='OurInfo'>
               <img src={조혜경} alt="face"/>
               <h4>조혜경</h4>
               <h6>Backend / Frontend</h6>
-              <CallIcon />
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("9lovejhk", "개발자조혜경")}>mail</span>
+              <div className='AboutUs-icon'>
+                <CallIcon />
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("9lovejhk", "개발자조혜경")}>mail</span>
+              </div>
             </div>
             <div className='OurInfo'>
               <img src={전규한} alt="face"/>
               <h4>전규한</h4>
               <h6>Backend / Frontend</h6>
-              <CallIcon />
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("kongdole", "콩돌형")}>mail</span>
+              <div className='AboutUs-icon'>
+                <CallIcon />
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("kongdole", "콩돌형")}>mail</span>
+              </div>
             </div>
             <div className='OurInfo'>
               <img src={이민형} alt="face"/>
               <h4>이민형</h4>
               <h6>Backend / Frontend</h6>
-              <CallIcon />
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+              <div className='AboutUs-icon'>
+                <CallIcon />
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+              </div>
             </div>
             <div className='OurInfo'>
               <img src={이동균} alt="face"/>
               <h4>이동균</h4>
               <h6>Backend / Frontend</h6>
-              <CallIcon />
-              <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+              <div className='AboutUs-icon'>
+                <CallIcon />
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+              </div>
             </div>
           </div>
           <MatchingPostModal open={modalOn} close={closeModal} receiver={receiverNickname} getInputContent={getInputContent} onSendPost={onSendPost}/>

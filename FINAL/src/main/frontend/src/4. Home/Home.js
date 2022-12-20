@@ -36,17 +36,6 @@ const Home = () => {
   const [nickName, setNickName] = useState('');
   const navigate = useNavigate();
 
-  const chatTest = async (name) => {
-    console.log(name);
-    try {
-      const res = await TeamAPI.chatRoomOpen("테스트 채팅방");
-      console.log(res.data);
-      window.localStorage.setItem("chatRoomId", res.data);
-      navigate("/Socket");
-    } catch {
-      console.log("error");
-    }
-  }
   useEffect(() => {
     if (localId === undefined) navigate("/login");
     // ▲ 로그인 안 되어 있으면 로그인 페이지로 
