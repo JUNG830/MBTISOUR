@@ -5,7 +5,9 @@
 ## Code Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/kefranabg/readme-md-generator/graphs/contributors"><img src="https://opencollective.com/readme-md-generator/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/kefranabg/readme-md-generator/graphs/contributors"><img src="https://avatars.githubusercontent.com/u/110091794?v=4" /></a>
+
+
 
 <div align=center>
 	<h3>📚 Tech Stack 📚</h3>
