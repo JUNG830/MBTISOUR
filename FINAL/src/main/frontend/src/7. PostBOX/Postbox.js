@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import TeamAPI from '../0. API/TeamAPI';
 import PostModal from '../99. Modal/PostModal';
 import CustomModal from '../99. Modal/CustomModal'
+import Loading from '../other/Loading';
 import Pagination from "./Pagination";
 import './Postbox.css'
 import 아이셔용 from '../images/아이셔용.png';
@@ -153,10 +154,11 @@ const Postbox = () => {
 
   if (loading) {
     return (
-      <>
-        <img src={아이셔용} alt="아이셔용" />
-        <div>대기 중...</div>
-      </>
+      // <>
+      //   <img src={아이셔용} alt="아이셔용" />
+      //   <div>대기 중...</div>
+      // </>
+      <Loading />
     );
   }
 
