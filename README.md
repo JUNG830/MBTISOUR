@@ -71,7 +71,6 @@ yarn add @mui/icons-material
 ```
 ## Code Contributors
 
-This project exists thanks to all the people who contribute.
 <br>
 <br>
 <a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
