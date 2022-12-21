@@ -584,6 +584,7 @@ const MyPage = () => {
       if (response.status == 200) {
         console.log("통신 성공(200)");
         console.log("\n>> 주소 수정 완료");
+        setRegion2Check(false);
         // alert("주소 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "주소 수정 완료!!" });
 
