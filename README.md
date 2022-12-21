@@ -4,8 +4,12 @@
 
 ## Code Contributors
 
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/kefranabg/readme-md-generator/graphs/contributors"><img src="https://avatars.githubusercontent.com/u/110091794?v=4" /></a>
+This project exists thanks to all the people who contribute.
+<a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=JUNG830/FINAL_ISOUR_Gradle" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 
 
