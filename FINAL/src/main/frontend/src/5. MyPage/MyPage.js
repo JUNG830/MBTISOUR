@@ -83,7 +83,8 @@ const MyPage = () => {
   const [nicknameBefore, setNicknameBefore] = useState("");
   const [introduceBefore, setIntroduceBefore] = useState("");
   const [emailBefore, setEmailBefore] = useState("");
-
+  const [region1Before, setRegion1Before] = useState("");
+  const [region2Before, setRegion2Before] = useState("");
 
 
   const [isNicknamecheck, setIsNicknamecheck] = useState(false);
@@ -133,6 +134,8 @@ const MyPage = () => {
           setNicknameBefore(member.nickname);
           setIntroduceBefore(member.introduce);
           setEmailBefore(member.email);
+          setRegion1Before(member.region1);
+          setRegion2Before(member.region2);
 
           console.log("기존 회원 정보 가져오기 완료")
         } else {
@@ -537,6 +540,18 @@ const MyPage = () => {
   const [regeion1Check, setRegion1Check] = useState(false);
   const [regeion2Check, setRegion2Check] = useState(false);
 
+
+  const onClickCancelRegion = (e) => {
+    
+
+
+    setRegion1(region1Before);
+    setRegion2(region2Before);
+
+
+    setIsChangeAddress(false);
+  }
+
   /* 주소 ☞ 시도 변경 */
   const onChangeRegion1 = (e) => {
 
@@ -548,7 +563,7 @@ const MyPage = () => {
 
     let temp_keySido = sido.at(indexSido).sido;
     setKeySido(temp_keySido);
-    
+
     if (temp_region1 !== '') {
       setRegion1Check(true);
     }
@@ -562,6 +577,7 @@ const MyPage = () => {
     setRegion2(temp_region2);
     if (temp_region2 !== '') {
       setRegion2Check(true);
+
     }
   }
 
@@ -587,9 +603,7 @@ const MyPage = () => {
         setRegion2Check(false);
         // alert("주소 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "주소 수정 완료!!" });
-
       }
-
     } catch (e) { console.log(e); }
   }
 
@@ -864,8 +878,8 @@ const MyPage = () => {
                     </select>
                   </div>
                   <div>
-                    {regeion2Check&&<button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>}
-                    <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
+                    {regeion2Check && <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>}
+                    <button className='mypage-btn-select' onClick={onClickCancelRegion}>취소</button>
                   </div>
                 </tr>
                 :
