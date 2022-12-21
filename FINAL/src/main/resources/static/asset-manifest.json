@@ -1,10 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.ffe8d406.css",
-    "main.js": "/static/js/main.39d66849.js",
+    "main.css": "/static/css/main.edea731f.css",
+    "main.js": "/static/js/main.1447ad1a.js",
     "static/js/787.22edae46.chunk.js": "/static/js/787.22edae46.chunk.js",
     "static/media/Jalnan.ttf": "/static/media/Jalnan.4b55e11e029184231b61.ttf",
     "static/media/아이셔용.png": "/static/media/아이셔용.dfe60f07928cc8aaf1e8.png",
+    "static/media/조혜경.png": "/static/media/조혜경.9f23d178276aff9edf45.png",
+    "static/media/전규한.png": "/static/media/전규한.54f4b5a0b20d66a41920.png",
+    "static/media/이동균.png": "/static/media/이동균.6bbe4a6a8afbd91aba03.png",
+    "static/media/우혜정.png": "/static/media/우혜정.9705f69d8c07ca8eb92b.png",
+    "static/media/이민형.png": "/static/media/이민형.238bc1ff25675d21a4c8.png",
     "static/media/person.png": "/static/media/person.26cc981957db12ae5677.png",
     "static/media/logo.png": "/static/media/logo.db1b0b0d4d781aed2d5a.png",
     "static/media/연예인.png": "/static/media/연예인.c2151d8d13b5bee8673c.png",
@@ -18,12 +23,12 @@
     "static/media/중재자.png": "/static/media/중재자.1033e5b9eaa63f29165c.png",
     "static/media/논리술사.png": "/static/media/논리술사.646c930c8f67670c7d23.png",
     "index.html": "/index.html",
-    "main.ffe8d406.css.map": "/static/css/main.ffe8d406.css.map",
-    "main.39d66849.js.map": "/static/js/main.39d66849.js.map",
+    "main.edea731f.css.map": "/static/css/main.edea731f.css.map",
+    "main.1447ad1a.js.map": "/static/js/main.1447ad1a.js.map",
     "787.22edae46.chunk.js.map": "/static/js/787.22edae46.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ffe8d406.css",
-    "static/js/main.39d66849.js"
+    "static/css/main.edea731f.css",
+    "static/js/main.1447ad1a.js"
   ]
 }
