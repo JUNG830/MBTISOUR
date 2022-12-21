@@ -9,6 +9,7 @@ import '../5. MyPage/MyPage.css';
 import '../0. API/defultMain.css';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EmailModal from './EmailModal';
 
 // 파이어베이스 설치 ☞ yarn add firebase
 import { storage, db } from '../firebase'
@@ -17,7 +18,7 @@ import { doc, updateDoc } from "firebase/firestore";
 //쿠키
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
-  
+
 
 const regexNickName = /^[가-힣]{2,7}$/;
 const regexEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -45,7 +46,7 @@ const MyPage = () => {
   });
 
   const onChangeState = () => {
-    setState({...state, open: false, success: false, error: false});
+    setState({ ...state, open: false, success: false, error: false });
   }
   /* ============================== */
 
@@ -61,7 +62,7 @@ const MyPage = () => {
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
 
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
-  
+
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 나이, 성별, 주소 1, 주소 2
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
@@ -83,7 +84,7 @@ const MyPage = () => {
   const [introduceBefore, setIntroduceBefore] = useState("");
   const [emailBefore, setEmailBefore] = useState("");
 
-  
+
 
   const [isNicknamecheck, setIsNicknamecheck] = useState(false);
 
@@ -95,7 +96,7 @@ const MyPage = () => {
   const [isChangeAddress, setIsChangeAddress] = useState(false);
   const [isSetImage, setIsSetImage] = useState(false);
   const [isFixEmail, setIsFixEmail] = useState(false);
-  
+
   /* 
   최초 통신(useEffect) */
   useEffect(() => {
@@ -109,7 +110,7 @@ const MyPage = () => {
       console.log("myId : " + session_id);
       try {
         const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
-        if(response.status == 200) {
+        if (response.status == 200) {
           console.log("통신 성공(200)");
           const member = response.data;
           setMemberInfo(member);
@@ -132,6 +133,7 @@ const MyPage = () => {
           setNicknameBefore(member.nickname);
           setIntroduceBefore(member.introduce);
           setEmailBefore(member.email);
+
           console.log("기존 회원 정보 가져오기 완료")
         } else {
           console.log("통신 실패(" + response.status + ")");
@@ -140,7 +142,7 @@ const MyPage = () => {
         console.log(e);
       }
     };
-  memberData();
+    memberData();
   }, []);
 
   // 프사 변경 및 미리보기
@@ -152,30 +154,30 @@ const MyPage = () => {
     console.log(temp_face);
     console.log("==============================");
     setUrl(temp_face);
-    if(temp_face) {
+    if (temp_face) {
       setImage(temp_face);
     }
 
     const imageRef = ref(storage, `profile/${myId}`);
 
     uploadBytes(imageRef, temp_face).then(() => {
-      getDownloadURL(imageRef).then(async(url) => {
+      getDownloadURL(imageRef).then(async (url) => {
         console.log("\nURL : " + url);
         setUrl(url);
 
         await updateDoc(doc(db, "users", myId), {
           profile: url,
         });
-      /* ----- (시작) 통신 ----- */
+        /* ----- (시작) 통신 ----- */
         try {
           const response = await TeamAPI.changeFace(url, myId);
           console.log(response.data.result);
           const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
           setImage(response.data.result)
-          if(response.status == 200) {
+          if (response.status == 200) {
             console.log("통신 성공(200)");
             // alert("프사 저장 성공");
-            setState({...state, open: true, success: true, successMsg: "프사 저장 성공"});
+            setState({ ...state, open: true, success: true, successMsg: "프사 저장 성공" });
             cookies.set('rememberMyInfo', response2.data, {
               path: '/',
               expires: 0
@@ -184,14 +186,14 @@ const MyPage = () => {
           } else {
             console.log("\n>> 통신 실패 : " + response.status);
             // alert("통신 실패 : " + response.status);
-            setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+            setState({ ...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status });
 
           }
         } catch (e) {
           console.log(e);
           console.log("캐치 !! 이미지 url 저장 실패..");
         } // try-catch 문의 끝
-      /* ----- (끝) 통신 ----- */
+        /* ----- (끝) 통신 ----- */
 
       }).catch((error) => {
         console.log(error.message, "error getting the image url");
@@ -205,9 +207,9 @@ const MyPage = () => {
   };
 
   // 프사 삭제 버튼
-  const onDeleteFace = async() => {
+  const onDeleteFace = async () => {
     console.log("\n>> onDeleteFace 실행");
-    if(url === null) alert("삭제할 프사가 없습니다.")
+    if (url === null) alert("삭제할 프사가 없습니다.")
     else {
       const temp_url = null;
       setUrl(temp_url);
@@ -216,16 +218,16 @@ const MyPage = () => {
         const response = await TeamAPI.changeFace(temp_url, myId);
         console.log(response.data.result);
 
-        if(response.status == 200) {
+        if (response.status == 200) {
           console.log("통신 성공(200)");
           // alert("프사 삭제 성공");
-          setState({...state, open: true, success: true, successMsg: "프사 삭제 성공"});
+          setState({ ...state, open: true, success: true, successMsg: "프사 삭제 성공" });
 
           setIsSetImage(false);
         } else {
           console.log("\n>> 통신 실패 : " + response.status);
           // alert("통신 실패 : " + response.status);
-          setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+          setState({ ...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status });
 
         }
 
@@ -241,41 +243,41 @@ const MyPage = () => {
 ▶ 변경 가능 항목(비밀번호, 닉네임, 자기소개, 이메일, 주소) 
   */
 
- /* 비밀번호 저장 */
+  /* 비밀번호 저장 */
   const getPwd = (pwd) => { setPwd(pwd); }
   const openChangePwdModal = () => { setChangePwdModalOpen(true); };
   const closeChangePwdModal = () => { setChangePwdModalOpen(false); };
-  const onSavePwd = async(e) => { 
+  const onSavePwd = async (e) => {
     console.log("변경한 pwd :" + pwd);
     console.log("변경한 e :" + e);
 
-      // e.preventDefault();
+    // e.preventDefault();
 
-      try {
-        const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-        console.log("id : " + id);
-        console.log("password : " + pwd);
-        console.log("nickname : " + nickname);
-        console.log("introduce : " + introduce);
-        console.log("email : " + email);
-        console.log("region1 : " + region1);
-        console.log("region2 : " + region2);
+    try {
+      const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
+      console.log("id : " + id);
+      console.log("password : " + pwd);
+      console.log("nickname : " + nickname);
+      console.log("introduce : " + introduce);
+      console.log("email : " + email);
+      console.log("region1 : " + region1);
+      console.log("region2 : " + region2);
 
-        if(response.status == 200) {
-          console.log("통신 성공(200)");
-          console.log("\n>> 비밀번호 수정 완료");
-          // alert("비밀번호 수정 완료!!");
-          setState({...state, open: true, success: true, successMsg: "비밀번호 수정 완료!!"});
+      if (response.status == 200) {
+        console.log("통신 성공(200)");
+        console.log("\n>> 비밀번호 수정 완료");
+        // alert("비밀번호 수정 완료!!");
+        setState({ ...state, open: true, success: true, successMsg: "비밀번호 수정 완료!!" });
 
-        } 
-      } catch (e) { console.log(e); }
+      }
+    } catch (e) { console.log(e); }
 
   }
 
   /* 닉네임 변경 */
-  const onChangeNickname = e => { 
+  const onChangeNickname = e => {
     let temp_nickname = e.target.value;
-    setNickname(temp_nickname); 
+    setNickname(temp_nickname);
   }
 
   /* 닉네임 중복확인 버튼 클릭 */
@@ -286,7 +288,7 @@ const MyPage = () => {
 
     if (nickname === '' || !regexNickName.test(nickname)) {
       console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
-      setState({...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요."});
+      setState({ ...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요." });
     } else {
       try {
         const nicknameCheck = await TeamAPI.nicknameCheck(nickname);
@@ -296,13 +298,13 @@ const MyPage = () => {
         // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
           setNickname("");
-          setState({...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다."});
+          setState({ ...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다." });
           console.log("사용할 수 없는 닉네임 입니다.");
         } else {
           console.log("사용 가능한 닉네임 입니다.");
           setIsNicknamecheck(true);
-          setState({...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다."});
-          
+          setState({ ...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다." });
+
           setIsCheckedNickname(false);
         }
       } catch (e) {
@@ -311,21 +313,22 @@ const MyPage = () => {
     }
   }
 
-  
-    /* 닉네임 변경 취소 */
+
+  /* 닉네임 변경 취소 */
   const cancelNickname = () => {
-      setIsChangeNickname(false);
-      setNickname(nicknameBefore);
+    setIsChangeNickname(false);
+    setNickname(nicknameBefore);
   }
 
 
 
+
   /* 닉네임 저장 */
-  const onSaveNickname = async(e) => {
+  const onSaveNickname = async (e) => {
     console.log("\n>> 닉네임 저장 버튼 눌렀어요.");
-    if(!isNicknamecheck) {
+    if (!isNicknamecheck) {
       // alert("닉네임을 다시 확인하거나 중복확인이 필요합니다.")
-      setState({...state, open: true, error: true, errorMsg: "닉네임을 다시 확인하거나 중복확인이 필요합니다."});
+      setState({ ...state, open: true, error: true, errorMsg: "닉네임을 다시 확인하거나 중복확인이 필요합니다." });
 
       return;
     }
@@ -346,26 +349,26 @@ const MyPage = () => {
       const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
       setNickname(response.data.nickname)
 
-      if(response.status == 200) {
+      if (response.status == 200) {
         console.log("통신 성공(200)");
         console.log("\n>> 닉네임 수정 완료");
         // alert("닉네임 수정 완료!!");
-        setState({...state, open: true, success: true, successMsg: "닉네임 수정 완료!!"});
+        setState({ ...state, open: true, success: true, successMsg: "닉네임 수정 완료!!" });
         cookies.set('rememberMyInfo', response2.data, {
           path: '/',
           expires: 0
         })
-        
+
         updateDoc(doc(db, "users", id), {
           nickname
         });
-        
-        
-      } 
+
+
+      }
 
     } catch (e) { console.log(e); }
-  } 
-  
+  }
+
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () => {
     setIsChangeIntroduce(false);
@@ -373,13 +376,13 @@ const MyPage = () => {
   }
 
   /* 자기소개 변경 */
-  const onChangeIntroduce = e => { 
+  const onChangeIntroduce = e => {
     let temp_introduce = e.target.value;
-    setIntroduce(temp_introduce); 
+    setIntroduce(temp_introduce);
   }
 
   /* 자기소개 저장 */
-  const onSaveIntroduce = async(e) => {
+  const onSaveIntroduce = async (e) => {
     e.preventDefault();
     setIntroduce(introduce);
     setIsChangeIntroduce(false);
@@ -387,27 +390,27 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-        console.log("id : " + id);
-        console.log("password : " + pwd);
-        console.log("nickname : " + nickname);
-        console.log("introduce : " + introduce);
-        console.log("email : " + email);
-        console.log("region1 : " + region1);
-        console.log("region2 : " + region2);
-        if(response.status == 200) {
-          console.log("통신 성공(200)");
-          console.log("\n>> 자기소개 수정 완료");
-          // alert("자기소개 수정 완료!!");
-          setState({...state, open: true, success: true, successMsg: "자기소개 수정 완료!!"});
+      console.log("id : " + id);
+      console.log("password : " + pwd);
+      console.log("nickname : " + nickname);
+      console.log("introduce : " + introduce);
+      console.log("email : " + email);
+      console.log("region1 : " + region1);
+      console.log("region2 : " + region2);
+      if (response.status == 200) {
+        console.log("통신 성공(200)");
+        console.log("\n>> 자기소개 수정 완료");
+        // alert("자기소개 수정 완료!!");
+        setState({ ...state, open: true, success: true, successMsg: "자기소개 수정 완료!!" });
 
-      } 
+      }
 
     } catch (e) { console.log(e); }
-  } 
+  }
 
   /*이메일 변경*/
   const OnChangeEmail = e => {
- 
+
     let temp_email = e.target.value;
     setEmail(temp_email);
 
@@ -421,27 +424,33 @@ const MyPage = () => {
 
 
 
-   /* 이메일 변경 취소 */
-   const cancelEmail = () => { 
+  /* 이메일 변경 취소 */
+  const cancelEmail = () => {
     setIsChangeEmail(false);
-    setEmail(false);
+    setEmail(emailBefore);
+    setEmailDoubleCheck(false);
+    setConfirmEmail(false);
   }
 
-  const OnclickRepairNickname = () =>{
+  const OnclickRepairNickname = () => {
     setIsChangeNickname(true);
     setIsNicknamecheck(false);
     setIsCheckedNickname(true);
   }
 
-  const RepairEmail=()=>{
+  const RepairEmail = () => {
     setIsChangeEmail(true);
     setIsFixEmail(true);
   }
 
-   const [emailDuplicateCheck,setEmailDuplicateCheck] = useState(false);
-   const [emailDoubleCheck, setEmailDoubleCheck] = useState(false);
-   
-   /*이메일 중복확인*/
+  const [emailDuplicateCheck, setEmailDuplicateCheck] = useState(false);
+  const [emailDoubleCheck, setEmailDoubleCheck] = useState(false);
+
+
+
+
+
+  /*이메일 중복확인*/
   const onClickEmailCheck = async (e) => {
     e.preventDefault();
     console.log("\n\nemail 인증 버튼을 눌렀어요");
@@ -452,28 +461,50 @@ const MyPage = () => {
         console.log("emailResult.data : " + emailResult.data);
         console.log("emailResult.status : " + emailResult.status);
         if (emailResult.data === false) {
-          alert('사용 가능한 이메일 입니다. 이메일 인증을 진행해주세요.')
-          setEmailDoubleCheck(true);
+          setState({ ...state, open: true, success: true, successMsg: "이용가능한 이메일 입니다" });
+          setConfirmEmail(true);
           setIsFixEmail(false);
         } else {
-          alert('중복된 이메일 입니다. 다른 이메일을 입력해주세요.')
+          setState({ ...state, open: true, success: false, successMsg: "이메일 중복입니다" });
           setEmail("");
         }
       } catch (e) {
         console.log(e);
       }
 
-    }else{
-      setState({ ...state, open: true, error: true, errorMsg: "이메일을 양식에 맞게 입력해주세요." });
-          console.log("이메일을 양식에 맞게 입력해주세요.");
+    } else {
+      setState({ ...state, open: true, error: true, errorMsg: "이메일을 변경해주세요." });
     }
   }
 
 
-  
+  const [confirmEmail, setConfirmEmail] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  /*이메일 인증*/
+  const onClickEmailAdress = async (e) => {
+    e.preventDefault();
+    console.log("\n\nemail 인증 버튼을 눌렀어요");
+    try {
+      const changeResult = await TeamAPI.emailCheck(email);
+      console.log("emailResult.data : " + changeResult.data);
+      console.log("emailResult.status : " + changeResult.status);
+      if (changeResult.status === 200) {
+        setOpen(true);
+        setConfirmEmail(false);
+        setEmailDoubleCheck(true);
+      } else {
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
+
 
   /* 이메일 저장 */
-  const onSaveEmail = async(e) => {
+  const onSaveEmail = async (e) => {
     e.preventDefault();
     setEmail(email);
     setIsChangeEmail(false);
@@ -481,23 +512,23 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-        console.log("id : " + id);
-        console.log("password : " + pwd);
-        console.log("nickname : " + nickname);
-        console.log("introduce : " + introduce);
-        console.log("email : " + email);
-        console.log("region1 : " + region1);
-        console.log("region2 : " + region2);
-        if(response.status == 200) {
-          setEmailDoubleCheck(false);
-          console.log("통신 성공(200)");
-          console.log("\n>> 이메일 수정 완료");
-          // alert("이메일 수정 완료!!");
-          setState({...state, open: true, success: true, successMsg: "이메일 수정 완료!!"});
-          updateDoc(doc(db, "users", id), {
-            email
-          });
-      } 
+      console.log("id : " + id);
+      console.log("password : " + pwd);
+      console.log("nickname : " + nickname);
+      console.log("introduce : " + introduce);
+      console.log("email : " + email);
+      console.log("region1 : " + region1);
+      console.log("region2 : " + region2);
+      if (response.status == 200) {
+        setEmailDoubleCheck(false);
+        console.log("통신 성공(200)");
+        console.log("\n>> 이메일 수정 완료");
+        // alert("이메일 수정 완료!!");
+        setState({ ...state, open: true, success: true, successMsg: "이메일 수정 완료!!" });
+        updateDoc(doc(db, "users", id), {
+          email
+        });
+      }
 
     } catch (e) { console.log(e); }
   }
@@ -524,7 +555,7 @@ const MyPage = () => {
   }
 
   /* 주소 저장 */
-  const onSaveAddress = async(e) => {
+  const onSaveAddress = async (e) => {
     setRegion1(region1);
     setRegion2(region2);
     setIsChangeAddress(false);
@@ -532,20 +563,20 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-        console.log("id : " + id);
-        console.log("password : " + pwd);
-        console.log("nickname : " + nickname);
-        console.log("introduce : " + introduce);
-        console.log("email : " + email);
-        console.log("region1 : " + region1);
-        console.log("region2 : " + region2);
-        if(response.status == 200) {
-          console.log("통신 성공(200)");
-          console.log("\n>> 주소 수정 완료");
-          // alert("주소 수정 완료!!");
-          setState({...state, open: true, success: true, successMsg: "주소 수정 완료!!"});
+      console.log("id : " + id);
+      console.log("password : " + pwd);
+      console.log("nickname : " + nickname);
+      console.log("introduce : " + introduce);
+      console.log("email : " + email);
+      console.log("region1 : " + region1);
+      console.log("region2 : " + region2);
+      if (response.status == 200) {
+        console.log("통신 성공(200)");
+        console.log("\n>> 주소 수정 완료");
+        // alert("주소 수정 완료!!");
+        setState({ ...state, open: true, success: true, successMsg: "주소 수정 완료!!" });
 
-      } 
+      }
 
     } catch (e) { console.log(e); }
   }
@@ -561,22 +592,22 @@ const MyPage = () => {
   const getInputPwd = (pwd) => { setInputPwd(pwd); }
   const openUnregisterModal = () => { setUnregisterModalOpen(true); };
   const closeUnregisterModal = () => { setUnregisterModalOpen(false); };
-  const onDeleteMember = async(e) => {
+  const onDeleteMember = async (e) => {
     console.log("입력한 비밀번호(inputPwd) : " + inputPwd);
 
     const recheck = "해당 아이디로 재가입이 불가능합니다."
-                  + "\n탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다."
-                  + "\n정말로 탈퇴하시겠습니까?"
+      + "\n탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다."
+      + "\n정말로 탈퇴하시겠습니까?"
     let recheckResult = window.confirm(recheck);
     console.log("\n>> 최종 탈퇴 여부 : " + recheckResult);
 
-    if(recheckResult) {
+    if (recheckResult) {
       try {
         const response = await TeamAPI.memberDelete(myId, inputPwd);
         console.log("response.data : " + response.data);
-  
+
         // if(res.data.result === "OK") {
-        if(response.data === true) {
+        if (response.data === true) {
           console.log("통신 성공(200)");
           console.log("\n회원 탈퇴 성공");
           window.localStorage.setItem("userId", "");
@@ -584,17 +615,17 @@ const MyPage = () => {
           window.localStorage.setItem("isLogin", "FALSE");
           closeUnregisterModal();
           // alert("회원 탈퇴 성공");
-          setState({...state, open: true, success: true, successMsg: "회원 탈퇴 성공"});
+          setState({ ...state, open: true, success: true, successMsg: "회원 탈퇴 성공" });
 
           window.location.replace("/");
         } else {
           // alert("비밀번호를 확인하세요.");
-          setState({...state, open: true, error: true, errorMsg: "비밀번호를 확인하세요."});
+          setState({ ...state, open: true, error: true, errorMsg: "비밀번호를 확인하세요." });
 
         }
       } catch (e) {
         // alert("오류 발생!!");
-        setState({...state, open: true, error: true, errorMsg: "오류 발생!!"});
+        setState({ ...state, open: true, error: true, errorMsg: "오류 발생!!" });
 
         console.log("탈퇴 에러!! 왜 또 안 될까..?");
       }
@@ -602,13 +633,14 @@ const MyPage = () => {
       console.log("\n>> 탈퇴하기를 취소합니다.");
     }
   };
-  
-  return(
+
+  return (
     <div className='Container'>
       <div className='Middle-Container'>
         <div className='Mypage-Container'>
           <div className='Mypage-box'>
-            <CustomModal state={state} changeState={onChangeState}/>
+          <EmailModal open={open} modalName={email} modalContent={() => setChangePwdModalOpen(true)} onHide={() => setOpen(false)} />
+            <CustomModal state={state} changeState={onChangeState} />
             <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd} />
             <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
             <div className='MyPage-header'>
@@ -619,16 +651,16 @@ const MyPage = () => {
                 <img src={url || face} alt="avatar" />
                 <div className="overlay">
                   <label htmlFor="photo">
-                    <CameraAltIcon style={{fontSize: "2rem", cursor: "pointer"}}/>
+                    <CameraAltIcon style={{ fontSize: "2rem", cursor: "pointer" }} />
                   </label>
-                  <input 
-                    type="file" 
-                    accept="image/*" 
-                    style={{ display: "none" }} 
-                    id="photo" 
-                    onChange={onChangeFace} 
-                    />
-                  {url ? <DeleteForeverIcon style={{fontSize: "2rem", cursor: "pointer"}} onClick={onDeleteFace}/> : null}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    id="photo"
+                    onChange={onChangeFace}
+                  />
+                  {url ? <DeleteForeverIcon style={{ fontSize: "2rem", cursor: "pointer" }} onClick={onDeleteFace} /> : null}
                 </div>
               </div>
             </div>
@@ -685,7 +717,7 @@ const MyPage = () => {
                 </div>
                 <div className='mypage-input'>
                   {mbti ? <input className='inputBox' type="text" value={mbti} />
-                : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
+                    : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
                 </div>
                 <div className='s' />
               </tr>
@@ -708,28 +740,28 @@ const MyPage = () => {
                   <span>닉네임</span>
                 </div>
                 {!isChangeNickname ?
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
-                  </div>
-                  <button className='mypage-btn'  onClick={OnclickRepairNickname}>수정</button>
-                </>
-                :
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
-                  </div>
-                  <div>
-                    {isCheckedNickname &&
-                      <button className='mypage-btn-nick'  onClick={onClickNicknameCheck} >중복확인</button>}
-                    {isCheckedNickname &&
-                      <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
-                    {isNicknamecheck &&
-                      <button className='mypage-btn-nick' onClick={onSaveNickname}>저장</button>}
-                    {isNicknamecheck &&
-                      <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
-                  </div>
-                </>
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
+                    </div>
+                    <button className='mypage-btn' onClick={OnclickRepairNickname}>수정</button>
+                  </>
+                  :
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
+                    </div>
+                    <div>
+                      {isCheckedNickname &&
+                        <button className='mypage-btn-nick' onClick={onClickNicknameCheck} >중복확인</button>}
+                      {isCheckedNickname &&
+                        <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
+                      {isNicknamecheck &&
+                        <button className='mypage-btn-nick' onClick={onSaveNickname}>저장</button>}
+                      {isNicknamecheck &&
+                        <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
+                    </div>
+                  </>
                 }
               </tr>
 
@@ -741,20 +773,20 @@ const MyPage = () => {
                 </div>
 
                 {!isChangeIntroduce ?
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" value={introduce} />
-                  </div>
-                  <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
-                </>
-                :
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="text" onChange={onChangeIntroduce} />
-                  </div>
-                  <button className='mypage-btn-int1' onClick={onSaveIntroduce}>저장</button>
-                  <button className='mypage-btn-int2' onClick={cancelIntroduce}>취소</button>
-                </>
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox' type="text" value={introduce} />
+                    </div>
+                    <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
+                  </>
+                  :
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox' type="text" onChange={onChangeIntroduce} />
+                    </div>
+                    <button className='mypage-btn-int1' onClick={onSaveIntroduce}>저장</button>
+                    <button className='mypage-btn-int2' onClick={cancelIntroduce}>취소</button>
+                  </>
                 }
               </tr>
 
@@ -765,74 +797,78 @@ const MyPage = () => {
                   <span>이메일</span>
                 </div>
                 {!isChangeEmail ?
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="mail" value={email} />
-                  </div>
-                  <button className='mypage-btn' onClick={RepairEmail}>수정</button>
-                </>
-                :
-                <>
-                  <div className='mypage-input'>
-                    <input className='inputBox' type="mail" onChange={OnChangeEmail} />
-                  </div>
-                  {isFixEmail&&
-                  <button className='mypage-btn-ema1' onClick={onClickEmailCheck}>중복확인</button>}
-                  {isFixEmail&&
-                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
-                  {emailDoubleCheck&&
-                  <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
-                  {emailDoubleCheck&&
-                  <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
-                </>
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox' type="mail" value={email} />
+                    </div>
+                    <button className='mypage-btn' onClick={RepairEmail}>수정</button>
+                  </>
+                  :
+                  <>
+                    <div className='mypage-input'>
+                      <input className='inputBox' type="mail" onChange={OnChangeEmail} />
+                    </div>
+                    {isFixEmail &&
+                      <button className='mypage-btn-ema1' onClick={onClickEmailCheck}>중복확인</button>}
+                    {isFixEmail &&
+                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                    {confirmEmail &&
+                      <button className='mypage-btn-ema1' onClick={onClickEmailAdress}>이메일 인증</button>}
+                    {confirmEmail &&
+                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                    {emailDoubleCheck &&
+                      <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
+                    {emailDoubleCheck &&
+                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                  </>
                 }
               </tr>
 
 
               {/* 주소 */}
               {isChangeAddress ?
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>주소</span>
-                </div>
-                <div className='mypage-input'>
-                  <select className='mypage-input-select1' onChange={onChangeRegion1}>
-                    <option disabled selected>시도선택</option>
-                    {sido.map((e) => (
-                    <option key={e.sido} value={e.codeNm}>
-                      {e.codeNm}
-                    </option>
-                    ))}
-                  </select>
-                  <select className='mypage-input-select2' onChange={onChangeRegion2}>
-                    <option disabled selected>시/구/군선택</option>
-                  {sigugun
-                    .filter((e) => e.sido === keySido)
-                    .map((e) => (
-                      <option key={e.sigugun} value={e.codeNm}>
-                        {e.codeNm}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>
-                  <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
-                </div>
-              </tr>
-              : 
-              <div>
                 <tr className="Form-item">
                   <div className="Form-Name">
                     <span>주소</span>
                   </div>
                   <div className='mypage-input'>
-                    <input className='mypage-input-addr1' type="text" value={region1} />
-                    <input className='mypage-input-addr2' type="text" value={region2} />
+                    <select className='mypage-input-select1' onChange={onChangeRegion1}>
+                      <option disabled selected>시도선택</option>
+                      {sido.map((e) => (
+                        <option key={e.sido} value={e.codeNm}>
+                          {e.codeNm}
+                        </option>
+                      ))}
+                    </select>
+                    <select className='mypage-input-select2' onChange={onChangeRegion2}>
+                      <option disabled selected>시/구/군선택</option>
+                      {sigugun
+                        .filter((e) => e.sido === keySido)
+                        .map((e) => (
+                          <option key={e.sigugun} value={e.codeNm}>
+                            {e.codeNm}
+                          </option>
+                        ))}
+                    </select>
                   </div>
-                  <button className='mypage-btn-addr' onClick={e => setIsChangeAddress(true)}>수정</button>
+                  <div>
+                    <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>
+                    <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
+                  </div>
                 </tr>
-              </div>
+                :
+                <div>
+                  <tr className="Form-item">
+                    <div className="Form-Name">
+                      <span>주소</span>
+                    </div>
+                    <div className='mypage-input'>
+                      <input className='mypage-input-addr1' type="text" value={region1} />
+                      <input className='mypage-input-addr2' type="text" value={region2} />
+                    </div>
+                    <button className='mypage-btn-addr' onClick={e => setIsChangeAddress(true)}>수정</button>
+                  </tr>
+                </div>
               }
             </table>
 
