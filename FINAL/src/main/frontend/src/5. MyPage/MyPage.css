@@ -1,40 +1,40 @@
 /* Profile */
 .profile_container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .img_container {
-    position: relative;
-    margin: 0 auto;
-    top: 50px
+  position: relative;
+  margin: 0 auto;
+  top: 50px
 }
 
 .img_container img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    transition: 0.5s ease-in-out all;
-    object-fit: cover;
-    box-shadow: 5px 5px 12px rgba(128, 128, 128, 0.6);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out all;
+  object-fit: cover;
+  box-shadow: 5px 5px 12px rgba(128, 128, 128, 0.6);
 }
 
 .img_container:hover img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .img_container:hover .overlay {
-    opacity: 1;
+  opacity: 1;
 }
 
 .overlay {
-    transition: 0.3s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  transition: 0.3s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 /* ====================================================== */
@@ -465,12 +465,12 @@
 
 
 .Mypage-leave-btn:active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
-    position: relative;
+    /* box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5); */
+    /* position: relative; */
 }
 
 .Mypage-leave-btn {
-    margin-top: 100px;
+    /* margin-top: 100px;
     position: relative;
     left: 555px;
     bottom: 50px;
@@ -482,8 +482,16 @@
     font-weight: 900;
     font-family: 'LINESeedKR-Bd';
     background-color: #003366;
-    color: white;
-
+    color: white; */
+    color: gray;
+    position: relative;
+    left: 580px;
+    border-style: none;
+    background: none;
+    bottom: 50px;
+    margin-top: 100px;
+    border-bottom: 1px solid gray;
+    
 }
 
 
@@ -987,13 +995,8 @@
     }
 
 
-    .Mypage-leave-btn:active {
-        box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
-        position: relative;
-    }
-
     .Mypage-leave-btn {
-        margin-top: 20px;
+        /* margin-top: 20px;
         position: relative;
         left: 305px;
         bottom: 50px;
@@ -1005,8 +1008,8 @@
         font-weight: 900;
         font-family: 'LINESeedKR-Bd';
         background-color: #003366;
-        color: white;
-
+        color: white; */
+        left: 350px;
     }
 
 
