@@ -19,7 +19,7 @@ export const ChangePwdModal = (props) => {
   const [isPwd, setIsPwd] = useState(false);
   const [isPwdcheck, setIsPwdcheck] = useState(false);
 
-  const guidePwd = "임시 정규식 : 8~20자"
+  const guidePwd = "영문/숫자/특수문자 조합 (8~20자)"
   const acceptPwd = "사용 가능한 비밀번호입니다."
   const errorPwdcheck = "비밀번호가 일치하지 않습니다."
   const acceptPwdcheck = "비밀번호가 일치합니다."
@@ -47,16 +47,15 @@ export const ChangePwdModal = (props) => {
     
     let temp_pwd = e.target.value;
     setPwd(temp_pwd);
-    getPwd(temp_pwd);
 
     if (regexPw.test(temp_pwd)) {
       setIsPwd(true);
       setShowAcceptPwd(true); // 사용 가능한 비밀번호입니다.
-      setShowGuidePwd(false); // 임시 정규식 : 8~20자
+      setShowGuidePwd(false); // 영문/숫자/특수문자 조합 (8~20자)
     } else {
       setIsPwd(false);
       setShowAcceptPwd(false); // 사용 가능한 비밀번호입니다.
-      setShowGuidePwd(true); // 임시 정규식 : 8~20자
+      setShowGuidePwd(true); // 영문/숫자/특수문자 조합 (8~20자)
     }
 
     if (pwdcheck == '') console.log(pwdcheck);
@@ -87,12 +86,17 @@ export const ChangePwdModal = (props) => {
       setShowAcceptPwdcheck(false); // 비밀번호가 일치합니다.
     }
   };
-
+  
   /* 변경 버튼 클릭 */
   const onClickButton = (e) => {
     e.preventDefault();
     if(isPwd && isPwdcheck) {
+      getPwd(pwd);
       onSavePwd(e);
+      setShowGuidePwd(false);
+      setShowAcceptPwd(false);
+      setShowErrorPwdcheck(false);
+      setShowAcceptPwdcheck(false);
       close();
     } else {
       alert("비밀번호를 확인하세요.");
