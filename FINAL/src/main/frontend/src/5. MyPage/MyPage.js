@@ -464,6 +464,7 @@ const MyPage = () => {
           setState({ ...state, open: true, success: true, successMsg: "이용가능한 이메일 입니다" });
           setConfirmEmail(true);
           setIsFixEmail(false);
+
         } else {
           setState({ ...state, open: true, success: false, successMsg: "이메일 중복입니다" });
           setEmail("");
@@ -523,6 +524,7 @@ const MyPage = () => {
         setEmailDoubleCheck(false);
         console.log("통신 성공(200)");
         console.log("\n>> 이메일 수정 완료");
+        setEmailBefore(email);
         // alert("이메일 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "이메일 수정 완료!!" });
         updateDoc(doc(db, "users", id), {
@@ -532,6 +534,8 @@ const MyPage = () => {
 
     } catch (e) { console.log(e); }
   }
+  const [regeion1Check, setRegion1Check] = useState(false);
+  const [regeion2Check, setRegion2Check] = useState(false);
 
   /* 주소 ☞ 시도 변경 */
   const onChangeRegion1 = (e) => {
@@ -544,6 +548,10 @@ const MyPage = () => {
 
     let temp_keySido = sido.at(indexSido).sido;
     setKeySido(temp_keySido);
+    
+    if (temp_region1 !== '') {
+      setRegion1Check(true);
+    }
   };
 
   /* 주소 ☞ 시구군 변경 */
@@ -552,6 +560,9 @@ const MyPage = () => {
     let temp_region2 = e.target.value;
     console.log("\n시/구/군선택 : " + temp_region2);
     setRegion2(temp_region2);
+    if (temp_region2 !== '') {
+      setRegion2Check(true);
+    }
   }
 
   /* 주소 저장 */
@@ -639,7 +650,7 @@ const MyPage = () => {
       <div className='Middle-Container'>
         <div className='Mypage-Container'>
           <div className='Mypage-box'>
-          <EmailModal open={open} modalName={email} modalContent={() => setChangePwdModalOpen(true)} onHide={() => setOpen(false)} />
+            <EmailModal open={open} modalName={email} modalContent={() => setChangePwdModalOpen(true)} onHide={() => setOpen(false)} />
             <CustomModal state={state} changeState={onChangeState} />
             <ChangePwdModal open={changePwdModalOpen} close={closeChangePwdModal} getPwd={getPwd} onSavePwd={onSavePwd} />
             <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
@@ -852,7 +863,7 @@ const MyPage = () => {
                     </select>
                   </div>
                   <div>
-                    <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>
+                    {regeion2Check&&<button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>}
                     <button className='mypage-btn-select' onClick={e => setIsChangeAddress(false)}>취소</button>
                   </div>
                 </tr>
