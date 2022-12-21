@@ -121,7 +121,7 @@ function AboutUs() {
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
-                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("", "")}>mail</span>
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("hungryman", "배고픈개발자")}>mail</span>
               </div>
             </div>
           </div>
