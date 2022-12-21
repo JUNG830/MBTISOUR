@@ -542,7 +542,7 @@ const MyPage = () => {
 
 
   const onClickCancelRegion = (e) => {
-    
+
 
 
     setRegion1(region1Before);
@@ -671,235 +671,237 @@ const MyPage = () => {
             <UnregisterModal open={unregisterModalOpen} close={closeUnregisterModal} id={id} getInputPwd={getInputPwd} onDeleteMember={onDeleteMember} />
             <div className='MyPage-header'>
               <h1>마이페이지</h1>
-            </div>
-            <div className="profile_container">
-              <div className="img_container">
-                <img src={url || face} alt="avatar" />
-                <div className="overlay">
-                  <label htmlFor="photo">
-                    <CameraAltIcon style={{ fontSize: "2rem", cursor: "pointer" }} />
-                  </label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    style={{ display: "none" }}
-                    id="photo"
-                    onChange={onChangeFace}
-                  />
-                  {url ? <DeleteForeverIcon style={{ fontSize: "2rem", cursor: "pointer" }} onClick={onDeleteFace} /> : null}
+
+              <div className="profile_container">
+                <div className="img_container">
+                  <img src={url || face} alt="avatar" />
+                  <div className="overlay">
+                    <label htmlFor="photo">
+                      <CameraAltIcon style={{ fontSize: "2rem", cursor: "pointer" }} />
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      style={{ display: "none" }}
+                      id="photo"
+                      onChange={onChangeFace}
+                    />
+                    {url ? <DeleteForeverIcon style={{ fontSize: "2rem", cursor: "pointer" }} onClick={onDeleteFace} /> : null}
+                  </div>
                 </div>
               </div>
             </div>
-
             {/* MyPage-Table 영역 */}
-            <table action="" className="MyPage-Table">
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>이름</span>
-                </div>
-                <div className='mypage-input'>
-                  <input className='inputBox' type="text" value={name} disabled />
-                </div>
-                <div className='s' />
-              </tr>
-
-
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>아이디</span>
-                </div>
-                <div className='mypage-input'>
-                  <input className='inputBox' type="text" value={id} disabled />
-                </div>
-                <div className='s'></div>
-              </tr>
-
-
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>생년월일</span>
-                </div>
-                <div className='mypage-input'>
-                  <input className='inputBox' type="text" value={birth} disabled />
-                </div>
-                <div className='s'></div>
-              </tr>
-
-
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>성별</span>
-                </div>
-                <div className='mypage-input'>
-                  <input className='inputBox' type="text" value={gender} disabled />
-                </div>
-                <div className='s' />
-              </tr>
-
-
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>MBTI</span>
-                </div>
-                <div className='mypage-input'>
-                  {mbti ? <input className='inputBox' type="text" value={mbti} />
-                    : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
-                </div>
-                <div className='s' />
-              </tr>
-
-              {/* 비밀번호 */}
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>비밀번호</span>
-                </div>
-                <div className='mypage-input'>
-                  <input className='inputBox' type="password" value={pwd} />
-                </div>
-                <button className='mypage-btn' onClick={openChangePwdModal}>수정</button>
-              </tr>
-
-
-              {/* 닉네임 */}
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>닉네임</span>
-                </div>
-                {!isChangeNickname ?
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
-                    </div>
-                    <button className='mypage-btn' onClick={OnclickRepairNickname}>수정</button>
-                  </>
-                  :
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
-                    </div>
-                    <div>
-                      {isCheckedNickname &&
-                        <button className='mypage-btn-nick' onClick={onClickNicknameCheck} >중복확인</button>}
-                      {isCheckedNickname &&
-                        <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
-                      {isNicknamecheck &&
-                        <button className='mypage-btn-nick' onClick={onSaveNickname}>저장</button>}
-                      {isNicknamecheck &&
-                        <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
-                    </div>
-                  </>
-                }
-              </tr>
-
-
-              {/* 자기소개 */}
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>자기소개</span>
-                </div>
-
-                {!isChangeIntroduce ?
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox' type="text" value={introduce} />
-                    </div>
-                    <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
-                  </>
-                  :
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox' type="text" onChange={onChangeIntroduce} />
-                    </div>
-                    <button className='mypage-btn-int1' onClick={onSaveIntroduce}>저장</button>
-                    <button className='mypage-btn-int2' onClick={cancelIntroduce}>취소</button>
-                  </>
-                }
-              </tr>
-
-
-              {/* 이메일 */}
-              <tr className="Form-item">
-                <div className="Form-Name">
-                  <span>이메일</span>
-                </div>
-                {!isChangeEmail ?
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox' type="mail" value={email} />
-                    </div>
-                    <button className='mypage-btn' onClick={RepairEmail}>수정</button>
-                  </>
-                  :
-                  <>
-                    <div className='mypage-input'>
-                      <input className='inputBox' type="mail" onChange={OnChangeEmail} />
-                    </div>
-                    {isFixEmail &&
-                      <button className='mypage-btn-ema1' onClick={onClickEmailCheck}>중복확인</button>}
-                    {isFixEmail &&
-                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
-                    {confirmEmail &&
-                      <button className='mypage-btn-ema1' onClick={onClickEmailAdress}>이메일 인증</button>}
-                    {confirmEmail &&
-                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
-                    {emailDoubleCheck &&
-                      <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
-                    {emailDoubleCheck &&
-                      <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
-                  </>
-                }
-              </tr>
-
-
-              {/* 주소 */}
-              {isChangeAddress ?
+            <div className='Mypage-OuterBox'>
+              <table action="" className="MyPage-Table">
                 <tr className="Form-item">
                   <div className="Form-Name">
-                    <span>주소</span>
+                    <span>이름</span>
                   </div>
                   <div className='mypage-input'>
-                    <select className='mypage-input-select1' onChange={onChangeRegion1}>
-                      <option disabled selected>시도선택</option>
-                      {sido.map((e) => (
-                        <option key={e.sido} value={e.codeNm}>
-                          {e.codeNm}
-                        </option>
-                      ))}
-                    </select>
-                    <select className='mypage-input-select2' onChange={onChangeRegion2}>
-                      <option disabled selected>시/구/군선택</option>
-                      {sigugun
-                        .filter((e) => e.sido === keySido)
-                        .map((e) => (
-                          <option key={e.sigugun} value={e.codeNm}>
-                            {e.codeNm}
-                          </option>
-                        ))}
-                    </select>
+                    <input className='inputBox' type="text" value={name} disabled />
                   </div>
-                  <div>
-                    {regeion2Check && <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>}
-                    <button className='mypage-btn-select' onClick={onClickCancelRegion}>취소</button>
-                  </div>
+                  <div className='s' />
                 </tr>
-                :
-                <div>
+
+
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>아이디</span>
+                  </div>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" value={id} disabled />
+                  </div>
+                  <div className='s'></div>
+                </tr>
+
+
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>생년월일</span>
+                  </div>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" value={birth} disabled />
+                  </div>
+                  <div className='s'></div>
+                </tr>
+
+
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>성별</span>
+                  </div>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="text" value={gender} disabled />
+                  </div>
+                  <div className='s' />
+                </tr>
+
+
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>MBTI</span>
+                  </div>
+                  <div className='mypage-input'>
+                    {mbti ? <input className='inputBox' type="text" value={mbti} />
+                      : <button className='Mypage-examine' onClick={onClickTestStart}>검사하기</button>}
+                  </div>
+                  <div className='s' />
+                </tr>
+
+                {/* 비밀번호 */}
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>비밀번호</span>
+                  </div>
+                  <div className='mypage-input'>
+                    <input className='inputBox' type="password" value={pwd} />
+                  </div>
+                  <button className='mypage-btn' onClick={openChangePwdModal}>수정</button>
+                </tr>
+
+
+                {/* 닉네임 */}
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>닉네임</span>
+                  </div>
+                  {!isChangeNickname ?
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox' disabled={onChangeNickname ? true : false} type="text" value={nickname} />
+                      </div>
+                      <button className='mypage-btn' onClick={OnclickRepairNickname}>수정</button>
+                    </>
+                    :
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox ' disabled={isNicknamecheck ? true : false} type="text" onChange={onChangeNickname} />
+                      </div>
+                      <div>
+                        {isCheckedNickname &&
+                          <button className='mypage-btn-nick' onClick={onClickNicknameCheck} >중복확인</button>}
+                        {isCheckedNickname &&
+                          <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
+                        {isNicknamecheck &&
+                          <button className='mypage-btn-nick' onClick={onSaveNickname}>저장</button>}
+                        {isNicknamecheck &&
+                          <button className='mypage-btn-nick2' onClick={cancelNickname}>취소</button>}
+                      </div>
+                    </>
+                  }
+                </tr>
+
+
+                {/* 자기소개 */}
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>자기소개</span>
+                  </div>
+
+                  {!isChangeIntroduce ?
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox' type="text" value={introduce} />
+                      </div>
+                      <button className='mypage-btn' onClick={e => setIsChangeIntroduce(true)}>수정</button>
+                    </>
+                    :
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox' type="text" onChange={onChangeIntroduce} />
+                      </div>
+                      <button className='mypage-btn-int1' onClick={onSaveIntroduce}>저장</button>
+                      <button className='mypage-btn-int2' onClick={cancelIntroduce}>취소</button>
+                    </>
+                  }
+                </tr>
+
+
+                {/* 이메일 */}
+                <tr className="Form-item">
+                  <div className="Form-Name">
+                    <span>이메일</span>
+                  </div>
+                  {!isChangeEmail ?
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox' type="mail" value={email} />
+                      </div>
+                      <button className='mypage-btn' onClick={RepairEmail}>수정</button>
+                    </>
+                    :
+                    <>
+                      <div className='mypage-input'>
+                        <input className='inputBox' type="mail" onChange={OnChangeEmail} />
+                      </div>
+                      {isFixEmail &&
+                        <button className='mypage-btn-ema1' onClick={onClickEmailCheck}>중복확인</button>}
+                      {isFixEmail &&
+                        <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                      {confirmEmail &&
+                        <button className='mypage-btn-ema1' onClick={onClickEmailAdress}>이메일 인증</button>}
+                      {confirmEmail &&
+                        <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                      {emailDoubleCheck &&
+                        <button className='mypage-btn-ema1' onClick={onSaveEmail}>저장</button>}
+                      {emailDoubleCheck &&
+                        <button className='mypage-btn-ema2' onClick={cancelEmail}>취소</button>}
+                    </>
+                  }
+                </tr>
+
+
+                {/* 주소 */}
+                {isChangeAddress ?
                   <tr className="Form-item">
                     <div className="Form-Name">
                       <span>주소</span>
                     </div>
                     <div className='mypage-input'>
-                      <input className='mypage-input-addr1' type="text" value={region1} />
-                      <input className='mypage-input-addr2' type="text" value={region2} />
+                      <select className='mypage-input-select1' onChange={onChangeRegion1}>
+                        <option disabled selected>시도선택</option>
+                        {sido.map((e) => (
+                          <option key={e.sido} value={e.codeNm}>
+                            {e.codeNm}
+                          </option>
+                        ))}
+                      </select>
+                      <select className='mypage-input-select2' onChange={onChangeRegion2}>
+                        <option disabled selected>시/구/군선택</option>
+                        {sigugun
+                          .filter((e) => e.sido === keySido)
+                          .map((e) => (
+                            <option key={e.sigugun} value={e.codeNm}>
+                              {e.codeNm}
+                            </option>
+                          ))}
+                      </select>
                     </div>
-                    <button className='mypage-btn-addr' onClick={e => setIsChangeAddress(true)}>수정</button>
+                    <div>
+                      {regeion2Check && <button className='mypage-btn-select' onClick={onSaveAddress}>저장</button>}
+                      <button className='mypage-btn-select' onClick={onClickCancelRegion}>취소</button>
+                    </div>
                   </tr>
-                </div>
-              }
-            </table>
+                  :
+                  <div>
+                    <tr className="Form-item">
+                      <div className="Form-Name">
+                        <span>주소</span>
+                      </div>
+                      <div className='mypage-input'>
+                        <input className='mypage-input-addr1' type="text" value={region1} />
+                        <input className='mypage-input-addr2' type="text" value={region2} />
+                      </div>
+                      <button className='mypage-btn-addr' onClick={e => setIsChangeAddress(true)}>수정</button>
+                    </tr>
+                  </div>
+                }
+              </table>
 
-            <div className="Mypage-leave">
-              <button className='Mypage-leave-btn' onClick={openUnregisterModal}>탈퇴하기</button>
+              <div className="Mypage-leave">
+                <button className='Mypage-leave-btn' onClick={openUnregisterModal}>탈퇴하기</button>
+              </div>
             </div>
           </div>
         </div>
