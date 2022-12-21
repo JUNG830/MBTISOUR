@@ -10,9 +10,6 @@ function Navbar() {
   // 반응형 - 메뉴 눌렀을 때
   const onClickMenu = () => {
     setIsMenuOpen(isMenuOpen => !isMenuOpen);
-
-    let navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('open');
   }
 
   // User 아이콘 눌렀을 때
@@ -31,7 +28,7 @@ function Navbar() {
         </a>
 
       {/* Navbar 영역 */}
-        <ul className= {isMenuOpen ? "Navbar" : "Navbar open"}>
+        <ul className= {isMenuOpen ? "Navbar open" : "Navbar"}>
           <div className="User">
             <span className="material-symbols-outlined" onClick={onClickAccount} id="User-icon">account_circle</span>
             <ul className={showAccount ? "User-submenu open" : "User-submenu-close"}>
@@ -59,7 +56,7 @@ function Navbar() {
         <div className="Main-Icon">
           <div className="material-symbols-outlined"
             id="menu-icon" onClick={onClickMenu}>
-            {isMenuOpen ? "menu" : "close"}
+            {isMenuOpen ? "close" : "menu"}
           </div>
         </div>
 
