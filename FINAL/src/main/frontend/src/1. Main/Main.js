@@ -3,7 +3,6 @@ import '../1. Main/Main.css';
 import '../images/아이셔용.png';
 import { motion } from "framer-motion"
 import { ScrollContainer, ScrollPage, batch, Fade,MoveOut, Sticky, Animator,FadeIn,ZoomIn,Move,StickyIn} from "react-scroll-motion"
-import Mouse from '../Mouse/Mouse';
 /* 보완 해야할 것 */
 /* 1. 버튼 마우스 갖다대면 애니메이션 효과 주기 
    2. 전체적인 디자인 보완하기(검정은 그냥 만들어본것)
@@ -14,7 +13,6 @@ function Main () {
     const FadeUp = batch(Fade(), Move(), Sticky());
     return(
         <div className="Main_Container">
-            <Mouse/>
             <div className="Main_title">
 <ScrollContainer>
     <ScrollPage>
