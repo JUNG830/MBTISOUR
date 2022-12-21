@@ -4,7 +4,6 @@
 
 <div align=center>
 	<h3>📚 Tech Stack 📚</h3>
-	
 </div>
 
 <div align="center">
@@ -72,11 +71,11 @@ yarn add @mui/icons-material
 ## Code Contributors
 
 <br>
-<br>
 <a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=JUNG830/FINAL_ISOUR_Gradle" />
 </a>
-
+<br>
+<br>
 Made with [contrib.rocks](https://contrib.rocks).
 
 
