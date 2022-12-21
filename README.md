@@ -2,17 +2,6 @@
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Final%20MBTISOUR!&fontSize=90" />	
 </div>
 
-## Code Contributors
-
-This project exists thanks to all the people who contribute.
-<a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=JUNG830/FINAL_ISOUR_Gradle" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
-
-
-
 <div align=center>
 	<h3>📚 Tech Stack 📚</h3>
 	
@@ -80,17 +69,19 @@ yarn add @mui/icons-material
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 ```
+## Code Contributors
+
+This project exists thanks to all the people who contribute.
+<br>
+<br>
+<a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=JUNG830/FINAL_ISOUR_Gradle" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 
-### 빌드 하기
-./gradlew build
-
-### 실행 하기
-java -jar build\libs\FINAL-0.0.1-SNAPSHOT.jar
-
-java -jar FINAL-0.0.1-SNAPSHOT.jar
-
-----------------------------------------------------------------------------
+## Developer Note
 22.12.21(수)
 ♥ 조혜경
 - (1차) 마이페이지, 비밀번호 변경 모달창에서 입력한 비밀번호 따라 마이페이지가 바뀌는 오류 수정
@@ -248,3 +239,14 @@ java -jar FINAL-0.0.1-SNAPSHOT.jar
 - (1차) alert 모달 만들고, 회원가입에 붙히기
 - (2차) 채팅창에서 프사 불러오게 수정
 - (3차) 로그인, 회원가입, 마이페이지, 쪽지함에 커스텀 모달 추가
+
+## 
+
+### 빌드 하기
+./gradlew build
+
+### 실행 하기
+java -jar build\libs\FINAL-0.0.1-SNAPSHOT.jar
+
+java -jar FINAL-0.0.1-SNAPSHOT.jar
+
