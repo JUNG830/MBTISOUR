@@ -34,13 +34,34 @@
   <img src="https://img.shields.io/badge/firebase-FFCA28?style=flat&logo=firebase&logoColor=white" />
 </div>
 
-## Installation
-React 
+## React Libraries
+
 ```bash
-pip install foobar
+yarn install
+yarn add react-router-dom 
+yarn add styled-components 
+yarn add react-icons 
+yarn add moment
+yarn add axios
+yarn add firebase
+
 ```
+## Gradle Dependencies
 
+```bash
+//	QLRM을 사용하기 위해 Gradle 의존성 모듈
+	implementation group: 'org.qlrm', name: 'qlrm', version: '3.0.4'
+//	jackson-databind 라이브러리 추가
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
+//	jackson 라이브러리 추가
+	implementation group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.4.2'
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
+//	GSON 변환 추가
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+//	이메일 인증
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
+```
 
 
 ### 빌드 하기
