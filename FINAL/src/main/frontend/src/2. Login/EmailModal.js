@@ -14,7 +14,6 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
   const onChangeState = () => {
     setState({...state, open: false, success: false, error: false});
   }
-  /* ============================== */
 
     const [code, setCode] = useState("");
 
@@ -28,12 +27,8 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
 
     const onClickReply = async (e) => {
         e.preventDefault();
-        console.log("답장하기 버튼 눌렀어요.");
-        console.log(code);
         if (code !== null) {
             const emailConfirm = await TeamAPI.emailCode(code);
-            console.log(emailConfirm);
-            console.log(emailConfirm.data);
             // alert("코드 보내기 성공!!");
             if (emailConfirm.data === 1) {
                 setState({...state, open: true, success: true, successMsg: "이메일 인증이 완료되었습니다."});
@@ -45,7 +40,6 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
                 setCode("");
             }
         } else {
-            console.log("\n\n!!코드내용없음!!");
             setState({...state, open: true, error: true, errorMsg: "인증코드를 입력해주세요."});
         }
     }

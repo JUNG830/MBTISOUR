@@ -15,10 +15,8 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
 
     const onClickReply = async (e) => {
         e.preventDefault();
-        console.log(code);
         if (code !== null) {
             const emailConfirm = await TeamAPI.emailCode(code);
-            console.log(emailConfirm);
             alert("코드 보내기 성공!!");
             if (emailConfirm.data === 1) {
                 alert("인증이 완료되었습니다.")
@@ -29,7 +27,6 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
                 setCode("");
             }
         } else {
-            console.log("\n\n!!코드내용없음!!");
             alert("코드정보를 넣어주세요..^^");
         }
     }

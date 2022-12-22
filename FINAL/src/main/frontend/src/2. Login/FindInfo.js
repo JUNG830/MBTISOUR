@@ -263,14 +263,11 @@ const FindInfo = () => {
     const [url, setUrl] = useState("");
     const [mbti, setMbti] = useState("");
 
-
-
     const [isName, setIsName] = useState(false);
     const [isId, setIsId] = useState(false);
     const [isEmail, setIsEmail] = useState(false);
     const [isBirth, setIsBirth] = useState(false);
     const [isFind, setIsFind] = useState(true);
-
 
     const [showReqName, setShowReqName] = useState(false);
     const [showReqId, setShowReqId] = useState(false);
@@ -282,9 +279,7 @@ const FindInfo = () => {
     const reqId = "아이디를 입력하세요."
     const reqEmail = "이메일을 정확히 입력하세요."
 
-
     const regexPw = /^\w{8,20}$/;
-
 
     const [pwd, setPwd] = useState('');
     const [pwdcheck, setPwdcheck] = useState('');
@@ -298,26 +293,12 @@ const FindInfo = () => {
     const openChangePwdModal = () => { setChangePwdModalOpen(true); };
     const closeChangePwdModal = () => { setChangePwdModalOpen(false); };
     const onSavePwd = async (e) => {
-        console.log("변경한 pwd :" + pwd);
-        console.log("변경한 e :" + e);
-
-        // e.preventDefault();
 
         try {
             const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-            console.log("id : " + id);
-            console.log("password : " + pwd);
-            console.log("nickname : " + nickname);
-            console.log("introduce : " + introduce);
-            console.log("email : " + email);
-            console.log("region1 : " + region1);
-            console.log("region2 : " + region2);
 
             if (response.status == 200) {
-                console.log("통신 성공(200)");
-                console.log("\n>> 비밀번호 수정 완료");
                 alert("비밀번호 수정 완료!!");
-                // window.location.replace('/login');
                 navigate('/login');
             }
         } catch (e) { console.log(e); }
@@ -366,9 +347,6 @@ const FindInfo = () => {
         }
     }
 
-
-
-
     const [states, setStates] = useState({
         mode: 'findId',
     });
@@ -379,29 +357,14 @@ const FindInfo = () => {
 
     const onClickFindPwd = async (e) => {
         e.preventDefault();
-
-
-        console.log("\n\n비밀번호 찾기 버튼을 눌렀어요");
-        console.log("isId : " + isId);
-        console.log("isBirth : " + isBirth);
-        console.log("isEmail : " + isEmail);
         try {
-
             const findPwd = await TeamAPI.findPwd(id, email, birth);
-
-
-            console.log(findPwd);
-            console.log(findPwd.status);
 
             if (findPwd.data === '') {
                 setId("");
                 setEmail("");
                 setBirth("");
-                console.log('일치하지 않는 정보입니다.');
-                // alert('일치하지 않는 정보입니다.');
             } else {
-                // alert("입력 정보가 맞습니다.");
-                console.log("입력 정보가 맞습니다.");
                 setFindDate(true);
                 setIsBirth(false);
                 setIsFind(false);
@@ -418,8 +381,6 @@ const FindInfo = () => {
                 setUrl(findPwd.data.face);
                 setMbti(findPwd.data.mbti);
             }
-
-
         } catch (e) {
             console.log(e);
         }
@@ -427,11 +388,8 @@ const FindInfo = () => {
     /*이메일 인증*/
     const onClickEmailAdress = async (e) => {
         e.preventDefault();
-        console.log("\n\nemail 인증 버튼을 눌렀어요");
         try {
             const changeResult = await TeamAPI.emailCheck(email);
-            console.log("emailResult.data : " + changeResult.data);
-            console.log("emailResult.status : " + changeResult.status);
             if (changeResult.status === 200) {
                 setOpen(true);
                 setEmail(email);
@@ -446,34 +404,21 @@ const FindInfo = () => {
 
     const onClickFindId = async (e) => {
         e.preventDefault();
-
-        console.log("\n\n아이디 찾기 버튼을 눌렀어요");
-        console.log("isName : " + isName);
-        console.log("isBirth : " + isBirth);
-        console.log("isEmail : " + isEmail);
         try {
             if (isName && isEmail && isBirth) {
                 const findId = await TeamAPI.findId(name, email, birth);
-
-
-                console.log(findId.data);
-
                 if (findId.data === '') {
                     setId("");
                     setEmail("");
                     setBirth("");
-                    console.log('일치하지 않는 정보입니다.');
                     alert('일치하지 않는 정보입니다.');
 
                 } else {
-                    // alert(findId.data.id);
-                    console.log("입력 정보가 맞습니다.");
                     setGetId(findId.data.id);
                     setOpen(true);
                 }
 
             } else {
-                console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
                 alert('입력된 값을 확인하세요.');
             }
         } catch (e) {

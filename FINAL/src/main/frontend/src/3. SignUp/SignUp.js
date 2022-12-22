@@ -70,12 +70,10 @@ function SignUp() {
     /* 
     체크박스 전체 선택 */
     const handleAllCheck = (checked) => {
-      console.log("\n\n전체 선택 되었나요? : " + checked);
 
       if (checked) {
         const termNumArray = []; // termNum 을 담을 빈 배열(termNumArray) 생성
         termsList.forEach((e) => termNumArray.push(e.termNum)); // termsList 를 하나씩 돌면서 termNumArray termNum 추가
-        console.log("postNumArray : " + termNumArray); // 모든 약관의 termNum 을 담은 배열로 checkedItems 상태 업데이트
         setCheckedItems(termNumArray);
       }
       else {
@@ -86,32 +84,23 @@ function SignUp() {
     /* 
     체크박스 단일 선택 */
     const handleSingleCheck = (checked, num) => {
-      console.log(num + "번 약관이 선택 되었나요? : " + checked);
 
       if (checked) {
         setCheckedItems(fix => [...fix, num]); // 체크된 약관 번호를 checkedItems 배열에 추가
-        console.log("checkedItems : " + checkedItems.toString());
       } else {
         setCheckedItems(checkedItems.filter((e) => e !== num)); // 체크된 약관 번호를 checkedItems 배열에서 삭제
-        console.log("checkedItems : " + checkedItems.toString());
       }
     };
 
     /*
     동의하고 가입하기 */
     const onClickAgree = () => {
-      console.log("\n\n동의하고 가입하기 버튼 눌렀어요.");
 
       if (checkedItems.includes(1) && checkedItems.includes(2)) {
         setCheck_term1("동의");
         setCheck_term2("동의");
         if (checkedItems.includes(3)) setCheck_term3("동의")
         else setCheck_term3("비동의")
-
-        console.log(check_term1);
-        console.log(check_term2);
-        console.log(check_term3);
-
         setMode("join");
 
       } else {
@@ -119,7 +108,6 @@ function SignUp() {
       }
     }
     const onClickNonAgree = () => {
-
       navigate('/login');
     }
 
@@ -127,17 +115,13 @@ function SignUp() {
       <form className='No-Nav-Container'>
         <div className='Terms-Container'>
           <div className='SignUp-Main-Box'>
-            {/* <div className='checkbox-check-all'> */}
             <div className='SignUp-Allagree'>
-              {/* <span className='checkbox-check-btn1'> */}
               <label className='Terms-title' htmlFor="checkbox-check_all">
                 <p className='All-Term'>전체 동의는 필수 및 선택정보에 대한 동의도 포함되어 있습니다.</p>
                 <input type="checkbox" id="checkbox-check_all"
                   onChange={(e) => handleAllCheck(e.target.checked)}
                   checked={termsList.length === checkedItems.length ? true : false} />
               </label>
-              {/* </span> */}
-              {/* </div> */}
             </div>
 
             {termsList?.map(ball => (
@@ -149,7 +133,6 @@ function SignUp() {
                       onChange={(e) => handleSingleCheck(e.target.checked, ball.termNum)}
                       checked={checkedItems.includes(ball.termNum) ? true : false} />
                   </label>
-                  {/* <label htmlFor="checkbox-check_all"></label> */}
                   <div className='Terms-content'>{ball.content}</div>
                 </div>
               </div>
@@ -177,22 +160,16 @@ function SignUp() {
   const [introduce, setIntroduce] = useState('');
   const [emailModalOn, setEmailModalOn] = useState(false);
   const [open, setOpen] = useState(false);
-
-
-
   const today = new Date();
   const [birth, setBirth] = useState('');
   const [age, setAge] = useState("");
-
   const [gender, setGender] = useState('');
-
   const { sido, sigugun } = hangjungdong;
   const [region1, setRegion1] = useState("");
   const [region2, setRegion2] = useState("");
   const [keySido, setKeySido] = useState("");
 
   //  **** 카카오 정보 가져오기 ****
-  // const kakaoData = window.localStorage.getItem("data");
   const kakaoId = window.sessionStorage.getItem("kakaoId");
   const kakaoNickname = window.sessionStorage.getItem("kakaoNickname");
   const kakaoEmail = window.sessionStorage.getItem("kakaoEmail");
@@ -200,13 +177,6 @@ function SignUp() {
   /* 
   최초 통신(useEffect) */
   useEffect(() => {
-    console.log("현재 mode : " + mode);
-    console.log("필수 약관 : " + check_term1);
-    console.log("필수 약관 : " + check_term2);
-    console.log("선택 약관 : " + check_term3);
-    console.log("카카오 아이디 : ", kakaoId);
-    console.log("카카오 닉네임 : ", kakaoNickname);
-    console.log("카카오 이메일 : ", cookies.get('rememberEmail'));
     setNickname(kakaoNickname);
     setEmail(cookies.get('rememberEmail'));
     setIsEmail(true);
@@ -254,10 +224,6 @@ function SignUp() {
   const [showAcceptPwdcheck, setShowAcceptPwdcheck] = useState(false);
 
   const navigate = useNavigate();
-
-
-
-
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -267,10 +233,6 @@ function SignUp() {
     friends: [],
   });
 
-
-
-
-
   /*
   이름 변경 */
   const onChangeName = e => {
@@ -278,7 +240,6 @@ function SignUp() {
 
     let temp_name = e.target.value;
     setName(temp_name);
-
     if (temp_name === '' || !regexName.test(temp_name)) {
       setIsName(false);
       setShowReqName(true); // 이름을 정확히 입력하세요.
@@ -340,27 +301,17 @@ function SignUp() {
   아이디 중복확인 버튼 클릭 */
   const onClickIdCheck = async (e) => {
     e.preventDefault();
-
     setIsIdcheck(false);
-    console.log("\n\n중복확인 버튼 눌렀어요.");
-
     if (id === '' || !regexId.test(id)) {
-      console.log("아이디를 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({ ...state, open: true, error: true, errorMsg: "먼저, 아이디를 확인하세요." });
     } else {
       setIsIdcheck(true);
-      // 가입 여부 우선 확인
       try {
         const memberCheck = await TeamAPI.memberRegCheck(id);
-        console.log("memberCheck.data : " + memberCheck.data);
-        console.log("memberCheck.status : " + memberCheck.status);
-        // if(memberCheck.data.result === true) {
         if (memberCheck.data === true) {
           setNickname("");
           setState({ ...state, open: true, error: true, errorMsg: "이미 가입되어 있는 ID 입니다." });
-          console.log("이미 가입되어 있는 ID 입니다.");
         } else {
-          console.log("사용 가능한 ID 입니다.");
           setState({ ...state, open: true, success: true, successMsg: "사용 가능한 ID 입니다." });
         }
       } catch (e) {
@@ -373,27 +324,17 @@ function SignUp() {
   닉네임 중복확인 버튼 클릭 */
   const onClickNicknameCheck = async (e) => {
     e.preventDefault();
-
     setIsNicknamecheck(false);
-    console.log("\n\n중복확인 버튼 눌렀어요.");
-
     if (nickname === '' || !regexNickName.test(nickname)) {
-      console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({ ...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요." });
     } else {
       setIsNicknamecheck(true);
-      // 가입 여부 우선 확인
       try {
         const nicknameCheck = await TeamAPI.nicknameCheck(nickname);
-        console.log("nicknameCheck.data : " + nicknameCheck.data);
-        console.log("nicknameCheck.status : " + nicknameCheck.status);
-        // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
-          console.log("사용할 수 없는 닉네임 입니다.");
           setNickname("");
           setState({ ...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다." });
         } else {
-          console.log("사용 가능한 닉네임 입니다.");
           setIsNickname(true);
           setState({ ...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다." });
         }
@@ -422,8 +363,9 @@ function SignUp() {
       setShowGuidePwd(true); // 임시 정규식 : 8~20자
     }
 
-    if (pwdcheck == '') console.log(pwdcheck);
-    else if (pwdcheck !== '' && (temp_pwd !== '' && temp_pwd === pwdcheck)) {
+    if (pwdcheck == '') {
+
+    } else if (pwdcheck !== '' && (temp_pwd !== '' && temp_pwd === pwdcheck)) {
       setIsPwdcheck(true);
       setShowAcceptPwdcheck(true); // 비밀번호가 일치합니다.
       setShowErrorPwdcheck(false); // 비밀번호가 일치하지 않습니다.
@@ -459,7 +401,6 @@ function SignUp() {
       setEmail(cookies.get('rememberEmail'));
       setIsEmail(true);
     }
-    console.log('email 저장 무엇? ' + email);
   }, [mode]);
 
 
@@ -487,13 +428,9 @@ function SignUp() {
   /*이메일 중복확인*/
   const onClickEmailCheck = async (e) => {
     e.preventDefault();
-    console.log("\n\nemail 인증 버튼을 눌렀어요");
-    console.log(isEmail);
     if (emailDuplicateCheck === true) {
       try {
         const emailResult = await TeamAPI.emailDuplicateCheck(email);
-        console.log("emailResult.data : " + emailResult.data);
-        console.log("emailResult.status : " + emailResult.status);
         if (emailResult.data === false) {
           alert('사용 가능한 이메일 입니다. 이메일 인증을 진행해주세요.')
           setIsEmail(false);
@@ -508,18 +445,14 @@ function SignUp() {
 
     }else{
       setState({ ...state, open: true, error: true, errorMsg: "이메일을 양식에 맞게 입력해주세요." });
-          console.log("이메일을 양식에 맞게 입력해주세요.");
     }
   }
 
   /*이메일 인증*/
   const onClickEmailAdress = async (e) => {
     e.preventDefault();
-    console.log("\n\nemail 인증 버튼을 눌렀어요");
     try {
       const emailResult = await TeamAPI.emailCheck(email);
-      console.log("emailResult.data : " + emailResult.data);
-      console.log("emailResult.status : " + emailResult.status);
       if (emailResult.status === 200) {
         setOpen(true);
         setEmail(email);
@@ -539,26 +472,12 @@ function SignUp() {
 
     let temp_birth = e.target.value;
     setBirth(temp_birth);
-    console.log("\n\ntemp_birth : " + temp_birth);
 
     if (temp_birth !== null) {
       setIsBirth(true);
       const birthArray = temp_birth.split('-');
-
-      console.log("태어난 연도 : " + birthArray[0]);
-      console.log("태어난 월 : " + birthArray[1]);
-      console.log("태어난 일 : " + birthArray[2]);
-
-      // 1992-02-20
-      // 0123456789
       setAge(String(today.getFullYear() - birthArray[0]));
-
-      console.log("현재 " + String(today.getFullYear()) + "년");
-      console.log("현재 " + today.getMonth() + "월");
-
       const m = today.getMonth() - birthArray[1];
-      console.log("태어난 월에서 현재 월을 빼면 " + m);
-
       if (m < 0 || (m === 0 && today.getDate() < birthArray[2])) {
         setAge(String(age - 1));
       }
@@ -569,8 +488,6 @@ function SignUp() {
   성별 변경 */
   const onChangeRadio = e => {
     let temp_gender = e.target.value;
-    console.log("성별 : " + temp_gender);
-
     setGender(temp_gender);
     setIsGender(true);
   };
@@ -581,7 +498,6 @@ function SignUp() {
     setIsRegion1(true);
 
     let temp_region1 = e.target.value;
-    console.log("\n\n시도선택 : " + temp_region1); // 서울특별시
     setRegion1(temp_region1);
 
     const indexSido = sido.findIndex(e => e.codeNm === temp_region1);
@@ -596,7 +512,6 @@ function SignUp() {
     setIsRegion2(true);
 
     let temp_region2 = e.target.value;
-    console.log("\n\n시/구/군선택 : " + temp_region2);
     setRegion2(e.target.value);
   }
 
@@ -604,27 +519,6 @@ function SignUp() {
   회원가입 버튼 클릭 */
   const onClickButton = async (e) => {
     // e.preventDefault();
-
-    console.log("\n\n회원가입 버튼 눌렀어요.");
-    console.log("kakaoid : " + kakaoId);
-    console.log("kakaoemail : " + kakaoEmail);
-    console.log("isName : " + isName);
-    console.log("isId : " + isId);
-    console.log("isId_check : " + isIdcheck);
-    console.log("isPwd : " + isPwd);
-    console.log("isPwdcheck : " + isPwdcheck);
-    console.log("isNickname : " + isNickname);
-    console.log("isNicknamecheck : " + isNicknamecheck);
-    console.log("isBirth : " + isBirth);
-    console.log("isGender : " + isGender);
-    console.log("isRegion1 : " + isRegion1);
-    console.log("isRegion2 : " + isRegion2);
-    console.log("isRegion2 : " + isRegion2);
-    console.log("isRegion2 : " + isRegion2);
-    console.log("introduce 값 : " + introduce);
-
-
-    // console.log(result.user);
 
     if (isName && isId && isIdcheck && isPwd && isPwdcheck && isBirth && isGender && isRegion1 && isRegion2 && isNickname && isNicknamecheck && emailConfirm) {
       const result = await createUserWithEmailAndPassword(
@@ -634,27 +528,8 @@ function SignUp() {
       );
 
       const memberReg = await TeamAPI.memberReg(kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2, check_term3);
-
-      console.log("name : " + name);
-      console.log("id : " + id);
-      console.log("pwd : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("email : " + cookies.get('rememberEmail'));
-      console.log("birth : " + birth);
-      // console.log("age : " + age);
-      console.log("gender : " + gender);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
-      console.log("introduce : " + introduce);
-      console.log("필수 약관 : " + check_term1);
-      console.log("필수 약관 : " + check_term2);
-      console.log("선택 약관 : " + check_term3);
-
-      alert("회원가입 성공! 콘솔창 보세요");
       setState({ ...state, open: true, success: true, successMsg: "회원가입 성공!" });
-      console.log("가입 성공!! \n로그인 페이지로 이동합니다.");
       navigate("/login");
-
       setDoc(doc(db, "users", id), {
         uid: result.user.uid,
         name,
@@ -678,11 +553,7 @@ function SignUp() {
       window.sessionStorage.setItem("kakaoNickname", '');
       window.sessionStorage.setItem("kakaoEmail", '');
       cookies.remove('rememberEmail');
-
-
-
     } else {
-      console.log("잘못 입력한 값이 있거나 입력되지 않은 값이 있어요.");
       setState({ ...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요." });
     }
   };
@@ -697,7 +568,6 @@ function SignUp() {
       :
       <div className='No-Nav-Container'>
         <CustomModal state={state} changeState={onChangeState} />
-        {/* <div className="SignUp-Container"> */}
         {/* 이메일 인증 모달창 */}
         <EmailModal open={open} modalName={email} modalContent={() => setEmailConfirm(true)} onHide={() => setOpen(false)} />
         <div className='SignUp-Box'>

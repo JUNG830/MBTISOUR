@@ -16,8 +16,6 @@ const SignUpContainer = styled.div`
 `
 const Terms = (props) => {
   const [checkedItems, setCheckedItems] = useState([]);
-  
-
   const [termsList, setTermsList] = useState([
     {termNum: 1, title: "[필수] 아이셔계정 약관"},
     {termNum: 2, title: "[선택] 프로모션 정보 수신 동의(선택)"}
@@ -36,12 +34,9 @@ const Terms = (props) => {
   /* 
   체크박스 전체 선택 */ 
   const handleAllCheck = (checked) => {
-    console.log("\n\n전체 선택 되었나요? : " + checked);
-
     if(checked) {
       const termNumArray = []; // termNum 을 담을 빈 배열(termNumArray) 생성
       termsList.forEach((e) => termNumArray.push(e.termNum)); // termsList 를 하나씩 돌면서 termNumArray termNum 추가
-      console.log("postNumArray : " + termNumArray); // 모든 약관의 termNum 을 담은 배열로 checkedItems 상태 업데이트
       setCheckedItems(termNumArray);
     }
     else {
@@ -52,25 +47,18 @@ const Terms = (props) => {
   /* 
   체크박스 단일 선택 */ 
   const handleSingleCheck = (checked, num) => {
-    console.log(num + "번 약관이 선택 되었나요? : " + checked);
-    
     if (checked) {
       setCheckedItems(fix => [...fix, num]); // 체크된 약관 번호를 checkedItems 배열에 추가
-      console.log("checkedItems : " + checkedItems.toString());
     } else {
       setCheckedItems(checkedItems.filter((e) => e !== num)); // 체크된 약관 번호를 checkedItems 배열에서 삭제
-      console.log("checkedItems : " + checkedItems.toString());
     }
   };
 
   /*
   동의하고 가입하기 */
   const onClickAgree = () => {
-    console.log("\n\n동의하고 가입하기 버튼 눌렀어요.");
 
     if(checkedItems.includes(1)) {
-      // setMode("join");
-
     } else {
       alert("1번에 무조건 동의해야합니다.");
     }
