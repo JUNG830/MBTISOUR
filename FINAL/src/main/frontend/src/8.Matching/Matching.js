@@ -259,11 +259,11 @@ const Matching = () => {
             : <img src={face} alt="프로필 이미지"/> }
           </div>
           <div className="User-item">
-            <input type="text" value={myMbti} />
-            <textarea type="text" value={myNickname} />
+            <input type="text" value={myMbti} disabled/>
+            <textarea type="text" value={myNickname} disabled/>
           </div>
           <div className="User-item">
-              <textarea className='User-Introduce' type="text" value={myIntroduce} />
+              <textarea className='User-Introduce' type="text" value={myIntroduce} disabled/>
           </div>
         </div>
 
@@ -283,11 +283,11 @@ const Matching = () => {
                 <img src={mat.mat_face || face} alt="프로필 이미지" />
               </div>
               <div className="Mat-item">
-                <input value={mat.mat_mbti} />
-                <textarea value={mat.mat_nick} />
+                <input value={mat.mat_mbti} disabled/>
+                <textarea value={mat.mat_nick} disabled/>
               </div>
               <div className="Mat-item">
-                <textarea className='Mat-Introduce' type="text" value={mat.mat_introduce} />
+                <textarea className='Mat-Introduce' type="text" value={mat.mat_introduce} disabled/>
               {/* { like_num === 0 ?
                   <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
                   : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
