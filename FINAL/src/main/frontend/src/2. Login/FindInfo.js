@@ -180,29 +180,23 @@ const Input_Container = styled.div`
         }
     }
     .findInfo-btn2{
-        border : none;
-        background: var(--navy);
-        color: white;
-        width: 200px;
-        height: 50px;
-        border-radius: 100px;
-        letter-spacing: 2px;
-        font-size: 20px;
-        border: 0px none;
-        font-weight: 900;  
-        position: relative;
-        font-family: 'MaplestoryOTFBold';
-        bottom:50px;
-        left:200px;
+        color: gray;
+      position: relative;
+      left: 470px;
+      border-style: none;
+      background: none;
+      margin-bottom: 30px;
+      border-bottom: 1px solid gray;
 
         @media screen and (max-width: 750px) {
-           left:130px;
+           left:300px;
+           font-size: 13px;
         }
         @media screen and (max-width: 450px) {
-            font-size: 15px;
-            width:150px;
-            bottom:30px;
-            left:110px;
+            font-size: 13px;
+            width:125px;
+            bottom:10px;
+            left:200px;
 
     }
 
