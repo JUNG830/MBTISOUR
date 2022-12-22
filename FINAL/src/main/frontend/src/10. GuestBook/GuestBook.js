@@ -56,7 +56,7 @@ const GuestBook = () => {
     <div className="Container-a">
       <div className="GuestBook-Container">
         <div className="GuestBook-header">
-          <input className="GuestBook-input" type="text" onChange={onChangeText} onKeyDown={onKeyPress} />
+          <input className="GuestBook-input" type="text" onChange={onChangeText} onKeyDown={inputContent ? onKeyPress : false} />
           <button className ="GuestBook-submit" onClick={onClickSubmit} disabled={inputContent === ""} >등록</button>
         </div>
 
