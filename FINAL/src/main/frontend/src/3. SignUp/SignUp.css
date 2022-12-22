@@ -81,6 +81,7 @@
     font-size: 20px;
     letter-spacing: 1rem;
     text-indent: 1rem;
+    cursor: pointer;
 }
 
 .nonAgreeBtn{
@@ -93,6 +94,7 @@
     color: whitesmoke;
     letter-spacing: 1rem;
     text-indent: 1rem;
+    cursor: pointer;
 }
 
 .SignUp-Main-Box{
@@ -245,6 +247,7 @@ border-radius: 25px;
     text-indent: 3px;
     font-family: 'Nanum Gothic', sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .SignUp-footer {
@@ -269,7 +272,9 @@ border-radius: 25px;
     font-size: 1.3rem;
     vertical-align: middle;
     font-family: 'MaplestoryOTFBold';
+    cursor: pointer;
 }
+
 
 @media screen and (max-width: 500px) {
     /* 약관 동의 */
