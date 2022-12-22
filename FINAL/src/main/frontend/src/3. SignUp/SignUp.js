@@ -741,7 +741,9 @@ function SignUp() {
                 <input className="Input-border-3" type="password" placeholder="비밀번호" value={pwd} onChange={onChangePassword} />
                 <div className='Message'>
                   {showGuidePwd && guidePwd}
+                  <div className='Message2'>
                   {showAcceptPwd && acceptPwd}
+                  </div>
                 </div>
               </td>
             </tr>
@@ -752,7 +754,9 @@ function SignUp() {
                 <input className="Input-border-4" type="password" placeholder="비밀번호 확인" value={pwdcheck} onChange={onChangePassword_check} disabled={!regexPw.test(pwd)} />
                 <div className='Message'>
                   {showErrorPwdcheck && errorPwdcheck}
+                  <div className='Message2'>
                   {showAcceptPwdcheck && acceptPwdcheck}
+                  </div>
                 </div>
               </td>
             </th>
@@ -783,7 +787,9 @@ function SignUp() {
                 <input className="Input-border-7" type="text" placeholder="이메일" value={email} onChange={OnChangeEmail} disabled={emailDoubleCheck ? true : false} />
                 <div className='Message'>
                   {showReqEmail && reqEmail}
+                  <div className='Message2'>
                   {emailConfirm && confirmEmail}
+                  </div>
                 </div>
               </td>
               <td>
