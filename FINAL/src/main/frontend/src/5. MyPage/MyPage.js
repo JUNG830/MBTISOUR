@@ -292,6 +292,7 @@ const MyPage = () => {
     } catch (e) { console.log(e); }
   }
 
+  console.log("xptmxdkddsfl");
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () => {
     setIsChangeIntroduce(false);
