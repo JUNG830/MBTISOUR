@@ -349,29 +349,31 @@ const MyPage = () => {
       console.log("email : " + email);
       console.log("region1 : " + region1);
       console.log("region2 : " + region2);
-      const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
-      setNickname(response.data.nickname)
 
-      if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 닉네임 수정 완료");
-        // alert("닉네임 수정 완료!!");
-        setState({ ...state, open: true, success: true, successMsg: "닉네임 수정 완료!!" });
-        cookies.set('rememberMyInfo', response2.data, {
-          path: '/',
-          expires: 0
-        })
-
-        updateDoc(doc(db, "users", id), {
-          nickname
-        });
-
-
+      if(response.status == 200) {
+        const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
+        setNickname(response.data.nickname)
+        console.log("=========순서대로 안 된다고=========");
+        if (response.status == 200) {
+          console.log("통신 성공(200)");
+          console.log("\n>> 닉네임 수정 완료");
+          // alert("닉네임 수정 완료!!");
+          setState({ ...state, open: true, success: true, successMsg: "닉네임 수정 완료!!" });
+          cookies.set('rememberMyInfo', response2.data, {
+            path: '/',
+            expires: 0
+          })
+  
+          updateDoc(doc(db, "users", id), {
+            nickname
+          });
+        }
       }
-
+      console.log("=========테스트용 콘솔=========");
     } catch (e) { console.log(e); }
   }
 
+  console.log("xptmxdkddsfl");
   /* 자기소개 변경 취소 */
   const cancelIntroduce = () => {
     setIsChangeIntroduce(false);
