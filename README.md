@@ -1,6 +1,9 @@
 <div align=center>
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=Final%20MBTISOUR!&fontSize=90" />	
 </div>
+<div align=center>
+	<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FJUNG830%2FFINAL_ISOUR_Gradle&count_bg=%2379C83D&title_bg=%23FFBD00&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+</div>
 
 <div align=center>
 	<h3>📚 Tech Stack 📚</h3>
@@ -53,7 +56,7 @@ yarn add @mui/icons-material
 ```
 ## Gradle Dependencies
 
-```bash
+```java
 //	QLRM을 사용하기 위해 Gradle 의존성 모듈
 	implementation group: 'org.qlrm', name: 'qlrm', version: '3.0.4'
 //	jackson-databind 라이브러리 추가
@@ -67,16 +70,25 @@ yarn add @mui/icons-material
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 ```
-## Code Contributors
+## Contributors
 
 <br>
-<a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+				<a href="https://kentcdodds.com"><img src="https://avatars.githubusercontent.com/u/1500684?v=3?s=100" width="100px;" alt="Kent C. Dodds"/><br /><sub><b>Kent C. Dodds</b></sub></a><br /><a href="#question-kentcdodds" title="Answering Questions">💬</a> <a href="https://github.com/all-contributors/all-contributors/commits?author=kentcdodds" title="Documentation">📖</a> <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Akentcdodds" title="Reviewed Pull Requests">👀</a> <a href="#talk-kentcdodds" title="Talks">📢</a></td>
+      <td align="center"><a href="https://github.com/jfmengels"><img src="https://avatars.githubusercontent.com/u/3869412?v=3?s=100" width="100px;" alt="Jeroen Engels"/><br /><sub><b>Jeroen Engels</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors/commits?author=jfmengels" title="Documentation">📖</a> <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Ajfmengels" title="Reviewed Pull Requests">👀</a> <a href="#tool-jfmengels" title="Tools">🔧</a></td>
+      <td align="center"><a href="https://jakebolam.com"><img src="https://avatars2.githubusercontent.com/u/3534236?v=4?s=100" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors/commits?author=jakebolam" title="Documentation">📖</a> <a href="#tool-jakebolam" title="Tools">🔧</a> <a href="#infra-jakebolam" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-jakebolam" title="Maintenance">🚧</a> <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Ajakebolam" title="Reviewed Pull Requests">👀</a> <a href="#question-jakebolam" title="Answering Questions">💬</a></td>
+      <td align="center"><a href="https://github.com/tbenning"><img src="https://avatars2.githubusercontent.com/u/7265547?v=4?s=100" width="100px;" alt="Tyler Benning"/><br /><sub><b>Tyler Benning</b></sub></a><br /><a href="#maintenance-tbenning" title="Maintenance">🚧</a> <a href="https://github.com/all-contributors/all-contributors/commits?author=tbenning" title="Code">💻</a> <a href="#design-tbenning" title="Design">🎨</a></td>
+      <td align="center"><a href="https://sinchang.me"><img src="https://avatars0.githubusercontent.com/u/3297859?v=4?s=100" width="100px;" alt="Jeff Wen"/><br /><sub><b>Jeff Wen</b></sub></a><br /><a href="#maintenance-sinchang" title="Maintenance">🚧</a> <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Asinchang" title="Reviewed Pull Requests">👀</a></td>
+	
+	
+	<a href="https://github.com/JUNG830/FINAL_ISOUR_Gradle/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=JUNG830/FINAL_ISOUR_Gradle" />
 </a>
-<br>
-<br>
 Made with [contrib.rocks](https://contrib.rocks).
-
+</table>
 
 ## Developer Note
 22.12.22(목)
