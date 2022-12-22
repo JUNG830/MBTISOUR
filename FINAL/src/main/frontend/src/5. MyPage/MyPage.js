@@ -672,6 +672,9 @@ const MyPage = () => {
             <div className='MyPage-header'>
               <h1>마이페이지</h1>
 
+            </div>
+            {/* MyPage-Table 영역 */}
+            <div className='Mypage-OuterBox'>
               <div className="profile_container">
                 <div className="img_container">
                   <img src={url || face} alt="avatar" />
@@ -690,9 +693,6 @@ const MyPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            {/* MyPage-Table 영역 */}
-            <div className='Mypage-OuterBox'>
               <table action="" className="MyPage-Table">
                 <tr className="Form-item">
                   <div className="Form-Name">
