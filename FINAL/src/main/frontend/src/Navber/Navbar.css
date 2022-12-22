@@ -87,7 +87,7 @@
   Navbar 영역
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .Navbar-Container .Navbar {
-  width: calc(100vw - 340px);
+  width: calc(100vw - 200px);
   margin-right: 1.5rem;
 
   display: flex;
@@ -105,6 +105,7 @@
 .User {
   display: flex;
   align-items: center;
+  margin-left: 1rem;
 }
 
 #User-icon {
@@ -119,12 +120,13 @@
 .User-submenu {
   width: 150px;
   height: 18vh;
+  min-height: 180px;
   line-height: 2.5rem;
   padding: 0 1rem;
 
   position: absolute;
   top: 70px;
-  right: 1%;
+  right: 1rem;
 
   background: var(--tongue);
   border-radius: 0 0 60% 60%;
@@ -189,6 +191,11 @@
   color: var(--tongue);
 }
 
+.Menu-submenu li:nth-child(5) {
+  /* border-right: none; */
+  /* border-right: 1px solid red; */
+  border-style: none;
+}
 .Logout.open {
   display: none;
 }
@@ -242,18 +249,42 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   반응형
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* @media (max-width: 1280px) {
-  .Navbar-Container header {
-    padding: 14px 2%;
+@media (max-width: 1280px) {
+  /* .Navbar-Container {
+    width: 100vw;
+  } */
+  .Navbar-Container header .logo img {
+    width: 30px;
     transition: .2s;
   }
-  .Navbar-Container .Navbar a {
-    padding: 5px 0;
-    margin: 0px 20px;
+  .Navbar-Container header h3 {
+    font-size: 1em;
+    letter-spacing: 0;
+    transition: .2s;
   }
-} */
-
-@media (max-width: 840px) {
+  .Navbar-Container header {
+    transition: .2s;
+  }
+  .Navbar-Container .Navbar li {
+    letter-spacing: 2px;
+  }
+}
+@media (max-width: 1080px) {
+  .Navbar-Container header .logo {
+    margin-left: .5rem;
+    margin-right: 1.5rem;
+    transition: .2s;
+  }
+  .Navbar-Container .Navbar {
+    margin-right: 1rem;
+  }
+  .Navbar-Container .Navbar li {
+    width: auto;
+    letter-spacing: 2px;
+    border: none;
+  }
+}
+@media (max-width: 867px) {
   #menu-icon {
     display: block;
   }
@@ -273,6 +304,9 @@
     justify-content: flex-start;
     border-radius: 10px;
     transition: all .50s ease;
+  }
+  .Navbar-Container .Navbar li {
+    width: 150px;
   }
   .Menu-submenu li {
     border-right: none;
@@ -302,6 +336,7 @@
   /* Navbar 영역 - User */
   .User {
     display: block;
+    margin: 0;
   }
   #User-icon {
     display: none;
