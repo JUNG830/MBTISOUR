@@ -46,13 +46,13 @@ public class MatchingService {
                 "\t                , COUNT(*) OVER (PARTITION BY im.ID_NUM) as cnt\n" +
                 "\t                , IFNULL((\n" +
                 "\t                \tselect 'Y'\n" +
-                "\t                \t\tfrom like_member lm \n" +
+                "\t                \t\tfrom isour.like_member lm \n" +
                 "\t                \t\twhere lm.like_user_idx = im2.id_num\n" +
                 "\t                ), 'N') as like_Member_idx\n" +
-                "                FROM I_MEMBER im\n" +
-                "\t                INNER JOIN MBTI m\n" +
+                "                FROM isour.i_member im\n" +
+                "\t                INNER JOIN isour.MBTI m\n" +
                 "\t                ON im.MBTI = m.USER_MBTI\n" +
-                "\t                INNER JOIN I_MEMBER im2\n" +
+                "\t                INNER JOIN isour.i_member im2\n" +
                 "\t                ON im2.MBTI = m.MAT_MBTI\n" +
                 "                WHERE im.ID = ? \n" +
                 "                \tand m.ORDER_MBTI <= 1\n" +

@@ -84,12 +84,12 @@ const Matching = () => {
     // ▲ 로그인 안 되어 있으면 로그인 페이지로
 
     const memberData = async () => {
-
-      try {
+ 
+      try {  
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
-        console.log("****************");
-        console.log(Mat.data);
-        console.log(Mat.data[0].mat_id);
+      //  console.log("****************");
+     //   console.log(Mat.data);
+      //  console.log(Mat.data[0].mat_id);
         console.log("****************");
         setMat_MemberInfo(Mat.data);
         
@@ -97,12 +97,13 @@ const Matching = () => {
         const cnt = Number(Mat.data[0].cnt);
         console.log(typeof(cnt));
         setCnt(Math.ceil(cnt / 2));
-        console.log("1", Mat.data);
+       // console.log("1", Mat.data);
         console.log("matIdNum : ", Mat.data[0].mat_id_num);
-        console.log("matFace : ", Mat.data[0].mat_face);
-        console.log("matNick : ", Mat.data[0].mat_nick);
+       // console.log("matFace : ", Mat.data[0].mat_face);
+       // console.log("matNick : ", Mat.data[0].mat_nick);
         console.log("like_member_idx : ", Mat.data[0].like_member_idx);
-        console.log("cnt : ", cnt);
+
+      //  console.log("cnt : ", cnt);
       } catch (e) {
         console.log(e);
       }
@@ -125,13 +126,13 @@ const Matching = () => {
       // 아무것도 수행 안됨: 0
       console.log("%%%%% 좋아요 전송");
       console.log(likeData.data);
-
+      console.log(LikeIdNum);
       if (likeData.data === 1) {
         // setColor('red-btn');
-        document.getElementById(LikeIdNum).style.color='red';
+        document.getElementById(LikeIdNum).style.color='orange';
       } else if (likeData.data === 2) {
         // setColor('');
-        document.getElementById(LikeIdNum).style.color='';
+        document.getElementById(LikeIdNum).style.color='green';
       } else {
         console.log("좋아요 오류");
       }
@@ -234,13 +235,15 @@ const Matching = () => {
               </div>
             </div> 
             <div className='Mat-icon'>
+           
                 <IconButton>
                 {/* {`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} */}
                 {mat.like_member_idx}
+                {`${mat.like_member_idx === 'Y' ? 'yes' : 'no'}`}
                 {/* {like} */}
-                  <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color: (mat.like_member_idx === 'Y') 
+                  <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color: (mat.like_member_idx === 'Y')
                                 ? 'red' 
-                                : 'unset'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
+                                : 'blue'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
                 {mat.mat_id_num}
                 </IconButton>
                 <IconButton>
