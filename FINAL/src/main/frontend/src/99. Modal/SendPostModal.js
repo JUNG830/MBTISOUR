@@ -6,20 +6,12 @@ import './SendPostModal.css';
 const SendPostModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, receiver, getInputContent, onSendPost } = props;
-  console.log("\n>> SendPostModal : " + open);
-  // console.log("넘겨받은 props(open) : " + replyState.open);
-  // console.log("넘겨받은 props(close) : " + replyState.close);
-  // console.log("넘겨받은 props(receiver) : " + replyState.receiver);
-  // console.log("넘겨받은 props(getInputContent) : " + replyState.getInputContent);
-  // console.log("넘겨받은 props(onSendPost) : " + replyState.onSendPost);
-
 
   const [content, setContent] = useState("");
 
   /* 쪽지 내용 작성 */
   const onChangeContent = e => {
     let temp_content = e.target.value;
-    console.log(temp_content);
     setContent(temp_content);
     getInputContent(temp_content);
   };
@@ -27,7 +19,7 @@ const SendPostModal = (props) => {
   /* 보내기 버튼 클릭 */
   const onClickButton = e => {
     if(content === null || content.length < 1) {
-      alert("쪽지 내용을 작성하셔야죠..^^");
+      alert("내용을 입력하세요.");
       return;
     }
     // e.preventDefault();

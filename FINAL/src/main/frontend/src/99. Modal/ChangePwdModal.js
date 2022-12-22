@@ -6,11 +6,6 @@ import styled from 'styled-components';
 export const ChangePwdModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, getPwd, onSavePwd } = props;
-  console.log("\n>> ChangePwdModal : " + open);
-  // console.log("넘겨받은 props(open) : " + open);
-  // console.log("넘겨받은 props(close) : " + close);
-  // console.log("넘겨받은 props(getPwd) : " + getPwd);
-  // console.log("넘겨받은 props(onSavePwd) : " + onSavePwd);
 
   const regexPw = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[a-z\d@$!%*?&]{8,20}$/;
   const [pwd, setPwd] = useState('');

@@ -10,24 +10,14 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 function Pagination(props) {
   const { total, limit, page, setPage } = props;
-  console.log("\n>> Pagination 방문");
-  console.log("전체 쪽지 수(total) : " + total);
-  console.log("한 페이지에 보여줄 쪽지 수(limit) : " + limit); // 고정 10
-  console.log("현재 page : " + page); // 고정 1
-  console.log("==============================\n\n");
-
   const pageLimit = 5; // 페이지바에 보여줄 최대 페이지 수
   const [pageList, setPageList] =  useState([]);
 
   let offset = (page - 1); // 각 페이지별 첫 게시물의 위치 계산
-  console.log("현재 offset : " + offset);
-
   let totalPages = 1; // 전체 페이지 수(쪽지가 없어도 보이게 고정값 1)
   if(total !== 0) { // 쪽지가 있으면 전체 페이지 수 계산
     totalPages = Math.ceil(total / limit); // 전체 페이지 수 ex) 13 / 10 => 2
   }
-  console.log("전체 페이지 수(totalPages) : " + totalPages);
-
   /* 
   최초 통신(useEffect) */
   useEffect(() => {
@@ -35,7 +25,6 @@ function Pagination(props) {
     for(let i = 0 ; i < totalPages; i++) {
       temp_pageList.push(i+1);
     }
-    console.log(temp_pageList);
     setPageList(temp_pageList);
   }, []);
 
@@ -46,8 +35,6 @@ function Pagination(props) {
   
   let firstPage = endPage - pageLimit;
   if(firstPage < 0) firstPage = 0;
-  console.log("firstPage : " + firstPage);
-  console.log("endPage : " + endPage);
 
   /* ( < ) 이전 버튼 */
   const onClickBeforeIcon =() => {
@@ -79,7 +66,6 @@ function Pagination(props) {
           </span>
         )
       })}
-
       <span className="move next" onClick={onClickNextIcon}>
         <NavigateNextIcon />
       </span>

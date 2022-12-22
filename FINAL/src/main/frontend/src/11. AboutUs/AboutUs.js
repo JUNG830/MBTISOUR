@@ -41,13 +41,8 @@ function AboutUs() {
   const closeModal = () => { setModalOn(false); };
 
   const onClickPostIcon = (receiverId, receiverNickname) => {
-    console.log("\n>> 쪽지 아이콘 눌렀어요.");
-
     setReceiverId(receiverId);
-    console.log("받는 사람 ID(receiverId) : " + receiverId);
     setReceiverNickname(receiverNickname);
-    console.log("받는 사람 닉네임(receiverNickname) : " + receiverNickname);
-
     setModalOn(true);
   };
 
@@ -56,13 +51,9 @@ function AboutUs() {
     // e.preventDefault();
     try {
       const response = await TeamAPI.sendPost(myId, receiverId, inputContent);
-      console.log("\n보내는 사람(id) : " + myId);
-      console.log("받는 사람(receiverId) : " + receiverId);
-      console.log("쪽지 내용(inputContent) : " + inputContent);
+
 
       if(response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 쪽지 보내기 성공!!");
         setState({...state, open: true, success: true, successMsg: "쪽지가 발송되었습니다."});
         closeModal();
       }

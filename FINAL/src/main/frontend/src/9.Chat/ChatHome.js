@@ -45,22 +45,18 @@ const ChatHome = () => {
 
       const docSnap = await getDoc(docRef);
       myFriends = docSnap.data().friends;
-      console.log(myFriends);
 
       if(myFriends.length === 0) {
-        alert("아직 친구가 없어용")
+        alert("채팅 가능한 친구가 없어요.")
         navigate("/matching");
       } else {
-        console.log(myFriends);
         const q = query(usersRef, where("id", "in", myFriends));
 
-        console.log("\n=========쿼리 실행=========\n\n");
         onSnapshot(q, (querySnapshot) => {
           let chatMember = [];
           querySnapshot.forEach((doc) => {
             chatMember.push(doc.data());
           });
-          console.log(chatMember);
           setUsers(chatMember);
         });
       }
@@ -70,10 +66,6 @@ const ChatHome = () => {
 
 
   const selectUser = async (user) => {
-    console.log(user);
-    // const docRef = doc(db, "users", user);
-    // const docSnap2 = await getDoc(docRef);
-    // console.log(docSnap2);
     setChat(user);
 
     const user2 = user.id;
@@ -98,8 +90,6 @@ const ChatHome = () => {
       await updateDoc(doc(db, "lastMsg", id), { unread: false });
     }
   };
-
-  // console.log(msgs);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

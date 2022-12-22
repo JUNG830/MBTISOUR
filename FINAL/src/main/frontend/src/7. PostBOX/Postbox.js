@@ -8,7 +8,6 @@ import CustomModal from '../99. Modal/CustomModal'
 import Loading from '../other/Loading';
 import Pagination from "./Pagination";
 import './Postbox.css'
-import 아이셔용 from '../images/아이셔용.png';
 
 const Postbox = () => {
 
@@ -26,20 +25,15 @@ const Postbox = () => {
   const onChangeState = () => {
     setState({...state, open: false, success: false, error: false});
   }
-  /* ============================== */
-
-
 
   const location = useNavigate();
 
   /* 변수(useState) 선언 */
   const [loading, setLoading] = useState(false);
   const [postList, setPostList] = useState([]);
-  
   const [limit, setLimit] = useState(10); // 페이지당 게시물 수
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
-  console.log("offset : " + offset);
 
   // ▼ 체크된 쪽지를 담을 배열
   const [checkedPosts, setCheckedPosts] = useState([]);
@@ -63,12 +57,7 @@ const Postbox = () => {
         
         const response = await TeamAPI.postbox(myId);
         if (response.status == 200) {
-          console.log("통신 성공(200)");
-          console.log(response.data);
-          console.log(response.data[0]);
           setPostList(response.data);
-          // console.log("보낸 사람[0] : " + response.data[0].postSender);
-          // console.log("내용[0] : " + response.data[0].content);
         }
       } catch (e) {
         console.log(e);
@@ -86,34 +75,26 @@ const Postbox = () => {
   const closeModal = () => { setModalOn(false); };
 
   const onClickPost = (postSendrId, postSender, content) => {
-    console.log("보낸 사람(postSender) : " + postSender);
     setPostSenderId(postSendrId)
     setPostSender(postSender);
-
-    console.log("내용(content) : " + content);
     setContent(content);
-
     setModalOn(true);
   }
 
   /* 
   체크박스 단일 선택 */
   const handleSingleCheck = (checked, num) => {
-    console.log(num + "번 쪽지가 선택 되었나요? : " + checked);
 
     if (checked) {
       setCheckedPosts(fix => [...fix, num]); // 체크된 쪽지 번호를 checkedPosts 배열에 추가
-      console.log("checkedPosts : " + checkedPosts.toString());
     } else {
       setCheckedPosts(checkedPosts.filter((e) => e !== num)); // 체크된 쪽지 번호를 checkedPosts 배열에서 삭제
-      console.log("checkedPosts : " + checkedPosts.toString());
     }
   };
 
   /* 
   체크박스 전체 선택 */
   const handleAllCheck = (checked) => {
-    console.log("전체 선택 되었나요? : " + checked);
 
     if (checked) {
       const postNumArray = []; // postNum 을 담을 빈 배열(postNumArray) 생성
@@ -129,10 +110,6 @@ const Postbox = () => {
   /* 
   쪽지 삭제 */
   const onClickDelete = async () => {
-    console.log("\n\n삭제 버튼 눌렀어요.");
-
-    console.log("checkedPosts : " + checkedPosts); // 5,6
-    console.log("typeof(checkedPosts) : " + typeof (checkedPosts));
 
     if (checkedPosts.length < 1) {
       setState({...state, open: true, error: true, errorMsg: "삭제할 쪽지를 선택해주세요~^^"});
@@ -140,24 +117,20 @@ const Postbox = () => {
       try {
         const response = await TeamAPI.postDelete(checkedPosts);
         if (response.status == 200) {
-          console.log("통신 성공(200)");
           setState({...state, open: true, success: true, successMsg: "선택한 쪽지가 삭제되었습니다."});
-
           window.location.reload();
         } else {
-          console.log("통신 실패 : " + response.status);
           setState({...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status});
+          
         }
-      } catch (e) { console.log(e); }
+      } catch (e) { 
+        console.log(e); 
+      }
     }
   }
 
   if (loading) {
     return (
-      // <>
-      //   <img src={아이셔용} alt="아이셔용" />
-      //   <div>대기 중...</div>
-      // </>
       <Loading />
     );
   }

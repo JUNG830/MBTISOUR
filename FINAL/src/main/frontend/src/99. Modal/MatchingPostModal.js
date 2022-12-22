@@ -6,11 +6,6 @@ import './ChangePwdModal.css';
 export const MatchingPostModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, receiver, getInputContent, onSendPost } = props;
-  console.log("\n>> MatchingPostModal : " + open);
-  // console.log("넘겨받은 props(open) : " + open);
-  // console.log("넘겨받은 props(close) : " + close);
-  // console.log("넘겨받은 props(id) : " + id);
-  // console.log("넘겨받은 props(onDeleteMember) : " + onDeleteMember);
 
   const [content, setContent] = useState("");
 
@@ -24,7 +19,7 @@ export const MatchingPostModal = (props) => {
   /* 보내기 버튼 클릭 */
   const onClickButton = e => {
     if(content === null || content.length < 1) {
-      alert("쪽지 내용을 작성하셔야죠..^^");
+      alert("내용을 입력하세요.");
       return;
     }
     // e.preventDefault();

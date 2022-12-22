@@ -5,7 +5,6 @@ import SignUp from './3. SignUp/SignUp';
 import '../src/App.css';
 import LoginUser from './App_Navbar';
 import FindInfo from './2. Login/FindInfo';
-import Mouse from './Mouse/Mouse';
 
 function App() {
   return (

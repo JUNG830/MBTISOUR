@@ -28,12 +28,11 @@ const GuestBook = () => {
     // e.preventDefault();
 
     try {
-      const response = await TeamAPI.memberChat(inputContent,myNickname,myFace,myId);
+      const response = await TeamAPI.memberChat(inputContent, myNickname, myFace, myId);
       if(response.data === true) {
         setInputContent('');
-       
-
         window.location.reload();
+        
       } else {
         alert("통신 실패")
       }
@@ -43,7 +42,7 @@ const GuestBook = () => {
   useEffect(() => {
     const chatData = async (e) => {
       try {
-        const response = await TeamAPI.chatInfo(inputContent); // 원래는 전체 회원 조회용
+        const response = await TeamAPI.chatInfo(inputContent);
         if (response.status === 200) {
           setGuestbookList(response.data);
         }

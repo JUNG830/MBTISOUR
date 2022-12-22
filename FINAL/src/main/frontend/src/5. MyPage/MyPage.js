@@ -50,17 +50,9 @@ const MyPage = () => {
   }
   /* ============================== */
 
-
-
-  const session_id = window.sessionStorage.getItem("id");
-  console.log(myId);
-  const localIdNum = window.sessionStorage.getItem("id_num");
-  const localNickname = window.sessionStorage.getItem("nickname");
-
   const [isEmail, setIsEmail] = useState('');
   const [changePwdModalOpen, setChangePwdModalOpen] = useState(false);
   const [unregisterModalOpen, setUnregisterModalOpen] = useState(false);
-
   const [memberInfo, setMemberInfo] = useState(""); // 현재 로그인 되어 있는 회원의 정보 저장용
 
   // 이름, 아이디, 비밀번호, 비밀번호 확인, 생년월일, 나이, 성별, 주소 1, 주소 2
@@ -85,8 +77,6 @@ const MyPage = () => {
   const [emailBefore, setEmailBefore] = useState("");
   const [region1Before, setRegion1Before] = useState("");
   const [region2Before, setRegion2Before] = useState("");
-
-
   const [isNicknamecheck, setIsNicknamecheck] = useState(false);
 
   // 변경 여부 변수 선언
@@ -102,23 +92,15 @@ const MyPage = () => {
   최초 통신(useEffect) */
   useEffect(() => {
     const myId = cookies.get('rememberId');
-    //  if(myId === undefined) window.location.replace("/login");
     // ▲ 로그인 안 되어 있으면 로그인 페이지로 
 
 
     const memberData = async () => {
-      console.log("\n>> 회원 정보 조회(useEffect)");
-      console.log("myId : " + session_id);
       try {
         const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
         if (response.status == 200) {
-          console.log("통신 성공(200)");
           const member = response.data;
           setMemberInfo(member);
-          console.log(member)
-          console.log("------------------");
-
-          // 프사, 이름, 아이디, 생년월일, 성별, MBTI, 비밀번호, 닉네임, 자기소개, 이메일, 주소
           setUrl(member.face);
           setName(member.name);
           setId(member.id);
@@ -137,10 +119,7 @@ const MyPage = () => {
           setRegion1Before(member.region1);
           setRegion2Before(member.region2);
 
-          console.log("기존 회원 정보 가져오기 완료")
-        } else {
-          console.log("통신 실패(" + response.status + ")");
-        }
+        } 
       } catch (e) {
         console.log(e);
       }
@@ -152,10 +131,6 @@ const MyPage = () => {
   const onChangeFace = (e) => {
     const temp_face = e.target.files[0];
     const preview = URL.createObjectURL(temp_face);
-    console.log("==============================");
-    console.log("preview : " + preview);
-    console.log(temp_face);
-    console.log("==============================");
     setUrl(temp_face);
     if (temp_face) {
       setImage(temp_face);
@@ -165,7 +140,6 @@ const MyPage = () => {
 
     uploadBytes(imageRef, temp_face).then(() => {
       getDownloadURL(imageRef).then(async (url) => {
-        console.log("\nURL : " + url);
         setUrl(url);
 
         await updateDoc(doc(db, "users", myId), {
@@ -174,12 +148,9 @@ const MyPage = () => {
         /* ----- (시작) 통신 ----- */
         try {
           const response = await TeamAPI.changeFace(url, myId);
-          console.log(response.data.result);
-          const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
+          const response2 = await TeamAPI.memberInfo(localId); 
           setImage(response.data.result)
           if (response.status == 200) {
-            console.log("통신 성공(200)");
-            // alert("프사 저장 성공");
             setState({ ...state, open: true, success: true, successMsg: "프사 저장 성공" });
             cookies.set('rememberMyInfo', response2.data, {
               path: '/',
@@ -187,16 +158,12 @@ const MyPage = () => {
             })
 
           } else {
-            console.log("\n>> 통신 실패 : " + response.status);
-            // alert("통신 실패 : " + response.status);
             setState({ ...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status });
 
           }
         } catch (e) {
           console.log(e);
-          console.log("캐치 !! 이미지 url 저장 실패..");
         } // try-catch 문의 끝
-        /* ----- (끝) 통신 ----- */
 
       }).catch((error) => {
         console.log(error.message, "error getting the image url");
@@ -205,38 +172,26 @@ const MyPage = () => {
     }).catch((error) => {
       console.log(error.message);
     });
-
-    console.log("순서가 이상한 URL : " + url);
   };
 
   // 프사 삭제 버튼
   const onDeleteFace = async () => {
-    console.log("\n>> onDeleteFace 실행");
-    if (url === null) alert("삭제할 프사가 없습니다.")
+    if (url === null) alert("삭제할 사진이 없습니다.")
     else {
       const temp_url = null;
       setUrl(temp_url);
 
       try {
         const response = await TeamAPI.changeFace(temp_url, myId);
-        console.log(response.data.result);
-
         if (response.status == 200) {
-          console.log("통신 성공(200)");
-          // alert("프사 삭제 성공");
           setState({ ...state, open: true, success: true, successMsg: "프사 삭제 성공" });
-
           setIsSetImage(false);
         } else {
-          console.log("\n>> 통신 실패 : " + response.status);
-          // alert("통신 실패 : " + response.status);
           setState({ ...state, open: true, error: true, errorMsg: "통신 실패 : " + response.status });
-
         }
 
       } catch (e) {
         console.log(e);
-        console.log("캐치 !! 이미지 url 저장 실패..");
       }
 
     } // if-else 문의 끝
@@ -251,25 +206,13 @@ const MyPage = () => {
   const openChangePwdModal = () => { setChangePwdModalOpen(true); };
   const closeChangePwdModal = () => { setChangePwdModalOpen(false); };
   const onSavePwd = async (e) => {
-    console.log("변경한 pwd :" + pwd);
-    console.log("변경한 e :" + e);
 
-    // e.preventDefault();
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
+
 
       if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 비밀번호 수정 완료");
-        // alert("비밀번호 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "비밀번호 수정 완료!!" });
 
       }
@@ -287,24 +230,16 @@ const MyPage = () => {
   const onClickNicknameCheck = async (e) => {
     e.preventDefault();
     setIsNicknamecheck(false);
-    console.log("\n>> 닉네임 중복확인 버튼 눌렀어요.");
 
     if (nickname === '' || !regexNickName.test(nickname)) {
-      console.log("닉네임을 입력하지 않았거나 정규식에 맞지 않아요.");
       setState({ ...state, open: true, error: true, errorMsg: "먼저, 닉네임을 확인하세요." });
     } else {
       try {
         const nicknameCheck = await TeamAPI.nicknameCheck(nickname);
-        console.log("nicknameCheck.data : " + nicknameCheck.data);
-        console.log("nicknameCheck.status : " + nicknameCheck.status);
-
-        // if(memberCheck.data.result === true) {
         if (nicknameCheck.data === true) {
           setNickname("");
           setState({ ...state, open: true, error: true, errorMsg: "사용할 수 없는 닉네임 입니다." });
-          console.log("사용할 수 없는 닉네임 입니다.");
         } else {
-          console.log("사용 가능한 닉네임 입니다.");
           setIsNicknamecheck(true);
           setState({ ...state, open: true, success: true, successMsg: "사용 가능한 닉네임 입니다." });
 
@@ -323,14 +258,9 @@ const MyPage = () => {
     setNickname(nicknameBefore);
   }
 
-
-
-
   /* 닉네임 저장 */
   const onSaveNickname = async (e) => {
-    console.log("\n>> 닉네임 저장 버튼 눌렀어요.");
     if (!isNicknamecheck) {
-      // alert("닉네임을 다시 확인하거나 중복확인이 필요합니다.")
       setState({ ...state, open: true, error: true, errorMsg: "닉네임을 다시 확인하거나 중복확인이 필요합니다." });
 
       return;
@@ -342,20 +272,10 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
       const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
       setNickname(response.data.nickname)
 
       if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 닉네임 수정 완료");
-        // alert("닉네임 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "닉네임 수정 완료!!" });
         cookies.set('rememberMyInfo', response2.data, {
           path: '/',
@@ -389,23 +309,11 @@ const MyPage = () => {
     e.preventDefault();
     setIntroduce(introduce);
     setIsChangeIntroduce(false);
-    console.log("\n>> 자기소개 저장 버튼 눌렀어요.");
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
       if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 자기소개 수정 완료");
-        // alert("자기소개 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "자기소개 수정 완료!!" });
-
       }
 
     } catch (e) { console.log(e); }
@@ -449,20 +357,13 @@ const MyPage = () => {
   const [emailDuplicateCheck, setEmailDuplicateCheck] = useState(false);
   const [emailDoubleCheck, setEmailDoubleCheck] = useState(false);
 
-
-
-
-
   /*이메일 중복확인*/
   const onClickEmailCheck = async (e) => {
     e.preventDefault();
-    console.log("\n\nemail 인증 버튼을 눌렀어요");
-    console.log(isEmail);
+
     if (emailDuplicateCheck === true) {
       try {
         const emailResult = await TeamAPI.emailDuplicateCheck(email);
-        console.log("emailResult.data : " + emailResult.data);
-        console.log("emailResult.status : " + emailResult.status);
         if (emailResult.data === false) {
           setState({ ...state, open: true, success: true, successMsg: "이용가능한 이메일 입니다" });
           setConfirmEmail(true);
@@ -488,11 +389,8 @@ const MyPage = () => {
   /*이메일 인증*/
   const onClickEmailAdress = async (e) => {
     e.preventDefault();
-    console.log("\n\nemail 인증 버튼을 눌렀어요");
     try {
       const changeResult = await TeamAPI.emailCheck(email);
-      console.log("emailResult.data : " + changeResult.data);
-      console.log("emailResult.status : " + changeResult.status);
       if (changeResult.status === 200) {
         setOpen(true);
         setConfirmEmail(false);
@@ -504,31 +402,18 @@ const MyPage = () => {
     }
   }
 
-
-
-
   /* 이메일 저장 */
   const onSaveEmail = async (e) => {
     e.preventDefault();
     setEmail(email);
     setIsChangeEmail(false);
-    console.log("\n>> 이메일 저장 버튼 눌렀어요.");
+
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
       if (response.status == 200) {
         setEmailDoubleCheck(false);
-        console.log("통신 성공(200)");
-        console.log("\n>> 이메일 수정 완료");
         setEmailBefore(email);
-        // alert("이메일 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "이메일 수정 완료!!" });
         updateDoc(doc(db, "users", id), {
           email
@@ -542,13 +427,8 @@ const MyPage = () => {
 
 
   const onClickCancelRegion = (e) => {
-
-
-
     setRegion1(region1Before);
     setRegion2(region2Before);
-
-
     setIsChangeAddress(false);
   }
 
@@ -556,11 +436,9 @@ const MyPage = () => {
   const onChangeRegion1 = (e) => {
 
     let temp_region1 = e.target.value;
-    console.log("\n시도선택 : " + temp_region1); // 서울특별시
     setRegion1(temp_region1);
 
     const indexSido = sido.findIndex(e => e.codeNm === temp_region1);
-
     let temp_keySido = sido.at(indexSido).sido;
     setKeySido(temp_keySido);
 
@@ -573,11 +451,9 @@ const MyPage = () => {
   const onChangeRegion2 = (e) => {
 
     let temp_region2 = e.target.value;
-    console.log("\n시/구/군선택 : " + temp_region2);
     setRegion2(temp_region2);
     if (temp_region2 !== '') {
       setRegion2Check(true);
-
     }
   }
 
@@ -586,22 +462,12 @@ const MyPage = () => {
     setRegion1(region1);
     setRegion2(region2);
     setIsChangeAddress(false);
-    console.log("\n>> 주소 저장 버튼 눌렀어요.");
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      console.log("id : " + id);
-      console.log("password : " + pwd);
-      console.log("nickname : " + nickname);
-      console.log("introduce : " + introduce);
-      console.log("email : " + email);
-      console.log("region1 : " + region1);
-      console.log("region2 : " + region2);
+
       if (response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 주소 수정 완료");
         setRegion2Check(false);
-        // alert("주소 수정 완료!!");
         setState({ ...state, open: true, success: true, successMsg: "주소 수정 완료!!" });
       }
     } catch (e) { console.log(e); }
@@ -609,8 +475,6 @@ const MyPage = () => {
 
   /* MBTI 검사하기 */
   const onClickTestStart = () => {
-    console.log("\n>> 검사하기 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     nav("/MBTI");
   }
 
@@ -619,44 +483,30 @@ const MyPage = () => {
   const openUnregisterModal = () => { setUnregisterModalOpen(true); };
   const closeUnregisterModal = () => { setUnregisterModalOpen(false); };
   const onDeleteMember = async (e) => {
-    console.log("입력한 비밀번호(inputPwd) : " + inputPwd);
-
     const recheck = "해당 아이디로 재가입이 불가능합니다."
       + "\n탈퇴시 모든 정보가 삭제되며 복구가 어렵습니다."
       + "\n정말로 탈퇴하시겠습니까?"
     let recheckResult = window.confirm(recheck);
-    console.log("\n>> 최종 탈퇴 여부 : " + recheckResult);
 
     if (recheckResult) {
       try {
         const response = await TeamAPI.memberDelete(myId, inputPwd);
-        console.log("response.data : " + response.data);
 
-        // if(res.data.result === "OK") {
         if (response.data === true) {
-          console.log("통신 성공(200)");
-          console.log("\n회원 탈퇴 성공");
           window.localStorage.setItem("userId", "");
           window.localStorage.setItem("userPw", "");
           window.localStorage.setItem("isLogin", "FALSE");
           closeUnregisterModal();
-          // alert("회원 탈퇴 성공");
           setState({ ...state, open: true, success: true, successMsg: "회원 탈퇴 성공" });
 
           window.location.replace("/");
         } else {
-          // alert("비밀번호를 확인하세요.");
           setState({ ...state, open: true, error: true, errorMsg: "비밀번호를 확인하세요." });
-
         }
       } catch (e) {
-        // alert("오류 발생!!");
         setState({ ...state, open: true, error: true, errorMsg: "오류 발생!!" });
-
-        console.log("탈퇴 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
-    } else {
-      console.log("\n>> 탈퇴하기를 취소합니다.");
     }
   };
 

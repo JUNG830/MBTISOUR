@@ -115,4 +115,8 @@ a {
     .Container {
         width: 100%;
     }
+
+    .No-Nav-Container {
+        height: 100vh;
+    }
 }

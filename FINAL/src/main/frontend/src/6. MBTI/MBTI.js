@@ -52,10 +52,6 @@ const Quiz = (props) => {
 
   const [testMBTI, setTestMBTI] = useState("");
   useEffect(() => {
-    console.log(EnI);
-    console.log(SnN);
-    console.log(TnF);
-    console.log(JnP);
   }, [EnI, SnN, TnF, JnP]);
 
   const answerNoList = {
@@ -729,58 +725,41 @@ const Quiz = (props) => {
     }
   }
 
-
-
   //선택지
   function onClick3Yes1() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
-
-    console.log(index + ' ' + EnI)
     setEnI(EnI => EnI + 3.1);
     let current = EnI + 3.1;
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동1-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동1-2');
     }
   }
   function onClick2Yes1() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
-
-    console.log(index + ' ' + EnI)
     setEnI(EnI => EnI + 2.1);
     let current = EnI + 2.1;
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동1-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동1-2');
     }
   }
   function onClick1Yes1() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
-
-    console.log(index + ' ' + EnI)
     setEnI(EnI => EnI + 1.1);
     let current = EnI + 1.1;
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동1-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동1-2');
     }
   }
 
@@ -788,130 +767,88 @@ const Quiz = (props) => {
 
     let index = count2 / 5 - 1;
     let index2 = count / EnI
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setEnI(EnI - 1.1);
     let current = EnI - 1.1;
 
-
-    console.log(index + ' ' + EnI + ' ' + index2)
-
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동2-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동2-2');
     }
   }
   function onClick2No1() {
 
     let index = count2 / 5 - 1;
     let index2 = count / EnI
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setEnI(EnI - 2.1);
     let current = EnI - 2.1;
 
-
-    console.log(index + ' ' + EnI + ' ' + index2)
-
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동2-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동2-2');
     }
   }
   function onClick3No1() {
 
     let index = count2 / 5 - 1;
     let index2 = count / EnI
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setEnI(EnI - 3.1);
     let current = EnI - 3.1;
 
-
-    console.log(index + ' ' + EnI + ' ' + index2)
-
     if (current < 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동2-1');
     } else if (current > 0 && (count2 / 5) === 1) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동2-2');
     }
   }
 
   function onClick3Yes2() {
 
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN + 3.1);
     let current = SnN + 3.1;
 
-
-
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동3-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동3-2');
     }
   }
   function onClick2Yes2() {
 
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN + 2.1);
     let current = SnN + 2.1;
 
-
-
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동3-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동3-2');
     }
   }
+
   function onClick1Yes2() {
-
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN + 1.1);
     let current = SnN + 1.1;
 
-
-
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동3-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동3-2');
     }
   }
 
@@ -924,313 +861,201 @@ const Quiz = (props) => {
     let current = SnN - 1.1;
 
 
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동4-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동4-2');
     }
   }
   function onClick2No2() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN - 2.1);
     let current = SnN - 2.1;
 
-
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동4-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동4-2');
     }
   }
   function onClick3No2() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setSnN((SnN) => SnN - 3.1);
     let current = SnN - 3.1;
 
-
-    console.log(index + ' ' + SnN)
-
     if (current < 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동4-1');
     } else if (current > 0 && (count2 / 5) === 2) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동4-2');
     }
   }
   function onClick3Yes3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF + 3.1);
     let current = TnF + 3.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동5-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동5-2');
     }
   }
   function onClick2Yes3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF + 2.1);
     let current = TnF + 2.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동5-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동5-2');
     }
   }
   function onClick1Yes3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF + 1.1);
     let current = TnF + 1.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동5-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동5-2');
     }
   }
 
   function onClick1No3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF - 1.1);
     let current = TnF - 1.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동6-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동6-2');
     }
 
   }
   function onClick2No3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF - 2.1);
     let current = TnF - 2.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동6-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동6-2');
     }
-
   }
+
   function onClick3No3() {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setTnF((TnF) => TnF - 3.1);
     let current = TnF - 3.1;
 
-    console.log(index + ' ' + TnF)
-
     if (current < 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
-      console.log('작동6-1');
     } else if (current > 0 && (count2 / 5) === 3) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
-      console.log('작동6-2');
     }
 
   }
   const onClick3Yes4 = async (e) => {
     let index = count2 / 5 - 1;
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP + 3.1);
     let current = JnP + 3.1;
 
-
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
-      } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
-      }
 
+      } catch (e) {
+        console.log(e);
+      }
 
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
+
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
   const onClick2Yes4 = async (e) => {
     let index = count2 / 5 - 1;
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP + 2.1);
     let current = JnP + 2.1;
 
 
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
-
-
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
   const onClick1Yes4 = async (e) => {
     let index = count2 / 5 - 1;
-
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP + 1.1);
     let current = JnP + 1.1;
 
-
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
+
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
 
 
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
+
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
+
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
@@ -1244,147 +1069,85 @@ const Quiz = (props) => {
     let current = JnP - 1.1;
 
 
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
-
 
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
+
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
   const onClick2No4 = async (e) => {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP - 2.1);
     let current = JnP - 2.1;
 
 
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
+
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
 
 
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
+
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
   const onClick3No4 = async (e) => {
     let index = count2 / 5 - 1;
-
     setCount(count + 1);
     setCount2(count2 + 1);
     setJnP((JnP) => JnP - 3.1);
     let current = JnP - 3.1;
 
-
-    console.log(index + ' ' + JnP)
-
     if (current < 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerNoList.answer[index]);
       let MBTI = testMBTI + answerNoList.answer[index];
-      console.log('작동8-1');
-      console.log(testMBTI);
+
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
+
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
 
 
     } else if (current > 0 && (count2 / 5) === 4) {
       setTestMBTI(testMBTI + answerYesList.answer[index]);
       let MBTI = testMBTI + answerYesList.answer[index];
-      console.log('작동8-2');
-      console.log(testMBTI);
       try {
         const res = await TeamAPI.mbtiReg(MBTI, localId);
-        console.log("res.data : " + res.data);
-        if (res.data === true) {
-          alert("저장이 잘 되었는지 확인해봐요.")
-        } else {
-          alert("아이디 또는 비밀번호를 확인하세요!");
-        }
       } catch (e) {
-        alert("오류 발생!! 아이디(" + localId + ")랑 비밀번호는 일단 넘어와요.");
-        console.log("로그인 에러!! 왜 또 안 될까..?");
+        console.log(e);
       }
     }
   }
-
-
-
 
   //문제 및 선택지 출력
   return (
@@ -1505,9 +1268,6 @@ const MBTI = () => {
 
   const currentId = window.localStorage.getItem("userId");
   const currentPw = window.localStorage.getItem("userPw");
-
-  console.log("\n\n현재 localStorage 에 저장된 ID : " + currentId);
-  console.log("\n\n현재 localStorage 에 저장된 PASSWORD : " + currentPw);
 
   const [states, setStates] = useState({
     mode: 'start',

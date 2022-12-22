@@ -55,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "optimize-css-assets-webpack-plugin": "^6.0.1"
   }
 }

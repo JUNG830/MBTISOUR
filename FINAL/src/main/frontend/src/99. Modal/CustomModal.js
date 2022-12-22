@@ -3,8 +3,6 @@ import './CustomModal.css';
 
 function CustomModal(props) {
   const { state, changeState } = props;
-  console.log(state);
-  console.log("\n>> CustomModal : " + state.open);
 
   const onClickClose = (e) => {
     changeState();

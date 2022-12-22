@@ -23,7 +23,6 @@ function Logout() {
     window.sessionStorage.setItem("kakaoNickname", '');
     window.sessionStorage.setItem("kakaoEmail",'');
 
-    alert("메인으로 보내기 전에 확인용");
     navigate("/");
   }
 

@@ -84,13 +84,6 @@ const Matching = () => {
     // ▲ 로그인 안 되어 있으면 로그인 페이지로
 
     const memberData = async () => {
-      console.log("\n>> 매칭 결과 조회(useEffect)");
-      // const id = localId;
-      console.log(">>>>>>>>>>>>>>");
-      console.log(typeof(localId));
-      console.log(localId);
-      console.log(localId_num);
-      console.log(pageNum);
 
       try {
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
@@ -99,11 +92,10 @@ const Matching = () => {
         console.log(Mat.data[0].mat_id);
         console.log("****************");
         setMat_MemberInfo(Mat.data);
+        
         // 마지막 페이지 찾기
         const cnt = Number(Mat.data[0].cnt);
         console.log(typeof(cnt));
-        // console.log(Rnum);
-        // console.log(Math.ceil(Rnum / 2));
         setCnt(Math.ceil(cnt / 2));
         console.log("1", Mat.data);
         console.log("matIdNum : ", Mat.data[0].mat_id_num);
@@ -120,9 +112,7 @@ const Matching = () => {
 
   // 좋아요
   const [color , setColor] = useState('');
-  // const styles  = { color : color};
   const [like, setLike] = useState(0);
-  const [pid_num, setPid_num] = useState("");
 
   const onClickLike = async (LikeIdNum) => {
     console.log("LikeIdNum :", LikeIdNum);
@@ -152,15 +142,9 @@ const Matching = () => {
   
  // 채팅하기 onClick
  const user1 = localId;
- console.log("user1 :",user1)
 
  const onClickChat = async (matfriend) => {
-  console.log(matfriend);
-   console.log("친구 아이디", matfriend);
-   console.log("내 아이디", myId);
-
-   const user2 = matfriend;
-
+  const user2 = matfriend;
   const sodaRef = doc(db, "users", user1);
   try {
     await updateDoc(sodaRef, {
@@ -169,14 +153,11 @@ const Matching = () => {
   } catch (e) {
     console.log(e);
   }
-
   nav("/chathome")
   };
 
   /* MBTI 검사하기 */
   const onClickTestStart = () => {
-    console.log("\n>> 검사하기 버튼 눌렀어요.");
-    // alert("콘솔 확인하세요.")
     nav("/MBTI");
   }
 
@@ -184,21 +165,14 @@ const Matching = () => {
   const [receiverId, setReceiverId] = useState("");
   const [receiverNickname, setReceiverNickname] = useState("");
   const [inputContent, setInputContent] = useState('');
-
   const [modalOn, setModalOn] = useState(false);
-
   const getInputContent = (content) => { setInputContent(content); }
   const openModal = () => { setModalOn(true); };
   const closeModal = () => { setModalOn(false); };
 
   const onClickPostIcon = (receiverId, receiverNickname) => {
-    console.log("\n>> 쪽지 아이콘 눌렀어요.");
-
     setReceiverId(receiverId);
-    console.log("받는 사람 ID(receiverId) : " + receiverId);
     setReceiverNickname(receiverNickname);
-    console.log("받는 사람 닉네임(receiverNickname) : " + receiverNickname);
-
     setModalOn(true);
   };
 
@@ -207,13 +181,8 @@ const Matching = () => {
     // e.preventDefault();
     try {
       const response = await TeamAPI.sendPost(myId, receiverId, inputContent);
-      console.log("\n보내는 사람(id) : " + myId);
-      console.log("받는 사람(receiverId) : " + receiverId);
-      console.log("쪽지 내용(inputContent) : " + inputContent);
 
       if(response.status == 200) {
-        console.log("통신 성공(200)");
-        console.log("\n>> 쪽지 보내기 성공!!");
         alert("쪽지 보내기 성공!!");
         closeModal();
       }
@@ -265,7 +234,6 @@ const Matching = () => {
               </div>
             </div> 
             <div className='Mat-icon'>
-              {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
                 {/* {`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} */}
                 {mat.like_member_idx}
@@ -281,7 +249,6 @@ const Matching = () => {
                 <IconButton>
                   <EmailIcon className='Post-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickPostIcon(mat.mat_id, mat.mat_nick)}/>
                 </IconButton>
-              {/* </ButtonGroup> */}
             </div>
           </div>
           ))

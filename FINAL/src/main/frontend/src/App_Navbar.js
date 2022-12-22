@@ -7,7 +7,7 @@ import GuestBook from './10. GuestBook/GuestBook';
 import ChatHome from './9.Chat/ChatHome';
 import Matching from './8.Matching/Matching';
 import MyPage from './5. MyPage/MyPage';
-import Navbar from './Navber/Navbar';
+import Navbar from './Navbar/Navbar';
 import '../src/App.css';
 import KakaoToken from './2. Login/KakaoToken';
 import AboutUs from './11. AboutUs/AboutUs';
