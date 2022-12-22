@@ -101,7 +101,7 @@ const Matching = () => {
         setMat_MemberInfo(Mat.data);
         // 마지막 페이지 찾기
         const cnt = Number(Mat.data[0].cnt);
-        console.log(typeof(Rnum));
+        console.log(typeof(cnt));
         // console.log(Rnum);
         // console.log(Math.ceil(Rnum / 2));
         setCnt(Math.ceil(cnt / 2));
@@ -124,34 +124,8 @@ const Matching = () => {
   const [like, setLike] = useState(0);
   const [pid_num, setPid_num] = useState("");
 
-  // state = { isClicked: false };
-  // const { isClicked } = this.state;
-  
-    // setLike(!like);
-    // const memberData = async () => {
-    //   console.log("\n>> 회원 정보 조회(useEffect)");
-    //   console.log("myId : " + session_id);
-
-    //     const response = await TeamAPI.memberInfo(myId); // 회원 정보 조회
-    //     if(response.status == 200) {
-    //       console.log("통신 성공(200)");
-    //       const member = response.data;
-    
-    //       console.log(member)
-    //       console.log("------------------");
-    //       setPid_num(response.data.idNum)
-        
-
-    // if(like){
-    //   setLike(false);
-    //   setColor('unLike');
-    // } else{
-    //   setLike(true);
-    //   setColor(like); 
-    // }
-  const onClickLike = async (idx, LikeIdNum) => {
+  const onClickLike = async (LikeIdNum) => {
     console.log("LikeIdNum :", LikeIdNum);
-    console.log("index :", idx);
     setLike(LikeIdNum);
     
     try {
@@ -163,10 +137,11 @@ const Matching = () => {
       console.log(likeData.data);
 
       if (likeData.data === 1) {
-        setColor('red-btn');
-
+        // setColor('red-btn');
+        document.getElementById(LikeIdNum).style.color='red';
       } else if (likeData.data === 2) {
-        setColor('');
+        // setColor('');
+        document.getElementById(LikeIdNum).style.color='';
       } else {
         console.log("좋아요 오류");
       }
@@ -267,16 +242,15 @@ const Matching = () => {
           </div>
         </div>
 
-        { (myMbti == null ) ?
-
+        { (myMbti === null ) ?
         <div className='Matching-Message'>
-          <p>MBTI 검사를 아직 하지 않았어요!</p>
+          <p>아직 MBTI 검사를 하지 않았어요!</p>
           <button className='mbti-btn' onClick={onClickTestStart}>검사하러가기</button>
         </div>
 
         : (mat_memberInfo.length != 0 ) ?
 
-          mat_memberInfo.map((mat, index) => (
+          mat_memberInfo.map((mat) => (
           <div className='mat-cont'>
             <div className='Mat-Box' key={mat.id}>
               <div className='Mat-profile'>
@@ -288,16 +262,18 @@ const Matching = () => {
               </div>
               <div className="Mat-item">
                 <textarea className='Mat-Introduce' type="text" value={mat.mat_introduce} />
-              {/* { like_num === 0 ?
-                  <img src={Click} onClick={Click_like} value={mat.mat_id_num} style={{width: 30}}/>
-                  : <img src={unClick} onClick={UnClick_like} value={mat.mat_id_num} style={{width: 25}} />   
-              } */}
               </div>
             </div> 
             <div className='Mat-icon'>
               {/* <ButtonGroup  style={{float:'left', backgroundColor: 'unset'}}> */}
                 <IconButton>
-                  <FavoriteIcon className={`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(index, mat.mat_id_num)}/>
+                {/* {`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} */}
+                {mat.like_member_idx}
+                {/* {like} */}
+                  <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color: (mat.like_member_idx === 'Y') 
+                                ? 'red' 
+                                : 'unset'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
+                {mat.mat_id_num}
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
