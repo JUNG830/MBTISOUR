@@ -23,8 +23,12 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
 
   const cookies = new Cookies();
-
+  
   const localId = cookies.get('rememberId');
+  const myInfo = cookies.get('rememberMyInfo');
+  const myNickname = myInfo.nickname
+  const myRegistrationDate = myInfo.registrationDate
+
   const localId_num = window.sessionStorage.getItem("id_num");
   const kakaoId_num = window.sessionStorage.getItem("kakaoId_num");
   const kakaoNickname = window.sessionStorage.getItem("kakaoNickname");
@@ -35,6 +39,8 @@ const Home = () => {
   const [nickName, setNickName] = useState('');
   const navigate = useNavigate();
 
+  console.log(cookies.get('rememberMyInfo'));
+
   useEffect(() => {
     if (localId === undefined) navigate("/login");
     // ▲ 로그인 안 되어 있으면 로그인 페이지로 
@@ -42,12 +48,8 @@ const Home = () => {
     const memberData = async () => {
       try {
         const response = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
-        setNickName(response.data.nickname)
-        setRegistrationDate(response.data.registrationDate);
-        cookies.set('rememberMyInfo', response.data, {
-          path: '/',
-          expires: 0
-        })
+        cookies.set('rememberMyInfo', response.data);
+        console.log(cookies.get('rememberMyInfo'));
 
       } catch (e) {
         console.log(e);
@@ -57,14 +59,14 @@ const Home = () => {
   }, []);
 
   const date = moment().format("YYYY.MM.DD HH:mm:ss");
-  const Dday = moment(date).diff(registrationDate, 'day');
+  const Dday = moment(date).diff(myRegistrationDate, 'day');
 
   return (
     <div className="Container">
       <div className="Home-Container">
         
         <div className="WelcomeMessage">
-          <h2><span style={{ color: "navy", fontWeight: "bold" }}>{nickName}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
+          <h2><span style={{ color: "navy", fontWeight: "bold" }}>{myNickname}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
           {/* <h3>새로운 쪽지가 있습니다!</h3> */}
         </div>
 

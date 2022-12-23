@@ -272,21 +272,16 @@ const MyPage = () => {
 
     try {
       const response = await TeamAPI.memberUpdate(id, pwd, nickname, introduce, email, region1, region2);
-      const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
-      setNickname(response.data.nickname)
-
+      
       if (response.status == 200) {
+        const response2 = await TeamAPI.memberInfo(localId); // 원래는 전체 회원 조회용
         setState({ ...state, open: true, success: true, successMsg: "닉네임 수정 완료!!" });
-        cookies.set('rememberMyInfo', response2.data, {
-          path: '/',
-          expires: 0
-        })
+        cookies.set('rememberMyInfo', response2.data)
+        console.log(cookies.get('rememberMyInfo'));
 
         updateDoc(doc(db, "users", id), {
           nickname
         });
-
-
       }
 
     } catch (e) { console.log(e); }
@@ -316,7 +311,6 @@ const MyPage = () => {
       if (response.status == 200) {
         setState({ ...state, open: true, success: true, successMsg: "자기소개 수정 완료!!" });
       }
-
     } catch (e) { console.log(e); }
   }
 
