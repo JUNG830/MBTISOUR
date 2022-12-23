@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AdminNavigation from './AdminNavigation';
+import 조혜경 from '../images/조혜경.png'
 import './AdminMain.css';
 
 function AdminMain() {
@@ -18,7 +19,7 @@ function AdminMain() {
         {/* Topbar */}
         <div className="Topbar">
           <div className="Toggle" onClick={addActive}>
-          <span class="material-symbols-outlined">menu</span>
+            <span class="material-symbols-outlined">menu</span>
           </div>
 
           <div className="Search">
@@ -29,7 +30,7 @@ function AdminMain() {
           </div>
 
           <div className="User">
-            <img src="./user.jpg" alt="user"/>
+            <img src={조혜경} alt="user"/>
           </div>
         </div>
 
@@ -167,36 +168,36 @@ function AdminMain() {
             </div>
             <table>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               {/* Recent Customer */}
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
               <tr>
-                <td width="60px"><div className="ImgBx"><img src="img1.jpg" alt="" /></div></td>
+                <td width="60px"><div className="ImgBx"><img src={조혜경} alt="no" /></div></td>
                 <td><h4>David<br/><span>Italy</span></h4></td>
               </tr>
             </table>

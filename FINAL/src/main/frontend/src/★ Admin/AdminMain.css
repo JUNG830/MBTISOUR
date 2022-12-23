@@ -27,6 +27,13 @@ body {
   overflow-x: hidden;
 }
 
+.Toggle .material-symbols-outlined {
+  font-size: 2.5rem
+}
+/* .CardBox .material-symbols-outlined {
+  font-size: 30px;
+} */
+
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Navigation
@@ -87,7 +94,7 @@ body {
 .Navigation ul li a .Icon > span {
   font-size: 1.75em;
 }
-/* .user {
+.User {
   position: relative;
   min-width: 40px;
   height: 40px;
@@ -95,14 +102,14 @@ body {
   overflow: hidden;
   cursor: pointer;
 }
-.user img {
+.User img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-} */
+}
 
 .Navigation ul li a .Icon img {
   width: 40px;

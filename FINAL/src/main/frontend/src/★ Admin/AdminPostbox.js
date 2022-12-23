@@ -3,6 +3,7 @@ import Moment from "react-moment";
 import AdminNavigation from './AdminNavigation';
 import AdminAPI from '../0. API/AdminAPI';
 import Loading from '../other/Loading';
+import 조혜경 from '../images/조혜경.png'
 
 function AdminPostbox() {
   
@@ -51,18 +52,18 @@ function AdminPostbox() {
         {/* Topbar */}
         <div className="Topbar">
           <div className="Toggle" onClick={addActive}>
-            <ion-icon name="menu-outline"></ion-icon>
+            <span class="material-symbols-outlined">menu</span>
           </div>
 
           <div className="Search">
             <label>
               <input type="text" placeholder="Search here" />
-              <ion-icon name="search-outline"></ion-icon>
+              <span class="material-symbols-outlined">search</span>
             </label>
           </div>
 
           <div className="User">
-            <img src="./user.jpg" alt="user"/>
+            <img src={조혜경} alt="user"/>
           </div>
         </div>
 
@@ -121,7 +122,7 @@ function AdminPostbox() {
               <div className="CardName">Daily Views</div>
             </div>
             <div className="IconBx">
-              <ion-icon name="eye-outline"></ion-icon>
+              <span class="material-symbols-outlined">visibility</span>
             </div>
           </div>
           <div className="Card">
@@ -130,7 +131,7 @@ function AdminPostbox() {
               <div className="CardName">Sales</div>
             </div>
             <div className="IconBx">
-              <ion-icon name="cart-outline"></ion-icon>
+              <span class="material-symbols-outlined">shopping_cart</span>
             </div>
           </div>
           <div className="Card">
@@ -139,7 +140,7 @@ function AdminPostbox() {
               <div className="CardName">Comments</div>
             </div>
             <div className="IconBx">
-              <ion-icon name="chatbubbles-outline"></ion-icon>
+              <span class="material-symbols-outlined">chat_bubble</span>
             </div>
           </div>
           <div className="Card">
@@ -148,7 +149,7 @@ function AdminPostbox() {
               <div className="CardName">Earning</div>
             </div>
             <div className="IconBx">
-              <ion-icon name="cash-outline"></ion-icon>
+              <span class="material-symbols-outlined">payments</span>
             </div>
           </div>
         </div>
