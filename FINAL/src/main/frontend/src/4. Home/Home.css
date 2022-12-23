@@ -14,7 +14,7 @@
     justify-content: center;
     background-color: white;
     border: 5px solid ;
-    border-color:rgb(248, 41, 41);
+    border-color:rgb(21, 163, 21);
     border-radius: 25px;
 }
 
@@ -45,7 +45,7 @@
     height: 300px; 
     z-index: 999;
     border:5px solid;
-    border-color: rgb(248, 41, 41);
+    border-color: rgb(21, 163, 21);
 }
 
 .DinoStartMessage {
