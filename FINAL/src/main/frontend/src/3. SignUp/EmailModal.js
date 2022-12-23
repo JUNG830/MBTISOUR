@@ -42,15 +42,15 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
                         &times;
                     </button>
                 </header>
-                <main>
+                <main className="EmailModal-main">
                     <form>
-                        <div>
-                            <label>인증받을 이메일</label>
-                            <input placeholder={modalName} disabled></input>
+                        <div className="EmailModal-main-div">
+                            <label className="EmailModal-main-label">인증받을 이메일</label>
+                            <input className="EmailModal-main-input" placeholder={modalName} disabled></input>
                         </div>
-                        <div>
-                            <label>인증 코드 입력 창</label>
-                            <input placeholder="인증 코드를 입력해주세요." value={code} onChange={onChangeCode} required ></input>
+                        <div className="EmailModal-main-div2">
+                            <label className="EmailModal-main-label2">인증 코드 입력 창</label>
+                            <input className="EmailModal-main-input2" placeholder="인증 코드를 입력해주세요." value={code} onChange={onChangeCode} required ></input>
                         </div>
                     </form>
                 </main>

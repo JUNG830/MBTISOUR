@@ -62,6 +62,83 @@
   /* 팝업이 열릴때 스르륵 열리는 효과 */
   animation: modal-bg-show 0.3s;
 }
+
+.EmailModal-main-div{
+
+  position: relative;
+  
+  height: 10px;
+  top:10px;
+}
+
+
+.EmailModal-main-div2{
+
+  position: relative;
+  top:10px
+}
+
+.EmailModal-main{
+
+  height: 140px;
+}
+.EmailModal-main-label{
+  position: relative;
+  bottom:2px;
+}
+
+.EmailModal-main-label2{
+  position: relative;
+  bottom:-17px;
+  
+}
+.EmailModal-main-input2{
+  position: relative;
+  bottom:30px;
+}
+.EmailModal-main-input{
+  position: relative;
+}
+
+
+@media screen and (max-width: 520px) {
+
+
+  .EmailModal-main-div{
+
+    position: relative;
+    
+    height: 50px;
+  }
+  .EmailModal-main-input{
+    position: relative;
+    top:-23px;
+  }
+  
+  .EmailModal-main-label{
+    position: relative;
+    bottom:30px;
+  }
+  
+  .EmailModal-main-label2{
+    position: relative;
+    bottom:30px;
+    
+  }
+  .EmailModal-main-input2{
+    position: relative;
+    top:-23px;
+  }
+
+  .EmailModal-main{
+    position: relative;
+    bottom:0px;
+    
+    height: 180px;
+  }
+
+}
+
 @keyframes modal-show {
   from {
     opacity: 0;

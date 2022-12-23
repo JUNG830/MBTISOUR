@@ -36,6 +36,8 @@ public class EmailConfirmController {
         System.out.println("전달 받은 이메일 : " + getEmailId);
         service.sendSimpleMessage(getEmailId);
     }
+    int cnt = 0;
+
     @PostMapping("/verifyCode")
 //    @ResponseBody
     public Integer verifyCode(@RequestBody Map<String, String> emailCode){
@@ -44,9 +46,16 @@ public class EmailConfirmController {
         String getEmailCode = emailCode.get("code");
         System.out.println("code : "+getEmailCode);
         System.out.println("code match : "+ ePw.equals(getEmailCode));
+
         if(ePw.equals(getEmailCode)) {
+
             result =1;
-            ePw=createKey();
+            cnt=cnt+1;
+            System.out.println(cnt);
+            
+            if(cnt%50==0) {
+                ePw = createKey();
+            }
         }
         return result;
     }
