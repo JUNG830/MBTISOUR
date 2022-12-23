@@ -24,25 +24,25 @@ function AdminNavigation(props) {
         </li>
         <li>
           <a href="/AdminMain">
-            <span className="Icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span className="Icon"><span class="material-symbols-outlined">home</span></span>
             <span className="Title">Dashboard</span>
           </a>
         </li>
         <li>
           <a href="/Admin-IsourMemberList">
-            <span className="Icon"><ion-icon name="people-outline"></ion-icon></span>
+            <span className="Icon"><span class="material-symbols-outlined">group</span></span>
             <span className="Title">회원 정보 조회</span>
           </a>
         </li>
         <li>
           <a href="/AdminPostbox">
-            <span className="Icon"><ion-icon name="mail-outline"></ion-icon></span>
+            <span className="Icon"><span class="material-symbols-outlined">mark_as_unread</span></span>
             <span className="Title">쪽지함</span>
           </a>
         </li>
         <li>
           <a href="/AdminGuestBook">
-            <span className="Icon"><ion-icon name="footsteps-outline"></ion-icon></span>
+            <span className="Icon"><span class="material-symbols-outlined">footprint</span></span>
             <span className="Title">방명록</span>
           </a>
         </li>

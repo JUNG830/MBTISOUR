@@ -84,7 +84,7 @@ body {
   line-height: 70px;
   text-align: center;
 }
-.Navigation ul li a .Icon ion-icon {
+.Navigation ul li a .Icon > span {
   font-size: 1.75em;
 }
 /* .user {
@@ -212,7 +212,7 @@ body {
   outline: none;
   border: 1px solid var(--black2);
 }
-.Search label ion-icon {
+.Search label span {
   position: absolute;
   top: 0;
   left: 10px;

@@ -24,7 +24,7 @@ function AdminMain() {
           <div className="Search">
             <label>
               <input type="text" placeholder="Search here" />
-              <ion-icon name="search-outline"></ion-icon>
+              <span class="material-symbols-outlined">search</span>
             </label>
           </div>
 
