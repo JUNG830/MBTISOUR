@@ -10,8 +10,8 @@ const AdminAPI = {
 
   /* 전체 회원 조회 @GetMapping("/GetAllMember") */
   getAllMember: async function () {
-    return await axios.get(TEAM_DOMAIN + "GetAllMember", HEADER);
-    // return await axios.post("GetAllMember", HEADER);
+    // return await axios.get(TEAM_DOMAIN + "GetAllMember", HEADER);
+    return await axios.post("GetAllMember", HEADER);
   },
 
   /* 로그인 @PostMapping("/AdminLogin") */
@@ -20,14 +20,14 @@ const AdminAPI = {
       id: id,
       pwd: pwd
     }
-    return await axios.post(TEAM_DOMAIN + "AdminLogin", loginObj, HEADER);
-    // return await axios.post("AdminLogin", loginObj, HEADER);
+    // return await axios.post(TEAM_DOMAIN + "AdminLogin", loginObj, HEADER);
+    return await axios.post("AdminLogin", loginObj, HEADER);
   },
 
   /* 쪽지함 조회 @GetMapping("/GetAllPostbox") */
   postbox: async function () {
-    return await axios.get(TEAM_DOMAIN + "GetAllPostbox", HEADER);
-    // return await axios.post("GetAllPostbox", HEADER);
+    // return await axios.get(TEAM_DOMAIN + "GetAllPostbox", HEADER);
+    return await axios.post("GetAllPostbox", HEADER);
   },
 
 }

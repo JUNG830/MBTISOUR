@@ -48,7 +48,7 @@ function AdminNavigation(props) {
         </li>
         <li>
           <a href="/AdminLogin">
-            <span className="Icon"><ion-icon name="log-out-outline"></ion-icon></span>
+            <span className="Icon"><span class="material-symbols-outlined">logout</span></span>
             <span className="Title">로그아웃</span>
           </a>
         </li>
