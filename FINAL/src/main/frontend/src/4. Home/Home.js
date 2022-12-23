@@ -60,8 +60,7 @@ const Home = () => {
 
   return (
     <div>
-    <div className="Container snow">
-      
+    <div className="snow">
       <div className="Home-Container">
         <div className="WelcomeMessage">
           <h2><span style={{ color: "navy", fontWeight: "bold" }}>{nickName}</span> 님과 MBTISOUR는 오늘, <span style={{ color: 'red', fontWeight: 'bold' }}>{Dday + 1}일</span></h2>
