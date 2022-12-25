@@ -36,7 +36,7 @@ const Matching = () => {
   const [mat_memberInfo, setMat_MemberInfo] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [cnt, setCnt] = useState();
-
+  const [trueorfalse, setTrueorfalse] = useState(true);
 
 
   // 페이지 이동
@@ -109,7 +109,7 @@ const Matching = () => {
       }
     };
   memberData();
-  }, [pageNum]);
+  }, [pageNum, trueorfalse]);
 
   // 좋아요
   const [color , setColor] = useState('');
@@ -127,15 +127,12 @@ const Matching = () => {
       console.log("%%%%% 좋아요 전송");
       console.log(likeData.data);
       console.log(LikeIdNum);
-      if (likeData.data === 1) {
-        // setColor('red-btn');
-        document.getElementById(LikeIdNum).style.color='orange';
-      } else if (likeData.data === 2) {
-        // setColor('');
-        document.getElementById(LikeIdNum).style.color='green';
-      } else {
+      console.log("trueorfalse : ", trueorfalse);
+      if (likeData.data !== 1 && likeData.data !== 2) {
         console.log("좋아요 오류");
       }
+      // 리렌더링을 위한 스위치
+      setTrueorfalse(trueorfalse => !trueorfalse);
     } catch (e) {
       console.log(e);
     }
