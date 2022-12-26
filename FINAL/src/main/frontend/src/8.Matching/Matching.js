@@ -19,11 +19,11 @@ import SadIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 
 const Matching = () => {
   const cookies = new Cookies();
-  // ▼ 로그인 안 되어 있으면 로그인 페이지로
+  const nav = useNavigate();
+  
   const localMyInfo = cookies.get('rememberMyInfo');
   const localId = localMyInfo.id;
   const localId_num = localMyInfo.idNum;
-
   const [url, setUrl] = useState(null);
   const [myId, setMyId] = useState('');
   const [id_num, setId_num] = useState('');
@@ -32,11 +32,9 @@ const Matching = () => {
   const [myMbti, setMyMbti] = useState('');
   const [myIntroduce, setMyIntroduce] = useState('');
   const [myInfo, setMyInfo] = useState('');
-
   const [mat_memberInfo, setMat_MemberInfo] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [cnt, setCnt] = useState();
-
 
 
   // 페이지 이동
@@ -78,32 +76,21 @@ const Matching = () => {
 
 
   // 매칭 회원 정보 조회
-  const nav = useNavigate();
   useEffect(() => {
     if(localId === undefined) nav("/login");
-    // ▲ 로그인 안 되어 있으면 로그인 페이지로
-
+  // ▲ 로그인 안 되어 있으면 로그인 페이지로
     const memberData = async () => {
  
       try {  
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
-      //  console.log("****************");
-     //   console.log(Mat.data);
-      //  console.log(Mat.data[0].mat_id);
         console.log("****************");
         setMat_MemberInfo(Mat.data);
-        
+        console.log(Mat.data);
         // 마지막 페이지 찾기
         const cnt = Number(Mat.data[0].cnt);
-        console.log(typeof(cnt));
         setCnt(Math.ceil(cnt / 2));
-       // console.log("1", Mat.data);
         console.log("matIdNum : ", Mat.data[0].mat_id_num);
-       // console.log("matFace : ", Mat.data[0].mat_face);
-       // console.log("matNick : ", Mat.data[0].mat_nick);
         console.log("like_member_idx : ", Mat.data[0].like_member_idx);
-
-      //  console.log("cnt : ", cnt);
       } catch (e) {
         console.log(e);
       }
@@ -112,34 +99,37 @@ const Matching = () => {
   }, [pageNum]);
 
   // 좋아요
-  const [color , setColor] = useState('');
+  const [btnActive, setBtnActive] = useState("");
   const [like, setLike] = useState(0);
 
-  const onClickLike = async (LikeIdNum) => {
-    console.log("LikeIdNum :", LikeIdNum);
-    setLike(LikeIdNum);
-    
-    try {
-      const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
-      // 좋아요: 1
-      // 좋아요 취소: 2
-      // 아무것도 수행 안됨: 0
-      console.log("%%%%% 좋아요 전송");
-      console.log(likeData.data);
-      console.log(LikeIdNum);
-      if (likeData.data === 1) {
-        // setColor('red-btn');
-        document.getElementById(LikeIdNum).style.color='orange';
-      } else if (likeData.data === 2) {
-        // setColor('');
-        document.getElementById(LikeIdNum).style.color='green';
-      } else {
-        console.log("좋아요 오류");
+  useEffect(() => {
+    const onClickLike = async (LikeIdNum) => {
+      console.log("LikeIdNum :", LikeIdNum);
+      try {
+        const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
+        // 좋아요: 1
+        // 좋아요 취소: 2
+        // 아무것도 수행 안됨: 0
+        console.log("%%%%% 좋아요 전송");
+        console.log(likeData.data);
+        console.log(LikeIdNum);
+        if (likeData.data === 1) {
+          // setColor('red-btn');
+          document.getElementById(LikeIdNum).style.color='orange';
+          // setBtnActive(LikeIdNum);
+        } else if (likeData.data === 2) {
+          // setColor('');
+          document.getElementById(LikeIdNum).style.color='green';
+          // setBtnActive('');
+        } else {
+          console.log("좋아요 오류");
+        }
+      } catch (e) {
+        console.log(e);
       }
-    } catch (e) {
-      console.log(e);
-    }
-  }
+    };
+    onClickLike();
+  }, []);
   
  // 채팅하기 onClick
  const user1 = localId;
@@ -220,7 +210,7 @@ const Matching = () => {
 
         : (mat_memberInfo.length != 0 ) ?
 
-          mat_memberInfo.map((mat) => (
+          mat_memberInfo.map((mat, index) => (
           <div className='mat-cont'>
             <div className='Mat-Box' key={mat.id}>
               <div className='Mat-profile'>
@@ -239,11 +229,9 @@ const Matching = () => {
                 <IconButton>
                 {/* {`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} */}
                 {mat.like_member_idx}
-                {`${mat.like_member_idx === 'Y' ? 'yes' : 'no'}`}
                 {/* {like} */}
-                  <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color: (mat.like_member_idx === 'Y')
-                                ? 'red' 
-                                : 'blue'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
+                <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color : mat.like_member_idx === 'N' ? 'blue' : 'red'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
+                {/* <FavoriteIcon className={index == btnActive ? "red-btn" :  mat.like_member_idx === 'Y' ? 'red-btn' : ''} value={index} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(mat.mat_id_num)}/> */}
                 {mat.mat_id_num}
                 </IconButton>
                 <IconButton>

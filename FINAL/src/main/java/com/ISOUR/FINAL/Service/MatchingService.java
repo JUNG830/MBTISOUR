@@ -34,33 +34,33 @@ public class MatchingService {
                 "FROM (SELECT PG1.*\n" +
                 "\t\t\t, @ROWNUM \\:= @ROWNUM + 1 as R_NUM\n" +
                 "       FROM (SELECT\n" +
-                "\t          \t\tim.ID_NUM AS user_id_num,\n" +
-                "\t                im.MBTI AS user_mbti,\n" +
-                "\t                im2.ID_NUM AS mat_id_num,\n" +
-                "\t                im2.ID AS mat_id,\n" +
-                "\t                im2.FACE AS mat_face,\n" +
-                "\t                im2.NICKNAME AS mat_nick,\n" +
-                "\t                im2.MBTI AS mat_mbti,\n" +
-                "\t                im2.INTRODUCE AS mat_introduce,\n" +
-                "\t                m.ORDER_MBTI AS order_mbti\n" +
-                "\t                , COUNT(*) OVER (PARTITION BY im.ID_NUM) as cnt\n" +
-                "\t                , IFNULL((\n" +
-                "\t                \tselect 'Y'\n" +
-                "\t                \t\tfrom isour.like_member lm \n" +
-                "\t                \t\twhere lm.like_user_idx = im2.id_num\n" +
+                "              \t\tim.ID_NUM AS user_id_num\n" +
+                "                , im.MBTI AS user_mbti\n" +
+                "                , im2.ID_NUM AS mat_id_num\n" +
+                "                , im2.ID AS mat_id\n" +
+                "                , im2.FACE AS mat_face\n" +
+                "                , im2.NICKNAME AS mat_nick\n" +
+                "                , im2.MBTI AS mat_mbti\n" +
+                "                , im2.INTRODUCE AS mat_introduce\n" +
+                "                , m.ORDER_MBTI AS order_mbti\n" +
+                "                , COUNT(*) OVER (PARTITION BY im.ID_NUM) as cnt\n" +
+                "                , IFNULL((\n" +
+                "\t                select 'Y'\n" +
+                "\t                from isour.like_member lm \n" +
+                "\t                where lm.like_user_idx = im2.id_num\n" +
                 "\t                ), 'N') as like_Member_idx\n" +
                 "                FROM isour.i_member im\n" +
-                "\t                INNER JOIN isour.MBTI m\n" +
+                "                \tINNER JOIN isour.MBTI m\n" +
                 "\t                ON im.MBTI = m.USER_MBTI\n" +
                 "\t                INNER JOIN isour.i_member im2\n" +
                 "\t                ON im2.MBTI = m.MAT_MBTI\n" +
                 "                WHERE im.ID = ? \n" +
-                "                \tand m.ORDER_MBTI <= 1\n" +
-                "                \tand not im.ID_NUM = im2.ID_NUM\n" +
+                "\t                and m.ORDER_MBTI <= 1\n" +
+                "\t                and not im.ID_NUM = im2.ID_NUM\n" +
                 "                ORDER BY rand(?)) PG1\n" +
                 "        WHERE (@rownum \\:= 0) = 0 <= /*count*/2 * /*startNum*/?) PG2\n" +
-                "\tWHERE R_NUM > /*count*/2 * (/*startNum*/? - 1)                     \n" +
-                "\tlimit /*count*/2;";
+                "WHERE R_NUM > /*count*/2 * (/*startNum*/? - 1)\n" +
+                "limit /*count*/2;";
 
         JpaResultMapper result2 = new JpaResultMapper();
         Query query2 = em.createNativeQuery(sql2)

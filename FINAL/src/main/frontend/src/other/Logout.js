@@ -8,11 +8,9 @@ function Logout() {
   const navigate = useNavigate();
 
   const onClickLogout = async () => {
-    console.log("id : ", cookies.get('rememberId'));
     await updateDoc(doc(db, "users", cookies.get('rememberId')), {
       isOnline: false,
     });
-
     cookies.remove('rememberId');
     cookies.remove('rememberEmail');
     cookies.remove('rememberMyInfo');
@@ -28,9 +26,7 @@ function Logout() {
 
   return (
     <a> 
-      {/* <span className="material-symbols-outlined" onClick={onClickLogout}>logout */}
         <h id="logout" onClick={onClickLogout}>로그아웃</h>
-      {/* </span> */}
     </a>
   );
 }

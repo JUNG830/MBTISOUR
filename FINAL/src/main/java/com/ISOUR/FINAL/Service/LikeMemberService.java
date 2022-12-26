@@ -22,8 +22,8 @@ public class LikeMemberService {
         LikeMember isTrue = likeMemberRepository.findByUserIdxAndLikeUserIdx(user_Id_num, Like_Id_num);
         if (isTrue == null) {
             LikeMember likeMember = new LikeMember();
-            likeMember.setUserIdx(user_Id_num);
-            likeMember.setLikeUserIdx(Like_Id_num);
+            likeMember.setUserIdx(user_Id_num); // 내 회원번호
+            likeMember.setLikeUserIdx(Like_Id_num); // 좋아요한 회원 번호
             likeMember.setLike_time(LocalDateTime.now().withNano(0));
 
             LikeMember result = likeMemberRepository.save(likeMember);
