@@ -29,7 +29,7 @@ function AdminMain() {
             </label>
           </div>
 
-          <div className="User">
+          <div className="Admin">
             <img src={조혜경} alt="user"/>
           </div>
         </div>
