@@ -48,6 +48,7 @@ public class MatchingService {
                 "\t                select 'Y'\n" +
                 "\t                from isour.like_member lm \n" +
                 "\t                where lm.like_user_idx = im2.id_num\n" +
+                "\t                 and lm.user_idx = im.id_num\n" +
                 "\t                ), 'N') as like_Member_idx\n" +
                 "                FROM isour.i_member im\n" +
                 "                \tINNER JOIN isour.MBTI m\n" +
