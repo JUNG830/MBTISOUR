@@ -35,17 +35,16 @@ const Matching = () => {
   const [mat_memberInfo, setMat_MemberInfo] = useState([]);
   const [pageNum, setPageNum] = useState(1);
   const [cnt, setCnt] = useState();
+  const [trueorfalse, setTrueorfalse] = useState(true);
 
 
   // 페이지 이동
   const onChangeNext = () => {
     setPageNum(pageNum + 1);
-    console.log("pageNum : " + pageNum);
   }
 
   const onChangePrev = () => {
     setPageNum(pageNum - 1);
-    console.log("pageNum : " + pageNum);
   }
 
 
@@ -53,12 +52,9 @@ const Matching = () => {
   // 내 정보 조회 
   useEffect(() => {
     const userData = async () => {
-      console.log("\n>> 내정보 조회(useEffect)");
-      console.log("\n\n현재 cookies 에 저장된 ID : " + localId);
 
       try {
         const response = await TeamAPI.memberInfo(localId); 
-        console.log(response.data);
         setMyInfo(response.data);
         setId_num(response.data.idNum);
         setMyId(response.data.id);
@@ -83,53 +79,40 @@ const Matching = () => {
  
       try {  
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
+      //  console.log("****************");
+     //   console.log(Mat.data);
+      //  console.log(Mat.data[0].mat_id);
         console.log("****************");
         setMat_MemberInfo(Mat.data);
         console.log(Mat.data);
         // 마지막 페이지 찾기
         const cnt = Number(Mat.data[0].cnt);
         setCnt(Math.ceil(cnt / 2));
-        console.log("matIdNum : ", Mat.data[0].mat_id_num);
-        console.log("like_member_idx : ", Mat.data[0].like_member_idx);
+
       } catch (e) {
         console.log(e);
       }
     };
   memberData();
-  }, [pageNum]);
+  }, [pageNum, trueorfalse]);
 
   // 좋아요
-  const [btnActive, setBtnActive] = useState("");
-  const [like, setLike] = useState(0);
-
-  useEffect(() => {
-    const onClickLike = async (LikeIdNum) => {
-      console.log("LikeIdNum :", LikeIdNum);
-      try {
-        const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
-        // 좋아요: 1
-        // 좋아요 취소: 2
-        // 아무것도 수행 안됨: 0
-        console.log("%%%%% 좋아요 전송");
-        console.log(likeData.data);
-        console.log(LikeIdNum);
-        if (likeData.data === 1) {
-          // setColor('red-btn');
-          document.getElementById(LikeIdNum).style.color='orange';
-          // setBtnActive(LikeIdNum);
-        } else if (likeData.data === 2) {
-          // setColor('');
-          document.getElementById(LikeIdNum).style.color='green';
-          // setBtnActive('');
-        } else {
-          console.log("좋아요 오류");
-        }
-      } catch (e) {
-        console.log(e);
+  const onClickLike = async (LikeIdNum) => {
+  
+    try {
+      const likeData = await TeamAPI.likeMember(localId_num, LikeIdNum);
+      // 좋아요: 1
+      // 좋아요 취소: 2
+      // 아무것도 수행 안됨: 0
+      if (likeData.data < 1) {
+        console.log("좋아요 오류");
       }
-    };
-    onClickLike();
-  }, []);
+      // 리렌더링을 위한 스위치
+      setTrueorfalse(trueorfalse => !trueorfalse);
+    } catch (e) {
+      console.log(e);
+    }
+  }
   
  // 채팅하기 onClick
  const user1 = localId;
@@ -227,12 +210,7 @@ const Matching = () => {
             <div className='Mat-icon'>
            
                 <IconButton>
-                {/* {`${like === mat.mat_id_num ? color : mat.like_member_idx === 'Y' ? 'red-btn' : ''}`} */}
-                {mat.like_member_idx}
-                {/* {like} */}
-                <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color : mat.like_member_idx === 'N' ? 'blue' : 'red'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
-                {/* <FavoriteIcon className={index == btnActive ? "red-btn" :  mat.like_member_idx === 'Y' ? 'red-btn' : ''} value={index} style = {{fontSize: 'xx-large', backgroundColor: 'unset'}} onClick={()=>onClickLike(mat.mat_id_num)}/> */}
-                {mat.mat_id_num}
+                  <FavoriteIcon className='' id={mat.mat_id_num} style = {{fontSize: 'xx-large', backgroundColor: 'unset', color: (mat.like_member_idx === 'Y') ? 'red' : 'unset'}} onClick={()=>onClickLike(mat.mat_id_num)}/>
                 </IconButton>
                 <IconButton>
                   <SmsIcon className='Chat-icon' style = {{fontSize: 'xx-large'}} onClick={()=>onClickChat(mat.mat_id)}/>
@@ -251,9 +229,7 @@ const Matching = () => {
           <IconButton className='prevbtn' style={{backgroundColor: 'unset'}} onClick={onChangePrev} disabled={(pageNum === 1) ? true : false }>
             <ArrowBackIosNewIcon  style = {{fontSize: 'xx-large'}} />   
           </IconButton>
-        {/* </div>
 
-        <div className='page-btn2'> */}
           <IconButton className='nextbtn' style={{backgroundColor: 'unset'}} onClick={onChangeNext} disabled={(pageNum === (( mat_memberInfo.length === 0 ) ? 1 : cnt)) ? true : false }>
             <NavigateNextIcon style = {{transform: 'rotate(180deg)',  fontSize: 'xx-large'}} />
           </IconButton>           

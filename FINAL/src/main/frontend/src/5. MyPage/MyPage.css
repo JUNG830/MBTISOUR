@@ -179,7 +179,7 @@
       margin-left: 10px;
       font-weight: 900;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       position: relative;
   
@@ -203,7 +203,7 @@
       margin-left: 20px;
       font-weight: 900;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       position: relative;
   
@@ -226,7 +226,7 @@
       margin-left: 10px;
       font-weight: 900;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       position: relative;
       cursor: pointer;
@@ -252,7 +252,7 @@
       min-width: 106px;
       position: relative;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       cursor: pointer;
   
@@ -276,7 +276,7 @@
       font-weight: 900;
       position: relative;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       cursor: pointer;
   
@@ -301,7 +301,7 @@
       left: 125px;
       bottom: 50px;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       cursor: pointer;
   
@@ -318,7 +318,7 @@
       margin-bottom: 5px;
       position: relative;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       cursor: pointer;
   
@@ -345,7 +345,7 @@
       margin-bottom: 5px;
       left: 142px;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
   
   }
@@ -378,7 +378,7 @@
       position: relative;
       left: 142px;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white;
       cursor: pointer;
   
@@ -471,12 +471,14 @@
   }
   
   .Mypage-examine {
-      width: 224px;
-      height: 27px;
+      width: 282px;
+      height: 50px;
       border-style: none;
       border-radius: 25px;
       box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: 900;
+      color:white;
+      background-color: var(--navy);
   
   }
   
@@ -504,7 +506,7 @@
       box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       font-weight: 900;
       font-family: 'LINESeedKR-Bd';
-      background-color: #003366;
+      background-color: var(--navy);
       color: white; */
       color: gray;
       position: relative;
@@ -712,7 +714,7 @@
           margin-left: 10px;
           font-weight: 900;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           right: 290px;
           top: 90px;
@@ -737,7 +739,7 @@
           font-weight: 900;
           position: relative;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           right: 290px;
           top: 90px;
@@ -761,7 +763,7 @@
           margin-left: 10px;
           font-weight: 900;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           position: relative;
           top: 90px;
@@ -786,7 +788,7 @@
           font-weight: 900;
           min-width: 106px;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           position: relative;
           top: 90px;
@@ -811,7 +813,7 @@
           margin-left: 10px;
           font-weight: 900;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           position: relative;
           top: 90px;
@@ -840,7 +842,7 @@
           left: -165px;
           top: 40px;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
   
   
@@ -859,7 +861,7 @@
           top: 90px;
           right: 290px;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
   
   
@@ -883,7 +885,7 @@
           min-width: 106px;
           margin-bottom: 5px;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           position: relative;
           left: -145px;
@@ -917,7 +919,7 @@
           font-weight: 900;
           margin-bottom: 5px;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white;
           position: relative;
           left: -145px;
@@ -1013,12 +1015,14 @@
       }
   
       .Mypage-examine {
-          width: 224px;
-          height: 27px;
+          width: 282px;
+          height: 50px;
           border-style: none;
           border-radius: 25px;
           box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           font-weight: 900;
+          position: relative;
+          top:24px;
   
       }
   
@@ -1041,7 +1045,7 @@
           box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           font-weight: 900;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white; */
           left: 350px;
           cursor: pointer;
@@ -1072,6 +1076,19 @@
           margin-left: 20px;
           margin-right: -32px;
       }
+      
+      .Mypage-examine {
+        width: 232px;
+        height: 50px;
+        border-style: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        font-weight: 900;
+        position: relative;
+        top:24px;
+
+    }
+
   
   
       .Mypage-leave-btn {
@@ -1086,7 +1103,7 @@
           box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
           font-weight: 900;
           font-family: 'LINESeedKR-Bd';
-          background-color: #003366;
+          background-color: var(--navy);
           color: white; */
           left: 250px;
           
@@ -1111,7 +1128,7 @@
           overflow-y:hidden;
   
       }
-  
+
       .inputBox {
           height: 50px;
           width: 232px;
@@ -1382,7 +1399,7 @@
           gap: 20px;
           margin: 0 auto;
           width: 100%;
-          height: 50px;
+          height: 550px;
           border: none;
           margin-top: 60px;
       
