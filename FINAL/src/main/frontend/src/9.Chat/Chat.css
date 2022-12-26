@@ -164,7 +164,7 @@ Enter message
 .message_form input {
   width: 400px;
   height: 35px;
-  padding-left: 20px;
+  padding-left: 10px;
   border-radius: 15px;
   border: 0px;
   box-shadow: 0 4px 8px 0 rgba(177, 177, 177, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -184,6 +184,10 @@ Enter message
 .message_wrapper img {
   width: 100%;
   border-radius: 5px;
+}
+.message {
+  line-height: 1rem;
+  white-space: pre-wrap;
 }
 
 /* 

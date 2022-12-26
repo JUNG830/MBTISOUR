@@ -7,9 +7,6 @@ import './PostModal.css';
 
 const PostModal = (props) => {
   const { open, close, sender, content, senderId } = props;
-  console.log("\n>> PostModal : " + open);
-  console.log("\n>> PostModal : " + close);
-
   const cookies = new Cookies();
   // ▼ 로그인 안 되어 있으면 로그인 페이지로
   const myInfo = cookies.get('rememberMyInfo');
