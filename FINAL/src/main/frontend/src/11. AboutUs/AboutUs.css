@@ -51,6 +51,12 @@
   border-radius: 20px;
   object-fit: cover;
 }
+.OurInfo h4 span {
+  background-color: greenyellow;
+  padding: 0 .5rem;
+  letter-spacing: 0;
+  border-radius: 10px;
+}
 
 .material-symbols-outlined {
   cursor: pointer;
