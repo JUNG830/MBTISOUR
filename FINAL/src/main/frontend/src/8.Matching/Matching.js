@@ -79,12 +79,7 @@ const Matching = () => {
  
       try {  
         const Mat = await TeamAPI.MatchingMember2(localId, localId_num, pageNum);
-      //  console.log("****************");
-     //   console.log(Mat.data);
-      //  console.log(Mat.data[0].mat_id);
-        console.log("****************");
         setMat_MemberInfo(Mat.data);
-        console.log(Mat.data);
         // 마지막 페이지 찾기
         const cnt = Number(Mat.data[0].cnt);
         setCnt(Math.ceil(cnt / 2));
