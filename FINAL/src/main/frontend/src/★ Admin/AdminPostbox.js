@@ -94,8 +94,8 @@ function AdminPostbox() {
                 {postList.map(e =>
                 <tr>
                   <td>{e.postNum}</td>
-                  <td>{e.postReceiver}</td>
                   <td>{e.postSender}</td>
+                  <td>{e.postReceiver}</td>
                   <td>{e.content}</td>
                   <td><Moment format='YY-MM-DD(ddd) HH:mm:ss'>{e.postTime}</Moment></td>
                 </tr>

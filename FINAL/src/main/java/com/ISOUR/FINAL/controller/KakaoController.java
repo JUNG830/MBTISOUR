@@ -22,7 +22,8 @@ public class KakaoController {
     private final KakaoLoginService kakaoLoginService;
 
     // 카카오 회원가입
-    @PostMapping("/login/kakao")
+    @PostMapping("login/login/kakao")
+    //@PostMapping("/login/kakao") localhost일때
     public ResponseEntity<Map<String, String>> kakaoSignup(@RequestBody Map<String, String> tokenData) {
         String access_token = tokenData.get("access_token");
         log.warn("토크으으으으으으ㅡㅇ은!!!!! (access_token) : " + access_token);

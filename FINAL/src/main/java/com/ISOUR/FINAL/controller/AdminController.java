@@ -5,6 +5,7 @@ import com.ISOUR.FINAL.entity.MemberInfo;
 import com.ISOUR.FINAL.entity.Postbox;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class AdminController {
     // Service(서비스) 로직 연결
+    @Autowired
     private final AdminService adminService;
 
     /* 전체 회원 조회 */

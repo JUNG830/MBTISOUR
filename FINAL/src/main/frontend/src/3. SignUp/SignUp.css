@@ -315,6 +315,7 @@ border-radius: 25px;
     }
     .SignUp-item > td > input {
         font-size: 0.7rem;
+        width: 220px;
     }
     .Chacked-btn {
         width: 80px;

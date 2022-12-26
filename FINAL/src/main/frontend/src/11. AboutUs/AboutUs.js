@@ -103,7 +103,7 @@ function AboutUs() {
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
-                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("min1234", "감자돌이")}>mail</span>
+                <span class="material-symbols-outlined" onClick={()=>onClickPostIcon("alsgud413", "감자돌이")}>mail</span>
               </div>
             </div>
             <div className='OurInfo'>

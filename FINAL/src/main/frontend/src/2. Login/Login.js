@@ -4,6 +4,8 @@ import '../2. Login/Login.css';
 import "../images/아이셔용.png"
 import { motion } from "framer-motion";
 import { GoogleButton } from 'react-google-button';
+import { db } from "../firebase";
+import { updateDoc, doc } from "firebase/firestore";
 import { auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
 import Cookies from 'universal-cookie';
@@ -129,6 +131,9 @@ function Login() {
 
         }
         navigate("/home");
+        updateDoc(doc(db, "users", id), {
+          isOnline: true
+        });
       } else {
         setState({...state, open: true, error: true, errorMsg: "아이디 또는 비밀번호를 확인하세요!"});
       }
