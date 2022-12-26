@@ -72,7 +72,7 @@ function AboutUs() {
           <div className='AboutUs-main'>
             <div className='OurInfo'>
               <img src={우혜정} alt="face"/>
-              <h4>우혜정</h4>
+              <h4><span>ISFP</span> 우혜정</h4>
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />              
@@ -81,7 +81,7 @@ function AboutUs() {
             </div>
             <div className='OurInfo'>
               <img src={조혜경} alt="face"/>
-              <h4>조혜경</h4>
+              <h4><span>ISTJ</span> 조혜경</h4>
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
@@ -90,7 +90,7 @@ function AboutUs() {
             </div>
             <div className='OurInfo'>
               <img src={전규한} alt="face"/>
-              <h4>전규한</h4>
+              <h4><span>ISTJ</span> 전규한</h4>
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
@@ -99,7 +99,7 @@ function AboutUs() {
             </div>
             <div className='OurInfo'>
               <img src={이민형} alt="face"/>
-              <h4>이민형</h4>
+              <h4><span>INTJ</span> 이민형</h4>
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
@@ -108,7 +108,7 @@ function AboutUs() {
             </div>
             <div className='OurInfo'>
               <img src={이동균} alt="face"/>
-              <h4>이동균</h4>
+              <h4><span>ENFP</span> 이동균</h4>
               <h6>Backend / Frontend</h6>
               <div className='AboutUs-icon'>
                 <CallIcon />
