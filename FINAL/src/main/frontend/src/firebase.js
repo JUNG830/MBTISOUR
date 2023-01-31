@@ -21,16 +21,28 @@ import { getFirestore} from "firebase/firestore";
 
 
 //민형님 파이어 베이스
+// const firebaseConfig = {
+//     // firebase 설정과 관련된 개인 정보
+//     apiKey: "AIzaSyCmz_ZlEhqdw-65Yuw6778InG-HbtBB3io",
+//   authDomain: "isour-c9756.firebaseapp.com",
+//   databaseURL: "https://isour-c9756-default-rtdb.firebaseio.com",
+//   projectId: "isour-c9756",
+//   storageBucket: "isour-c9756.appspot.com",
+//   messagingSenderId: "1077838894993",
+//   appId: "1:1077838894993:web:4c88b2cb105722fe642c30",
+//   measurementId: "G-LEHTB63R1J"
+// };
+
+//혜정 파이어 베이스
 const firebaseConfig = {
-    // firebase 설정과 관련된 개인 정보
-    apiKey: "AIzaSyCmz_ZlEhqdw-65Yuw6778InG-HbtBB3io",
-  authDomain: "isour-c9756.firebaseapp.com",
-  databaseURL: "https://isour-c9756-default-rtdb.firebaseio.com",
-  projectId: "isour-c9756",
-  storageBucket: "isour-c9756.appspot.com",
-  messagingSenderId: "1077838894993",
-  appId: "1:1077838894993:web:4c88b2cb105722fe642c30",
-  measurementId: "G-LEHTB63R1J"
+  apiKey: "AIzaSyAyw0Jl3jcEnS6ynBZXYZV1sLI-2EI7f8g",
+  authDomain: "isour-7e9cb.firebaseapp.com",
+  databaseURL: "https://isour-7e9cb-default-rtdb.firebaseio.com",
+  projectId: "isour-7e9cb",
+  storageBucket: "isour-7e9cb.appspot.com",
+  messagingSenderId: "388306851757",
+  appId: "1:388306851757:web:ff25a0390b307f1c967324",
+  measurementId: "G-9BZQEDEB47"
 };
 
 const app = initializeApp(firebaseConfig);

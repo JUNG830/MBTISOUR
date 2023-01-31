@@ -7,10 +7,10 @@ function Logout() {
   const cookies = new Cookies();
   const navigate = useNavigate();
 
-  const onClickLogout = async () => {
-    await updateDoc(doc(db, "users", cookies.get('rememberId')), {
-      isOnline: false,
-    });
+  const onClickLogout = () => {
+    // await updateDoc(doc(db, "users", cookies.get('rememberId')), {
+    //   isOnline: false,
+    // });
     cookies.remove('rememberId');
     cookies.remove('rememberEmail');
     cookies.remove('rememberMyInfo');

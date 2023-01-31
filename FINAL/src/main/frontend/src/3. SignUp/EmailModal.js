@@ -17,7 +17,7 @@ const EmailModal = ({ open, show, onHide, modalName, modalContent }) => {
         e.preventDefault();
         if (code !== null) {
             const emailConfirm = await TeamAPI.emailCode(code);
-            alert("코드 보내기 성공!!");
+            // alert("코드 보내기 성공!!");
             if (emailConfirm.data === 1) {
                 alert("인증이 완료되었습니다.")
                 modalContent();

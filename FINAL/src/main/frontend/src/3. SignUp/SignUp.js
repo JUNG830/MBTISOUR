@@ -218,7 +218,7 @@ function SignUp() {
   const [showReqId, setShowReqId] = useState(false);
   const [showGuideId, setShowGuideId] = useState(false);
   const [showAcceptId, setShowAcceptId] = useState(false);
-  const [showGuidePwd, setShowGuidePwd] = useState(false);
+  const [showGuidePwd, setShowGuidePwd] = useState(true);
   const [showAcceptPwd, setShowAcceptPwd] = useState(false);
   const [showErrorPwdcheck, setShowErrorPwdcheck] = useState(false);
   const [showAcceptPwdcheck, setShowAcceptPwdcheck] = useState(false);
@@ -347,21 +347,21 @@ function SignUp() {
   /*
   비밀번호 변경 */
   const onChangePassword = e => {
-    setIsPwd(false);
+    setIsPwd(true);
     setIsPwdcheck(false);
 
     let temp_pwd = e.target.value;
     setPwd(temp_pwd);
 
-    if (regexPw.test(temp_pwd)) {
-      setIsPwd(true);
-      setShowAcceptPwd(true); // 사용 가능한 비밀번호입니다.
-      setShowGuidePwd(false); // 임시 정규식 : 8~20자
-    } else {
-      setIsPwd(false);
-      setShowAcceptPwd(false); // 사용 가능한 비밀번호입니다.
-      setShowGuidePwd(true); // 임시 정규식 : 8~20자
-    }
+    // if (regexPw.test(temp_pwd)) {
+    //   setIsPwd(true);
+    //   setShowAcceptPwd(true); // 사용 가능한 비밀번호입니다.
+    //   setShowGuidePwd(false); // 임시 정규식 : 8~20자
+    // } else {
+    //   setIsPwd(false);
+    //   setShowAcceptPwd(false); // 사용 가능한 비밀번호입니다.
+    //   setShowGuidePwd(true); // 임시 정규식 : 8~20자
+    // }
 
     if (pwdcheck == '') {
 
@@ -397,7 +397,6 @@ function SignUp() {
   구글 로그인 -> 회원 가입시 */
   useEffect(() => {
     if (cookies.get('rememberEmail') !== undefined) {
-      setEmail(cookies.get('rememberEmail'));
       setEmail(cookies.get('rememberEmail'));
       setIsEmail(true);
     }
@@ -519,8 +518,8 @@ function SignUp() {
   회원가입 버튼 클릭 */
   const onClickButton = async (e) => {
     // e.preventDefault();
-
-    if (isName && isId && isIdcheck && isPwd && isPwdcheck && isBirth && isGender && isRegion1 && isRegion2 && isNickname && isNicknamecheck && emailConfirm) {
+    
+    if (isName && isId && isIdcheck && isPwd && isPwdcheck&& isBirth && isGender && isRegion1 && isRegion2 && isNickname && isNicknamecheck && emailConfirm) {
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -528,14 +527,12 @@ function SignUp() {
       );
 
       const memberReg = await TeamAPI.memberReg(kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2, check_term3);
-      setState({ ...state, open: true, success: true, successMsg: "회원가입 성공!" });
-      navigate("/login");
       setDoc(doc(db, "users", id), {
         uid: result.user.uid,
         name,
         email,
         createdAt: Timestamp.fromDate(new Date()),
-        isOnline: true,
+        isOnline: false,
         id,
         nickname,
         friends: [],
@@ -548,6 +545,7 @@ function SignUp() {
         nickname: "",
         friends: [],
       });
+      setState({ ...state, open: true, success: true, successMsg: "회원가입 성공!" });
       window.sessionStorage.setItem("kakaoId_num", '');
       window.sessionStorage.setItem("nickname", '');
       window.sessionStorage.setItem("kakaoNickname", '');
@@ -556,6 +554,7 @@ function SignUp() {
     } else {
       setState({ ...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요." });
     }
+    navigate("/login");
   };
 
 
@@ -621,7 +620,7 @@ function SignUp() {
             {/* 비밀번호 확인 */}
             <th className="SignUp-item">
               <td>
-                <input className="Input-border-4" type="password" placeholder="비밀번호 확인" value={pwdcheck} onChange={onChangePassword_check} disabled={!regexPw.test(pwd)} />
+                <input className="Input-border-4" type="password" placeholder="비밀번호 확인" value={pwdcheck} onChange={onChangePassword_check} /* disabled={!regexPw.test(pwd)} */ />
                 <div className='Message'>
                   {showErrorPwdcheck && errorPwdcheck}
                   <div className='Message2'>

@@ -141,7 +141,7 @@ const MyPage = () => {
     uploadBytes(imageRef, temp_face).then(() => {
       getDownloadURL(imageRef).then(async (url) => {
         setUrl(url);
-
+        console.log("dhdldhdl");
         await updateDoc(doc(db, "users", myId), {
           profile: url,
         });
