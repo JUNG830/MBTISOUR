@@ -53,7 +53,7 @@ public class EmailConfirmController {
             cnt=cnt+1;
             System.out.println(cnt);
             
-            if(cnt%50==0) {
+            if(cnt%1==0) {
                 ePw = createKey();
             }
         }
