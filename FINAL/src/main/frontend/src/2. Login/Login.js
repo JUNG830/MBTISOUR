@@ -182,18 +182,17 @@ function Login() {
           <a  className='login-logo'>
             <a href={kakao_Auth_Url}>
               <div className='img-circle'>
-              <img className='kakao-img'style={{width:"4rem",height:"4rem",objectFit:"cover"}} src={kakao} />
+                <img className='kakao-img'style={{width:"4rem",height:"4rem",objectFit:"cover"}} src={kakao} />
               </div>
             </a>
-          카카오 로그인
-            </a>
-            <a  className='login-logo'>
-          <div className='img-circle'>
-          <img className='google-img' src={google} onClick={signInWithGoogle} style={{width:"2rem",height:"2rem",objectFit:"cover"}} >
-            </img>
-          </div>
-          구글 로그인
-            </a>
+            카카오 로그인
+          </a>
+          <a  className='login-logo'>
+            <div className='img-circle'>
+              <img className='google-img' src={google} onClick={signInWithGoogle} style={{width:"2rem",height:"2rem",objectFit:"cover"}} />
+            </div>
+            구글 로그인
+          </a>
          </div>
         <div className="Login-footer">
           가입하고 친구를 만들어봐요! <a href="/signup">  회원가입</a>
