@@ -300,6 +300,50 @@ const TeamAPI = {
       return await axios.post(TEAM_DOMAIN + "chat/findMember", regCmd, HEADER);
       // return await axios.post("chat/findMember", regCmd, HEADER);
     },
+    //코인 (member db에 업데이트)
+    CoinUpdate: async function(localId, coin){
+
+      const regCmd={
+        id : localId,
+        coin : coin
+      }
+      return await axios.post("coinUpdate", regCmd, HEADER);
+    },
+    
+    
+    //카카오 결제 데이터 저장
+    CoinUpdate: async function(localId, coin){
+
+      const regCmd={
+        id : localId,
+        coin : coin
+      }
+      return await axios.post("coinUpdate", regCmd, HEADER);
+    },
+
+    //매칭 맥스페이지 조회
+    MaxPageUpdate: async function(localId, coin, maxPage){
+
+      const regCmd={
+        id : localId,
+        coin : coin,
+        maxPage : maxPage
+      }
+      return await axios.post("MaxPageUpdate", regCmd, HEADER);
+    },
+
+    kakaoPayResult: async function(localId, productName, quantity, createdAt, paymentMethod, amountTotal){
+      const regCmd = {
+        id : localId,
+        pdName : productName,
+        quantity : quantity,
+        createdAt : createdAt,
+        paymentMethod : paymentMethod,
+        amountTotal : amountTotal
+      }
+      return await axios.post("kakaoPayResult", regCmd, HEADER);
+
+    },
 
 }
 
