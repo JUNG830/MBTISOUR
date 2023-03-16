@@ -1,9 +1,12 @@
 package com.ISOUR.FINAL.Service;
 
 import com.ISOUR.FINAL.dto.MemberDTO;
+import com.ISOUR.FINAL.dto.PaymentDTO;
 import com.ISOUR.FINAL.entity.MemberInfo;
+import com.ISOUR.FINAL.entity.Payment;
 import com.ISOUR.FINAL.entity.Terms;
 import com.ISOUR.FINAL.repository.MemberRepository;
+import com.ISOUR.FINAL.repository.PaymentRepository;
 import com.ISOUR.FINAL.repository.TermsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +20,8 @@ import java.util.*;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final TermsRepository termsRepository;
+    private final PaymentRepository paymentRepository;
+
 
     /* 아이디 중복 체크(회원가입 여부 확인) 서비스 */
     public boolean isMemberCheck(String id) {
@@ -210,6 +215,11 @@ public class MemberService {
         memberDTO.setMbti(memberInfo.getMbti());
         memberDTO.setIntroduce(memberInfo.getIntroduce());
         memberDTO.setFace(memberInfo.getFace());
+        memberDTO.setCoin(memberInfo.getCoin());
+        if(memberInfo.getMaxPage()==null){
+            memberInfo.setMaxPage("1");
+        }
+        memberDTO.setMaxPage(memberInfo.getMaxPage());
         memberDTO.setRegistrationDate(memberInfo.getRegistrationDate());
 
         return memberDTO;
@@ -289,10 +299,6 @@ public class MemberService {
         }
     }
 
-
-
-
-
     /* 전체 회원 조회 서비스 */
     public List<MemberDTO> getMemberList() {
         log.warn("★★★★★★★★★전체 회원 조회 서비스★★★★★★★★★");
@@ -342,4 +348,83 @@ public class MemberService {
             return memberDTO;
         }
     }
+
+    /* 코인 조회 서비스*/
+    public MemberDTO updateCoin(String id, String coin) {
+        log.warn("★★★★★★★★★회원정보 수정 서비스★★★★★★★★★");
+        log.warn("아이디(id) : " + id);
+        log.warn("사용하고 남은 coin(coin) : " + coin);
+
+        MemberDTO memberDTO = new MemberDTO();
+        MemberInfo memberInfo = memberRepository.findById(id);
+        memberInfo.setId(memberInfo.getId());
+        memberInfo.setCoin(coin);
+        memberRepository.save(memberInfo);
+        memberDTO.setCoin(memberInfo.getCoin());
+
+        return memberDTO;
+    }
+
+    /* 매칭관련 맥스페이지 업데이트 서비스*/
+    public MemberDTO updateMaxPage(String id, String coin,String maxPage) {
+        log.warn("★★★★★★★★★맥스페이지 및 코인 수정 서비스★★★★★★★★★");
+        log.warn("아이디(id) : " + id);
+        log.warn("사용하고 남은 coin(coin) : " + coin);
+        log.warn("사용하고 남은 maxPage(maxPage) : " + maxPage);
+
+        MemberDTO memberDTO = new MemberDTO();
+        MemberInfo memberInfo = memberRepository.findById(id);
+        memberInfo.setId(memberInfo.getId());
+        memberInfo.setCoin(coin);
+        memberInfo.setMaxPage(maxPage);
+        memberRepository.save(memberInfo);
+        memberDTO.setCoin(memberInfo.getCoin());
+        memberDTO.setMaxPage(maxPage);
+
+        return memberDTO;
+    }
+
+    /*카카오 페이 인포*/
+    public MemberDTO getKakaoPayInfo(String getId, String getPdName, String getQuantity,String getCreatedAt ,String getPaymentMethod ,String getAmountTotal){
+        log.warn("★★★★★★★★★ 카카오 페이 정보 이용 서비스★★★★★★★★★");
+        log.warn("아이디(id) : " + getId);
+        MemberDTO memberDTO = new MemberDTO();
+        PaymentDTO paymentDTO = new PaymentDTO();
+
+        MemberInfo memberInfo = memberRepository.findById(getId);
+
+        if(memberInfo.getCoin()==null) {
+            memberInfo.setCoin("0");
+        }
+        log.warn("( memberInfo.getCoin()) : " + memberInfo.getCoin());
+
+        log.warn("숫자로 바꿔서 더하고 다시 스트링으로 : " + String.valueOf(Integer.parseInt(getQuantity)+Integer.parseInt(memberInfo.getCoin())));
+
+        /*아이디와 코인정보를 받아서 코인을 더해서 디비에 저장*/
+        memberInfo.setId(memberInfo.getId());
+        memberInfo.setCoin(String.valueOf(Integer.parseInt(getQuantity)+Integer.parseInt(memberInfo.getCoin())));
+        memberRepository.save(memberInfo);
+
+        log.warn("숫자로 바꿔서 더하고 다시 스트링으로 : " + memberInfo.getCoin());
+
+        Payment payment = new Payment();
+
+        payment.setIdNum(memberInfo.getIdNum());
+        payment.setId(memberInfo.getId());
+        payment.setPdName(getPdName);
+        payment.setCreatedAt(getCreatedAt);
+        payment.setPaymentMethod(getPaymentMethod);
+        payment.setAmountTotal(getAmountTotal);
+
+        paymentRepository.save(payment);
+
+
+        /*디비에 저장된 기존의 코인과 결제한 코인의 합을 클라이언트로 반환함.*/
+        memberDTO.setCoin(String.valueOf(Integer.parseInt(getQuantity)+Integer.parseInt(memberInfo.getCoin())));
+
+
+        return memberDTO;
+
+    }
+
 }

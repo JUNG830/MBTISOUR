@@ -109,9 +109,9 @@ public class MemberController {
         }
 
         if (isTrue && isSave || isTrue && isSave && isKakaoSignup) {
-            log.warn(">> " + isTrue + " : 회원가입 성공 ");
-            log.warn(">> " + isSave + " : 약관 동의 저장 성공 ");
-            log.warn(">> " + isKakaoSignup + " : 카카오 저장 성공 ");
+            log.warn(">> " + isTrue + " : 회원가입");
+            log.warn(">> " + isSave + " : 약관 동의 저장");
+            log.warn(">> " + isKakaoSignup + " : 카카오 저장");
             return new ResponseEntity<>(true, HttpStatus.OK);
         } else {
             log.warn(">> " + isTrue + " : 회원가입 실패 ");
@@ -292,6 +292,59 @@ public class MemberController {
         MemberDTO memberDTO = memberService.findInfoByGoogle(getEmail);
 
         log.warn("뭐가 담겨 있니? : " + memberDTO);
+        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+    }
+
+    /* 코인 계산 및 조회*/
+    @PostMapping("/coinUpdate")
+    public ResponseEntity<MemberDTO> coinUpdater(@RequestBody Map<String, String> memberData ) {
+        log.warn("★★★★★★★★★코인 업데이터 Controller★★★★★★★★★");
+        String getId = memberData.get("id");
+        String getCoin = memberData.get("coin");
+
+        MemberDTO memberDTO = memberService.updateCoin(getId, getCoin);
+
+        log.warn("컨트롤러까지 코인 잘 배송왔나?" + memberDTO.getCoin());
+        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+    }
+
+    @PostMapping("/MaxPageUpdate")
+    public ResponseEntity<MemberDTO> maxPageUpdater(@RequestBody Map<String, String> memberData ) {
+        log.warn("★★★★★★★★★맥스페이지 업데이터 Controller★★★★★★★★★");
+        String getId = memberData.get("id");
+        String getCoin = memberData.get("coin");
+        String getMaxPage = memberData.get("maxPage");
+
+        MemberDTO memberDTO = memberService.updateMaxPage(getId, getCoin,getMaxPage);
+
+        log.warn("컨트롤러까지 코인 잘 배송왔나?" + memberDTO.getCoin());
+        return new ResponseEntity<>(memberDTO, HttpStatus.OK);
+    }
+
+
+
+    /* 코인 결제후 아이디와 결제 데이터 get!*/
+    @PostMapping("/kakaoPayResult")
+    public ResponseEntity<MemberDTO> kakaoPayResult(@RequestBody Map<String, String> memberData ) {
+        log.warn("★★★★★★★★★카카오 페이 정보 조회 Controller★★★★★★★★★");
+        String getId = memberData.get("id");
+        String getPdName = memberData.get("pdName");
+        String getQuantity = memberData.get("quantity");
+        String getCreatedAt = memberData.get("createdAt");
+        String getPaymentMethod = memberData.get("paymentMethod");
+        String getAmountTotal = memberData.get("amountTotal");
+
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getId);
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getPdName);
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getQuantity);
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getCreatedAt);
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getPaymentMethod);
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + getAmountTotal);
+
+        MemberDTO memberDTO = memberService.getKakaoPayInfo(getId, getPdName,getQuantity,getCreatedAt,  getPaymentMethod, getAmountTotal);
+
+        log.warn("컨트롤러까지 카카오페이 정보 잘 배송왔나?" + memberDTO.getCoin());
+
         return new ResponseEntity<>(memberDTO, HttpStatus.OK);
     }
 

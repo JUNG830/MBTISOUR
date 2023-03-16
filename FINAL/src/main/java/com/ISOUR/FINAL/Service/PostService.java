@@ -25,7 +25,7 @@ public class PostService {
         log.warn("받는 사람(id) : " + id);
 
         List<PostDTO> postDTOS = new ArrayList<>();
-        List<Postbox> postboxList = postboxRepository.findByPostReceiver(id);
+        List<Postbox> postboxList = postboxRepository.findByPostReceiverOrderByPostTimeDesc(id);
         log.warn(postboxList.toString());
         log.warn(">> 쪽지함 조회 서비스 로 돌아왔습니다.");
 

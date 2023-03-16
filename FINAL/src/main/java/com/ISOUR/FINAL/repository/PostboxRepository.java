@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PostboxRepository extends JpaRepository<Postbox, Long> {
     List<Postbox> findAll();
-    List<Postbox> findByPostReceiver(String postReceiver);
+    List<Postbox> findByPostReceiverOrderByPostTimeDesc(String postReceiver);
     Postbox findByPostNum(Long postNum);
 }

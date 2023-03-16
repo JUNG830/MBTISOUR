@@ -519,13 +519,12 @@ function SignUp() {
   const onClickButton = async (e) => {
     // e.preventDefault();
     
-    if (isName && isId && isIdcheck && isPwd && isPwdcheck&& isBirth && isGender && isRegion1 && isRegion2 && isNickname && isNicknamecheck && emailConfirm) {
+    if (isName && isId && isIdcheck && isPwd && isPwdcheck && isBirth && isGender && isRegion1 && isRegion2 && isNickname && isNicknamecheck && emailConfirm) {
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
         pwd
       );
-
       const memberReg = await TeamAPI.memberReg(kakaoId, kakaoEmail, name, id, pwd, nickname, email, birth, gender, region1, region2, introduce, check_term1, check_term2, check_term3);
       setDoc(doc(db, "users", id), {
         uid: result.user.uid,
@@ -537,6 +536,7 @@ function SignUp() {
         nickname,
         friends: [],
       });
+      console.log("아오!!!");
       setData({
         name: "",
         email: "",
@@ -546,6 +546,7 @@ function SignUp() {
         friends: [],
       });
       setState({ ...state, open: true, success: true, successMsg: "회원가입 성공!" });
+      navigate("/login");
       window.sessionStorage.setItem("kakaoId_num", '');
       window.sessionStorage.setItem("nickname", '');
       window.sessionStorage.setItem("kakaoNickname", '');
@@ -554,7 +555,6 @@ function SignUp() {
     } else {
       setState({ ...state, open: true, error: true, errorMsg: "입력된 값을 확인하세요." });
     }
-    navigate("/login");
   };
 
 
@@ -573,7 +573,7 @@ function SignUp() {
           <div className="SignUp-header">
             <img src={logo} />
             <h1>Sign Up</h1>
-            {/* <h4>회원정보를 입력해주세요</h4> */}
+            <h5 style={{color:'gray'}} >스크롤 해주세요</h5>
           </div>
 
           <table action="" className="SignUp-Table">

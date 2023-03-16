@@ -20,13 +20,13 @@ class PostboxRepositoryTest {
     @DisplayName("쪽지 보내기 테스트")
     public void sendPostTest() {
         LocalDateTime currentTime = LocalDateTime.now();
-        String id = "skfk2";
-        String receiverId = "skfk1";
-        for(int i = 1; i <= 11; i++) {
+        String id = "dnfl10";
+        String receiverId = "mbtisour";
+        for(int i = 1; i <= 1; i++) {
             Postbox postbox = new Postbox();
             postbox.setPostSender(id);
             postbox.setPostReceiver(receiverId);
-            postbox.setContent("쪽지 보내기 테스트 - " + i);
+            postbox.setContent("안녕하세요 ISFP입니다! 이야기 나눠보고 싶어서 쪽지 드렸어요");
             postbox.setPostTime(currentTime.withNano(0));
             postboxRepository.save(postbox);
         }

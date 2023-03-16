@@ -11,7 +11,7 @@ import './Postbox.css'
 
 const Postbox = () => {
 
-  const cookies = new Cookies();
+  const cookies = new cookies();
   const myInfo = cookies.get('rememberMyInfo');
   const myId = myInfo.id
   const myNickname = myInfo.nickname
@@ -71,8 +71,12 @@ const Postbox = () => {
 
   /* 
   쪽지 자세히 보기 */
-  const openModal = () => { setModalOn(true); };
-  const closeModal = () => { setModalOn(false); };
+  const openModal = () => { 
+    setModalOn(true); 
+  };
+  const closeModal = () => { 
+    setModalOn(false); 
+  };
 
   const onClickPost = (postSendrId, postSender, content) => {
     setPostSenderId(postSendrId)
