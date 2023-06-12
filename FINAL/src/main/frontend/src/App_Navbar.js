@@ -28,6 +28,7 @@ function LoginUser() {
         <Route path='/ChatHome' element={<ChatHome/>}/>
         <Route path='/Matching' element={<Matching/>}/>
         <Route path='/login/kakao' element={<KakaoToken />}/>
+        <Route path="/Shop" element={<Shop />} />
       </Routes>
     </>
   );
