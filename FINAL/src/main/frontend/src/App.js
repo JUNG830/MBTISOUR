@@ -23,6 +23,8 @@ function App() {
         <Route path='/AdminMain' element={<AdminMain />}/>
         <Route path='/AdminPostbox' element={<AdminPostbox />}/>
         <Route path='/Admin-IsourMemberList' element={<IsourMemberList />}/>
+        {/*카카오 결제 결과*/}
+        <Route path="/payresult" element={<PayResult />} />
       </Routes>
     </Router>
   );
